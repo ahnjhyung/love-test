@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- [공유하기 설정] 카카오톡 등으로 공유했을 때 보이는 제목과 이미지 -->
+    <!-- content 내용을 재형님의 정보로 수정하세요 -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://재형님의도메인.shop">
+    <meta property="og:title" content="우리 커플 연애 성향 테스트">
+    <meta property="og:description" content="20문항으로 알아보는 우리의 연애 DNA와 궁합 분석">
+    <meta property="og:image" content="https://재형님의도메인.shop/share-image.png">
+
     <title>우리 커플 연애 성향 테스트</title>
+    
     <!-- Tailwind CSS (디자인) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- [수익화] 구글 애드센스 스크립트 -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXX" crossorigin="anonymous"></script> -->
+
     <!-- 폰트 로드 -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
@@ -35,7 +49,7 @@
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 광고 영역 스타일 (임시 점선 테두리) */
+        /* 광고 영역 스타일 */
         .ad-placeholder {
             background-color: #f3f4f6;
             border: 2px dashed #cbd5e1;
@@ -48,7 +62,7 @@
             margin-top: 1rem;
             margin-bottom: 1rem;
             width: 100%;
-            height: 100px; /* 광고 표준 높이 */
+            min-height: 100px;
             overflow: hidden;
         }
     </style>
@@ -90,10 +104,10 @@
                     </button>
                 </div>
 
-                <!-- [수익화] 하단 배너 광고 영역 -->
+                <!-- [수익화] 시작 화면 광고 영역 -->
                 <div class="w-full px-4 pb-4 mt-auto">
                     <div class="ad-placeholder">
-                        광고 배너 영역<br>(Google Adsense 등)
+                        광고 배너 영역
                     </div>
                 </div>
             </div>
@@ -129,7 +143,6 @@
                     </svg>
                 </div>
                 <p class="text-lg font-bold text-gray-700 animate-pulse">성향 분석 중...</p>
-                <!-- [수익화] 로딩 중 광고 노출은 선택 사항 -->
             </div>
 
             <!-- 4. 결과 화면 -->
@@ -145,7 +158,6 @@
 
                     <p id="res-desc" class="text-sm text-gray-600 leading-relaxed text-left break-keep">설명</p>
                     
-                    <!-- 궁합 설명 -->
                     <div class="space-y-3 text-left">
                         <div class="bg-blue-50 rounded-xl p-3">
                             <div class="flex items-center space-x-2 mb-1">
@@ -163,16 +175,22 @@
                         </div>
                     </div>
 
-                    <!-- [수익화] 제휴 마케팅 버튼 (쿠팡 파트너스 등) -->
-                    <a href="#" target="_blank" onclick="alert('제휴 링크로 이동합니다 (나중에 설정)')" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors">
+                    <!-- [수익화] 쿠팡 파트너스 영역 -->
+                    <!-- 1. href="#"의 #을 발급받은 링크로 바꾸세요 -->
+                    <a href="#" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors">
                         🎁 이 유형에게 딱 맞는 선물 추천보기
                     </a>
+                    
+                    <!-- 2. 필수 문구 (법적 의무) -->
+                    <p class="text-[10px] text-gray-400 mt-2 text-center">
+                        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+                    </p>
                 </div>
 
-                <!-- [수익화] 결과 화면 하단 배너 광고 영역 -->
+                <!-- [수익화] 결과 화면 광고 영역 -->
                 <div class="w-full mt-4">
                     <div class="ad-placeholder">
-                        결과 페이지 광고 영역<br>(트래픽이 가장 많은 곳)
+                        광고 배너 영역
                     </div>
                 </div>
 
@@ -327,21 +345,19 @@
             getEl("screen-loading").classList.remove("hidden");
             getEl("screen-loading").classList.add("flex");
 
-            // 점수 구간별 8가지 유형 매핑 (0~20점)
             var typeKey = "Type4";
-            if (score <= 2) typeKey = "Type1";      // 0, 1, 2
-            else if (score <= 5) typeKey = "Type2"; // 3, 4, 5
-            else if (score <= 8) typeKey = "Type3"; // 6, 7, 8
-            else if (score <= 10) typeKey = "Type4";// 9, 10
-            else if (score <= 12) typeKey = "Type5";// 11, 12
-            else if (score <= 15) typeKey = "Type6";// 13, 14, 15
-            else if (score <= 18) typeKey = "Type7";// 16, 17, 18
-            else typeKey = "Type8";                 // 19, 20
+            if (score <= 2) typeKey = "Type1";      
+            else if (score <= 5) typeKey = "Type2"; 
+            else if (score <= 8) typeKey = "Type3"; 
+            else if (score <= 10) typeKey = "Type4";
+            else if (score <= 12) typeKey = "Type5";
+            else if (score <= 15) typeKey = "Type6";
+            else if (score <= 18) typeKey = "Type7";
+            else typeKey = "Type8";                 
 
             var data = results[typeKey];
 
             setTimeout(function() {
-                // 결과 데이터 바인딩
                 getEl("res-title").innerText = data.title;
                 getEl("res-desc").innerText = data.desc;
                 getEl("res-img").src = "https://api.dicebear.com/9.x/notionists/svg?seed=" + data.seed + "&backgroundColor=ffe4e6";

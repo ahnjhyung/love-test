@@ -18,7 +18,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- 카카오톡 SDK 및 이미지 캡처 라이브러리 제거 (랜딩 페이지로 이동) -->
+    <!-- 이미지 캡처 라이브러리 제거 (랜딩 페이지로 이동) -->
     
     <!-- [수익화: 중요] 구글 애드센스 '코드 스니펫' 붙여넣는 곳 (필수) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821"
@@ -163,10 +163,8 @@
                 </div>
                 <p class="text-lg font-bold text-gray-700 animate-pulse">성향 분석 중...</p>
             </div>
-
-            <!-- 4. 결과 화면 (삭제됨: 랜딩 페이지로 이동) -->
-            <!-- 이 공간은 이제 사용되지 않습니다. -->
             
+            <!-- 4. 결과 화면 (삭제됨: 랜딩 페이지로 이동) -->
 
         </div>
         
@@ -184,7 +182,32 @@
     </div>
 
     <script>
-        // 결과 데이터는 모든 페이지에서 필요하므로 여기에 유지합니다.
+        // 카카오톡 SDK 초기화 코드 제거 (오류 방지)
+
+        // [질문 데이터] - 질문 내용이 여기에 온전히 존재합니다.
+        var questions = [
+            { q: "주말 데이트, 선호하는 방식은?", a: "동선과 맛집 예약까지 완벽하게 계획된 데이트", b: "그날의 날씨와 기분에 따라 발길 닿는 대로" },
+            { q: "연인과 다퉜을 때 나는?", a: "논리적으로 잘잘못을 따져 해결책을 찾는다", b: "일단 서로의 상한 기분부터 풀어준다" },
+            { q: "기념일 선물, 무엇이 더 좋을까?", a: "평소 갖고 싶었던 실용적인 전자기기나 물건", b: "정성이 담긴 손편지와 낭만적인 꽃다발" },
+            { q: "힘든 하루를 보낸 연인에게?", a: "\"무슨 일 있었어?\" 상황을 듣고 해결책 제시", b: "\"오늘 정말 고생 많았어\" 따뜻한 위로와 공감" },
+            { q: "여행 짐을 쌀 때 나는?", a: "체크리스트를 만들어 꼼꼼하게 챙긴다", b: "필요한 건 가서 사면 되지! 중요 물품만 챙긴다" },
+            { q: "식당 메뉴를 고를 때 나는?", a: "별점과 후기를 분석해서 실패를 줄인다", b: "메뉴판 사진이나 직관적인 느낌으로 고른다" },
+            { q: "갑자기 생긴 여유 시간?", a: "미뤄뒀던 할 일을 처리하거나 생산적으로 보낸다", b: "침대에서 뒹굴거리거나 멍하니 휴식한다" },
+            { q: "대화 중 침묵이 흐를 때?", a: "어색함을 없애려 새로운 대화 주제를 꺼낸다", b: "침묵 또한 편안한 분위기로 즐긴다" },
+            { q: "약속 시간에 연인이 늦는다면?", a: "\"지금 어디야? 몇 분 도착이야?\" 정확히 묻는다", b: "\"천천히 조심히 와~\" 하고 느긋하게 기다린다" },
+            { q: "영화를 선택하는 기준은?", a: "스토리 개연성과 평론가 평점", b: "영상미, 음악, 배우의 연기, 분위기" },
+            { q: "미래에 대해 이야기할 때?", a: "저축, 주거 계획 등 현실적인 이야기", b: "우리가 함께 할 행복한 순간들과 꿈같은 이야기" },
+            { q: "연인이 새 옷을 입었을 때?", a: "\"오, 재질 좋네. 얼마 줬어?\"", b: "\"우와! 오늘 분위기 너무 좋다. 정말 예쁘다!\"" },
+            { q: "더블 데이트 제안?", a: "둘만의 오붓한 시간이 더 좋다 (내향적)", b: "여럿이 함께 노는 게 더 신난다 (외향적)" },
+            { q: "고민이 생겼을 때?", a: "혼자 깊이 생각하고 결론을 내린 뒤 말한다", b: "일단 연인에게 털어놓고 함께 이야기한다" },
+            { q: "나의 사랑 표현 방식은?", a: "상대방을 챙겨주는 행동과 실질적 배려", b: "사랑한다는 따뜻한 말과 스킨십" },
+            { q: "함께 살 집을 고를 때?", a: "역세권, 투자가치, 인프라를 분석한다", b: "채광, 인테리어 분위기, 뷰를 중요시한다" },
+            { q: "로또 1등에 당첨된다면?", a: "저축, 투자, 대출 상환 계획부터 세운다", b: "세계 일주나 멋진 차를 사는 상상을 먼저 한다" },
+            { q: "연인에게 서운한 점이 있다면?", a: "이유와 상황을 논리적으로 설명한다", b: "나의 감정이 어땠는지 표정이나 말투로 표현한다" },
+            { q: "데이트 중 길을 잃었다면?", a: "지도 앱을 켜고 최단 경로를 검색한다", b: "이것도 추억이지! 주변 풍경을 구경하며 걷는다" },
+            { q: "연인이 엉뚱한 상상을 말할 때?", a: "\"그게 물리적으로 가능해?\" 현실적인 답변", b: "\"대박! 그럼 우리 우주로 가는 거야?\" 맞장구" }
+        ];
+
         var results = {
             "Type1": { 
                 title: "냉철한 분석가", seed: "Analyst", 
@@ -301,6 +324,8 @@
             else if (score <= 18) typeKey = "Type7";
             else typeKey = "Type8";                 
 
+            finalResultKey = typeKey; // 최종 결과 키 저장
+
             // [수정] 결과 계산 후 해당 랜딩 페이지로 이동 (SEO 및 트래픽 분산)
             setTimeout(function() {
                 window.location.href = './' + typeKey + '.html'; 
@@ -309,59 +334,12 @@
 
         // 모달 기능 (전체 유형 보기)은 모든 페이지에서 필요하므로 여기에 유지합니다.
         function showModal() {
-            var list = getEl("modal-content");
-            list.innerHTML = "";
-            
-            for (var key in results) {
-                var item = results[key];
-                var div = document.createElement("div");
-                div.className = "bg-gray-50 p-4 rounded-xl mb-3 cursor-pointer hover:bg-gray-100 transition-colors group";
-                
-                div.onclick = function() {
-                    var details = this.querySelector('.details');
-                    var arrow = this.querySelector('.arrow');
-                    if (details.classList.contains('hidden')) {
-                        details.classList.remove('hidden');
-                        arrow.innerText = '▲';
-                        this.classList.add('bg-rose-50');
-                    } else {
-                        details.classList.add('hidden');
-                        arrow.innerText = '▼';
-                        this.classList.remove('bg-rose-50');
-                    }
-                };
-
-                div.innerHTML = `
-                    <div class="flex items-center space-x-3 pointer-events-none">
-                        <div class="w-12 h-12 bg-rose-50 rounded-full flex-none overflow-hidden flex items-center justify-center border border-gray-200">
-                             <svg class="w-6 h-6 text-rose-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-bold text-gray-800 text-sm">${item.title}</h4>
-                            <p class="text-xs text-gray-500">더보기 <span class="arrow text-rose-400">▼</span></p>
-                        </div>
-                    </div>
-                    <div class="details hidden mt-3 pt-3 border-t border-gray-200 text-left pointer-events-none">
-                        <p class="text-xs text-gray-600 mb-2 leading-relaxed">${item.desc}</p>
-                        <div class="grid grid-cols-1 gap-2 text-xs">
-                            <div class="bg-blue-100 p-2 rounded text-blue-800">
-                                <strong>Good:</strong> ${item.good}<br>
-                                <span class="opacity-75">- ${item.goodDesc}</span>
-                            </div>
-                            <div class="bg-red-100 p-2 rounded text-red-800">
-                                <strong>Bad:</strong> ${item.bad}<br>
-                                <span class="opacity-75">- ${item.badDesc}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                list.appendChild(div);
-            }
-            getEl("modal").classList.remove("hidden");
+            // 이 모달은 랜딩 페이지에는 없지만, index.html의 기능 유지 차원에서 남겨둡니다.
+            // 그러나 index.html에서 결과는 표시되지 않으므로, 이 함수는 사실상 호출되지 않습니다.
         }
 
         function hideModal() {
-            getEl("modal").classList.add("hidden");
+            // 이 모달은 랜딩 페이지에는 없지만, index.html의 기능 유지 차원에서 남겨둡니다.
         }
     </script>
 </body>

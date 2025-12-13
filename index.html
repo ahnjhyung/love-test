@@ -21,9 +21,8 @@
     <!-- 이미지 캡처 라이브러리 -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
-    <!-- [수익화: 중요] 구글 애드센스 '코드 스니펫' 붙여넣는 곳 -->
-    <!-- 아래 주석 바로 밑에 애드센스에서 복사한 코드를 붙여넣으세요 -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXX" crossorigin="anonymous"></script> -->
+    <!-- [수익화: 중요] 구글 애드센스 '코드 스니펫' 붙여넣는 곳 (필수) -->
+    <!-- 애드센스에서 받은 <script async...> 코드를 이 주석 바로 밑에 넣으셔야 합니다. -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821"
      crossorigin="anonymous"></script>
 
@@ -67,7 +66,8 @@
             margin-top: 1rem;
             margin-bottom: 1rem;
             width: 100%;
-            min-height: 100px;
+            /* [수정] 광고 공간 높이 확장 (미리보기 오류 방지) */
+            min-height: 120px; 
             overflow: hidden;
         }
     </style>
@@ -112,11 +112,12 @@
                 <!-- 광고 영역 -->
                 <div class="w-full px-4 pb-4">
                     <div class="ad-placeholder">
+                        <!-- 애드센스 광고 단위 코드 붙여넣는 곳 -->
                         광고 배너 영역
                     </div>
                 </div>
 
-                <!-- [승인용 콘텐츠] 구글 봇이 읽을 텍스트 (사용자에게는 정보 제공, 구글에겐 콘텐츠 제공) -->
+                <!-- [승인용 콘텐츠] -->
                 <article class="prose prose-sm text-gray-500 text-xs text-left w-full border-t border-gray-100 pt-8 pb-4">
                     <h3 class="font-bold text-gray-700 mb-2 text-sm">💕 연애 성향 테스트란?</h3>
                     <p class="mb-2 leading-relaxed">
@@ -232,6 +233,7 @@
                 <!-- 광고 영역 -->
                 <div class="w-full mt-4">
                     <div class="ad-placeholder">
+                        <!-- 애드센스 광고 단위 코드 붙여넣는 곳 -->
                         광고 배너 영역
                     </div>
                 </div>

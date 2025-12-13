@@ -1,244 +1,236 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="듬직한 리더 타입의 연애 DNA 결과입니다. 궁합과 갈등 유형을 확인하고 친구에게 공유해보세요.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://couple-dna.shop/Type2.html">
-    <meta property="og:title" content="[듬직한 리더] 내 연애 DNA 결과">
-    <meta property="og:description" content="당신의 궁합 파트너는 다정한 평화주의자! 테스트 결과를 확인해보세요.">
-    <meta property="og:image" content="https://placehold.co/1200x630/ffe4e6/ec4899/png?text=Type2+Leader">
+    <meta name="description" content="연애성향테스트 결과 - 듬직한 리더">
 
-    <title>듬직한 리더 | 우리 커플 연애 DNA 테스트 결과</title>
-    
+    <title>연애성향테스트 결과 - 듬직한 리더</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        pretendard: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: "#f43f5e", // rose-500
+                        primaryLight: "#ffe4e6", // rose-100
+                        primaryDark: "#e11d48", // rose-600
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Pretendard Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / SNS 공유 메타 -->
+    <meta property="og:title" content="[듬직한 리더] 내 연애 DNA 결과">
+    <meta property="og:description" content="나는 연애에서 어떤 스타일일까? 연애성향테스트로 확인해보세요!">
+    <meta property="og:image" content="https://example.com/og-image.png">
+    <meta property="og:url" content="https://example.com/Type2.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
-        body { font-family: 'Gowun Dodum', 'Pretendard', sans-serif; background-color: #FFF0F5; overscroll-behavior: none; }
-        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .hide-scroll::-webkit-scrollbar { display: none; }
-        .ad-placeholder { background-color: #f3f4f6; border: 2px dashed #cbd5e1; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border-radius: 0.75rem; margin-top: 1rem; margin-bottom: 1rem; width: 100%; min-height: 120px; }
-        /* 사용자 정의 알림 스타일 */
-        #alert-message {
+        body { font-family: 'Pretendard', sans-serif; }
+        .watermark {
             position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            opacity: 0.2;
+            transform: rotate(-20deg);
+            pointer-events: none;
+            z-index: 50;
         }
     </style>
 </head>
-<body class="text-gray-800 h-[100dvh] w-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-rose-100">
 
-    <div id="app-container" class="w-full h-full max-w-md bg-white/95 backdrop-blur-sm md:h-[90vh] md:rounded-3xl shadow-2xl flex flex-col relative border border-white/50 p-6 overflow-y-auto hide-scroll">
-        
-        <!-- 결과 섹션 -->
-        <div class="flex-1 flex flex-col items-center justify-start py-4 fade-in">
-            <!-- 캡처할 영역 -->
-            <div id="capture-area" class="w-full bg-white p-8 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5 relative overflow-hidden">
-                
-                <div class="space-y-2">
-                    <span class="inline-block px-3 py-1 bg-rose-100 text-rose-500 text-[10px] font-bold rounded-full tracking-wider">LOVE TYPE TEST</span>
-                    <h1 class="text-2xl font-bold text-gray-800 leading-tight">
-                        <span class="text-rose-500">우리 커플</span>의<br>연애 DNA
-                    </h1>
-                </div>
+<body class="bg-gradient-to-b from-rose-50 to-white min-h-screen flex items-center justify-center px-4 py-8 overflow-x-hidden">
+    <!-- 워터마크(테스트용) -->
+    <div class="watermark" id="watermark">love-test</div>
 
-                <div class="flex justify-center py-2">
-                    <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
-                        <svg class="w-16 h-16 text-rose-500 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                    </div>
-                </div>
+    <div class="w-full max-w-md bg-white/95 rounded-2xl shadow-xl p-6 md:p-8 border border-rose-100 backdrop-blur">
+        <!-- 상단 헤더 -->
+        <div class="flex flex-col items-center text-center">
+            <div class="w-24 h-24 rounded-full bg-rose-100 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-rose-200 blur-2xl opacity-40 rounded-full"></div>
 
-                <div class="border-t border-b border-rose-50 py-4 space-y-3">
-                    <h2 class="text-xl font-bold text-gray-800 break-keep">듬직한 리더</h2>
-                    <p class="text-xs text-gray-600 leading-relaxed text-left break-keep bg-gray-50 p-3 rounded-xl">
-                        언제나 든든하게 주변을 챙기는 당신은 '믿음직하다'는 말을 듣는 게 익숙합니다. 하지만 그 강인한 책임감 뒤에는 '내가 더 잘해야 해'라는 남모를 부담감과, 사랑하는 사람만큼은 아무 걱정 없이 웃게 해주고 싶은 깊은 보호본능이 숨겨져 있죠. 늘 앞장서서 리드하지만, 사실 당신도 가끔은 누군가에게 기대어 '수고했다'는 따뜻한 위로를 받고 싶을 때가 있지 않나요?
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-2 text-left">
-                    <div class="bg-blue-50 rounded-xl p-3 flex flex-col justify-center">
-                        <span class="bg-blue-100 text-blue-600 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block w-fit">GOOD</span>
-                        <div class="text-xs font-bold text-gray-700 break-keep mb-1">다정한 평화주의자</div>
-                        <p class="text-[10px] text-gray-500 leading-snug break-keep">당신을 믿고 따라주는 다정한 서포터와 함께하면 시너지가 폭발합니다. 당신이 앞장서서 결정할 때, 뒤에서 묵묵히 챙겨주는 배려심에 큰 안정감을 느낄 거예요.</p>
-                    </div>
-                    <div class="bg-red-50 rounded-xl p-3 flex flex-col justify-center">
-                        <span class="bg-red-100 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block w-fit">BAD</span>
-                        <div class="text-xs font-bold text-gray-700 break-keep mb-1">통통 튀는 분위기 메이커</div>
-                        <p class="text-[10px] text-gray-500 leading-snug break-keep">어디로 튈지 모르는 상대를 통제하려다 큰 싸움이 날 수 있습니다. 당신의 계획적인 성향과 상대방의 즉흥적인 성향이 사사건건 부딪힐 위험이 커요.</p>
-                    </div>
-                </div>
-
-                <!-- [수익화] 쿠팡 파트너스 -->
-                <div class="space-y-2 pt-2 no-capture">
-                    <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
-                        <span>🎁</span>
-                        <span>커플 백문백답 보러가기</span>
-                    </a>
-                    
-                    <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="block w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
-                        <span>🃏</span>
-                        <span>커플 대화 카드 보러가기</span>
-                    </a>
-                    <p class="text-[10px] text-gray-400 mt-1 text-center">
-                        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-                    </p>
-                </div>
-                
-                <!-- 캡처용 출처 -->
-                <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">https://couple-dna.shop/Type2.html</div>
+                <!-- 간단 아이콘 (Type2) -->
+                <svg class="w-14 h-14 relative z-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="리더 아이콘">
+                    <path d="M16 34c4 10 12 18 16 18s12-8 16-18c-6 2-10 2-16 2s-10 0-16-2z" fill="#C7D2FE" opacity="0.9"/>
+                    <ellipse cx="32" cy="34" rx="18" ry="22" fill="#EEF2FF" stroke="#3730A3" stroke-width="2"/>
+                    <path d="M22 28c2-2 6-2 8 0" stroke="#3730A3" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M34 28c2-2 6-2 8 0" stroke="#3730A3" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="27" cy="32" r="1.6" fill="#111827"/>
+                    <circle cx="37" cy="32" r="1.6" fill="#111827"/>
+                    <path d="M26 41c3 3 9 3 12 0" stroke="#3730A3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <g transform="translate(28,44)">
+                        <path d="M4 0l1.2 2.6 2.8.3-2.1 1.9.7 2.8L4 6.1 1.4 7.6l.7-2.8L0 2.9l2.8-.3z" fill="#FBBF24" stroke="#92400E" stroke-width="1"/>
+                    </g>
+                </svg>
             </div>
 
-            <!-- 광고 영역 -->
-            <div class="w-full mt-4">
-                <div class="ad-placeholder">광고 배너 영역</div>
+            <h1 class="mt-5 text-2xl md:text-3xl font-extrabold text-rose-600">
+                연애성향테스트 결과
+            </h1>
+
+            <p class="mt-2 text-gray-600 text-sm">당신의 연애 DNA는</p>
+            <p class="mt-1 text-2xl font-extrabold text-gray-900">TYPE 2 · 듬직한 리더</p>
+        </div>
+
+        <!-- 한 줄 요약 -->
+        <div class="mt-6 bg-rose-50 rounded-xl p-4 border border-rose-100">
+            <p class="text-base font-bold text-rose-700">한 줄 요약</p>
+            <p class="text-gray-800 mt-2 leading-relaxed">
+                상대를 안정적으로 이끌고, 책임감 있게 관계를 지켜주는 ‘든든한 리더형’.
+            </p>
+        </div>
+
+        <!-- 연애 특징 -->
+        <div class="mt-6">
+            <p class="text-lg font-extrabold text-gray-900">연애 특징</p>
+            <ul class="mt-3 space-y-2 text-gray-800 leading-relaxed">
+                <li>• 관계가 흔들릴 때 중심을 잡고 해결책을 찾는 편</li>
+                <li>• 상대에게 믿음을 주는 행동을 중요하게 생각함</li>
+                <li>• 장기적인 안정과 성장 방향을 자연스럽게 그리는 스타일</li>
+                <li>• 감정보다 ‘책임’이 먼저 앞설 때가 있음</li>
+            </ul>
+        </div>
+
+        <!-- 장점 / 주의점 -->
+        <div class="mt-6 grid grid-cols-1 gap-3">
+            <div class="rounded-xl border border-gray-200 p-4">
+                <p class="font-extrabold text-gray-900">장점</p>
+                <p class="text-gray-800 mt-2 leading-relaxed">
+                    신뢰와 안정감을 기반으로 관계를 단단하게 만들어갑니다. 위기에도 쉽게 무너지지 않습니다.
+                </p>
             </div>
-
-            <div class="w-full space-y-3 mt-4 pb-8">
-                <!-- 1. 결과 링크 복사하기 (클립 아이콘으로 교체 완료) -->
-                <button onclick="copyShareMessage('듬직한 리더')" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
-                    <!-- 클립(Paperclip) 아이콘 (SVG) - 회전을 적용하여 링크 느낌 강조 -->
-                    <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.815l2.692 2.692m-2.692-2.692l2.692-2.692m0 5.384l2.692-2.692m-2.692 2.692l2.692 2.692a4 4 0 105.656-5.656l-4-4a4 4 0 00-5.656 0"></path>
-                    </svg>
-                    <span>결과 링크 복사하기</span>
-                </button>
-                
-                <!-- 2. 테스트 공유하기 (index.html로 이동) -->
-                <button onclick="copyTestLink()" class="w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                    <span>테스트 시작 링크 공유하기</span>
-                </button>
-
-                <!-- 3. 8가지 모든 유형 보기 (이미지 저장으로 대체) -->
-                <button onclick="saveResultImage()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                    📸 결과 이미지로 저장하기
-                </button>
-
-                <!-- 4. 처음으로 -->
-                <a href="./index.html" class="w-full py-3 bg-gray-100 text-gray-500 rounded-xl font-medium hover:bg-gray-200 transition-colors block text-center">처음으로 돌아가기</a>
+            <div class="rounded-xl border border-gray-200 p-4">
+                <p class="font-extrabold text-gray-900">주의점</p>
+                <p class="text-gray-800 mt-2 leading-relaxed">
+                    상대는 “내 감정이 리드당한다”는 느낌을 받을 수 있어요. 대화에서 감정 확인을 더 자주 해주세요.
+                </p>
             </div>
         </div>
+
+        <!-- 추천 궁합 -->
+        <div class="mt-6">
+            <p class="text-lg font-extrabold text-gray-900">잘 맞는 타입</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-bold">TYPE 5</span>
+                <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-bold">TYPE 8</span>
+            </div>
+            <p class="text-gray-700 mt-3 leading-relaxed">
+                따뜻한 소통이 되면서도 서로의 책임감을 존중하는 조합에서 안정적인 시너지가 납니다.
+            </p>
+        </div>
+
+        <!-- 버튼 영역 -->
+        <div class="w-full space-y-3 mt-7">
+            <!-- 1. 결과 링크 복사하기 -->
+            <button onclick="copyShareMessage('듬직한 리더')"
+                class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
+                <!-- 클립(Paperclip) 아이콘 (SVG) -->
+                <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16.5 12.5l-6.586 6.586a2 2 0 01-2.828-2.828l7.071-7.071a4 4 0 015.656 5.656l-7.071 7.071a6 6 0 01-8.485-8.485l7.778-7.778a8 8 0 0111.314 11.314l-6.364 6.364"></path>
+                </svg>
+                <span>결과 링크 복사하기</span>
+            </button>
+
+            <!-- 2. 테스트 공유하기 (index.html로 이동) -->
+            <button onclick="copyTestLink()"
+                class="w-full py-3 bg-rose-100 text-rose-700 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
+                <!-- (교체) 클립(Paperclip) 아이콘 -->
+                <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16.5 12.5l-6.586 6.586a2 2 0 01-2.828-2.828l7.071-7.071a4 4 0 015.656 5.656l-7.071 7.071a6 6 0 01-8.485-8.485l7.778-7.778a8 8 0 0111.314 11.314l-6.364 6.364"></path>
+                    </svg>
+                <span>테스트 시작 링크 공유하기</span>
+            </button>
+
+            <!-- 3. 테스트 다시하기 -->
+            <button onclick="goToHome()"
+                class="w-full py-3 bg-white text-gray-900 border border-gray-200 rounded-xl font-bold shadow-sm hover:bg-gray-50 transition-colors">
+                테스트 다시하기
+            </button>
+        </div>
+
+        <p class="text-xs text-gray-400 text-center mt-5">
+            이 테스트는 재미를 위한 콘텐츠이며, 결과는 참고용입니다.
+        </p>
     </div>
-    
-    <!-- 사용자 정의 알림 메시지 (alert() 대체) -->
-    <div id="alert-message" class="p-3 rounded-lg text-sm font-medium transition-opacity duration-300 hidden" role="alert"></div>
 
     <script>
-        const CURRENT_TYPE = "듬직한 리더";
-        const GOOD_TYPE = "다정한 평화주의자";
-        const BAD_TYPE = "통통 튀는 분위기 메이커";
-        const CURRENT_URL = 'https://couple-dna.shop/Type2.html';
-        const TEST_URL = 'https://couple-dna.shop/index.html';
-        
-        /**
-         * 알림 메시지를 표시하고 잠시 후 사라지게 합니다.
-         * 이 함수는 alert()를 대체합니다.
-         * @param {string} message - 표시할 메시지
-         * @param {boolean} isError - 오류 메시지 여부 (색상 변경)
-         */
-        function showMessage(message, isError = false) {
-            const alertElement = document.getElementById('alert-message');
-            
-            // 기존 스타일 초기화 및 새로운 스타일 적용
-            alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-1/2 transform -translate-x-1/2 shadow-lg';
-            
-            if (isError) {
-                alertElement.classList.add('bg-red-100', 'text-red-700');
-            } else {
-                alertElement.classList.add('bg-green-100', 'text-green-700');
-            }
-            
-            alertElement.innerHTML = message;
-            alertElement.classList.remove('hidden');
+        function copyShareMessage(typeName) {
+            const url = window.location.href;
 
-            // 3초 후 메시지 숨기기
-            setTimeout(() => {
-                alertElement.classList.add('opacity-0');
-                // 트랜지션 완료 후 완전히 숨김
-                setTimeout(() => {
-                    alertElement.classList.add('hidden');
-                    alertElement.classList.remove('opacity-0');
-                }, 300);
-            }, 3000);
+            const text = `[${typeName}] 내 연애 DNA 결과
+${url}
+
+너도 해봐: 연애성향테스트`;
+
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert("결과 링크가 복사되었습니다!");
+                })
+                .catch(() => {
+                    // clipboard API 실패 시 fallback
+                    const textarea = document.createElement("textarea");
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(textarea);
+                    alert("결과 링크가 복사되었습니다!");
+                });
         }
 
-        // 1. 결과 링크 복사 함수 (alert() 대체)
-        function copyShareMessage(resultTitle) {
-            const message = 
-`👫 내 연애 DNA는 [${resultTitle}]이야!
-
-우리 커플의 궁합 파트너는 ${GOOD_TYPE}이래!
-갈등 유형은 ${BAD_TYPE}이니까 조심해야겠어. 😅
-
-➡️ 테스트 결과 보러가기: ${CURRENT_URL}`;
-
-            var t = document.createElement("textarea");
-            document.body.appendChild(t);
-            t.value = message;
-            t.select();
-            document.execCommand("copy");
-            document.body.removeChild(t);
-            
-            showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
-        }
-
-        // 2. 테스트 시작 링크 복사 함수 (alert() 대체)
         function copyTestLink() {
-            var t = document.createElement("textarea");
-            document.body.appendChild(t);
-            t.value = TEST_URL;
-            t.select();
-            document.execCommand("copy");
-            document.body.removeChild(t);
-            
-            showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
+            const testUrl = window.location.origin + window.location.pathname.replace(/Type2\.html$/, "index.html");
+            const text = `연애성향테스트 해보기
+${testUrl}`;
+
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert("테스트 시작 링크가 복사되었습니다!");
+                })
+                .catch(() => {
+                    const textarea = document.createElement("textarea");
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(textarea);
+                    alert("테스트 시작 링크가 복사되었습니다!");
+                });
         }
 
-        // 3. 결과 이미지 저장 함수 (캡처 로직)
-        function saveResultImage() {
-            const captureArea = document.getElementById("capture-area");
-            const watermark = document.getElementById("url-watermark");
-            
-            const noCaptureElements = document.querySelectorAll('.no-capture');
-            noCaptureElements.forEach(el => el.classList.add('hidden'));
-            watermark.classList.remove("hidden");
-
-            html2canvas(captureArea, {
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: "#ffffff",
-                scale: 2
-            }).then(canvas => {
-                const link = document.createElement("a");
-                link.download = `연애DNA_${CURRENT_TYPE}.png`;
-                link.href = canvas.toDataURL("image/png");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                watermark.classList.add("hidden");
-                noCaptureElements.forEach(el => el.classList.remove('hidden'));
-            }).catch(err => {
-                console.error("캡처 에러:", err);
-                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true); // showMessage 사용
-                watermark.classList.add("hidden");
-                noCaptureElements.forEach(el => el.classList.remove('hidden'));
-            });
+        function goToHome() {
+            window.location.href = "index.html";
         }
+
+        // (선택) 워터마크 토글: copyShareMessage 사용 시 잠깐 숨김
+        function toggleWatermark(hide = true) {
+            const watermark = document.getElementById("watermark");
+            if (!watermark) return;
+            if (hide) watermark.classList.add("hidden");
+            else watermark.classList.remove("hidden");
+        }
+
+        // copyShareMessage 실행 시 워터마크 숨기는 예시(원하면 사용)
+        // 기존 copyShareMessage 내부에 toggleWatermark(true/false) 호출하면 됨
+        // 여기서는 코드만 유지
     </script>
 </body>
 </html>

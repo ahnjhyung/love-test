@@ -13,7 +13,6 @@
 
     <title>냉철한 분석가 | 우리 커플 연애 DNA 테스트 결과</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
@@ -37,15 +36,14 @@
             transition: opacity 0.3s ease-out;
         }
 
-        /* 캐릭터 컨테이너 중앙 정렬 및 크기 조정 */
+        /* 캐릭터 이미지 크기 조정 */
         #character-image {
-            /* 크기 직접 지정 (w-36, h-36) */
             width: 9rem; 
             height: 9rem;
-            object-fit: contain; /* 이미지 비율 유지 */
-            border-radius: 9999px; /* 여전히 둥근 모양을 원하실 경우 유지 */
-            background-color: transparent; /* 배경이 원에 갇히지 않도록 투명하게 설정 */
-            box-shadow: none; /* 그림자 제거 */
+            object-fit: contain;
+            border-radius: 9999px;
+            background-color: transparent; 
+            box-shadow: none;
         }
     </style>
 </head>
@@ -53,9 +51,7 @@
 
     <div id="app-container" class="w-full h-full max-w-md bg-white/95 backdrop-blur-sm md:h-[90vh] md:rounded-3xl shadow-2xl flex flex-col relative border border-white/50 p-6 overflow-y-auto hide-scroll">
         
-        <!-- 결과 섹션 -->
         <div class="flex-1 flex flex-col items-center justify-start py-4 fade-in">
-            <!-- 캡처할 영역 -->
             <div id="capture-area" class="w-full bg-white p-8 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5 relative overflow-hidden">
                 
                 <div class="space-y-2">
@@ -66,13 +62,13 @@
                 </div>
 
                 <div class="flex justify-center py-2">
-                    <!-- 원형 컨테이너 제거하고 이미지를 직접 중앙에 배치 -->
                     <div id="character-container" class="relative z-10 flex items-center justify-center"> 
                         <img 
                             id="character-image" 
-                            src="" 
+                            src="https://i.ibb.co/NXfv6hz/Gemini-Generated-Image-6doech6doech6doe.png" 
                             alt="냉철한 분석가 캐릭터 이미지"
-                            class="transition-opacity duration-500 opacity-0"
+                            class="transition-opacity duration-500 opacity-100"
+                            onerror="this.src='https://placehold.co/144x144/CCCCCC/000000?text=Load+Fail'"
                         >
                     </div>
                 </div>
@@ -97,7 +93,6 @@
                     </div>
                 </div>
 
-                <!-- [수익화] 쿠팡 파트너스 -->
                 <div class="space-y-2 pt-2 no-capture">
                     <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
                         <span>🎁</span>
@@ -113,43 +108,35 @@
                     </p>
                 </div>
                 
-                <!-- 캡처용 출처 -->
                 <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">https://couple-dna.shop/Type1.html</div>
             </div>
 
-            <!-- 광고 영역 -->
             <div class="w-full mt-4">
                 <div class="ad-placeholder">광고 배너 영역</div>
             </div>
 
             <div class="w-full space-y-3 mt-4 pb-8">
-                <!-- 1. 결과 링크 복사하기 (클립 아이콘 적용) -->
                 <button onclick="copyShareMessage('냉철한 분석가')" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
-                    <!-- 클립(Paperclip) 아이콘 (SVG) -->
                     <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.815l2.692 2.692m-2.692-2.692l2.692-2.692m0 5.384l2.692-2.692m-2.692 2.692l2.692 2.692a4 4 0 105.656-5.656l-4-4a4 4 0 00-5.656 0"></path>
                     </svg>
                     <span>결과 링크 복사하기</span>
                 </button>
                 
-                <!-- 2. 테스트 공유하기 (index.html로 이동) -->
                 <button onclick="copyTestLink()" class="w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
                     <span>테스트 시작 링크 공유하기</span>
                 </button>
 
-                <!-- 3. 8가지 모든 유형 보기 (이미지 저장으로 대체) -->
                 <button onclick="saveResultImage()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors">
                     📸 결과 이미지로 저장하기
                 </button>
 
-                <!-- 4. 처음으로 -->
                 <a href="./index.html" class="w-full py-3 bg-gray-100 text-gray-500 rounded-xl font-medium hover:bg-gray-200 transition-colors block text-center">처음으로 돌아가기</a>
             </div>
         </div>
     </div>
     
-    <!-- 사용자 정의 알림 메시지 (alert() 대체) -->
     <div id="alert-message" class="p-3 rounded-lg text-sm font-medium transition-opacity duration-300 hidden" role="alert"></div>
 
     <script>
@@ -169,7 +156,7 @@
             const alertElement = document.getElementById('alert-message');
             
             // 기존 스타일 초기화 및 새로운 스타일 적용
-            alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-1/2 transform -translate-x-1/2 shadow-lg';
+            alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-50 transform -translate-x-1/2 shadow-lg';
             
             if (isError) {
                 alertElement.classList.add('bg-red-100', 'text-red-700');
@@ -204,7 +191,6 @@
             var t = document.createElement("textarea");
             document.body.appendChild(t);
             t.value = message;
-            t.select();
             document.execCommand("copy");
             document.body.removeChild(t);
             
@@ -216,7 +202,6 @@
             var t = document.createElement("textarea");
             document.body.appendChild(t);
             t.value = TEST_URL;
-            t.select();
             document.execCommand("copy");
             document.body.removeChild(t);
             
@@ -254,77 +239,7 @@
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             });
         }
-
-        /**
-         * 이미지 생성 API를 호출하고 결과를 화면에 표시합니다.
-         */
-        async function generateCharacter(prompt) {
-            const imgElement = document.getElementById('character-image');
-            
-            // 로딩 스피너 제거, 이미지는 opacity: 0 상태에서 시작
-            
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-            
-            // Type 1 프롬프트: 커플 테스트 테마 강조 및 매력적인 2D 일러스트 요청
-            const imagePrompt = `A visually appealing modern character illustration for a Korean couple personality test. Style: Clean 2D illustration, full color, bust shot (chest up). Character: A cool-headed analyst (Type 1), male, with neat dark hair, thin-rimmed round glasses, a calm, kind, and approachable expression suitable for a relationship test. Wearing a structured, simple light blue collared shirt. Solid, flat, clean white background, isolated on white. Attractive facial features.`;
-
-            const payload = { 
-                instances: { prompt: imagePrompt }, 
-                parameters: { "sampleCount": 1} 
-            };
-
-            // 이미지 로딩 중 비어있을 수 있으므로, 이미지를 표시하기 전에는 opacity: 0 유지
-            imgElement.classList.add('opacity-0');
-
-            // 지수 백오프 로직 구현
-            for (let i = 0; i < 3; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    
-                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
-                        const base64Data = result.predictions[0].bytesBase64Encoded;
-                        const imageUrl = `data:image/png;base64,${base64Data}`;
-                        
-                        // 이미지를 로드할 때까지 대기
-                        const tempImg = new Image();
-                        tempImg.onload = () => {
-                            imgElement.src = imageUrl;
-                            // 로드 완료 후 이미지 표시
-                            imgElement.classList.remove('opacity-0');
-                        };
-                        tempImg.src = imageUrl;
-                        return;
-                    }
-                } catch (error) {
-                    console.error(`Image generation failed (Attempt ${i + 1}):`, error);
-                    if (i < 2) {
-                        const delay = Math.pow(2, i) * 1000;
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    }
-                }
-            }
-
-            // 모든 재시도 실패 시
-            imgElement.src = 'https://placehold.co/144x144/CCCCCC/000000?text=Load+Fail';
-            imgElement.classList.remove('opacity-0');
-            showMessage("❌ 캐릭터 로딩에 실패했습니다. 잠시 후 다시 시도해주세요.", true);
-        }
-
-        window.onload = function() {
-            // 페이지 로드 후 캐릭터 이미지 생성 시작
-            generateCharacter(CURRENT_TYPE);
-        };
     </script>
 </body>
 </html>
+```eof

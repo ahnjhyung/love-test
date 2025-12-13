@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- [공유하기 설정] 카카오톡 등으로 공유했을 때 보이는 제목과 이미지 -->
+    <!-- [공유하기 설정] -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://couple-dna.shop">
     <meta property="og:title" content="우리 커플 연애 성향 테스트">
@@ -13,13 +13,15 @@
 
     <title>우리 커플 연애 성향 테스트</title>
     
-    <!-- Tailwind CSS (디자인) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- [기능추가] 이미지 캡처 라이브러리 (html2canvas) -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
     <!-- [수익화] 구글 애드센스 스크립트 -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXX" crossorigin="anonymous"></script> -->
 
-    <!-- 폰트 로드 -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
         
@@ -48,7 +50,6 @@
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 광고 영역 스타일 */
         .ad-placeholder {
             background-color: #f3f4f6;
             border: 2px dashed #cbd5e1;
@@ -146,13 +147,14 @@
 
             <!-- 4. 결과 화면 -->
             <div id="screen-result" class="hidden flex-col items-center justify-center flex-grow py-4 fade-in">
-                <div class="w-full bg-white p-6 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5">
+                <!-- 캡처할 영역 (id="capture-area" 추가) -->
+                <div id="capture-area" class="w-full bg-white p-6 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5">
                     <div class="w-16 h-1 bg-rose-500 mx-auto rounded-full"></div>
                     
                     <h2 id="res-title" class="text-2xl font-bold text-gray-900 break-keep">결과</h2>
                     
                     <div class="flex justify-center">
-                        <img id="res-img" src="" alt="Character" class="w-32 h-32 bg-rose-50 rounded-full p-2 object-cover border border-rose-100">
+                        <img id="res-img" src="" alt="Character" class="w-32 h-32 bg-rose-50 rounded-full p-2 object-cover border border-rose-100" crossorigin="anonymous">
                     </div>
 
                     <p id="res-desc" class="text-sm text-gray-600 leading-relaxed text-left break-keep">설명</p>
@@ -174,25 +176,27 @@
                         </div>
                     </div>
 
-                    <!-- [수익화] 쿠팡 파트너스 영역 -->
+                    <!-- [수익화] 쿠팡 파트너스 영역 (캡처 시 포함됨) -->
                     <div class="space-y-2">
-                        <!-- 1. 커플 문답 -->
-                        <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
+                        <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2 no-capture">
                             <span>🎁</span>
                             <span>커플 백문백답 보러가기</span>
                         </a>
                         
-                        <!-- 2. 커플 대화 카드 -->
-                        <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="block w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
+                        <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="block w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2 no-capture">
                             <span>🃏</span>
                             <span>커플 대화 카드 보러가기</span>
                         </a>
                     </div>
                     
-                    <!-- 2. 필수 문구 (법적 의무) -->
                     <p class="text-[10px] text-gray-400 mt-2 text-center">
                         이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
                     </p>
+                    
+                    <!-- 캡처용 출처 표시 (평소엔 숨김) -->
+                    <div id="url-watermark" class="hidden text-xs text-rose-400 font-bold mt-2">
+                        https://couple-dna.shop
+                    </div>
                 </div>
 
                 <!-- [수익화] 결과 화면 광고 영역 -->
@@ -203,7 +207,12 @@
                 </div>
 
                 <div class="w-full space-y-3 mt-4 pb-8">
-                    <button onclick="shareLink()" class="w-full py-3 bg-white border border-rose-200 text-rose-500 rounded-xl font-bold shadow-sm hover:bg-rose-50 transition-colors">결과 공유하기</button>
+                    <!-- 변경된 버튼: 이미지 저장 -->
+                    <button onclick="saveResultImage()" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
+                        <span>📸</span>
+                        <span>결과 이미지로 저장하기</span>
+                    </button>
+                    
                     <button onclick="showModal()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors">8가지 모든 유형 보기</button>
                     <button onclick="goHome()" class="w-full py-3 bg-gray-100 text-gray-500 rounded-xl font-medium hover:bg-gray-200 transition-colors">처음으로</button>
                 </div>
@@ -368,6 +377,7 @@
             setTimeout(function() {
                 getEl("res-title").innerText = data.title;
                 getEl("res-desc").innerText = data.desc;
+                // 이미지 캡처 시 CORS 문제 방지를 위해 crossorigin 속성 추가됨
                 getEl("res-img").src = "https://api.dicebear.com/9.x/notionists/svg?seed=" + data.seed + "&backgroundColor=ffe4e6";
                 
                 getEl("res-good").innerText = data.good;
@@ -390,15 +400,35 @@
             getEl("input-name").value = "";
         }
 
-        function shareLink() {
-            var url = window.location.href;
-            var t = document.createElement("textarea");
-            document.body.appendChild(t);
-            t.value = url;
-            t.select();
-            document.execCommand("copy");
-            document.body.removeChild(t);
-            alert("링크가 복사되었습니다!");
+        // [기능추가] 결과 이미지 저장 함수
+        function saveResultImage() {
+            const captureArea = getEl("capture-area");
+            const watermark = getEl("url-watermark");
+            
+            // 캡처 시작 시 워터마크 표시
+            watermark.classList.remove("hidden");
+
+            // html2canvas 옵션 설정
+            html2canvas(captureArea, {
+                useCORS: true,       // 외부 이미지(Dicebear) 캡처 허용
+                allowTaint: true,
+                backgroundColor: "#ffffff", // 배경 흰색 고정
+                scale: 2             // 고화질 캡처
+            }).then(canvas => {
+                // 이미지 다운로드 로직
+                const link = document.createElement("a");
+                link.download = 'love_type_result.png';
+                link.href = canvas.toDataURL("image/png");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // 캡처 후 워터마크 다시 숨김
+                watermark.classList.add("hidden");
+            }).catch(err => {
+                console.error("캡처 에러:", err);
+                alert("이미지 저장 중 오류가 발생했습니다.");
+            });
         }
 
         function showModal() {

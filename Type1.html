@@ -25,6 +25,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .hide-scroll::-webkit-scrollbar { display: none; }
         .ad-placeholder { background-color: #f3f4f6; border: 2px dashed #cbd5e1; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border-radius: 0.75rem; margin-top: 1rem; margin-bottom: 1rem; width: 100%; min-height: 120px; }
+        
         /* 사용자 정의 알림 스타일 */
         #alert-message {
             position: fixed;
@@ -34,6 +35,17 @@
             z-index: 100;
             opacity: 0;
             transition: opacity 0.3s ease-out;
+        }
+
+        /* 캐릭터 컨테이너 중앙 정렬 및 크기 조정 */
+        #character-image {
+            /* 크기 직접 지정 (w-36, h-36) */
+            width: 9rem; 
+            height: 9rem;
+            object-fit: contain; /* 이미지 비율 유지 */
+            border-radius: 9999px; /* 여전히 둥근 모양을 원하실 경우 유지 */
+            background-color: transparent; /* 배경이 원에 갇히지 않도록 투명하게 설정 */
+            box-shadow: none; /* 그림자 제거 */
         }
     </style>
 </head>
@@ -54,15 +66,14 @@
                 </div>
 
                 <div class="flex justify-center py-2">
-                    <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
-                        
-                        <!-- ***** 캐릭터 SVG: 냉철한 분석가 (톱니바퀴) ***** -->
-                        <svg class="w-16 h-16 text-rose-600 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 4c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zm0 14c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zm-1-10h2v4h-2zm0 5h2v2h-2z"/>
-                            <path d="M17.43 5.43c-1.39-1.39-3.32-2.18-5.32-2.18s-3.93.79-5.32 2.18l1.41 1.41c1.07-1.07 2.54-1.66 4.09-1.66s3.02.59 4.09 1.66l1.41-1.41zM5.43 17.43c1.39 1.39 3.32 2.18 5.32 2.18s3.93-.79 5.32-2.18l-1.41-1.41c-1.07 1.07-2.54 1.66-4.09 1.66s-3.02-.59-4.09-1.66l-1.41 1.41z"/>
-                        </svg>
-                        <!-- ************************************ -->
+                    <!-- 원형 컨테이너 제거하고 이미지를 직접 중앙에 배치 -->
+                    <div id="character-container" class="relative z-10 flex items-center justify-center"> 
+                        <img 
+                            id="character-image" 
+                            src="" 
+                            alt="냉철한 분석가 캐릭터 이미지"
+                            class="transition-opacity duration-500 opacity-0"
+                        >
                     </div>
                 </div>
 
@@ -150,6 +161,9 @@
         
         /**
          * 알림 메시지를 표시하고 잠시 후 사라지게 합니다.
+         * 이 함수는 alert()를 대체합니다.
+         * @param {string} message - 표시할 메시지
+         * @param {boolean} isError - 오류 메시지 여부 (색상 변경)
          */
         function showMessage(message, isError = false) {
             const alertElement = document.getElementById('alert-message');
@@ -240,6 +254,77 @@
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             });
         }
+
+        /**
+         * 이미지 생성 API를 호출하고 결과를 화면에 표시합니다.
+         */
+        async function generateCharacter(prompt) {
+            const imgElement = document.getElementById('character-image');
+            
+            // 로딩 스피너 제거, 이미지는 opacity: 0 상태에서 시작
+            
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+            
+            // Type 1 프롬프트: 커플 테스트 테마 강조 및 매력적인 2D 일러스트 요청
+            const imagePrompt = `A visually appealing modern character illustration for a Korean couple personality test. Style: Clean 2D illustration, full color, bust shot (chest up). Character: A cool-headed analyst (Type 1), male, with neat dark hair, thin-rimmed round glasses, a calm, kind, and approachable expression suitable for a relationship test. Wearing a structured, simple light blue collared shirt. Solid, flat, clean white background, isolated on white. Attractive facial features.`;
+
+            const payload = { 
+                instances: { prompt: imagePrompt }, 
+                parameters: { "sampleCount": 1} 
+            };
+
+            // 이미지 로딩 중 비어있을 수 있으므로, 이미지를 표시하기 전에는 opacity: 0 유지
+            imgElement.classList.add('opacity-0');
+
+            // 지수 백오프 로직 구현
+            for (let i = 0; i < 3; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                        const base64Data = result.predictions[0].bytesBase64Encoded;
+                        const imageUrl = `data:image/png;base64,${base64Data}`;
+                        
+                        // 이미지를 로드할 때까지 대기
+                        const tempImg = new Image();
+                        tempImg.onload = () => {
+                            imgElement.src = imageUrl;
+                            // 로드 완료 후 이미지 표시
+                            imgElement.classList.remove('opacity-0');
+                        };
+                        tempImg.src = imageUrl;
+                        return;
+                    }
+                } catch (error) {
+                    console.error(`Image generation failed (Attempt ${i + 1}):`, error);
+                    if (i < 2) {
+                        const delay = Math.pow(2, i) * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    }
+                }
+            }
+
+            // 모든 재시도 실패 시
+            imgElement.src = 'https://placehold.co/144x144/CCCCCC/000000?text=Load+Fail';
+            imgElement.classList.remove('opacity-0');
+            showMessage("❌ 캐릭터 로딩에 실패했습니다. 잠시 후 다시 시도해주세요.", true);
+        }
+
+        window.onload = function() {
+            // 페이지 로드 후 캐릭터 이미지 생성 시작
+            generateCharacter(CURRENT_TYPE);
+        };
     </script>
 </body>
 </html>

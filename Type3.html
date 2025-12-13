@@ -18,23 +18,6 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        pretendard: ['Pretendard', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: "#f43f5e", // rose-500
-                        primaryLight: "#ffe4e6", // rose-100
-                        primaryDark: "#e11d48", // rose-600
-                    },
-                },
-            },
-        }
-    </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
         body { font-family: 'Gowun Dodum', 'Pretendard', sans-serif; background-color: #FFF0F5; overscroll-behavior: none; }
@@ -42,27 +25,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .hide-scroll::-webkit-scrollbar { display: none; }
         .ad-placeholder { background-color: #f3f4f6; border: 2px dashed #cbd5e1; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border-radius: 0.75rem; margin-top: 1rem; margin-bottom: 1rem; width: 100%; min-height: 120px; }
-        
-        /* 사용자 정의 알림 스타일 */
-        #alert-message {
-            position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-        }
-
-        /* 캐릭터 이미지 크기 조정 (Type 1과 동일하게 9rem으로 확대) */
-        #character-image {
-            width: 9rem; 
-            height: 9rem;
-            object-fit: contain;
-            border-radius: 9999px;
-            background-color: transparent; 
-            box-shadow: none;
-        }
     </style>
 </head>
 <body class="text-gray-800 h-[100dvh] w-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-rose-100">
@@ -82,14 +44,11 @@
                 </div>
 
                 <div class="flex justify-center py-2">
-                    <!-- 이미지 컨테이너 (원 테두리 제거 및 크기 조정) -->
-                    <div id="character-container" class="relative z-10 flex items-center justify-center"> 
-                        <img 
-                            id="character-image" 
-                            src="" 
-                            alt="스마트한 팩트폭격기 캐릭터 이미지"
-                            class="transition-opacity duration-500 opacity-0"
-                        >
+                    <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
+                        <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
+                        <svg class="w-16 h-16 text-rose-500 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
                     </div>
                 </div>
 
@@ -139,12 +98,9 @@
             </div>
 
             <div class="w-full space-y-3 mt-4 pb-8">
-                <!-- 1. 결과 링크 복사하기 (클립 아이콘 적용) -->
+                <!-- 1. 결과 링크 복사하기 (현재 페이지) -->
                 <button onclick="copyShareMessage('스마트한 팩트폭격기')" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
-                    <!-- 클립(Paperclip) 아이콘 (SVG) -->
-                    <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.815l2.692 2.692m-2.692-2.692l2.692-2.692m0 5.384l2.692-2.692m-2.692 2.692l2.692 2.692a4 4 0 105.656-5.656l-4-4a4 4 0 00-5.656 0"></path>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-3 3a5 5 0 0 0-.54 7.54zm-2 2a5 5 0 0 0-7.54-.54l-3-3a5 5 0 0 0 7.07-7.07l3 3a5 5 0 0 0 .54 7.54z"></path></svg>
                     <span>결과 링크 복사하기</span>
                 </button>
                 
@@ -154,19 +110,16 @@
                     <span>테스트 시작 링크 공유하기</span>
                 </button>
 
-                <!-- 3. 8가지 모든 유형 보기 (이미지 저장으로 대체) -->
-                <button onclick="saveResultImage()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                    📸 결과 이미지로 저장하기
-                </button>
+                <!-- 3. 8가지 모든 유형 보기 -->
+                <a href="./index.html#modal-open" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors block text-center">
+                    8가지 모든 유형 보기
+                </a>
 
                 <!-- 4. 처음으로 -->
                 <a href="./index.html" class="w-full py-3 bg-gray-100 text-gray-500 rounded-xl font-medium hover:bg-gray-200 transition-colors block text-center">처음으로 돌아가기</a>
             </div>
         </div>
     </div>
-    
-    <!-- 사용자 정의 알림 메시지 (alert() 대체) -->
-    <div id="alert-message" class="p-3 rounded-lg text-sm font-medium transition-opacity duration-300 hidden" role="alert"></div>
 
     <script>
         const CURRENT_TYPE = "스마트한 팩트폭격기";
@@ -175,39 +128,7 @@
         const CURRENT_URL = 'https://couple-dna.shop/Type3.html';
         const TEST_URL = 'https://couple-dna.shop/index.html';
         
-        /**
-         * 알림 메시지를 표시하고 잠시 후 사라지게 합니다.
-         * 이 함수는 alert()를 대체합니다.
-         * @param {string} message - 표시할 메시지
-         * @param {boolean} isError - 오류 메시지 여부 (색상 변경)
-         */
-        function showMessage(message, isError = false) {
-            const alertElement = document.getElementById('alert-message');
-            
-            // 기존 스타일 초기화 및 새로운 스타일 적용
-            alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-1/2 transform -translate-x-1/2 shadow-lg';
-            
-            if (isError) {
-                alertElement.classList.add('bg-red-100', 'text-red-700');
-            } else {
-                alertElement.classList.add('bg-green-100', 'text-green-700');
-            }
-            
-            alertElement.innerHTML = message;
-            alertElement.classList.remove('hidden');
-
-            // 3초 후 메시지 숨기기
-            setTimeout(() => {
-                alertElement.classList.add('opacity-0');
-                // 트랜지션 완료 후 완전히 숨김
-                setTimeout(() => {
-                    alertElement.classList.add('hidden');
-                    alertElement.classList.remove('opacity-0');
-                }, 300);
-            }, 3000);
-        }
-
-        // 1. 결과 링크 복사 함수 (alert() 대체)
+        // 1. 결과 링크 복사 함수
         function copyShareMessage(resultTitle) {
             const message = 
 `👫 내 연애 DNA는 [${resultTitle}]이야!
@@ -223,11 +144,10 @@
             t.select();
             document.execCommand("copy");
             document.body.removeChild(t);
-            
-            showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
+            alert("결과 링크와 메시지가 복사되었습니다!");
         }
 
-        // 2. 테스트 시작 링크 복사 함수 (alert() 대체)
+        // 2. 테스트 시작 링크 복사 함수
         function copyTestLink() {
             var t = document.createElement("textarea");
             document.body.appendChild(t);
@@ -235,8 +155,7 @@
             t.select();
             document.execCommand("copy");
             document.body.removeChild(t);
-            
-            showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
+            alert("테스트 시작 링크가 복사되었습니다!");
         }
 
         // 3. 결과 이미지 저장 함수 (캡처 로직)
@@ -265,76 +184,11 @@
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             }).catch(err => {
                 console.error("캡처 에러:", err);
-                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true); 
+                alert("이미지 저장 중 오류가 발생했습니다.");
                 watermark.classList.add("hidden");
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             });
         }
-
-        /**
-         * 이미지 생성 API를 호출하고 결과를 화면에 표시합니다.
-         */
-        async function generateCharacter(prompt) {
-            const imgElement = document.getElementById('character-image');
-            
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-            
-            // Type 3 프롬프트: 스마트한 팩트폭격기 - 솔직하고 직설적인 캐릭터
-            const imagePrompt = `A visually appealing modern character illustration for a Korean couple personality test. Style: Clean 2D illustration, full color, bust shot (chest up). Character: A smart, straightforward "Fact Bomber" type (Type 3), female, with a sharp, angular haircut, piercing but non-aggressive gaze, and a slight confident smirk. Wearing a bright, modern geometric-patterned shirt. Solid, flat, clean white background, isolated on white. Attractive and assertive facial features.`;
-
-            const payload = { 
-                instances: { prompt: imagePrompt }, 
-                parameters: { "sampleCount": 1} 
-            };
-
-            imgElement.classList.add('opacity-0');
-
-            // 지수 백오프 로직 구현
-            for (let i = 0; i < 3; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    
-                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
-                        const base64Data = result.predictions[0].bytesBase64Encoded;
-                        const imageUrl = `data:image/png;base64,${base64Data}`;
-                        
-                        const tempImg = new Image();
-                        tempImg.onload = () => {
-                            imgElement.src = imageUrl;
-                            imgElement.classList.remove('opacity-0');
-                        };
-                        tempImg.src = imageUrl;
-                        return;
-                    }
-                } catch (error) {
-                    console.error(`Image generation failed (Attempt ${i + 1}):`, error);
-                    if (i < 2) {
-                        const delay = Math.pow(2, i) * 1000;
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    }
-                }
-            }
-
-            // 모든 재시도 실패 시
-            imgElement.src = 'https://placehold.co/144x144/CCCCCC/000000?text=Load+Fail';
-            imgElement.classList.remove('opacity-0');
-            showMessage("❌ 캐릭터 로딩에 실패했습니다. 잠시 후 다시 시도해주세요.", true);
-        }
-
-        window.onload = function() {
-            generateCharacter(CURRENT_TYPE);
-        };
     </script>
 </body>
 </html>

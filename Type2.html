@@ -25,7 +25,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .hide-scroll::-webkit-scrollbar { display: none; }
         .ad-placeholder { background-color: #f3f4f6; border: 2px dashed #cbd5e1; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border-radius: 0.75rem; margin-top: 1rem; margin-bottom: 1rem; width: 100%; min-height: 120px; }
-        
         /* 사용자 정의 알림 스타일 */
         #alert-message {
             position: fixed;
@@ -35,16 +34,6 @@
             z-index: 100;
             opacity: 0;
             transition: opacity 0.3s ease-out;
-        }
-
-        /* 캐릭터 이미지 크기 조정 (Type 1과 동일하게 9rem으로 확대) */
-        #character-image {
-            width: 9rem; 
-            height: 9rem;
-            object-fit: contain;
-            border-radius: 9999px;
-            background-color: transparent; 
-            box-shadow: none;
         }
     </style>
 </head>
@@ -65,14 +54,11 @@
                 </div>
 
                 <div class="flex justify-center py-2">
-                    <!-- 이미지 컨테이너 (원 테두리 제거 및 크기 조정) -->
-                    <div id="character-container" class="relative z-10 flex items-center justify-center"> 
-                        <img 
-                            id="character-image" 
-                            src="" 
-                            alt="듬직한 리더 캐릭터 이미지"
-                            class="transition-opacity duration-500 opacity-0"
-                        >
+                    <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
+                        <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
+                        <svg class="w-16 h-16 text-rose-500 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
                     </div>
                 </div>
 
@@ -122,9 +108,9 @@
             </div>
 
             <div class="w-full space-y-3 mt-4 pb-8">
-                <!-- 1. 결과 링크 복사하기 (클립 아이콘 적용) -->
+                <!-- 1. 결과 링크 복사하기 (클립 아이콘으로 교체 완료) -->
                 <button onclick="copyShareMessage('듬직한 리더')" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
-                    <!-- 클립(Paperclip) 아이콘 (SVG) -->
+                    <!-- 클립(Paperclip) 아이콘 (SVG) - 회전을 적용하여 링크 느낌 강조 -->
                     <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.815l2.692 2.692m-2.692-2.692l2.692-2.692m0 5.384l2.692-2.692m-2.692 2.692l2.692 2.692a4 4 0 105.656-5.656l-4-4a4 4 0 00-5.656 0"></path>
                     </svg>
@@ -157,13 +143,17 @@
         const BAD_TYPE = "통통 튀는 분위기 메이커";
         const CURRENT_URL = 'https://couple-dna.shop/Type2.html';
         const TEST_URL = 'https://couple-dna.shop/index.html';
-
+        
         /**
-         * 알림 메시지 표시 (alert() 대체)
+         * 알림 메시지를 표시하고 잠시 후 사라지게 합니다.
+         * 이 함수는 alert()를 대체합니다.
+         * @param {string} message - 표시할 메시지
+         * @param {boolean} isError - 오류 메시지 여부 (색상 변경)
          */
         function showMessage(message, isError = false) {
             const alertElement = document.getElementById('alert-message');
             
+            // 기존 스타일 초기화 및 새로운 스타일 적용
             alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-1/2 transform -translate-x-1/2 shadow-lg';
             
             if (isError) {
@@ -175,8 +165,10 @@
             alertElement.innerHTML = message;
             alertElement.classList.remove('hidden');
 
+            // 3초 후 메시지 숨기기
             setTimeout(() => {
                 alertElement.classList.add('opacity-0');
+                // 트랜지션 완료 후 완전히 숨김
                 setTimeout(() => {
                     alertElement.classList.add('hidden');
                     alertElement.classList.remove('opacity-0');
@@ -184,123 +176,69 @@
             }, 3000);
         }
 
-        /**
-         * 결과 링크 복사 함수
-         */
-        function copyShareMessage(typeName) {
-            const url = window.location.href;
-            const text = `[${typeName}] 내 연애 DNA 결과\n${url}\n\n너도 해봐: 연애성향테스트`;
+        // 1. 결과 링크 복사 함수 (alert() 대체)
+        function copyShareMessage(resultTitle) {
+            const message = 
+`👫 내 연애 DNA는 [${resultTitle}]이야!
 
-            if (document.execCommand('copy')) {
-                showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
-            } else if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text)
-                    .then(() => showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!"))
-                    .catch(() => showMessage("❌ 복사 실패! 직접 복사해 주세요.", true));
-            } else {
-                const textarea = document.createElement("textarea");
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textarea);
-                showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
-            }
+우리 커플의 궁합 파트너는 ${GOOD_TYPE}이래!
+갈등 유형은 ${BAD_TYPE}이니까 조심해야겠어. 😅
+
+➡️ 테스트 결과 보러가기: ${CURRENT_URL}`;
+
+            var t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = message;
+            t.select();
+            document.execCommand("copy");
+            document.body.removeChild(t);
+            
+            showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
         }
 
-        /**
-         * 테스트 시작 링크 복사 함수
-         */
+        // 2. 테스트 시작 링크 복사 함수 (alert() 대체)
         function copyTestLink() {
-            const testUrl = window.location.origin + window.location.pathname.replace(/Type2\.html$/, "index.html");
-            const text = `연애성향테스트 해보기\n${testUrl}`;
-
-            if (document.execCommand('copy')) {
-                 showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
-            } else if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text)
-                    .then(() => showMessage("✅ 테스트 시작 링크가 복사되었습니다!"))
-                    .catch(() => showMessage("❌ 복사 실패! 직접 복사해 주세요.", true));
-            } else {
-                const textarea = document.createElement("textarea");
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textarea);
-                showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
-            }
-        }
-
-        function goToHome() {
-            window.location.href = TEST_URL;
-        }
-
-        /**
-         * 이미지 생성 API를 호출하고 결과를 화면에 표시합니다.
-         */
-        async function generateCharacter(prompt) {
-            const imgElement = document.getElementById('character-image');
+            var t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = TEST_URL;
+            t.select();
+            document.execCommand("copy");
+            document.body.removeChild(t);
             
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-            
-            // Type 2 프롬프트: '듬직한 리더' - 든든하고 신뢰감을 주는 캐릭터
-            // Type 1과 동일한 스타일(MBTI 류의 깔끔한 일러스트)로 요청
-            const imagePrompt = `A visually appealing modern character illustration for a Korean couple personality test. Style: Clean 2D illustration, full color, bust shot (chest up). Character: A dependable leader (Type 2), male, with neat dark hair, friendly and confident expression, a warm smile. Wearing a solid color jacket or neat sweater, emphasizing broad/dependable shoulders. Solid, flat, clean white background, isolated on white. Attractive and approachable facial features.`;
-
-            const payload = { 
-                instances: { prompt: imagePrompt }, 
-                parameters: { "sampleCount": 1} 
-            };
-
-            imgElement.classList.add('opacity-0');
-
-            // 지수 백오프 로직 구현
-            for (let i = 0; i < 3; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    
-                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
-                        const base64Data = result.predictions[0].bytesBase64Encoded;
-                        const imageUrl = `data:image/png;base64,${base64Data}`;
-                        
-                        const tempImg = new Image();
-                        tempImg.onload = () => {
-                            imgElement.src = imageUrl;
-                            imgElement.classList.remove('opacity-0');
-                        };
-                        tempImg.src = imageUrl;
-                        return;
-                    }
-                } catch (error) {
-                    console.error(`Image generation failed (Attempt ${i + 1}):`, error);
-                    if (i < 2) {
-                        const delay = Math.pow(2, i) * 1000;
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    }
-                }
-            }
-
-            // 모든 재시도 실패 시
-            imgElement.src = 'https://placehold.co/144x144/CCCCCC/000000?text=Load+Fail';
-            imgElement.classList.remove('opacity-0');
-            showMessage("❌ 캐릭터 로딩에 실패했습니다. 잠시 후 다시 시도해주세요.", true);
+            showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
         }
 
-        window.onload = function() {
-            generateCharacter(CURRENT_TYPE);
-        };
+        // 3. 결과 이미지 저장 함수 (캡처 로직)
+        function saveResultImage() {
+            const captureArea = document.getElementById("capture-area");
+            const watermark = document.getElementById("url-watermark");
+            
+            const noCaptureElements = document.querySelectorAll('.no-capture');
+            noCaptureElements.forEach(el => el.classList.add('hidden'));
+            watermark.classList.remove("hidden");
+
+            html2canvas(captureArea, {
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: "#ffffff",
+                scale: 2
+            }).then(canvas => {
+                const link = document.createElement("a");
+                link.download = `연애DNA_${CURRENT_TYPE}.png`;
+                link.href = canvas.toDataURL("image/png");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                watermark.classList.add("hidden");
+                noCaptureElements.forEach(el => el.classList.remove('hidden'));
+            }).catch(err => {
+                console.error("캡처 에러:", err);
+                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true); // showMessage 사용
+                watermark.classList.add("hidden");
+                noCaptureElements.forEach(el => el.classList.remove('hidden'));
+            });
+        }
     </script>
 </body>
 </html>

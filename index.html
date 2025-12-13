@@ -9,7 +9,8 @@
     <meta property="og:url" content="https://couple-dna.shop">
     <meta property="og:title" content="우리 커플 연애 성향 테스트">
     <meta property="og:description" content="20문항으로 알아보는 우리의 연애 DNA와 궁합 분석">
-    <meta property="og:image" content="https://dummyimage.com/1200x630/ffe4e6/ec4899.png&text=❤+Love+Test">
+    <!-- 더 안정적인 이미지 서버(placehold.co)로 변경했습니다 -->
+    <meta property="og:image" content="https://placehold.co/1200x630/ffe4e6/ec4899/png?text=Love+Test">
 
     <title>우리 커플 연애 성향 테스트</title>
     
@@ -145,13 +146,11 @@
                 <p class="text-lg font-bold text-gray-700 animate-pulse">성향 분석 중...</p>
             </div>
 
-            <!-- 4. 결과 화면 (리뉴얼) -->
+            <!-- 4. 결과 화면 -->
             <div id="screen-result" class="hidden flex-col items-center justify-center flex-grow py-4 fade-in">
-                
-                <!-- [수정] 캡처 영역 디자인 리뉴얼 -->
+                <!-- 캡처할 영역 -->
                 <div id="capture-area" class="w-full bg-white p-8 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5 relative overflow-hidden">
                     
-                    <!-- 상단 타이틀 (보내주신 2번째 이미지 스타일) -->
                     <div class="space-y-2">
                         <span class="inline-block px-3 py-1 bg-rose-100 text-rose-500 text-[10px] font-bold rounded-full tracking-wider">LOVE TYPE TEST</span>
                         <h1 class="text-2xl font-bold text-gray-800 leading-tight">
@@ -159,12 +158,9 @@
                         </h1>
                     </div>
 
-                    <!-- 캐릭터 대신 심플하고 예쁜 하트 (캡처 오류 방지) -->
                     <div class="flex justify-center py-2">
                         <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
-                            <!-- 은은한 빛 효과 -->
                             <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
-                            <!-- 하트 아이콘 -->
                             <svg class="w-16 h-16 text-rose-500 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                             </svg>
@@ -174,24 +170,25 @@
                     <div class="border-t border-b border-rose-50 py-4 space-y-3">
                         <h2 id="res-title" class="text-xl font-bold text-gray-800 break-keep">결과 유형 이름</h2>
                         <p id="res-desc" class="text-xs text-gray-600 leading-relaxed text-left break-keep bg-gray-50 p-3 rounded-xl">
-                            설명 내용이 여기에 들어갑니다.
+                            설명 내용
                         </p>
                     </div>
                     
+                    <!-- [수정] 궁합 박스 디자인 개선 (글자 잘림 방지) -->
                     <div class="grid grid-cols-2 gap-2 text-left">
-                        <div class="bg-blue-50 rounded-xl p-3 h-full">
-                            <span class="bg-blue-100 text-blue-600 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block">GOOD</span>
-                            <div id="res-good" class="text-xs font-bold text-gray-700 truncate">-</div>
-                            <p id="res-good-desc" class="text-[10px] text-gray-500 mt-1 leading-snug line-clamp-2">-</p>
+                        <div class="bg-blue-50 rounded-xl p-3 flex flex-col justify-center">
+                            <span class="bg-blue-100 text-blue-600 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block w-fit">GOOD</span>
+                            <div id="res-good" class="text-xs font-bold text-gray-700 break-keep mb-1">-</div>
+                            <p id="res-good-desc" class="text-[10px] text-gray-500 leading-snug break-keep">-</p>
                         </div>
-                        <div class="bg-red-50 rounded-xl p-3 h-full">
-                            <span class="bg-red-100 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block">BAD</span>
-                            <div id="res-bad" class="text-xs font-bold text-gray-700 truncate">-</div>
-                            <p id="res-bad-desc" class="text-[10px] text-gray-500 mt-1 leading-snug line-clamp-2">-</p>
+                        <div class="bg-red-50 rounded-xl p-3 flex flex-col justify-center">
+                            <span class="bg-red-100 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded mb-1 inline-block w-fit">BAD</span>
+                            <div id="res-bad" class="text-xs font-bold text-gray-700 break-keep mb-1">-</div>
+                            <p id="res-bad-desc" class="text-[10px] text-gray-500 leading-snug break-keep">-</p>
                         </div>
                     </div>
 
-                    <!-- [수익화] 쿠팡 파트너스 버튼 (캡처 시 숨김 처리 클래스 'no-capture' 추가) -->
+                    <!-- [수익화] 쿠팡 파트너스 -->
                     <div class="space-y-2 pt-2 no-capture">
                         <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
                             <span>🎁</span>
@@ -207,7 +204,7 @@
                         </p>
                     </div>
                     
-                    <!-- 캡처용 출처 (평소엔 숨김) -->
+                    <!-- 캡처용 출처 -->
                     <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">
                         https://couple-dna.shop
                     </div>
@@ -390,9 +387,10 @@
             setTimeout(function() {
                 getEl("res-title").innerText = data.title;
                 getEl("res-desc").innerText = data.desc;
-                // 캐릭터 이미지 제거 -> 하트 고정
+                
                 getEl("res-good").innerText = data.good;
                 getEl("res-good-desc").innerText = data.goodDesc;
+                
                 getEl("res-bad").innerText = data.bad;
                 getEl("res-bad-desc").innerText = data.badDesc;
 
@@ -414,7 +412,7 @@
             const captureArea = getEl("capture-area");
             const watermark = getEl("url-watermark");
             
-            // 캡처 전 스타일 변경 (버튼 숨기기 위해 클래스 추가)
+            // 캡처 전 스타일 변경
             const noCaptureElements = document.querySelectorAll('.no-capture');
             noCaptureElements.forEach(el => el.classList.add('hidden'));
             

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="20문항으로 알아보는 우리 커플의 연애 DNA와 성향 분석 테스트. 서로의 성격을 이해하고 더 좋은 관계를 만들어보세요.">
+    <meta name="keywords" content="연애심리테스트, 커플테스트, 연애성향, MBTI, 연애궁합">
+    
+    <!-- [공유하기 설정] -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://couple-dna.shop">
+    <meta property="og:title" content="우리 커플 연애 성향 테스트">
+    <meta property="og:description" content="20문항으로 알아보는 우리의 연애 DNA와 궁합 분석">
+    <meta property="og:image" content="https://placehold.co/1200x630/ffe4e6/ec4899/png?text=Love+Test">
+
+    <title>우리 커플 연애 성향 테스트</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 이미지 캡처 라이브러리 제거 (랜딩 페이지로 이동) -->
+    
+    <!-- [수익화: 중요] 구글 애드센스 '코드 스니펫' 붙여넣는 곳 (필수) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821"
+     crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+            background-color: #FFF0F5;
+            overscroll-behavior: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .heart-beat { animation: beat 1.2s infinite; }
+        @keyframes beat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .ad-placeholder {
+            background-color: #f3f4f6;
+            border: 2px dashed #cbd5e1;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            min-height: 120px; 
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="text-gray-800 h-[100dvh] w-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-rose-100">
+
+    <div id="app-container" class="w-full h-full max-w-md bg-white/95 backdrop-blur-sm md:h-[90vh] md:rounded-3xl shadow-2xl flex flex-col relative border border-white/50">
+        
+        <!-- 상단 진행바 -->
+        <div class="w-full h-1.5 bg-gray-100 flex-none">
+            <div id="progress-bar" class="h-full bg-rose-500 transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+
+        <!-- 컨텐츠 영역 -->
+        <div class="flex-1 overflow-y-auto hide-scroll p-6 relative flex flex-col">
+            
+            <!-- 1. 시작 화면 -->
+            <div id="screen-start" class="flex flex-col items-center flex-grow space-y-6 fade-in pt-10">
+                <div class="relative pointer-events-none mt-4">
+                    <div class="absolute inset-0 bg-rose-200 blur-xl opacity-60 rounded-full"></div>
+                    <svg class="w-28 h-28 text-rose-500 relative z-10 heart-beat" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+
+                <div class="text-center space-y-2 pointer-events-none">
+                    <span class="inline-block px-3 py-1 bg-rose-100 text-rose-600 text-xs font-bold rounded-full">Love Type Test</span>
+                    <h1 class="text-3xl font-bold text-gray-900">우리 커플의<br>연애 DNA</h1>
+                    <p class="text-sm text-gray-500 pt-2">20문항으로 알아보는<br>8가지 성향과 캐릭터</p>
+                </div>
+
+                <div class="w-full max-w-xs space-y-4 pt-2 z-50">
+                    <input type="text" id="input-name" placeholder="이름을 입력하세요" 
+                        onkeydown="checkEnter(event)"
+                        class="w-full px-5 py-4 rounded-xl border-2 border-rose-100 focus:border-rose-500 focus:outline-none text-center text-lg bg-white shadow-sm transition-colors">
+                    
+                    <button onclick="startTest()" class="w-full py-4 bg-rose-500 text-white rounded-xl font-bold text-lg shadow-lg hover:bg-rose-600 active:scale-95 transition-all cursor-pointer">
+                        테스트 시작하기
+                    </button>
+                </div>
+
+                <!-- 광고 영역 -->
+                <div class="w-full px-4 pb-4">
+                    <div class="ad-placeholder">
+                        <!-- 애드센스 광고 단위 코드 붙여넣는 곳 -->
+                        광고 배너 영역
+                    </div>
+                </div>
+
+                <!-- [승인용 콘텐츠] -->
+                <article class="prose prose-sm text-gray-500 text-xs text-left w-full border-t border-gray-100 pt-8 pb-4">
+                    <h3 class="font-bold text-gray-700 mb-2 text-sm">💕 연애 성향 테스트란?</h3>
+                    <p class="mb-2 leading-relaxed">
+                        연애 성향 테스트(Love DNA Test)는 심리학적 분석을 기반으로 개인의 연애 스타일과 행동 패턴을 분석하는 도구입니다. 
+                        단순한 재미를 넘어, 연인 간의 갈등 해결 방식, 애정 표현의 차이, 가치관의 우선순위 등을 8가지 유형으로 분류하여 제시합니다.
+                    </p>
+                    <p class="mb-2 leading-relaxed">
+                        나의 성향뿐만 아니라 상대방의 성향을 이해함으로써 서로의 다름을 인정하고 더 건강한 관계를 맺을 수 있도록 돕습니다.
+                        '냉철한 분석가'부터 '꿈꾸는 예술가'까지, 당신은 어떤 유형에 속하는지 지금 바로 확인해보세요.
+                    </p>
+                    <p class="text-[10px] text-gray-400 mt-4">
+                        ※ 본 테스트의 결과는 통계적 데이터에 기반하나 절대적인 지표는 아니며, 재미와 참고 용도로 활용하시기 바랍니다.
+                    </p>
+                </article>
+            </div>
+
+            <!-- 2. 질문 화면 -->
+            <div id="screen-q" class="hidden flex-col flex-grow justify-center py-4">
+                <div class="space-y-8">
+                    <div class="space-y-4 text-center">
+                        <span id="txt-q-num" class="text-sm font-bold text-rose-500 border border-rose-200 px-3 py-1 rounded-full">Q. 01</span>
+                        <h2 id="txt-q" class="text-2xl font-bold text-gray-800 leading-snug break-keep">질문 내용</h2>
+                    </div>
+
+                    <div class="space-y-3 w-full">
+                        <button onclick="next('A')" class="w-full p-5 text-left bg-white border-2 border-gray-100 rounded-xl hover:border-rose-400 hover:bg-rose-50 active:scale-95 transition-all shadow-sm group">
+                            <span class="block text-xs text-gray-400 font-bold mb-1 group-hover:text-rose-500">A</span>
+                            <span id="txt-a" class="text-lg font-medium text-gray-700 block">답변 A</span>
+                        </button>
+                        
+                        <button onclick="next('B')" class="w-full p-5 text-left bg-white border-2 border-gray-100 rounded-xl hover:border-rose-400 hover:bg-rose-50 active:scale-95 transition-all shadow-sm group">
+                            <span class="block text-xs text-gray-400 font-bold mb-1 group-hover:text-rose-500">B</span>
+                            <span id="txt-b" class="text-lg font-medium text-gray-700 block">답변 B</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 로딩 화면 -->
+            <div id="screen-loading" class="hidden flex-col items-center justify-center flex-grow space-y-6">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-rose-200 blur-xl opacity-60 rounded-full animate-pulse"></div>
+                    <svg class="w-24 h-24 text-rose-400 heart-beat relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <p class="text-lg font-bold text-gray-700 animate-pulse">성향 분석 중...</p>
+            </div>
+            
+            <!-- 4. 결과 화면 (삭제됨: 랜딩 페이지로 이동) -->
+
+        </div>
+        
+        <!-- 모달 (유형 보기) -->
+        <div id="modal" class="hidden fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-4 backdrop-blur-sm">
+            <div class="bg-white w-full max-w-sm h-[80vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                <div class="p-4 border-b flex justify-between items-center bg-gray-50">
+                    <h3 class="font-bold text-lg">전체 유형 (8 Types)</h3>
+                    <button onclick="hideModal()" class="text-2xl leading-none text-gray-500">&times;</button>
+                </div>
+                <div id="modal-content" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 카카오톡 SDK 초기화 코드 제거 (오류 방지)
+
+        // [질문 데이터] - 질문 내용이 여기에 온전히 존재합니다.
+        var questions = [
+            { q: "주말 데이트, 선호하는 방식은?", a: "동선과 맛집 예약까지 완벽하게 계획된 데이트", b: "그날의 날씨와 기분에 따라 발길 닿는 대로" },
+            { q: "연인과 다퉜을 때 나는?", a: "논리적으로 잘잘못을 따져 해결책을 찾는다", b: "일단 서로의 상한 기분부터 풀어준다" },
+            { q: "기념일 선물, 무엇이 더 좋을까?", a: "평소 갖고 싶었던 실용적인 전자기기나 물건", b: "정성이 담긴 손편지와 낭만적인 꽃다발" },
+            { q: "힘든 하루를 보낸 연인에게?", a: "\"무슨 일 있었어?\" 상황을 듣고 해결책 제시", b: "\"오늘 정말 고생 많았어\" 따뜻한 위로와 공감" },
+            { q: "여행 짐을 쌀 때 나는?", a: "체크리스트를 만들어 꼼꼼하게 챙긴다", b: "필요한 건 가서 사면 되지! 중요 물품만 챙긴다" },
+            { q: "식당 메뉴를 고를 때 나는?", a: "별점과 후기를 분석해서 실패를 줄인다", b: "메뉴판 사진이나 직관적인 느낌으로 고른다" },
+            { q: "갑자기 생긴 여유 시간?", a: "미뤄뒀던 할 일을 처리하거나 생산적으로 보낸다", b: "침대에서 뒹굴거리거나 멍하니 휴식한다" },
+            { q: "대화 중 침묵이 흐를 때?", a: "어색함을 없애려 새로운 대화 주제를 꺼낸다", b: "침묵 또한 편안한 분위기로 즐긴다" },
+            { q: "약속 시간에 연인이 늦는다면?", a: "\"지금 어디야? 몇 분 도착이야?\" 정확히 묻는다", b: "\"천천히 조심히 와~\" 하고 느긋하게 기다린다" },
+            { q: "영화를 선택하는 기준은?", a: "스토리 개연성과 평론가 평점", b: "영상미, 음악, 배우의 연기, 분위기" },
+            { q: "미래에 대해 이야기할 때?", a: "저축, 주거 계획 등 현실적인 이야기", b: "우리가 함께 할 행복한 순간들과 꿈같은 이야기" },
+            { q: "연인이 새 옷을 입었을 때?", a: "\"오, 재질 좋네. 얼마 줬어?\"", b: "\"우와! 오늘 분위기 너무 좋다. 정말 예쁘다!\"" },
+            { q: "더블 데이트 제안?", a: "둘만의 오붓한 시간이 더 좋다 (내향적)", b: "여럿이 함께 노는 게 더 신난다 (외향적)" },
+            { q: "고민이 생겼을 때?", a: "혼자 깊이 생각하고 결론을 내린 뒤 말한다", b: "일단 연인에게 털어놓고 함께 이야기한다" },
+            { q: "나의 사랑 표현 방식은?", a: "상대방을 챙겨주는 행동과 실질적 배려", b: "사랑한다는 따뜻한 말과 스킨십" },
+            { q: "함께 살 집을 고를 때?", a: "역세권, 투자가치, 인프라를 분석한다", b: "채광, 인테리어 분위기, 뷰를 중요시한다" },
+            { q: "로또 1등에 당첨된다면?", a: "저축, 투자, 대출 상환 계획부터 세운다", b: "세계 일주나 멋진 차를 사는 상상을 먼저 한다" },
+            { q: "연인에게 서운한 점이 있다면?", a: "이유와 상황을 논리적으로 설명한다", b: "나의 감정이 어땠는지 표정이나 말투로 표현한다" },
+            { q: "데이트 중 길을 잃었다면?", a: "지도 앱을 켜고 최단 경로를 검색한다", b: "이것도 추억이지! 주변 풍경을 구경하며 걷는다" },
+            { q: "연인이 엉뚱한 상상을 말할 때?", a: "\"그게 물리적으로 가능해?\" 현실적인 답변", b: "\"대박! 그럼 우리 우주로 가는 거야?\" 맞장구" }
+        ];
+
+        var results = {
+            "Type1": { 
+                title: "냉철한 분석가", seed: "Analyst", 
+                desc: "감정에 휘둘리기보다는 냉철한 이성으로 상황을 판단하는 당신. 겉으로는 다소 차갑고 빈틈없어 보일 수 있지만, 사실 내 사람에게만큼은 실패 없는 확실한 길만 걷게 해주고 싶은 깊은 책임감을 품고 있습니다. 가끔 툭 던지는 현실적인 조언이 잔소리처럼 들릴지 몰라도, 그 안에는 '너는 다치지 않았으면 좋겠어'라는 당신만의 투박하지만 진심 어린 사랑이 담겨 있답니다.", 
+                good: "낭만적인 사랑꾼", goodDesc: "당신의 차가운 이성을 따뜻한 감성으로 녹여줄 환상의 짝꿍입니다. 계산적이지 않은 순수한 애정 표현이 당신의 경계심을 무장해제 시키죠.",
+                bad: "꿈꾸는 예술가", badDesc: "현실성 없는 몽상가와는 대화가 통하지 않아 답답해할 수 있습니다. 당신은 명확한 해결책을 원하는데, 상대방은 뜬구름 잡는 소리만 한다고 느낄 수 있죠."
+            },
+            "Type2": { 
+                title: "듬직한 리더", seed: "Leader", 
+                desc: "언제나 든든하게 주변을 챙기는 당신은 '믿음직하다'는 말을 듣는 게 익숙합니다. 하지만 그 강인한 책임감 뒤에는 '내가 더 잘해야 해'라는 남모를 부담감과, 사랑하는 사람만큼은 아무 걱정 없이 웃게 해주고 싶은 깊은 보호본능이 숨겨져 있죠. 늘 앞장서서 리드하지만, 사실 당신도 가끔은 누군가에게 기대어 '수고했다'는 따뜻한 위로를 받고 싶을 때가 있지 않나요?", 
+                good: "다정한 평화주의자", goodDesc: "당신을 믿고 따라주는 다정한 서포터와 함께하면 시너지가 폭발합니다. 당신이 앞장서서 결정할 때, 뒤에서 묵묵히 챙겨주는 배려심에 큰 안정감을 느낄 거예요.",
+                bad: "통통 튀는 분위기 메이커", badDesc: "어디로 튈지 모르는 상대를 통제하려다 큰 싸움이 날 수 있습니다. 당신의 계획적인 성향과 상대방의 즉흥적인 성향이 사사건건 부딪힐 위험이 커요."
+            },
+            "Type3": { 
+                title: "스마트한 팩트폭격기", seed: "Smart", 
+                desc: "답답한 건 딱 질색! 눈치가 빠르고 핵심을 꿰뚫어 보는 통찰력을 가진 당신. 빙빙 돌려 말하기보다는 솔직하고 명쾌한 대화를 선호합니다. 직설적인 화법 때문에 '너무 차갑다'는 오해를 사기도 하지만, 사실 당신은 거짓 없는 투명한 관계야말로 서로를 위한 진짜 배려라고 믿고 있습니다. 당신의 그 솔직함은 연인에게 가장 강력한 신뢰의 증표가 됩니다.", 
+                good: "통통 튀는 분위기 메이커", goodDesc: "지루할 틈 없는 상대방의 매력이 당신의 호기심을 자극합니다. 당신의 논리적인 말장난을 유쾌하게 받아치며 환상의 티키타카를 보여줄 거예요.",
+                bad: "스마트한 팩트폭격기", badDesc: "똑같은 성향끼리 만나면 하루 종일 토론만 하다가 끝날 수도 있습니다. 서로 지지 않으려는 자존심 대결 때문에 사소한 문제도 큰 논쟁으로 번지기 쉽죠."
+            },
+            "Type4": { 
+                title: "현실적인 밸런서", seed: "Balance", 
+                desc: "이성과 감성 사이에서 절묘하게 줄타기를 하는 당신은 타고난 균형 감각의 소유자입니다. 겉으로는 둥글둥글하게 남들의 의견을 잘 들어주는 듯하지만, 속으로는 이미 냉철하게 상황을 파악하고 조율하고 있는 경우가 많죠. 튀지 않고 평범해 보이고 싶어 하지만, 사실 사랑하는 사람을 위해서라면 자신의 모든 원칙을 깰 준비가 되어 있는 놀라운 헌신을 보여주기도 합니다.", 
+                good: "꿈꾸는 예술가", goodDesc: "당신의 현실 감각이 상대방의 꿈을 실현하는 데 큰 도움이 됩니다. 붕 떠 있는 상대방을 곁에서 차분하게 잡아주며 안정적인 관계로 이끌어갈 수 있죠.",
+                bad: "낭만적인 사랑꾼", badDesc: "너무 감정적인 호소만 하는 상대에게 피로감을 느낄 수 있습니다. 당신은 효율과 균형을 중시하는데, 상대방은 끊임없이 감정적인 확인을 요구하기 때문이죠."
+            },
+            "Type5": { 
+                title: "다정한 평화주의자", seed: "Peace", 
+                desc: "상대방의 기분 변화를 귀신같이 알아채는 섬세한 공감 능력의 소유자. '좋은 게 좋은 거지'라며 웃어넘기지만, 사실은 관계에 금이 갈까 봐 혼자 속앓이하며 삼키는 말들이 많았을 거예요. 당신의 그 따뜻한 배려는 연인에게 더할 나위 없는 안식처가 되어주지만, 이제는 상대방을 위해서가 아니라 '나 자신'을 위해 가끔은 투정도 부려봐도 괜찮아요.", 
+                good: "듬직한 리더", goodDesc: "결단력 있는 리더가 당신을 이끌어줄 때 큰 안정감을 느낍니다. 우유부단하게 고민할 때 명쾌한 답을 내려주는 상대에게 깊은 신뢰를 갖게 되죠.",
+                bad: "냉철한 분석가", badDesc: "공감 없는 팩트 폭격에 마음의 상처를 입을 수 있습니다. 당신은 위로를 바라고 한 말인데, 상대방은 잘잘못을 따지려 들어 서운함이 쌓이게 되죠."
+            },
+            "Type6": { 
+                title: "낭만적인 사랑꾼", seed: "Romance", 
+                desc: "삭막한 현실 속에서도 가슴 한구석에 낭만을 품고 사는 당신. 영화 속 주인공 같은 운명적인 사랑을 꿈꾸며, 사소한 문자 하나, 눈빛 하나에도 깊은 의미를 부여하곤 하죠. 감수성이 풍부해 작은 일에 쉽게 상처받기도 하지만, 사랑에 빠지는 순간 계산기 두드리지 않고 자신의 모든 것을 순수하게 쏟아부을 줄 아는 열정적인 로맨티스트입니다.", 
+                good: "냉철한 분석가", goodDesc: "서로 정반대라 끌리는 자석처럼, 상대의 지적인 면모에 반하게 됩니다. 당신의 풍부한 감성이 상대방의 메마른 마음에 단비가 되어줄 수 있어요.",
+                bad: "현실적인 밸런서", badDesc: "너무 계산적이고 딱딱한 모습에 서운함을 자주 느낄 수 있습니다. 당신은 영화 같은 로맨스를 꿈꾸는데, 상대방은 현실적인 조건만 따지는 것 같아 실망스럽죠."
+            },
+            "Type7": { 
+                title: "통통 튀는 분위기 메이커", seed: "Energy", 
+                desc: "반복되는 지루한 일상은 못 참아! 언제나 새로운 즐거움을 찾아다니는 당신은 존재만으로도 주변을 환하게 밝히는 인간 비타민입니다. 겉으로는 아무 고민 없이 마냥 밝아 보여도, 혼자 있을 때는 의외로 진지하게 미래를 고민하거나 깊은 고독을 느끼기도 하는 반전 매력의 소유자죠. 당신의 유쾌함 뒤에 숨겨진 그 진중한 모습을 알아봐 주는 사람에게 깊은 감동을 느낍니다.", 
+                good: "스마트한 팩트폭격기", goodDesc: "당신의 엉뚱함을 논리적으로 받아주는 티키타카가 잘 맞습니다. 당신이 벌려놓은 일을 상대방이 수습해주면서 묘한 동질감을 느끼게 되죠.",
+                bad: "듬직한 리더", badDesc: "틀에 박힌 규칙을 강요하는 꼰대 같은 모습에 숨이 막힐 수 있습니다. 자유로운 영혼인 당신에게 상대방의 간섭과 통제는 구속처럼 느껴질 거예요."
+            },
+            "Type8": { 
+                title: "꿈꾸는 예술가", seed: "Artist", 
+                desc: "남들과는 조금 다른 시선으로 세상을 바라보는 자유로운 영혼. 현실적인 조건보다는 가슴이 뛰는 '느낌'과 '직관'을 믿고 따릅니다. 가끔 엉뚱하다는 소리를 듣기도 하지만, 당신만의 독창적인 세계관은 연인에게 마르지 않는 영감을 불어넣어 줍니다. 구속받는 건 죽기보다 싫어하지만, 나의 몽상을 이해해 주는 단 한 사람에게는 영원한 사랑을 맹세합니다.", 
+                good: "현실적인 밸런서", goodDesc: "당신이 놓치는 현실적인 부분을 꼼꼼하게 챙겨주는 짝꿍입니다. 당신의 아이디어를 현실로 만들어줄 수 있는 능력 있는 파트너가 되어줄 거예요.",
+                bad: "냉철한 분석가", badDesc: "당신의 꿈과 낭만을 비현실적이라며 무시당할 때 크게 다툽니다. 감성적인 교감을 중요시하는 당신에게 분석적인 태도는 차가운 벽처럼 느껴질 수 있어요."
+            }
+        };
+
+        var currentStep = 0;
+        var score = 0;
+        var finalResultKey = ""; 
+
+        function getEl(id) { return document.getElementById(id); }
+
+        function checkEnter(e) {
+            if (e.key === "Enter") startTest();
+        }
+
+        function startTest() {
+            var name = getEl("input-name").value.trim();
+            if (!name) {
+                alert("이름을 입력해주세요!");
+                return;
+            }
+
+            currentStep = 0;
+            score = 0;
+
+            getEl("screen-start").classList.add("hidden");
+            getEl("screen-q").classList.remove("hidden");
+            getEl("screen-q").classList.add("flex");
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            var q = questions[currentStep];
+            var progress = ((currentStep) / questions.length) * 100;
+
+            getEl("progress-bar").style.width = progress + "%";
+            getEl("txt-q-num").innerText = "Q. " + (currentStep + 1);
+            getEl("txt-q").innerText = q.q;
+            getEl("txt-a").innerText = q.a;
+            getEl("txt-b").innerText = q.b;
+        }
+
+        function next(type) {
+            if (type === 'B') score++;
+            currentStep++;
+
+            if (currentStep < questions.length) {
+                setTimeout(renderQuestion, 150);
+            } else {
+                finish();
+            }
+        }
+
+        function finish() {
+            getEl("screen-q").classList.add("hidden");
+            getEl("screen-q").classList.remove("flex");
+            getEl("screen-loading").classList.remove("hidden");
+            getEl("screen-loading").classList.add("flex");
+
+            var typeKey = "Type4";
+            if (score <= 2) typeKey = "Type1";      
+            else if (score <= 5) typeKey = "Type2"; 
+            else if (score <= 8) typeKey = "Type3"; 
+            else if (score <= 10) typeKey = "Type4";
+            else if (score <= 12) typeKey = "Type5";
+            else if (score <= 15) typeKey = "Type6";
+            else if (score <= 18) typeKey = "Type7";
+            else typeKey = "Type8";                 
+
+            finalResultKey = typeKey; // 최종 결과 키 저장
+
+            // [수정] 결과 계산 후 해당 랜딩 페이지로 이동 (SEO 및 트래픽 분산)
+            setTimeout(function() {
+                window.location.href = './' + typeKey + '.html'; 
+            }, 1500); 
+        }
+
+        // 모달 기능 (전체 유형 보기)은 모든 페이지에서 필요하므로 여기에 유지합니다.
+        function showModal() {
+            // 이 모달은 랜딩 페이지에는 없지만, index.html의 기능 유지 차원에서 남겨둡니다.
+            // 그러나 index.html에서 결과는 표시되지 않으므로, 이 함수는 사실상 호출되지 않습니다.
+        }
+
+        function hideModal() {
+            // 이 모달은 랜딩 페이지에는 없지만, index.html의 기능 유지 차원에서 남겨둡니다.
+        }
+    </script>
+</body>
+</html>

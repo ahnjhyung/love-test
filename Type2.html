@@ -13,7 +13,6 @@
 
     <title>듬직한 리더 | 우리 커플 연애 DNA 테스트 결과</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
@@ -41,9 +40,7 @@
 
     <div id="app-container" class="w-full h-full max-w-md bg-white/95 backdrop-blur-sm md:h-[90vh] md:rounded-3xl shadow-2xl flex flex-col relative border border-white/50 p-6 overflow-y-auto hide-scroll">
         
-        <!-- 결과 섹션 -->
         <div class="flex-1 flex flex-col items-center justify-start py-4 fade-in">
-            <!-- 캡처할 영역 -->
             <div id="capture-area" class="w-full bg-white p-8 rounded-3xl shadow-lg border border-rose-100 text-center space-y-5 relative overflow-hidden">
                 
                 <div class="space-y-2">
@@ -54,11 +51,9 @@
                 </div>
 
                 <div class="flex justify-center py-2">
-                    <div class="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center relative">
+                    <div class="w-32 h-32 bg-rose-50 rounded-full flex items-center justify-center relative">
                         <div class="absolute inset-0 bg-rose-200 blur-xl opacity-40 rounded-full"></div>
-                        <svg class="w-16 h-16 text-rose-500 relative z-10 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
+                        <img src="https://i.ibb.co/TxSv8Hyv/type2.png" alt="듬직한 리더 캐릭터" class="w-full h-full object-contain relative z-10 drop-shadow-sm p-1">
                     </div>
                 </div>
 
@@ -82,7 +77,6 @@
                     </div>
                 </div>
 
-                <!-- [수익화] 쿠팡 파트너스 -->
                 <div class="space-y-2 pt-2 no-capture">
                     <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
                         <span>🎁</span>
@@ -98,43 +92,35 @@
                     </p>
                 </div>
                 
-                <!-- 캡처용 출처 -->
                 <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">https://couple-dna.shop/Type2.html</div>
             </div>
 
-            <!-- 광고 영역 -->
             <div class="w-full mt-4">
                 <div class="ad-placeholder">광고 배너 영역</div>
             </div>
 
             <div class="w-full space-y-3 mt-4 pb-8">
-                <!-- 1. 결과 링크 복사하기 (클립 아이콘으로 교체 완료) -->
                 <button onclick="copyShareMessage('듬직한 리더')" class="w-full py-3 bg-rose-500 text-white rounded-xl font-bold shadow-md hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2">
-                    <!-- 클립(Paperclip) 아이콘 (SVG) - 회전을 적용하여 링크 느낌 강조 -->
                     <svg class="w-5 h-5 mr-2 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.815l2.692 2.692m-2.692-2.692l2.692-2.692m0 5.384l2.692-2.692m-2.692 2.692l2.692 2.692a4 4 0 105.656-5.656l-4-4a4 4 0 00-5.656 0"></path>
                     </svg>
                     <span>결과 링크 복사하기</span>
                 </button>
                 
-                <!-- 2. 테스트 공유하기 (index.html로 이동) -->
                 <button onclick="copyTestLink()" class="w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
                     <span>테스트 시작 링크 공유하기</span>
                 </button>
 
-                <!-- 3. 8가지 모든 유형 보기 (이미지 저장으로 대체) -->
                 <button onclick="saveResultImage()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors">
                     📸 결과 이미지로 저장하기
                 </button>
 
-                <!-- 4. 처음으로 -->
                 <a href="./index.html" class="w-full py-3 bg-gray-100 text-gray-500 rounded-xl font-medium hover:bg-gray-200 transition-colors block text-center">처음으로 돌아가기</a>
             </div>
         </div>
     </div>
     
-    <!-- 사용자 정의 알림 메시지 (alert() 대체) -->
     <div id="alert-message" class="p-3 rounded-lg text-sm font-medium transition-opacity duration-300 hidden" role="alert"></div>
 
     <script>
@@ -144,16 +130,9 @@
         const CURRENT_URL = 'https://couple-dna.shop/Type2.html';
         const TEST_URL = 'https://couple-dna.shop/index.html';
         
-        /**
-         * 알림 메시지를 표시하고 잠시 후 사라지게 합니다.
-         * 이 함수는 alert()를 대체합니다.
-         * @param {string} message - 표시할 메시지
-         * @param {boolean} isError - 오류 메시지 여부 (색상 변경)
-         */
         function showMessage(message, isError = false) {
             const alertElement = document.getElementById('alert-message');
             
-            // 기존 스타일 초기화 및 새로운 스타일 적용
             alertElement.className = 'p-3 rounded-lg text-sm font-medium opacity-100 transition-opacity duration-300 fixed top-4 left-1/2 transform -translate-x-1/2 shadow-lg';
             
             if (isError) {
@@ -165,10 +144,8 @@
             alertElement.innerHTML = message;
             alertElement.classList.remove('hidden');
 
-            // 3초 후 메시지 숨기기
             setTimeout(() => {
                 alertElement.classList.add('opacity-0');
-                // 트랜지션 완료 후 완전히 숨김
                 setTimeout(() => {
                     alertElement.classList.add('hidden');
                     alertElement.classList.remove('opacity-0');
@@ -176,7 +153,6 @@
             }, 3000);
         }
 
-        // 1. 결과 링크 복사 함수 (alert() 대체)
         function copyShareMessage(resultTitle) {
             const message = 
 `👫 내 연애 DNA는 [${resultTitle}]이야!
@@ -196,7 +172,6 @@
             showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
         }
 
-        // 2. 테스트 시작 링크 복사 함수 (alert() 대체)
         function copyTestLink() {
             var t = document.createElement("textarea");
             document.body.appendChild(t);
@@ -208,7 +183,6 @@
             showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
         }
 
-        // 3. 결과 이미지 저장 함수 (캡처 로직)
         function saveResultImage() {
             const captureArea = document.getElementById("capture-area");
             const watermark = document.getElementById("url-watermark");
@@ -234,7 +208,7 @@
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             }).catch(err => {
                 console.error("캡처 에러:", err);
-                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true); // showMessage 사용
+                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true); 
                 watermark.classList.add("hidden");
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));
             });

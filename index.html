@@ -12,16 +12,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
-    <meta name="description" content="20문항으로 알아보는 우리 커플의 연애 DNA와 성향 분석 테스트. 서로의 성격을 이해하고 더 좋은 관계를 만들어보세요.">
-    <meta name="keywords" content="연애심리테스트, 커플테스트, 연애성향, MBTI, 연애궁합, 심리분석, 데이트코스">
+    
+    <meta name="description" content="커플 연애 DNA 테스트를 통해 우리 커플의 성향과 궁합을 분석해보세요. 애착 유형 이론과 MBTI를 기반으로 한 심층 분석을 제공합니다.">
+    <meta name="keywords" content="연애심리테스트, 커플테스트, 연애성향, MBTI, 연애궁합, 심리분석, 데이트코스, 사랑유형">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://couple-dna.shop">
-    <meta property="og:title" content="내 연애 DNA 테스트 (나는 어떤 타입일까? 🧐)">
+    <meta property="og:title" content="내 연애 DNA 테스트 (나는 어떤 타입일까?)">
     <meta property="og:description" content="냉철한 분석가? 낭만적인 사랑꾼? 20문항으로 알아보는 내 무의식 속 연애 스타일과 환상의 짝꿍 찾기!">
     <meta property="og:image" content="https://couple-dna.shop/main-thumb.png">
 
-    <title>커플 연애 성향 테스트 | 소름 돋는 우리 커플 DNA 분석</title>
+    <title>커플 연애 DNA 테스트 | 무료 성향 분석 및 궁합</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
@@ -30,9 +31,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@300;400;600;700&display=swap');
         
         body {
-            font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+            font-family: 'Pretendard', 'Gowun Dodum', sans-serif;
             background-color: #FFF0F5;
-            overscroll-behavior: none;
             -webkit-tap-highlight-color: transparent;
         }
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
@@ -50,19 +50,34 @@
         }
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* 텍스트 콘텐츠 스타일 (애드센스 승인용) */
+        .content-article p { margin-bottom: 1rem; line-height: 1.7; color: #4b5563; }
+        .content-article h2 { font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-top: 2rem; margin-bottom: 1rem; }
+        .content-article h3 { font-size: 1.2rem; font-weight: 600; color: #374151; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     </style>
 </head>
-<body class="text-gray-800 h-[100dvh] w-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-rose-100">
- 
-    <div id="app-container" class="w-full h-full max-w-md bg-white/95 backdrop-blur-sm md:h-[90vh] md:rounded-3xl shadow-2xl flex flex-col relative border border-white/50">
+<body class="text-gray-800 min-h-screen flex flex-col items-center bg-gradient-to-br from-rose-50 via-white to-rose-100">
+
+    <nav class="w-full bg-white/80 backdrop-blur-md border-b border-rose-100 sticky top-0 z-50">
+        <div class="max-w-screen-md mx-auto px-4 h-14 flex items-center justify-between">
+            <a href="/" class="text-rose-500 font-bold text-lg">LoveDNA🧬</a>
+            <div class="flex space-x-4 text-sm font-medium text-gray-600">
+                <a href="index.html" class="hover:text-rose-500">테스트</a>
+                <a href="blog.html" class="hover:text-rose-500">연애칼럼</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-full max-w-md bg-white/95 backdrop-blur-sm md:rounded-3xl shadow-xl border border-white/50 my-6 relative overflow-hidden min-h-[600px]">
         
         <div class="w-full h-1.5 bg-gray-100 flex-none">
             <div id="progress-bar" class="h-full bg-rose-500 transition-all duration-300 ease-out" style="width: 0%"></div>
         </div>
 
-        <div class="flex-1 overflow-y-auto hide-scroll p-6 relative flex flex-col">
+        <div class="overflow-y-auto hide-scroll p-6 h-full flex flex-col">
             
-            <div id="screen-start" class="flex flex-col items-center flex-grow space-y-6 fade-in pt-10 pb-12">
+            <div id="screen-start" class="flex flex-col items-center flex-grow space-y-6 fade-in py-10">
                 <div class="relative pointer-events-none mt-4">
                     <div class="absolute inset-0 bg-rose-200 blur-xl opacity-60 rounded-full"></div>
                     <svg class="w-28 h-28 text-rose-500 relative z-10 heart-beat" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +91,7 @@
                     <p class="text-sm text-gray-500 pt-2">심리학으로 분석하는<br>8가지 연애 성향과 궁합</p>
                 </div>
 
-                <div class="w-full max-w-xs space-y-4 pt-2 z-50">
+                <div class="w-full max-w-xs space-y-4 pt-2 z-40">
                     <input type="text" id="input-name" placeholder="이름을 입력하세요" 
                         onkeydown="checkEnter(event)"
                         class="w-full px-5 py-4 rounded-xl border-2 border-rose-100 focus:border-rose-500 focus:outline-none text-center text-lg bg-white shadow-sm transition-colors">
@@ -85,59 +100,9 @@
                         테스트 시작하기
                     </button>
                 </div>
-
-                <div class="mt-12 text-left space-y-8 text-gray-600 border-t border-rose-100 pt-10 px-2 w-full">
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">💖 우리 커플의 연애 DNA는 어떤 모양일까요?</h3>
-                        <p class="text-sm leading-7 text-justify break-keep">
-                            연애 DNA 테스트는 단순한 재미를 넘어, 현대 심리학의 성격 유형 이론과 행동 분석학을 기반으로 설계되었습니다. 커플 사이에서 발생할 수 있는 20가지의 구체적인 상황을 통해 무의식적인 연애 습관을 진단합니다. <br><br>
-                            나는 논리적인 해결사일까요, 아니면 감성적인 공감러일까요? 우리가 자주 싸우는 이유는 서로의 '사랑 언어'가 다르기 때문일지도 모릅니다. 이 테스트는 여러분이 어떤 방식으로 사랑을 주고받는지 명확하게 시각화하여 보여줍니다.
-                        </p>
-                    </section>
-                    <section class="bg-rose-50 p-5 rounded-xl border border-rose-100">
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">📊 이 테스트가 분석하는 3가지 핵심</h3>
-                        <ul class="list-disc list-outside ml-4 space-y-2 text-sm leading-6">
-                            <li><strong>갈등 해결 메커니즘:</strong> 싸움이 일어났을 때 회피하는지, 논쟁하는지, 아니면 감정에 호소하는지를 분석하여 건강한 화해법을 제시합니다.</li>
-                            <li><strong>데이트 및 라이프스타일:</strong> 계획적인 여행을 선호하는지, 즉흥적인 모험을 즐기는지를 파악하여 실패 없는 데이트 코스를 제안합니다.</li>
-                            <li><strong>의사소통과 공감 능력:</strong> 대화 속에서 사실(Fact)을 중요시하는지, 감정(Feeling)을 중요시하는지를 파악하여 서로 오해 없는 대화법을 알려줍니다.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">🧐 8가지 연애 성향 미리보기</h3>
-                        <p class="text-sm leading-7 text-justify break-keep mb-4">본 테스트 결과는 총 8가지의 독창적인 캐릭터로 분류됩니다.</p>
-                        <div class="grid grid-cols-2 gap-3 text-xs">
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 1.</strong><br>철두철미 계획가</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 2.</strong><br>현실적인 리더</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 3.</strong><br>논리왕 해결사</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 4.</strong><br>차분한 관찰자</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 5.</strong><br>다정다감 공감러</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 6.</strong><br>분위기 메이커</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 7.</strong><br>열정적인 로맨티스트</div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center"><strong>Type 8.</strong><br>자유로운 영혼</div>
-                        </div>
-                    </section>
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3">💡 자주 묻는 질문 (FAQ)</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-bold text-sm text-rose-600">Q. 결과는 얼마나 정확한가요?</h4>
-                                <p class="text-sm leading-6 mt-1">A. 사용자의 선택 패턴을 알고리즘으로 분석하여 도출되므로, 솔직하게 답변할수록 정확도가 높아집니다.</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-rose-600">Q. 연인이 없어도 할 수 있나요?</h4>
-                                <p class="text-sm leading-6 mt-1">A. 네, 가능합니다! 내가 꿈꾸는 이상적인 연애 스타일을 알아보거나, 과거의 연애를 되돌아보며 나의 성향을 파악하는 데에도 큰 도움이 됩니다.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="bg-white border-2 border-rose-100 p-5 rounded-xl text-center shadow-sm">
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">💘 연애 고민이 있으신가요?</h3>
-                        <p class="text-sm text-gray-500 mb-4">싸우지 않는 대화법부터 권태기 극복까지<br>현실적인 연애 꿀팁을 확인해보세요.</p>
-                        <a href="blog.html" class="block w-full py-3 bg-rose-50 text-rose-500 rounded-xl font-bold hover:bg-rose-100 transition-colors">연애 칼럼 읽으러 가기 👉</a>
-                    </section>
-                    <footer class="text-center text-xs text-gray-400 py-6 mt-4 border-t border-gray-100">
-                        <p>© 2024 Couple DNA Test. All rights reserved.</p>
-                        <p class="mt-1">Contact: help@couple-dna.shop</p>
-                    </footer>
+                
+                <div class="bg-rose-50 p-4 rounded-xl text-xs text-gray-600 text-center w-full mt-4">
+                     총 20문항 | 소요 시간 약 3분 | 100% 무료
                 </div>
             </div>
 
@@ -169,9 +134,58 @@
                 </div>
                 <p class="text-lg font-bold text-gray-700 animate-pulse">성향 분석 중...</p>
             </div>
-            
         </div>
-    </div>
+    </main>
+
+    <section class="max-w-3xl mx-auto px-6 py-10 mb-20 content-article bg-white rounded-3xl shadow-sm border border-gray-100 mt-4">
+        
+        <article>
+            <h2 class="text-center text-rose-500 border-b border-rose-100 pb-4">연애 DNA 테스트 소개 및 심리학적 배경</h2>
+            
+            <h3>왜 연애 DNA를 알아야 할까요?</h3>
+            <p>
+                사랑하는 사람과의 관계에서 우리는 종종 "왜 내 마음을 몰라줄까?"라고 생각합니다. 하지만 이는 상대방이 당신을 사랑하지 않아서가 아니라, 서로의 '사랑을 느끼는 언어'와 '갈등을 해결하는 방식'이 다르기 때문입니다. 연애 DNA 테스트는 현대 심리학의 애착 유형(Attachment Theory)과 성격 유형 이론(MBTI)을 기반으로, 커플 사이에서 빈번하게 발생하는 20가지 상황을 시뮬레이션합니다. 이를 통해 당신의 무의식 속에 잠재된 연애 스타일을 시각화하여 보여줍니다.
+            </p>
+
+            <h3>테스트가 분석하는 3가지 핵심 요소</h3>
+            <p>
+                <strong>1. 의사소통 방식 (Communication):</strong> 갈등 상황에서 논리적인 해결을 우선시하는지, 정서적인 공감을 우선시하는지를 분석합니다. 이는 싸움을 줄이는 대화법을 찾는 데 가장 중요한 지표입니다.<br>
+                <strong>2. 라이프스타일 및 데이트 (Lifestyle):</strong> 계획적인 데이트를 선호하는지, 즉흥적인 모험을 즐기는지를 파악합니다. 서로의 에너지 레벨을 맞추는 데 도움을 줍니다.<br>
+                <strong>3. 애정 표현의 척도 (Expression):</strong> 말과 행동, 선물과 스킨십 중 어떤 방식으로 사랑을 확인할 때 가장 큰 만족감을 느끼는지 진단합니다.
+            </p>
+
+            <h3>8가지 연애 유형(Type) 미리보기</h3>
+            <p>
+                본 테스트는 총 8가지의 고유한 연애 페르소나를 제시합니다. 철두철미한 계획가부터 자유로운 영혼의 예술가, 현실적인 리더와 다정한 공감러까지. 각 유형은 서로 다른 강점과 약점을 가지고 있습니다. 예를 들어, '냉철한 분석가' 유형은 차가워 보일 수 있지만 누구보다 책임감이 강한 연인이며, '낭만적인 사랑꾼' 유형은 감정 기복이 있을 수 있지만 열정적인 사랑을 제공합니다. 나와 내 연인의 유형을 정확히 파악하는 것만으로도 관계의 질은 180도 달라질 수 있습니다.
+            </p>
+            
+            <h3>건강한 연애를 위한 조언</h3>
+            <p>
+                나와 다른 성향이 나왔다고 해서 틀린 것이 아닙니다. '다름'을 '매력'으로 받아들이는 것이 건강한 관계의 시작입니다. 이 테스트 결과를 바탕으로 서로에게 맞는 데이트 코스를 짜보거나, 서로가 싫어하는 대화 방식을 피하는 노력을 해보세요. 작은 이해가 쌓여 단단한 신뢰를 만듭니다. 지금 바로 시작 버튼을 눌러 당신의 연애 DNA를 확인해보세요.
+            </p>
+        </article>
+        
+        <div class="mt-8 text-center">
+            <a href="blog.html" class="inline-block px-6 py-3 bg-gray-100 text-gray-600 rounded-full text-sm font-bold hover:bg-gray-200 transition-colors">
+                더 많은 연애 칼럼 보러가기 →
+            </a>
+        </div>
+
+    </section>
+
+    <footer class="w-full bg-gray-50 border-t border-gray-100 py-10 mt-auto">
+        <div class="max-w-screen-md mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4 text-xs text-gray-500">
+                <a href="terms.html" class="hover:text-gray-900 underline">이용약관</a>
+                <a href="privacy.html" class="hover:text-gray-900 underline">개인정보처리방침</a>
+                <a href="mailto:help@couple-dna.shop" class="hover:text-gray-900 underline">문의하기</a>
+            </div>
+            <p class="text-xs text-gray-400">
+                © 2024 Couple DNA Test. All rights reserved.<br>
+                본 사이트의 콘텐츠는 저작권법의 보호를 받습니다.
+            </p>
+        </div>
+    </footer>
 
     <script>
         var questions = [

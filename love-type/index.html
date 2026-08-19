@@ -37,6 +37,8 @@
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 이미지 캡처/저장용 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
 
     <style>
@@ -147,78 +149,92 @@
             </div>
 
             <!-- 4. 결과 화면 -->
-            <div id="screen-result" class="hidden space-y-6 fade-in pb-6">
+            <div id="screen-result" class="hidden space-y-5 fade-in pb-6">
                 
-                <!-- 상단 결과 헤더 -->
-                <div class="text-center space-y-2 pt-2">
-                    <span id="result-type-badge" class="badge-tag bg-rose-50 text-rose-600">TYPE 01</span>
-                    <div id="result-icon-box" class="w-16 h-16 mx-auto rounded-3xl bg-rose-50 border border-rose-100 flex items-center justify-center font-black text-xl text-rose-500 shadow-2xs">01</div>
-                    <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
-                        냉철한 현실 분석가
-                    </h2>
-                    <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-rose-500">
-                        #논리왕 #츤데레 #실질적도움
-                    </div>
-                </div>
-
-                <!-- 한줄 요약 -->
-                <div class="callout-box">
-                    <p id="result-summary" class="text-xs font-bold text-rose-900 leading-relaxed !mb-0">
-                        한줄 요약이 여기에 표시됩니다.
-                    </p>
-                </div>
-
-                <!-- 3대 핵심 연애 특징 -->
-                <div class="result-card space-y-2.5">
-                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
-                        <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
-                        <span>나의 연애 핵심 특징</span>
-                    </h3>
-                    <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
-                        <!-- 동적 삽입 -->
-                    </div>
-                </div>
-
-                <!-- 강점 vs 주의점 (2열) -->
-                <div class="grid grid-cols-2 gap-2.5">
-                    <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
-                        <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
-                            <span>연애할 때 강점</span>
-                        </span>
-                        <p id="result-strength" class="text-xs text-emerald-950 leading-relaxed">
-                            -
-                        </p>
-                    </div>
-                    <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
-                        <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
-                            <span>주의할 점</span>
-                        </span>
-                        <p id="result-weakness" class="text-xs text-rose-950 leading-relaxed">
-                            -
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 찰떡궁합 vs 파국궁합 -->
-                <div class="result-card space-y-2.5">
-                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
-                        <span class="w-1.5 h-3.5 bg-purple-500 rounded-full"></span>
-                        <span>궁합 케미스트리</span>
-                    </h3>
-                    <div class="grid grid-cols-2 gap-2 pt-1">
-                        <div class="p-3 bg-purple-50/60 rounded-xl border border-purple-100 text-center">
-                            <span class="text-[10px] font-bold text-purple-700 block">환상의 짝꿍</span>
-                            <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">낭만적인 사랑꾼</span>
-                            <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">내 차가움을 녹여주는 온기</span>
-                        </div>
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
-                            <span class="text-[10px] font-bold text-gray-500 block">주의할 짝꿍</span>
-                            <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">열정적인 직진러</span>
-                            <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">서로 고집부리다 충돌</span>
+                <!-- 캡처 대상 영역 (이미지 저장용) -->
+                <div id="capture-area" class="bg-white p-3 rounded-2xl space-y-5">
+                    
+                    <!-- 상단 결과 헤더 -->
+                    <div class="text-center space-y-2 pt-2">
+                        <span id="result-type-badge" class="badge-tag bg-rose-50 text-rose-600">TYPE 01</span>
+                        <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
+                            냉철한 현실 분석가
+                        </h2>
+                        <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-rose-500">
+                            #논리왕 #츤데레 #실질적도움
                         </div>
                     </div>
+
+                    <!-- 한줄 요약 -->
+                    <div class="callout-box">
+                        <p id="result-summary" class="text-xs font-bold text-rose-900 leading-relaxed !mb-0">
+                            한줄 요약이 여기에 표시됩니다.
+                        </p>
+                    </div>
+
+                    <!-- 3대 핵심 연애 특징 -->
+                    <div class="result-card space-y-2.5">
+                        <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                            <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
+                            <span>나의 연애 핵심 특징</span>
+                        </h3>
+                        <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
+                            <!-- 동적 삽입 -->
+                        </div>
+                    </div>
+
+                    <!-- 강점 vs 주의점 (2열) -->
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
+                            <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
+                                <span>연애할 때 강점</span>
+                            </span>
+                            <p id="result-strength" class="text-xs text-emerald-950 leading-relaxed">
+                                -
+                            </p>
+                        </div>
+                        <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
+                            <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
+                                <span>주의할 점</span>
+                            </span>
+                            <p id="result-weakness" class="text-xs text-rose-950 leading-relaxed">
+                                -
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 찰떡궁합 vs 파국궁합 -->
+                    <div class="result-card space-y-2.5">
+                        <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                            <span class="w-1.5 h-3.5 bg-purple-500 rounded-full"></span>
+                            <span>궁합 케미스트리</span>
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <div class="p-3 bg-purple-50/60 rounded-xl border border-purple-100 text-center">
+                                <span class="text-[10px] font-bold text-purple-700 block">환상의 짝꿍</span>
+                                <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">낭만적인 사랑꾼</span>
+                                <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">내 차가움을 녹여주는 온기</span>
+                            </div>
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                                <span class="text-[10px] font-bold text-gray-500 block">주의할 짝꿍</span>
+                                <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">열정적인 직진러</span>
+                                <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">서로 고집부리다 충돌</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- [신규 기능] 이미지 저장 버튼 -->
+                <div class="pt-1">
+                    <button onclick="downloadResultImage()" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>결과 카드 이미지로 저장하기 (인스타/카톡용)</span>
+                    </button>
                 </div>
 
                 <!-- 쿠팡 파트너스 아이템 -->
@@ -652,6 +668,27 @@
 
             renderComments();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 이미지 저장/다운로드 기능 (html2canvas)
+        function downloadResultImage() {
+            const captureEl = document.getElementById('capture-area');
+            if (!captureEl) return;
+
+            alert('결과 카드 이미지를 생성하고 있습니다. 잠시만 기다려주세요!');
+
+            html2canvas(captureEl, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '연애_유형_테스트_결과.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                alert('이미지 저장 중 문제가 발생했습니다. 화면을 캡처해서 사용해주세요!');
+            });
         }
 
         function restartTest() {

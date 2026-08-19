@@ -37,6 +37,8 @@
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 이미지 캡처/저장용 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
 
     <style>
@@ -147,74 +149,89 @@
             </div>
 
             <!-- 4. 결과 화면 -->
-            <div id="screen-result" class="hidden space-y-6 fade-in pb-6">
+            <div id="screen-result" class="hidden space-y-5 fade-in pb-6">
                 
-                <!-- 상단 결과 헤더 -->
-                <div class="text-center space-y-2 pt-2">
-                    <span id="result-type-badge" class="badge-tag bg-pink-50 text-pink-700">TYPE 01</span>
-                    <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
-                        내추럴 꾸안꾸 놈코어룩
-                    </h2>
-                    <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-pink-600">
-                        #편안함 #자연스러운멋 #세련된데일리
+                <!-- 캡처 대상 영역 (이미지 저장용) -->
+                <div id="capture-area" class="bg-white p-3 rounded-2xl space-y-5">
+                    
+                    <!-- 상단 결과 헤더 -->
+                    <div class="text-center space-y-2 pt-2">
+                        <span id="result-type-badge" class="badge-tag bg-pink-50 text-pink-700">TYPE 01</span>
+                        <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
+                            내추럴 꾸안꾸 놈코어룩
+                        </h2>
+                        <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-pink-600">
+                            #편안함 #자연스러운멋 #세련된데일리
+                        </div>
+
+                        <!-- 룩별 맞춤 코디 일러스트 -->
+                        <div class="w-full max-w-[260px] aspect-square mx-auto rounded-2xl overflow-hidden border border-pink-100 shadow-xs mt-3 bg-pink-50/30">
+                            <img id="result-look-img" src="./img/look-natural.jpg" alt="추천 코디 룩" class="w-full h-full object-cover">
+                        </div>
                     </div>
 
-                    <!-- 룩별 맞춤 코디 일러스트 -->
-                    <div class="w-full max-w-[260px] aspect-square mx-auto rounded-2xl overflow-hidden border border-pink-100 shadow-xs mt-3 bg-pink-50/30">
-                        <img id="result-look-img" src="./img/look-natural.jpg" alt="추천 코디 룩" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-                <!-- 한줄 요약 -->
-                <div class="callout-box">
-                    <p id="result-summary" class="text-xs font-bold text-pink-950 leading-relaxed !mb-0">
-                        한줄 요약이 여기에 표시됩니다.
-                    </p>
-                </div>
-
-                <!-- 추천 패션 코디 가이드 -->
-                <div class="result-card space-y-2.5">
-                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
-                        <span class="w-1.5 h-3.5 bg-pink-600 rounded-full"></span>
-                        <span>추천 패션 아이템 조합</span>
-                    </h3>
-                    <div id="result-fashion-items" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
-                        <!-- 동적 삽입 -->
-                    </div>
-                </div>
-
-                <!-- 찰떡 헤어 & 메이크업 추천 -->
-                <div class="p-4 bg-gradient-to-br from-pink-50/70 via-purple-50/50 to-rose-50/70 rounded-2xl border border-pink-100 space-y-2">
-                    <span class="text-xs font-bold text-pink-900 flex items-center space-x-1">
-                        <span class="w-1.5 h-3 bg-pink-600 rounded-full"></span>
-                        <span>나에게 착붙인 헤어 & 메이크업</span>
-                    </span>
-                    <div class="text-xs text-gray-700 space-y-1.5 bg-white/80 p-3 rounded-xl">
-                        <p id="result-hair" class="!mb-0 leading-relaxed"></p>
-                        <p id="result-makeup" class="!mb-0 leading-relaxed text-gray-500"></p>
-                    </div>
-                </div>
-
-                <!-- 컬러 팔레트 & 워스트 스타일 (2열) -->
-                <div class="grid grid-cols-2 gap-2.5">
-                    <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
-                        <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
-                            <span>베스트 컬러</span>
-                        </span>
-                        <p id="result-color" class="text-xs text-emerald-950 leading-relaxed">
-                            -
+                    <!-- 한줄 요약 -->
+                    <div class="callout-box">
+                        <p id="result-summary" class="text-xs font-bold text-pink-950 leading-relaxed !mb-0">
+                            한줄 요약이 여기에 표시됩니다.
                         </p>
                     </div>
-                    <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
-                        <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
-                            <span>피해야 할 워스트</span>
-                        </span>
-                        <p id="result-worst" class="text-xs text-rose-950 leading-relaxed">
-                            -
-                        </p>
+
+                    <!-- 추천 패션 코디 가이드 -->
+                    <div class="result-card space-y-2.5">
+                        <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                            <span class="w-1.5 h-3.5 bg-pink-600 rounded-full"></span>
+                            <span>추천 패션 아이템 조합</span>
+                        </h3>
+                        <div id="result-fashion-items" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
+                            <!-- 동적 삽입 -->
+                        </div>
                     </div>
+
+                    <!-- 찰떡 헤어 & 메이크업 추천 -->
+                    <div class="p-4 bg-gradient-to-br from-pink-50/70 via-purple-50/50 to-rose-50/70 rounded-2xl border border-pink-100 space-y-2">
+                        <span class="text-xs font-bold text-pink-900 flex items-center space-x-1">
+                            <span class="w-1.5 h-3 bg-pink-600 rounded-full"></span>
+                            <span>나에게 착붙인 헤어 & 메이크업</span>
+                        </span>
+                        <div class="text-xs text-gray-700 space-y-1.5 bg-white/80 p-3 rounded-xl">
+                            <p id="result-hair" class="!mb-0 leading-relaxed"></p>
+                            <p id="result-makeup" class="!mb-0 leading-relaxed text-gray-500"></p>
+                        </div>
+                    </div>
+
+                    <!-- 컬러 팔레트 & 워스트 스타일 (2열) -->
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
+                            <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
+                                <span>베스트 컬러</span>
+                            </span>
+                            <p id="result-color" class="text-xs text-emerald-950 leading-relaxed">
+                                -
+                            </p>
+                        </div>
+                        <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
+                            <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
+                                <span>피해야 할 워스트</span>
+                            </span>
+                            <p id="result-worst" class="text-xs text-rose-950 leading-relaxed">
+                                -
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- [신규 기능] 이미지 저장 버튼 -->
+                <div class="pt-1">
+                    <button onclick="downloadResultImage()" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>결과 카드 이미지로 저장하기 (인스타/카톡용)</span>
+                    </button>
                 </div>
 
                 <!-- 쿠팡 파트너스 패션 추천 아이템 -->
@@ -627,6 +644,27 @@
 
             renderComments();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 이미지 저장/다운로드 기능 (html2canvas)
+        function downloadResultImage() {
+            const captureEl = document.getElementById('capture-area');
+            if (!captureEl) return;
+
+            alert('결과 카드 이미지를 생성하고 있습니다. 잠시만 기다려주세요!');
+
+            html2canvas(captureEl, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '퍼스널_패션_헤어스타일_결과.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                alert('이미지 저장 중 문제가 발생했습니다. 화면을 캡처해서 사용해주세요!');
+            });
         }
 
         function restartTest() {

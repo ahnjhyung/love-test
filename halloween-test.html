@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>할로윈 캐릭터 성격 테스트 | 내 안의 숨겨진 밤의 영혼 - 테스트모음</title>
-    <meta name="description" content="달콤한 마녀부터 시크한 뱀파이어, 몽글몽글 유령까지! 12문항으로 알아보는 나의 할로윈 몬스터 캐릭터와 숨겨진 성격, 찰떡 케미 무료 테스트.">
+    <meta name="description" content="달콤한 마녀부터 시크한 뱀파이어, 몽글몽글 유령까지! 12문항으로 알아보는 나의 할로윈 몬스터 캐릭터와 숨겨진 성격, 소름 돋는 바넘 심리 분석 무료 테스트.">
     <meta name="keywords" content="할로윈테스트, 할로윈 캐릭터 성격, MBTI 할로윈, 심리테스트, 무료 성격테스트, 푸망, 테스트모음">
     <link rel="canonical" href="https://testmoeum.vercel.app/halloween-test.html">
     
@@ -147,7 +147,7 @@
             </div>
 
             <!-- 4. 결과 화면 -->
-            <div id="screen-result" class="hidden space-y-6 fade-in pb-6">
+            <div id="screen-result" class="hidden space-y-5 fade-in pb-6">
                 
                 <!-- 상단 결과 헤더 -->
                 <div class="text-center space-y-2 pt-2">
@@ -160,7 +160,7 @@
                     </div>
 
                     <!-- 캐릭터 전용 일러스트 -->
-                    <div class="w-full max-w-[260px] aspect-square mx-auto rounded-2xl overflow-hidden border border-purple-100 shadow-xs mt-3 bg-purple-50/30">
+                    <div class="w-full max-w-[240px] aspect-square mx-auto rounded-2xl overflow-hidden border border-purple-100 shadow-xs mt-3 bg-purple-50/30">
                         <img id="result-monster-img" src="./img/monster-witch.jpg" alt="할로윈 캐릭터" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -172,7 +172,18 @@
                     </p>
                 </div>
 
-                <!-- 1. [공감 200%] 겉모습 vs 진짜 내 속마음 (바넘 효과) -->
+                <!-- 상세 종합 성향 풀이 -->
+                <div class="result-card space-y-2">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
+                        <span>나의 영혼 본질 심층 분석</span>
+                    </h3>
+                    <p id="result-detail" class="text-xs text-gray-700 leading-relaxed !mb-0 font-medium">
+                        상세 분석 내용이 여기에 표시됩니다.
+                    </p>
+                </div>
+
+                <!-- 1. [공감 200%] 겉모습 vs 진짜 내 속마음 (바넘 효과 2열) -->
                 <div class="grid grid-cols-2 gap-2.5">
                     <div class="p-3.5 bg-gray-50/90 rounded-2xl border border-gray-100 space-y-1">
                         <span class="text-[11px] font-bold text-gray-700 flex items-center space-x-1">
@@ -194,25 +205,90 @@
                     </div>
                 </div>
 
-                <!-- 2. 나만의 팩트 폭격 특징 3가지 -->
+                <!-- 2. 할로윈 캐릭터 능력치 스탯 바 -->
+                <div class="result-card space-y-3">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
+                        <span>나의 몬스터 능력치 스탯</span>
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
+                                <span>사교 에너지 (외향성)</span>
+                                <span id="stat-social-val" class="text-purple-600 font-bold">35%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div id="stat-social-bar" class="bg-purple-500 h-2 rounded-full transition-all duration-500" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
+                                <span>감성 & 공감 게이지</span>
+                                <span id="stat-warmth-val" class="text-pink-600 font-bold">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div id="stat-warmth-bar" class="bg-pink-500 h-2 rounded-full transition-all duration-500" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
+                                <span>집콕 & 힐링 본능</span>
+                                <span id="stat-home-val" class="text-indigo-600 font-bold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div id="stat-home-bar" class="bg-indigo-500 h-2 rounded-full transition-all duration-500" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
+                                <span>멘탈 쿠쿠다스 지수</span>
+                                <span id="stat-mental-val" class="text-rose-500 font-bold">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div id="stat-mental-bar" class="bg-rose-400 h-2 rounded-full transition-all duration-500" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 소름 돋게 정확한 팩트 폭격 4선 -->
                 <div class="result-card space-y-2.5">
                     <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                         <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
-                        <span>소름 돋게 정확한 내 특징 3선</span>
+                        <span>소름 돋게 정확한 내 특징 4선</span>
                     </h3>
                     <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
                         <!-- 동적 삽입 -->
                     </div>
                 </div>
 
-                <!-- 3. 분노 버튼 vs 힐링 충전법 -->
+                <!-- 4. 연애 스타일 & 친구 취급 설명서 -->
+                <div class="space-y-2.5">
+                    <div class="p-4 bg-pink-50/70 rounded-2xl border border-pink-100 space-y-1.5">
+                        <span class="text-xs font-bold text-pink-900 flex items-center space-x-1">
+                            <span class="w-1.5 h-3 bg-pink-600 rounded-full"></span>
+                            <span>연애할 때 나의 스타일</span>
+                        </span>
+                        <p id="result-love" class="text-xs text-gray-700 leading-relaxed font-medium !mb-0"></p>
+                    </div>
+
+                    <div class="p-4 bg-purple-50/70 rounded-2xl border border-purple-100 space-y-1.5">
+                        <span class="text-xs font-bold text-purple-900 flex items-center space-x-1">
+                            <span class="w-1.5 h-3 bg-purple-600 rounded-full"></span>
+                            <span>나를 대할 때 취급 설명서</span>
+                        </span>
+                        <p id="result-manual" class="text-xs text-gray-700 leading-relaxed font-medium !mb-0"></p>
+                    </div>
+                </div>
+
+                <!-- 5. 분노 버튼 vs 힐링 충전법 (2열) -->
                 <div class="grid grid-cols-2 gap-2.5">
                     <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
                         <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
                             <span>나를 화나게 하는 순간</span>
                         </span>
-                        <p id="result-trigger" class="text-xs text-rose-950 leading-relaxed">
+                        <p id="result-trigger" class="text-xs text-rose-950 leading-relaxed font-medium">
                             -
                         </p>
                     </div>
@@ -221,13 +297,13 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
                             <span>멘탈 급속 충전법</span>
                         </span>
-                        <p id="result-recharge" class="text-xs text-emerald-950 leading-relaxed">
+                        <p id="result-recharge" class="text-xs text-emerald-950 leading-relaxed font-medium">
                             -
                         </p>
                     </div>
                 </div>
 
-                <!-- 4. 찰떡궁합 vs 파국궁합 (비교 재미 극대화) -->
+                <!-- 6. 찰떡궁합 vs 파국궁합 (비교 재미 극대화) -->
                 <div class="result-card space-y-2.5">
                     <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                         <span class="w-1.5 h-3.5 bg-indigo-600 rounded-full"></span>
@@ -417,7 +493,7 @@
             }
         ];
 
-        // 8가지 할로윈 몬스터 캐릭터 데이터 (바넘 효과 & 케미 극대화)
+        // 8가지 할로윈 몬스터 캐릭터 상세 풀이 데이터 (바넘 효과 200% & 모든 필드 완벽 구성)
         const HALLOWEEN_TYPES = [
             {
                 id: 1,
@@ -426,17 +502,22 @@
                 img: "./img/monster-witch.jpg",
                 tags: ["#감성물약제조", "#무한공감러", "#따스한온기", "#동화감성"],
                 summary: "별빛과 감성을 모아 주변 사람들에게 따뜻한 위로를 전하는 감성 마법사!",
-                outer: "항상 방긋 웃으며 남의 이야기를 잘 들어주는 착하고 상냥한 친구",
-                inner: "사실 속으로는 '나 오늘 언제 집에 가지?' 에너지 배터리 잔량 3% 상태로 버티는 중",
+                detail: "상대방의 사소한 표정 변화와 기분까지 한눈에 감지하는 인간 레이더망을 가지고 있습니다. 언제나 다정하고 배려 넘치지만, 사실 마음속에는 수많은 생각과 감정의 소용돌이가 휘몰아치고 있습니다. 겉으로는 모두에게 친절한 천사처럼 보여도, 진짜 내 마음을 온전히 터놓는 사람은 손에 꼽힐 정도로 신중합니다.",
+                outer: "항상 방긋 웃으며 남의 이야기를 진심으로 들어주는 따뜻하고 착한 친구",
+                inner: "속으로는 '나 오늘 언제 집에 가지? 에너지 배터리 잔량 3%'로 버티며 이불 생각 중",
+                stats: { social: 35, warmth: 95, home: 85, mental: 80 },
                 features: [
                     "남의 부탁을 딱 잘라 거절하지 못해 혼자 끙끙 앓다가 밤에 이불킥을 자주 합니다.",
-                    "사소한 말 한마디나 상대방의 차가운 눈빛에 하루 종일 머릿속에 물음표가 가득 찹니다.",
-                    "혼자만의 아늑한 방에서 좋아하는 음악을 틀어놓고 뒹굴거릴 때 완벽하게 치유됩니다."
+                    "사소한 카톡 말투나 차가운 반응에 '내가 뭐 잘못했나?' 하루 종일 신경 씁니다.",
+                    "혼자 조용한 방에서 좋아하는 음악을 틀어놓고 멍 때릴 때 가장 큰 안정을 얻습니다.",
+                    "상대방이 고마워하는 한마디에 그동안의 모든 피로가 눈 녹듯 사라지는 순수함을 지녔습니다."
                 ],
-                trigger: "내 진심 어린 호의를 당연하게 여기거나 무례하게 선 넘는 사람",
-                recharge: "핸드폰 비행기 모드 해두고 폭신한 이불 속에서 넷플릭스 보기",
+                love: "좋아하는 사람이 생기면 티 내지 않으려고 애쓰지만 온몸에서 뚝딱거리는 티가 납니다. 뒤에서 몰래 좋아하는 간식을 챙겨주거나 일정을 다 기억해 주는 세심한 순정파입니다.",
+                manual: "따뜻한 칭찬과 진심 어린 감사 표현에 약합니다. 반대로 무례한 반말이나 영혼 없는 태도로 대하면 조용히 마음의 문을 닫아버립니다.",
+                trigger: "내 진심 어린 호의를 당연한 권리로 여기거나 무례하게 선 넘는 사람",
+                recharge: "핸드폰 비행기 모드 해두고 폭신한 이불 속에서 넷플릭스 정주행하기",
                 bestMatch: "시크한 뱀파이어 귀족",
-                bestDesc: "나의 여린 멘탈을 현실에서 단단하게 지켜주는 울타리",
+                bestDesc: "나의 여린 멘탈을 현실에서 단단하게 지켜주는 든든한 울타리",
                 badMatch: "유쾌한 잭오랜턴",
                 badDesc: "쉬지 않는 하이텐션 장난에 기가 완전히 빨려버림"
             },
@@ -447,15 +528,20 @@
                 img: "./img/monster-vampire.jpg",
                 tags: ["#완벽주의", "#취향미식가", "#츤데레챙김", "#철저한자기관리"],
                 summary: "겉은 차갑고 냉철하지만 내 사람에게는 모든 것을 내어주는 고혹적인 완벽주의자!",
-                outer: "감정 기복 없이 칼같이 일처리 잘하고 빈틈없어 보이는 엘리트",
+                detail: "감정에 휘둘리지 않고 날카로운 통찰력으로 상황의 본질을 꿰뚫어 보는 완벽주의자입니다. 남들에게 아쉬운 소리 하기를 죽기보다 싫어하며, 어떤 문제든 스스로 해결하려는 강한 독립심을 지녔습니다. 겉은 차갑고 냉정해 보여도 내 사람이라고 인정한 사람에게는 자신의 모든 것을 쏟아붓는 츤데레입니다.",
+                outer: "감정 기복 없이 칼같이 일처리 잘하고 절대 틈을 보이지 않는 철두철미한 엘리트",
                 inner: "혼자 있을 때는 누구보다 감성적이고, 내 사람의 인정 한마디에 속으로 광대 승천함",
+                stats: { social: 40, warmth: 70, home: 75, mental: 20 },
                 features: [
                     "남들이 비효율적으로 일하거나 징징대는 모습을 보면 속에서 천불이 납니다.",
                     "쉽게 곁을 내주지 않지만, 한번 내 바운더리에 들어온 사람은 평생 끝까지 책임집니다.",
-                    "겉으로는 무심한 척 툭툭 던져도 뒤에서 상대방의 모든 일정을 기억하고 챙겨줍니다."
+                    "약속 시간 어기는 것과 거짓말을 세상에서 가장 혐오합니다.",
+                    "겉으로는 무심한 척 툭툭 던져도 상대방의 취향과 필요를 기가 막히게 기억합니다."
                 ],
-                trigger: "약속 시간 어기기, 했던 말 또 하게 만들기, 근거 없는 감정적 고집",
-                recharge: "조용하고 고급스러운 공간에서 나만의 루틴과 취미에 몰입하기",
+                love: "자신의 높은 기준을 만족시키는 사람에게만 마음을 엽니다. 화려한 말보다는 미래를 함께 준비할 수 있는 현실적인 신뢰와 능력을 가장 중요하게 여깁니다.",
+                manual: "돌려 말하지 말고 직관적이고 논리적으로 대화해주세요. 혼자 집중하고 있을 때 쓸데없는 간섭을 하지 않는 것이 관계를 지키는 비결입니다.",
+                trigger: "약속 시간 지각, 했던 말 또 하게 만들기, 근거 없는 감정적 떼쓰기",
+                recharge: "나만의 정갈한 공간에서 고요하게 독서나 취미에 몰입하기",
                 bestMatch: "달콤한 꼬마 마녀",
                 bestDesc: "차가운 내 성을 포근하게 녹여주는 따뜻한 햇살 같은 존재",
                 badMatch: "솔직 순수 프랑켄슈타인",
@@ -468,15 +554,20 @@
                 img: "./img/monster-ghost.jpg",
                 tags: ["#이불속평화", "#조용한관찰자", "#무해한매력", "#집콕마스터"],
                 summary: "다툼 없는 평화로운 공간에서 조용히 소소한 행복을 즐기는 순수 100% 영혼!",
-                outer: "둥글둥글하고 화도 잘 안 내며 누구와도 부딪히지 않는 평화주의자",
-                inner: "사람 많은 곳에 30분만 있어도 영혼이 몸 밖으로 빠져나가는 극강의 집순이/집돌이",
+                detail: "세상의 소음과 갈등에서 벗어나 나만의 평화로운 온도를 지키고 싶어 하는 무해한 영혼입니다. 남에게 피해 주는 것도, 피해 받는 것도 극도로 싫어하며, 유유자적하게 좋아하는 소소한 일상을 누릴 때 가장 행복합니다. 누구에게나 둥글둥글 맞춰주지만, 자신의 선을 넘는 사람과는 소리 소문 없이 조용히 멀어집니다.",
+                outer: "화도 잘 안 내고 둥글둥글해서 누구와도 싸우지 않는 착한 평화주의자",
+                inner: "사람 많은 곳에 30분만 있어도 영혼이 빠져나가는 극강의 이불 속 수호신",
+                stats: { social: 25, warmth: 90, home: 99, mental: 65 },
                 features: [
-                    "싸움이나 갈등 상황이 생기면 일단 투명인간처럼 조용히 자리를 피하고 봅니다.",
-                    "약속이 당일 취소되면 아쉬운 척하지만 속으로는 만세를 부르며 침대로 다이빙합니다.",
-                    "강요받는 것을 극도로 싫어하며, 조용히 혼자 생각할 시간과 공간이 절대적으로 필요합니다."
+                    "싸움이나 갈등 분위기가 감지되면 투명인간처럼 조용히 자리를 피합니다.",
+                    "주말 약속이 당일 취소되면 아쉬운 척하지만 속으로는 만세를 부르며 침대로 점프합니다.",
+                    "남에게 강요하는 것도, 강요받는 것도 질색하며 마이웨이로 편안하게 살고 싶어 합니다.",
+                    "겉으로는 유순해 보여도 자기만의 확고한 가치관과 고집은 절대 꺾이지 않습니다."
                 ],
-                trigger: "갑작스러운 번개 약속, 목소리 크고 강압적인 태도, 지나친 간섭",
-                recharge: "따뜻한 차 한 잔 마시며 암막 커튼 치고 하루 종일 낮잠 자기",
+                love: "함께 있을 때 침묵조차 어색하지 않고 편안한 사람을 원합니다. 나를 통제하려 들지 않고 나의 조용한 템포를 온전히 존중해 주는 연인에게 푹 빠집니다.",
+                manual: "갑작스러운 당일 번개 약속은 피해주세요. 조용히 생각할 시간을 주면 알아서 다시 몽글몽글하게 다가옵니다.",
+                trigger: "강압적인 명령조의 말투, 목소리 크고 거친 사람, 과도한 프라이버시 침해",
+                recharge: "암막 커튼 치고 포근한 수면 안대 쓰고 하루 종일 늘어지게 낮잠 자기",
                 bestMatch: "든든한 늑대인간 수호자",
                 bestDesc: "우유부단할 때 든든하게 길을 터주고 지켜주는 보디가드",
                 badMatch: "도도한 검은 고양이",
@@ -489,17 +580,22 @@
                 img: "./img/monster-pumpkin.jpg",
                 tags: ["#축제의주인공", "#불꽃텐션", "#에너자이저", "#분위기메이커"],
                 summary: "어둠 속에서도 환한 웃음으로 주변을 밝히는 파티의 영원한 불꽃 에너자이저!",
-                outer: "언제나 자신감 넘치고 분위기를 띄우며 친구가 100명쯤 있을 것 같은 인싸",
-                inner: "정작 집에 혼자 오면 급격한 공허함과 쓸쓸함이 몰려와 스마트폰을 붙잡고 있음",
+                detail: "어디를 가든 3초 만에 그 공간의 분위기를 환하게 밝혀버리는 인간 비타민입니다. 호기심과 에너지가 넘쳐서 재미있는 일에는 무조건 앞장서며, 사람들에게 웃음과 활력을 선물합니다. 하지만 사람들의 기대에 부응하려다 보니 정작 자신이 지치고 힘들 때는 내색하지 못하고 혼자 끙끙 앓는 외로움을 품고 있습니다.",
+                outer: "언제나 텐션 폭발하고 친구가 100명쯤 있을 것 같은 핵인싸 에너자이저",
+                inner: "밤에 혼자 집에 돌아오면 급격한 현타와 쓸쓸함이 몰려와 스마트폰만 만지작거림",
+                stats: { social: 98, warmth: 85, home: 20, mental: 50 },
                 features: [
-                    "분위기가 가라앉거나 어색해지는 꼴을 못 참아서 스스로 광대를 자처합니다.",
-                    "즉흥적으로 꽂히면 일단 지르고 보며, 뒤처리는 미래의 나에게 맡기는 편입니다.",
-                    "남들에게 인정받고 칭찬받을 때 날개를 달고 200%의 실력을 발휘합니다."
+                    "어색하고 조용한 분위기를 견디지 못해 자청해서 분위기 메이커 역할을 맡습니다.",
+                    "재미있는 아이디어가 떠오르면 일단 저지르고 보며 뒷감당은 나중에 생각합니다.",
+                    "남들의 사소한 칭찬과 환호성에 날개를 달고 200%의 추진력을 뿜어냅니다.",
+                    "거절을 유쾌하게 넘기지만 속으로는 꽤 오랫동안 서운함을 간직합니다."
                 ],
-                trigger: "내 유머에 반응 없이 싸늘한 반응, 따분하고 답답한 규칙 강요",
-                recharge: "좋아하는 사람들과 맛있는 음식 먹으며 수다 떨고 신나게 놀기",
+                love: "함께 있을 때 지루할 틈 없이 티키타카가 폭발하는 연애를 선호합니다. 자신의 텐션을 함께 즐겨주고 솔직하게 애정을 표현해 주는 사람에게 무한 직진합니다.",
+                manual: "내 이야기와 개그에 크게 웃어주고 리액션해 줄 때 감동합니다. 무반응이나 싸늘한 태도로 대하면 급격히 시들어버립니다.",
+                trigger: "내 유머에 싸늘한 무반응, 따분하고 꽉 막힌 틀에 박힌 규율",
+                recharge: "좋아하는 친구들과 맛있는 야식 먹으며 쉴 새 없이 수다 떨기",
                 bestMatch: "도도한 검은 고양이",
-                bestDesc: "서로 드립을 치고받으며 쉴 새 없이 웃음 터지는 콤비",
+                bestDesc: "서로 드립을 치고받으며 쉴 새 없이 웃음 터지는 최고의 콤비",
                 badMatch: "붕대 감은 집콕 미라",
                 badDesc: "벽치고 들어가는 조용한 태도에 답답함 폭발"
             },
@@ -510,15 +606,20 @@
                 img: "./img/monster-werewolf.jpg",
                 tags: ["#의리의화신", "#내사람지킴이", "#행동파리더", "#약속은칼"],
                 summary: "한번 맺은 인연은 끝까지 책임지는 듬직함과 불의를 참지 않는 카리스마 리더!",
-                outer: "듬직하고 카리스마 넘치며 어떤 일도 척척 해결하는 믿음직한 선배/리더",
-                inner: "모든 짐을 혼자 짊어지려다 보니 가끔은 남몰래 기대어 쉬고 싶은 외로움이 있음",
+                detail: "불의를 보면 참지 못하고 한번 내 사람으로 맺은 인연은 끝까지 지켜내는 의리와 카리스마의 화신입니다. 매사에 솔직 담백하며 말보다 행동으로 자신의 신뢰를 증명합니다. 강한 책임감 때문에 모든 짐을 스스로 짊어지려다 지치기도 하지만, 주변 사람들에게는 세상에서 가장 든든한 버팀목이 되어줍니다.",
+                outer: "어떤 위기 상황에서도 흔들림 없이 문제를 해결하는 든든한 보디가드이자 리더",
+                inner: "가끔은 모든 무거운 책임을 내려놓고 누군가에게 기대어 푹 쉬고 싶음",
+                stats: { social: 70, warmth: 80, home: 40, mental: 15 },
                 features: [
-                    "내 사람이 밖에서 억울한 일을 당하면 당사자보다 더 화를 내며 앞장서서 해결합니다.",
-                    "빈말이나 가식적인 칭찬을 극도로 싫어하며, 담백하고 솔직한 대화를 좋아합니다.",
-                    "규칙과 위계질서를 중시하며, 한번 맡은 임무는 완벽하게 끝내야 직성이 풀립니다."
+                    "내 사람이 밖에서 부당한 대우를 받으면 당사자보다 더 분노하며 앞장서서 해결합니다.",
+                    "가식적인 빈말이나 앞뒤가 다른 태도를 극도로 혐오하며, 담백한 진심을 중요하게 봅니다.",
+                    "한번 약속한 것은 손해를 보더라도 반드시 지키는 칼 같은 원칙주의자입니다.",
+                    "칭찬에 서툴러서 겉으로는 무뚝뚝해도 속으로는 엄청 뿌듯해합니다."
                 ],
-                trigger: "뒤에서 험담하기, 핑계 대며 책임 회피하기, 의리 없는 배신",
-                recharge: "땀 흘리는 격렬한 운동이나 드라이브로 잡념 털어내기",
+                love: "가벼운 썸보다는 미래를 신뢰할 수 있는 진지하고 듬직한 사랑을 추구합니다. 상대방을 불안하게 만들지 않으며 언제나 든든한 바람막이가 되어줍니다.",
+                manual: "의심하지 말고 신뢰를 보여주세요. 고마운 일이 있을 때 솔직하게 진심을 표현하면 당신을 위해 목숨까지 바칠 정도로 헌신합니다.",
+                trigger: "뒤에서 험담하기, 핑계 대며 비겁하게 발뺌하기, 의리 없는 배신",
+                recharge: "땀 흘리는 고강도 운동, 드라이브, 또는 혼자만의 조용한 시간 갖기",
                 bestMatch: "몽글몽글 유령 친구",
                 bestDesc: "나의 굳건한 보호 아래 편안함을 느끼며 힐링을 주는 짝꿍",
                 badMatch: "시크한 뱀파이어 귀족",
@@ -531,15 +632,20 @@
                 img: "./img/monster-cat.jpg",
                 tags: ["#밀당의천재", "#마이웨이", "#알고보면애교", "#치명적매력"],
                 summary: "구속받기 싫어하지만 관심은 받고 싶은, 알면 알수록 빠져드는 치명적 매력꾼!",
-                outer: "시크하고 쿨하며 남의 시선 따위 전혀 신경 쓰지 않는 마이웨이 트렌드세터",
-                inner: "혼자 쿨한 척 다 해놓고 상대방의 카톡 답장 10분 늦으면 속으로 오만가지 생각 중",
+                detail: "남들의 시선이나 사회적 기준에 얽매이지 않고 오직 나만의 감각과 스타일대로 살아가는 쿨한 마이웨이입니다. 빠른 눈치와 센스 있는 위트로 사람들을 매료시키며, 구속받기를 질색합니다. 평소에는 도도하게 거리를 두지만, 진정으로 마음을 연 소수에게는 아무에게도 보여주지 않는 특급 애교와 다정함을 선물합니다.",
+                outer: "시크하고 쿨하며 남의 참견 따위 한 귀로 흘려버리는 트렌드세터",
+                inner: "혼자 쿨한 척 다 해놓고 상대방 답장이 늦으면 속으로 100가지 시나리오 쓰는 중",
+                stats: { social: 55, warmth: 60, home: 70, mental: 45 },
                 features: [
-                    "누가 나를 가르치려 들거나 통제하려 들면 그 즉시 청개구리 모드가 발동합니다.",
-                    "호기심이 엄청나게 많아서 새로운 것에 쉽게 빠지지만 질리는 속도도 빠릅니다.",
-                    "남들이 다 하는 뻔한 유행은 왠지 피하고 싶고 나만의 독특한 취향을 고수합니다."
+                    "누가 나를 억지로 가르치려 들거나 통제하려 하면 그 즉시 반골 기질이 솟구칩니다.",
+                    "호기심이 엄청나게 많아 번개처럼 몰입하지만 금세 싫증을 느끼기도 합니다.",
+                    "남들이 다 하는 유행은 피하고 싶고, 나만의 유니크한 취향을 자랑스럽게 여깁니다.",
+                    "은근슬쩍 플러팅을 던져놓고 상대방의 당황하는 반응을 즐기는 장난꾸러기입니다."
                 ],
-                trigger: "일거수일투족 캐묻는 집착, 꼰대 같은 참견, 재미없는 틀에 박힌 일상",
-                recharge: "나만의 비밀 아지트 같은 공간에서 취향 저격 영화와 음악 감상",
+                love: "적당한 긴장감과 지적인 티키타카가 있는 연애를 즐깁니다. 나를 구속하지 않으면서도 은근한 관심을 끊임없이 보여주는 센스 있는 사람에게 빠져듭니다.",
+                manual: "일거수일투족 캐묻지 말고 적당한 자유를 주세요. 가만히 내버려 두면 알아서 먼저 다가와 비비적거립니다.",
+                trigger: "사사건건 간섭하고 통제하려는 태도, 꼰대 같은 훈계, 뻔한 클리셰",
+                recharge: "나만의 감성 아지트에서 좋아하는 음악과 영상을 보며 멍 때리기",
                 bestMatch: "유쾌한 잭오랜턴",
                 bestDesc: "내 츤데레 매력을 귀엽게 받아주며 텐션을 맞춰주는 친구",
                 badMatch: "든든한 늑대인간 수호자",
@@ -552,15 +658,20 @@
                 img: "./img/monster-franken.jpg",
                 tags: ["#우직한진심", "#순정파", "#꾸밈없는태도", "#행동파"],
                 summary: "화려한 겉치레 대신 우직하고 순수한 진심 하나로 감동을 주는 순정파 친구!",
-                outer: "조금 서툴고 투박해 보여도 거짓말 못 하고 우직하게 제 할 일 다 하는 사람",
-                inner: "사람들의 사소한 칭찬 한마디에 심장이 쿵쾅거리며 하루 종일 기분 좋은 순수 영혼",
+                detail: "화려한 말재주나 겉치레 대신 우직한 진심과 따뜻한 행동력으로 주변 사람들에게 감동을 주는 순정파입니다. 계산적이거나 잔머리를 굴리지 않고 있는 그대로의 솔직한 마음으로 세상을 대합니다. 겉은 조금 둔하고 투박해 보일 수 있어도, 마음속 깊은 곳에는 세상 누구보다 순수하고 여린 감성을 품고 있습니다.",
+                outer: "말수는 적지만 묵묵하게 제 할 일 다 하고 언제나 믿을 수 있는 든든한 친구",
+                inner: "남들의 따뜻한 칭찬 한마디에 심장이 쿵쾅거리며 하루 종일 하늘을 날아갈 듯 행복함",
+                stats: { social: 45, warmth: 95, home: 60, mental: 40 },
                 features: [
-                    "빙빙 돌려 말하거나 속셈을 숨기는 사람과 대화하면 머리가 지끈거립니다.",
-                    "손재주가 좋거나 실질적인 도움을 건네는 방식으로 자신의 애정을 표현합니다.",
-                    "겉은 무던해 보여도 내 사람의 아픔에는 누구보다 진심으로 가슴 아파합니다."
+                    "빙빙 돌려 말하거나 꿍꿍이가 있는 사람과 대화하면 머리에 쥐가 납니다.",
+                    "말로 하는 감정 표현은 서툴지만, 맛있는 것을 챙겨주거나 손을 써서 돕는 행동파입니다.",
+                    "겉모습과 다르게 눈물이 많고 감동적인 영화나 사연에 쉽게 가슴이 뭉클해집니다.",
+                    "한번 믿음을 준 사람에게는 어떤 일이 있어도 배신하지 않는 굳은 절개를 지녔습니다."
                 ],
-                trigger: "가식적인 태도, 뒤통수치기, 겉모습만 보고 무시하는 편견",
-                recharge: "맛있는 음식 든든하게 먹고 좋아하는 취미 공작이나 게임에 몰두하기",
+                love: "조건이나 계산 없이 오직 순수한 마음 하나로 상대를 사랑합니다. 화려한 이벤트보다는 일상에서 묵묵히 곁을 지키며 챙겨주는 평생의 동반자 스타일입니다.",
+                manual: "돌려 말하지 말고 원하는 것을 솔직하고 명확하게 말해주세요. 당신을 위해 언제든 달려갈 준비가 되어 있습니다.",
+                trigger: "가식적인 거짓말, 뒤통수치기, 겉모습만 보고 깔보는 무시",
+                recharge: "좋아하는 든든한 고기나 맛있는 음식 먹고 게임이나 만들기에 몰입하기",
                 bestMatch: "붕대 감은 집콕 미라",
                 bestDesc: "서로의 진심을 말없이도 조용히 알아채는 따뜻한 소울메이트",
                 badMatch: "시크한 뱀파이어 귀족",
@@ -573,15 +684,20 @@
                 img: "./img/monster-mummy.jpg",
                 tags: ["#신비로운치유", "#깊은생각", "#철저한방어", "#진정한속마음"],
                 summary: "상처받기 싫어 꽁꽁 싸매고 있지만, 알면 알수록 깊은 지혜와 따뜻함을 품은 힐러!",
-                outer: "말수가 적고 조용하며 무슨 생각을 하는지 알기 어려운 미스터리한 인물",
-                inner: "머릿속에서는 이미 우주 삼라만상과 인생의 의미에 대한 철학 토론이 진행 중",
+                detail: "상처받기 쉬운 여린 내면을 지키기 위해 겉으로는 단단한 붕대를 감고 있는 신비로운 사색가입니다. 뛰어난 직관력과 깊은 통찰력으로 사람들의 숨겨진 이면을 꿰뚫어 보며, 얕은 관계보다 영혼이 통하는 단 한 사람과의 깊은 교감을 소중히 여깁니다. 마음의 문을 열기까지는 시간이 걸리지만, 일단 열리면 평생의 지혜와 치유를 선물합니다.",
+                outer: "조용하고 차분하며 무슨 생각을 하는지 알기 힘든 신비로운 관찰자",
+                inner: "머릿속에서는 이미 우주와 인간의 본질에 대한 거대한 철학 서사시가 쓰여지는 중",
+                stats: { social: 20, warmth: 85, home: 95, mental: 70 },
                 features: [
-                    "겉으로는 차분해 보여도 상상력과 통찰력이 엄청나서 사람의 본질을 꿰뚫어 봅니다.",
-                    "마음의 문을 여는 관문이 10단계쯤 있어서 진짜 친구가 되기까지 시간이 걸립니다.",
-                    "하지만 일단 마음을 열면 세상에서 가장 깊은 비밀과 영혼을 공유하는 단짝이 됩니다."
+                    "상대방의 겉모습 너머에 있는 진짜 의도와 감정을 귀신같이 간파합니다.",
+                    "마음의 문을 여는 10단계 철벽이 있어서 누군가와 깊어지기까지 오랜 관찰을 거칩니다.",
+                    "영혼 없는 스몰토크는 기가 빨리지만, 인생과 철학에 대한 깊은 대화는 밤새워도 즐겁습니다.",
+                    "혼자 조용히 일기를 쓰거나 생각을 정리할 때 세상에서 가장 큰 지혜를 얻습니다."
                 ],
-                trigger: "영혼 없는 스몰토크 강요, 섣부른 판단, 내 프라이버시 침해",
-                recharge: "조용한 밤, 일기장을 펴놓고 깊은 생각과 감정을 글로 정리하기",
+                love: "정신적인 교감과 진정성을 최우선으로 여깁니다. 나의 깊은 내면과 복잡한 생각을 있는 그대로 이해하고 보듬어 주는 사람에게 평생의 헌신을 바칩니다.",
+                manual: "서두르지 말고 천천히 다가와 주세요. 나의 비밀과 프라이버시를 존중해 주면 세상에서 가장 충직한 소울메이트가 됩니다.",
+                trigger: "가벼운 말장난과 비하, 영혼 없는 대화 강요, 내 공간 무단 침범",
+                recharge: "새벽 감성 속에서 조용히 독서하거나 일기를 쓰며 마음 정리하기",
                 bestMatch: "솔직 순수 프랑켄슈타인",
                 bestDesc: "계산 없는 순수함으로 나의 꽁꽁 싸맨 방어벽을 사르르 녹여줌",
                 badMatch: "유쾌한 잭오랜턴",
@@ -677,9 +793,22 @@
             document.getElementById('result-monster-img').src = typeData.img || './img/monster-witch.jpg';
             document.getElementById('result-monster-img').alt = typeData.name;
             document.getElementById('result-summary').textContent = typeData.summary;
+            document.getElementById('result-detail').textContent = typeData.detail;
 
             document.getElementById('result-outer').textContent = typeData.outer;
             document.getElementById('result-inner').textContent = typeData.inner;
+
+            // 스탯 바 렌더링
+            if (typeData.stats) {
+                document.getElementById('stat-social-val').textContent = typeData.stats.social + '%';
+                document.getElementById('stat-social-bar').style.width = typeData.stats.social + '%';
+                document.getElementById('stat-warmth-val').textContent = typeData.stats.warmth + '%';
+                document.getElementById('stat-warmth-bar').style.width = typeData.stats.warmth + '%';
+                document.getElementById('stat-home-val').textContent = typeData.stats.home + '%';
+                document.getElementById('stat-home-bar').style.width = typeData.stats.home + '%';
+                document.getElementById('stat-mental-val').textContent = typeData.stats.mental + '%';
+                document.getElementById('stat-mental-bar').style.width = typeData.stats.mental + '%';
+            }
 
             const featuresContainer = document.getElementById('result-features');
             featuresContainer.innerHTML = typeData.features.map(f => `
@@ -688,6 +817,9 @@
                     <span>${f}</span>
                 </div>
             `).join('');
+
+            document.getElementById('result-love').textContent = typeData.love;
+            document.getElementById('result-manual').textContent = typeData.manual;
 
             document.getElementById('result-trigger').textContent = typeData.trigger;
             document.getElementById('result-recharge').textContent = typeData.recharge;

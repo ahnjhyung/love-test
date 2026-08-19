@@ -152,12 +152,16 @@
                 <!-- 상단 결과 헤더 -->
                 <div class="text-center space-y-2 pt-2">
                     <span id="result-type-badge" class="badge-tag bg-pink-50 text-pink-700">TYPE 01</span>
-                    <div id="result-icon-box" class="w-16 h-16 mx-auto rounded-3xl bg-pink-50 border border-pink-100 flex items-center justify-center font-black text-xl text-pink-600 shadow-2xs">01</div>
                     <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
                         내추럴 꾸안꾸 놈코어룩
                     </h2>
                     <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-pink-600">
                         #편안함 #자연스러운멋 #세련된데일리
+                    </div>
+
+                    <!-- 룩별 맞춤 코디 일러스트 -->
+                    <div class="w-full max-w-[260px] aspect-square mx-auto rounded-2xl overflow-hidden border border-pink-100 shadow-xs mt-3 bg-pink-50/30">
+                        <img id="result-look-img" src="./img/look-natural.jpg" alt="추천 코디 룩" class="w-full h-full object-cover">
                     </div>
                 </div>
 
@@ -389,6 +393,7 @@
                 id: 1,
                 name: "내추럴 꾸안꾸 놈코어룩",
                 badge: "TYPE 01",
+                img: "./img/look-natural.jpg",
                 tags: ["#편안한멋", "#세련된데일리", "#셔츠슬랙스", "#실루엣미"],
                 summary: "꾸민 듯 안 꾸민 듯, 자연스러운 실루엣과 고급스러운 소재감으로 완성하는 감각적인 데일리룩!",
                 items: [
@@ -405,6 +410,7 @@
                 id: 2,
                 name: "로맨틱 페미닌 러블리룩",
                 badge: "TYPE 02",
+                img: "./img/look-feminine.jpg",
                 tags: ["#분위기여신", "#사랑스러움", "#플리츠스커트", "#파스텔"],
                 summary: "부드러운 곡선과 화사한 컬러감으로 청순하고 사랑스러운 무드를 극대화하는 스타일!",
                 items: [
@@ -421,6 +427,7 @@
                 id: 3,
                 name: "시크 모던 올드머니룩",
                 badge: "TYPE 03",
+                img: "./img/look-classic.jpg",
                 tags: ["#고급스러운품격", "#클래식테일러드", "#뉴트럴톤", "#절제미"],
                 summary: "유행을 타지 않는 정갈한 테일러링과 절제된 디테일로 조용한 고급스러움을 연출하는 룩!",
                 items: [
@@ -437,6 +444,7 @@
                 id: 4,
                 name: "힙 스트릿 트렌디룩",
                 badge: "TYPE 04",
+                img: "./img/look-street.jpg",
                 tags: ["#시선강탈", "#트렌드세터", "#오버핏카고", "#걸크러시"],
                 summary: "자유분방한 오버핏과 힙한 아이템 매치로 트렌디한 존재감을 뽐내는 개성 만점 스타일!",
                 items: [
@@ -453,6 +461,7 @@
                 id: 5,
                 name: "포근한 빈티지 코티지룩",
                 badge: "TYPE 05",
+                img: "./img/look-feminine.jpg",
                 tags: ["#아늑한감성", "#자수가디건", "#롱원피스", "#보헤미안"],
                 summary: "따뜻한 질감과 잔잔한 플로럴 패턴으로 마치 유럽 시골 마을의 감성을 담아낸 포근한 스타일!",
                 items: [
@@ -469,6 +478,7 @@
                 id: 6,
                 name: "세련된 스마트 포멀 오피스룩",
                 badge: "TYPE 06",
+                img: "./img/look-classic.jpg",
                 tags: ["#커리어우먼", "#도회적인매력", "#셋업수트", "#깔끔단정"],
                 summary: "신뢰감을 주는 단정한 실루엣과 세련된 디테일로 프로페셔널한 매력을 발산하는 룩!",
                 items: [
@@ -485,6 +495,7 @@
                 id: 7,
                 name: "액티브 스포티 에슬레저룩",
                 badge: "TYPE 07",
+                img: "./img/look-street.jpg",
                 tags: ["#활동성최고", "#경쾌한에너지", "#크롭아노락", "#스포티"],
                 summary: "일상과 운동을 넘나드는 편안함 속에 탄탄하고 경쾌한 에너지를 담아내는 룩!",
                 items: [
@@ -501,6 +512,7 @@
                 id: 8,
                 name: "유니크 아티스틱 무드룩",
                 badge: "TYPE 08",
+                img: "./img/look-natural.jpg",
                 tags: ["#독창적감각", "#컬러믹스매치", "#볼드악세서리", "#아트감성"],
                 summary: "정형화된 공식을 깨고 과감한 컬러 매치와 독창적인 악세서리로 나만의 예술성을 드러내는 룩!",
                 items: [
@@ -594,9 +606,10 @@
             const typeData = FASHION_TYPES[typeIdx];
 
             document.getElementById('result-type-badge').textContent = typeData.badge;
-            document.getElementById('result-icon-box').textContent = typeData.id < 10 ? `0${typeData.id}` : typeData.id;
             document.getElementById('result-title').textContent = typeData.name;
             document.getElementById('result-tags').innerHTML = typeData.tags.map(t => `<span class="bg-pink-50 px-2 py-0.5 rounded-md">${t}</span>`).join('');
+            document.getElementById('result-look-img').src = typeData.img || './img/look-natural.jpg';
+            document.getElementById('result-look-img').alt = typeData.name;
             document.getElementById('result-summary').textContent = typeData.summary;
 
             const itemsContainer = document.getElementById('result-fashion-items');

@@ -752,13 +752,17 @@
             document.getElementById('screen-result').classList.remove('hidden');
 
             const isE = userScores.E >= userScores.I;
+            const isI = !isE;
             const isS = userScores.S >= userScores.N;
+            const isN = !isS;
             const isT = userScores.T >= userScores.F;
+            const isF = !isT;
             const isJ = userScores.J >= userScores.P;
+            const isP = !isJ;
 
             // 8가지 전통 디저트 매칭 로직
             let typeIdx = 0;
-            if (isF && isS && !isE) typeIdx = 0; // 달콤 쫀득 꿀송편 (ISFP/ISFJ)
+            if (isF && isS && isI) typeIdx = 0; // 달콤 쫀득 꿀송편 (ISFP/ISFJ)
             else if (isT && isN && isJ) typeIdx = 1; // 겉바속촉 개성주악 (INTJ/INFJ)
             else if (isE && isF) typeIdx = 2; // 바삭 고소 알밤 약과 (ENFP/ESFP)
             else if (isT && isE) typeIdx = 3; // 시원 달콤 살얼음 식혜 (ENTP/ESTP)

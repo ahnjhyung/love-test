@@ -785,13 +785,17 @@
             document.getElementById('screen-result').classList.remove('hidden');
 
             const isE = userScores.E >= userScores.I;
+            const isI = !isE;
             const isS = userScores.S >= userScores.N;
+            const isN = !isS;
             const isT = userScores.T >= userScores.F;
+            const isF = !isT;
             const isJ = userScores.J >= userScores.P;
+            const isP = !isJ;
 
             // 8가지 캐릭터 매칭 로직
             let typeIdx = 0;
-            if (isF && isN && !isE) typeIdx = 0; // 달콤한 꼬마 마녀 (INFP/INFJ)
+            if (isF && isN && isI) typeIdx = 0; // 달콤한 꼬마 마녀 (INFP/INFJ)
             else if (isT && isN) typeIdx = 1; // 시크한 뱀파이어 귀족 (INTJ/INTP)
             else if (isI && isS && isP) typeIdx = 2; // 몽글몽글 유령 친구 (ISFP/ISTP)
             else if (isE && isP && isF) typeIdx = 3; // 유쾌한 잭오랜턴 (ESFP/ENFP)

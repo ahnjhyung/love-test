@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <!-- Google Analytics -->
@@ -11,27 +11,24 @@
     </script>
     
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
-    
-    <meta name="description" content="20문항으로 알아보는 나의 연애 스타일! 냉철한 분석가부터 낭만적인 사랑꾼까지 8가지 유형 중 나는 어떤 타입?">
-    <meta name="keywords" content="연애유형테스트, 연애심리테스트, 연애성향, MBTI, 연애궁합, 심리분석, 테스트모음, 푸망">
+    <title>나의 연애 유형 테스트 | 8가지 연애 성향 무료 분석 - 테스트모음</title>
+    <meta name="description" content="12문항으로 알아보는 나의 숨겨진 연애 스타일! 낭만적인 사랑꾼부터 냉철한 분석가까지 8가지 캐릭터로 알아보는 무료 연애 성향 테스트.">
+    <meta name="keywords" content="연애유형테스트, 연애심리테스트, MBTI 연애, 연애성향테스트, 커플궁합, 무료심리테스트, 테스트모음">
+    <link rel="canonical" href="https://testmoeum.vercel.app/love-type/">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testmoeum.vercel.app/love-type/">
     <meta property="og:title" content="나의 연애 유형 테스트 | 테스트모음">
-    <meta property="og:description" content="20문항으로 알아보는 내 무의식 속 연애 스타일과 환상의 짝꿍 찾기!">
+    <meta property="og:description" content="내 무의식 속 연애 스타일과 환상의 짝꿍은 누구? 8가지 연애 캐릭터 무료 분석!">
     <meta property="og:image" content="https://testmoeum.vercel.app/img/thumb-love.jpg">
-
-    <title>나의 연애 유형 테스트 | 테스트모음</title>
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "연애 유형 테스트",
-      "description": "20문항으로 알아보는 나의 연애 스타일과 8가지 유형 분석",
+      "description": "12문항으로 알아보는 나의 연애 스타일과 8가지 캐릭터 분석",
       "url": "https://testmoeum.vercel.app/love-type/",
       "applicationCategory": "EntertainmentApplication",
       "operatingSystem": "Web",
@@ -40,6 +37,7 @@
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
@@ -51,16 +49,10 @@
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .hide-scroll::-webkit-scrollbar { display: none; }
-        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .badge-tag { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+        .result-card { background: #ffffff; border: 1px solid #f3f4f6; border-radius: 16px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+        .callout-box { border-left: 4px solid #f43f5e; background: #fff1f2; padding: 14px 16px; border-radius: 0 12px 12px 0; }
         
-        .badge-tag {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
         .loader {
             border: 3px solid #f2f4f6;
             border-top: 3px solid #f43f5e;
@@ -71,11 +63,9 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
-
+</head>
 <body class="min-h-screen flex justify-center">
 
-    <!-- 모바일 컨테이너 (max-w-[480px]) -->
     <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
         
         <!-- 상단 헤더 -->
@@ -84,9 +74,9 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
-                <span>테스트모음</span>
+                <span>테스트모음 홈</span>
             </a>
-            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">연애·심리</span>
+            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">연애 심리</span>
         </header>
 
         <!-- 프로그레스 바 -->
@@ -96,66 +86,198 @@
 
         <main class="flex-1 px-5 py-4">
             
-            <!-- 1. 시작 화면 (자연스럽게 모인 컴팩트 레이아웃) -->
-            <div id="screen-start" class="space-y-4 text-center fade-in">
-                <!-- 썸네일 일러스트 -->
-                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-rose-50 bg-rose-50/30 relative">
+            <!-- 1. 시작 화면 -->
+            <div id="screen-start" class="space-y-4 text-center fade-in pt-2">
+                <div class="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xs border border-rose-100 mb-2">
                     <img src="../img/thumb-love.jpg" alt="연애 유형 테스트" class="w-full h-full object-cover">
                 </div>
 
-                <div class="pt-1 space-y-1.5">
-                    <span class="badge-tag bg-rose-50 text-rose-600">8가지 연애 유형 분석</span>
-                    <h1 class="text-2xl font-black text-gray-900 leading-tight">
-                        나의 연애 유형은?<br>연애 성향 심리테스트
+                <div class="space-y-1">
+                    <span class="badge-tag bg-rose-50 text-rose-600">8가지 연애 성향 분석</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight pt-1">
+                        나의 진짜 연애 유형은?
                     </h1>
-                    <p class="text-xs text-gray-500 leading-relaxed pt-0.5">
-                        MBTI와 애착 유형 이론 기반 20문항으로 알아보는<br>내 무의식 속 연애 스타일과 환상의 짝꿍
+                    <p class="text-xs text-gray-500 pt-1">
+                        12가지 질문으로 알아보는 내 무의식 속 연애 스타일과 환상의 짝꿍
                     </p>
                 </div>
 
-                <div class="pt-2 space-y-2.5">
-                    <input type="text" id="input-name" placeholder="이름 또는 닉네임을 입력하세요" 
-                        onkeydown="checkEnter(event)"
-                        class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 text-center text-sm bg-white transition-colors shadow-2xs">
-                    
-                    <button onclick="startTest()" class="w-full py-4 bg-rose-500 active:scale-[0.98] text-white rounded-xl font-bold text-base shadow-md shadow-rose-200 hover:bg-rose-600 transition-all cursor-pointer">
-                        테스트 시작하기
+                <!-- 시작 버튼 -->
+                <div class="pt-4">
+                    <button onclick="startTest()" class="w-full bg-rose-500 hover:bg-rose-600 active:scale-[0.98] text-white font-bold py-4 rounded-2xl text-base shadow-md shadow-rose-100 transition-all">
+                        테스트 시작하기 (12문항)
                     </button>
-                    
-                    <p class="text-[11px] text-gray-400 text-center pt-0.5">
-                        총 20문항 · 소요 시간 약 2분 · 100% 무료
+                </div>
+
+                <!-- 안내 박스 -->
+                <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-100 text-left space-y-1.5 mt-4">
+                    <div class="flex items-center space-x-1.5 text-xs font-bold text-gray-700">
+                        <span>🧪</span>
+                        <span>테스트 안내</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 leading-relaxed">
+                        정답은 없습니다. 내가 평소 연애할 때 혹은 썸 탈 때의 모습에 가장 가까운 선택지를 편안하게 골라주세요!
                     </p>
                 </div>
             </div>
 
             <!-- 2. 질문 화면 -->
-            <div id="screen-q" class="hidden flex-col justify-between py-2 fade-in">
-                <div class="space-y-6 pt-2">
-                    <div class="space-y-2 text-center">
-                        <span id="txt-q-num" class="badge-tag bg-rose-50 text-rose-600">Q. 01 / 20</span>
-                        <h2 id="txt-q" class="text-lg font-bold text-gray-900 leading-snug break-keep pt-2">질문 내용</h2>
-                    </div>
-                    
-                    <div class="space-y-3 w-full pt-2">
-                        <button onclick="next('A')" class="w-full p-4 text-left bg-white border border-gray-200 rounded-2xl active:scale-[0.98] hover:border-rose-400 hover:bg-rose-50/40 transition-all shadow-xs group">
-                            <span class="block text-[11px] text-rose-500 font-bold mb-1">A</span>
-                            <span id="txt-a" class="text-sm font-medium text-gray-800 block leading-relaxed break-keep">답변 A</span>
-                        </button>
-                        <button onclick="next('B')" class="w-full p-4 text-left bg-white border border-gray-200 rounded-2xl active:scale-[0.98] hover:border-rose-400 hover:bg-rose-50/40 transition-all shadow-xs group">
-                            <span class="block text-[11px] text-rose-500 font-bold mb-1">B</span>
-                            <span id="txt-b" class="text-sm font-medium text-gray-800 block leading-relaxed break-keep">답변 B</span>
-                        </button>
-                    </div>
+            <div id="screen-question" class="hidden space-y-5 fade-in py-2">
+                <div class="flex justify-between items-center text-xs font-bold text-gray-400">
+                    <span id="question-category" class="text-rose-600">연애 스타일</span>
+                    <span id="question-number">Q1 / 12</span>
+                </div>
+
+                <h2 id="question-text" class="text-lg font-black text-gray-900 leading-snug min-h-[3.5rem] flex items-center">
+                    질문 내용이 여기에 표시됩니다.
+                </h2>
+
+                <div class="space-y-3 pt-2" id="answers-container">
+                    <!-- 버튼 동적 생성 -->
                 </div>
             </div>
 
             <!-- 3. 로딩 화면 -->
-            <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center">
+            <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center fade-in">
                 <div class="loader"></div>
                 <div class="space-y-1">
-                    <h3 class="font-bold text-gray-800 text-base">연애 성향 분석 중...</h3>
-                    <p class="text-xs text-gray-400">당신의 연애 성향 유형을 계산하고 있습니다</p>
+                    <h3 class="text-base font-bold text-gray-800">연애 성향 데이터를 분석하고 있어요</h3>
+                    <p class="text-xs text-gray-400">나의 숨겨진 연애 DNA를 확인하는 중...</p>
                 </div>
+            </div>
+
+            <!-- 4. 결과 화면 -->
+            <div id="screen-result" class="hidden space-y-6 fade-in pb-6">
+                
+                <!-- 상단 결과 헤더 -->
+                <div class="text-center space-y-2 pt-2">
+                    <span id="result-type-badge" class="badge-tag bg-rose-50 text-rose-600">TYPE 01</span>
+                    <div id="result-emoji" class="text-5xl py-1">🎋</div>
+                    <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
+                        냉철한 현실 분석가
+                    </h2>
+                    <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-rose-500">
+                        #논리왕 #츤데레 #실질적도움
+                    </div>
+                </div>
+
+                <!-- 한줄 요약 -->
+                <div class="callout-box">
+                    <p id="result-summary" class="text-xs font-bold text-rose-900 leading-relaxed !mb-0">
+                        한줄 요약이 여기에 표시됩니다.
+                    </p>
+                </div>
+
+                <!-- 3대 핵심 연애 특징 -->
+                <div class="result-card space-y-2.5">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
+                        <span>나의 연애 핵심 특징</span>
+                    </h3>
+                    <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
+                        <!-- 동적 삽입 -->
+                    </div>
+                </div>
+
+                <!-- 강점 vs 주의점 (2열) -->
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
+                        <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
+                            <span>✨</span> <span>연애할 때 강점</span>
+                        </span>
+                        <p id="result-strength" class="text-xs text-emerald-950 leading-relaxed">
+                            -
+                        </p>
+                    </div>
+                    <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
+                        <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
+                            <span>⚠️</span> <span>주의할 점</span>
+                        </span>
+                        <p id="result-weakness" class="text-xs text-rose-950 leading-relaxed">
+                            -
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 찰떡궁합 vs 파국궁합 -->
+                <div class="result-card space-y-2.5">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-purple-500 rounded-full"></span>
+                        <span>궁합 케미스트리</span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <div class="p-3 bg-purple-50/60 rounded-xl border border-purple-100 text-center">
+                            <span class="text-[10px] font-bold text-purple-700 block">💖 환상의 짝꿍</span>
+                            <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">낭만적인 사랑꾼</span>
+                            <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">내 차가움을 녹여주는 온기</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                            <span class="text-[10px] font-bold text-gray-500 block">⚡ 주의할 짝꿍</span>
+                            <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">열정적인 직진러</span>
+                            <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">서로 고집부리다 충돌</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 쿠팡 파트너스 아이템 -->
+                <div class="p-4 bg-amber-50/60 rounded-2xl border border-amber-100 space-y-2">
+                    <span class="text-xs font-bold text-amber-900">연인과 더 깊어지는 추천 아이템</span>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <a href="https://link.coupang.com/a/glroDWTH3Y" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block">
+                            <span class="block text-xs font-bold text-gray-800">커플 백문백답</span>
+                            <span class="text-[10px] text-gray-500">서로를 알아가는 100문항</span>
+                        </a>
+                        <a href="https://link.coupang.com/a/glroDWTH3Y" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block">
+                            <span class="block text-xs font-bold text-gray-800">커플 대화카드</span>
+                            <span class="text-[10px] text-gray-500">속마음 나누기 질문카드</span>
+                        </a>
+                    </div>
+                    <p class="text-[9px] text-gray-400 text-center pt-0.5">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+                </div>
+
+                <!-- [커뮤니티] 실시간 참여자 후기 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-3.5 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                        <div class="space-y-0.5">
+                            <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
+                                <span class="w-1.5 h-3.5 bg-rose-600 rounded-full"></span>
+                                <span>참여자 실시간 톡 & 후기</span>
+                            </h3>
+                            <p class="text-[11px] text-gray-400">내 연애 유형과 솔직한 소감을 자유롭게 나눠보세요</p>
+                        </div>
+                    </div>
+
+                    <!-- 댓글 입력창 -->
+                    <div class="space-y-2 bg-gray-50/80 p-3 rounded-xl border border-gray-100">
+                        <div class="flex space-x-2">
+                            <input type="text" id="comment-nickname" placeholder="닉네임" class="w-1/3 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500">
+                            <input type="text" id="comment-text" placeholder="한줄 후기를 남겨보세요!" class="flex-1 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500" onkeydown="if(event.key==='Enter') submitComment()">
+                            <button onclick="submitComment()" class="px-4 py-2.5 bg-rose-600 active:scale-95 text-white font-bold text-xs rounded-lg hover:bg-rose-700 transition-all">등록</button>
+                        </div>
+                    </div>
+
+                    <!-- 실시간 댓글 목록 -->
+                    <div id="comment-list" class="space-y-2 pt-1"></div>
+                </div>
+
+                <!-- 공유 & 다른 테스트 버튼 -->
+                <div class="space-y-2.5 pt-2">
+                    <button onclick="shareResult()" class="w-full bg-rose-500 hover:bg-rose-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                        <span>카톡 / 인스타로 내 결과 공유하기</span>
+                    </button>
+                    
+                    <button onclick="location.href='../destiny-match.html'" class="w-full bg-purple-50 text-purple-600 font-bold py-3.5 rounded-xl text-sm border border-purple-100 hover:bg-purple-100 transition-all">
+                        운명의 붉은 실 사주 궁합 보러가기 →
+                    </button>
+                    
+                    <button onclick="restartTest()" class="w-full bg-gray-50 text-gray-500 font-bold py-3.5 rounded-xl text-sm border border-gray-200/80 hover:bg-gray-100 transition-all">
+                        테스트 다시하기 ↺
+                    </button>
+                </div>
+
             </div>
 
         </main>
@@ -167,90 +289,493 @@
     </div>
 
     <script>
-        var questions = [
-            { q: "주말 데이트, 선호하는 방식은?", a: "동선과 맛집 예약까지 완벽하게 계획된 데이트", b: "그날의 날씨와 기분에 따라 발길 닿는 대로" },
-            { q: "연인과 다퉜을 때 나는?", a: "논리적으로 잘잘못을 따져 해결책을 찾는다", b: "일단 서로의 상한 기분부터 풀어준다" },
-            { q: "기념일 선물, 무엇이 더 좋을까?", a: "평소 갖고 싶었던 실용적인 전자기기나 물건", b: "정성이 담긴 손편지와 낭만적인 꽃다발" },
-            { q: "힘든 하루를 보낸 연인에게?", a: "\"무슨 일 있었어?\" 상황을 듣고 해결책 제시", b: "\"오늘 정말 고생 많았어\" 따뜻한 위로와 공감" },
-            { q: "여행 짐을 쌀 때 나는?", a: "체크리스트를 만들어 꼼꼼하게 챙긴다", b: "필요한 건 가서 사면 되지! 중요 물품만 챙긴다" },
-            { q: "식당 메뉴를 고를 때 나는?", a: "별점과 후기를 분석해서 실패를 줄인다", b: "메뉴판 사진이나 직관적인 느낌으로 고른다" },
-            { q: "갑자기 생긴 여유 시간?", a: "미뤄뒀던 할 일을 처리하거나 생산적으로 보낸다", b: "침대에서 뒹굴거리거나 멍하니 휴식한다" },
-            { q: "대화 중 침묵이 흐를 때?", a: "어색함을 없애려 새로운 대화 주제를 꺼낸다", b: "침묵 또한 편안한 분위기로 즐긴다" },
-            { q: "약속 시간에 연인이 늦는다면?", a: "\"지금 어디야? 몇 분 도착이야?\" 정확히 묻는다", b: "\"천천히 조심히 와~\" 하고 느긋하게 기다린다" },
-            { q: "영화를 선택하는 기준은?", a: "스토리 개연성과 평론가 평점", b: "영상미, 음악, 배우의 연기, 분위기" },
-            { q: "미래에 대해 이야기할 때?", a: "저축, 주거 계획 등 현실적인 이야기", b: "우리가 함께 할 행복한 순간들과 꿈같은 이야기" },
-            { q: "연인이 새 옷을 입었을 때?", a: "\"오, 재질 좋네. 얼마 줬어?\"", b: "\"우와! 오늘 분위기 너무 좋다. 정말 예쁘다!\"" },
-            { q: "더블 데이트 제안?", a: "둘만의 오붓한 시간이 더 좋다 (내향적)", b: "여럿이 함께 노는 게 더 신난다 (외향적)" },
-            { q: "고민이 생겼을 때?", a: "혼자 깊이 생각하고 결론을 내린 뒤 말한다", b: "일단 연인에게 털어놓고 함께 이야기한다" },
-            { q: "나의 사랑 표현 방식은?", a: "상대방을 챙겨주는 행동과 실질적 배려", b: "사랑한다는 따뜻한 말과 스킨십" },
-            { q: "함께 살 집을 고를 때?", a: "역세권, 투자가치, 인프라를 분석한다", b: "채광, 인테리어 분위기, 뷰를 중요시한다" },
-            { q: "로또 1등에 당첨된다면?", a: "저축, 투자, 대출 상환 계획부터 세운다", b: "세계 일주나 멋진 차를 사는 상상을 먼저 한다" },
-            { q: "연인에게 서운한 점이 있다면?", a: "이유와 상황을 논리적으로 설명한다", b: "나의 감정이 어땠는지 표정이나 말투로 표현한다" },
-            { q: "데이트 중 길을 잃었다면?", a: "지도 앱을 켜고 최단 경로를 검색한다", b: "이것도 추억이지! 주변 풍경을 구경하며 걷는다" },
-            { q: "연인이 엉뚱한 상상을 말할 때?", a: "\"그게 물리적으로 가능해?\" 현실적인 답변", b: "\"대박! 그럼 우리 우주로 가는 거야?\" 맞장구" }
+        // 12문항 질문 데이터 (E/I, S/N, T/F, J/P 밸런스)
+        const QUESTIONS = [
+            {
+                q: "주말 데이트를 앞둔 금요일 저녁, 나의 기분은?",
+                cat: "데이트 스타일",
+                a: [
+                    { text: "사람 많은 핫플레이스나 축제 갈 생각에 벌써부터 신난다!", scores: { E: 2, I: 0 } },
+                    { text: "조용하고 아늑한 곳에서 둘만의 시간을 보내고 싶다.", scores: { E: 0, I: 2 } }
+                ]
+            },
+            {
+                q: "연인과 길을 걷다 분위기 좋은 카페를 발견했다면?",
+                cat: "데이트 코스",
+                a: [
+                    { text: "즉흥적으로 '여기 예쁘다! 당장 들어가보자!' 한다.", scores: { J: 0, P: 2 } },
+                    { text: "원래 가기로 계획했던 곳이 있으니 일단 거기로 간다.", scores: { J: 2, P: 0 } }
+                ]
+            },
+            {
+                q: "연인이 '오늘 회사/학교에서 너무 힘들었어...'라고 울먹일 때 나의 반응은?",
+                cat: "공감 & 리액션",
+                a: [
+                    { text: "'무슨 일 있었어? 누가 널 힘들게 했어!' 폭풍 공감과 위로를 건넨다.", scores: { T: 0, F: 2 } },
+                    { text: "상황을 먼저 파악하고, 실질적인 해결책이나 조언을 고민한다.", scores: { T: 2, F: 0 } }
+                ]
+            },
+            {
+                q: "연인이 갑자기 '내가 왜 좋아?'라고 물어본다면?",
+                cat: "애정 표현",
+                a: [
+                    { text: "같이 있을 때 느껴지는 분위기와 감정, 따스함을 솔직하게 말해준다.", scores: { S: 0, N: 2 } },
+                    { text: "예의 바르고 성실한 점, 옷 잘 입는 점 등 구체적인 이유를 든다.", scores: { S: 2, N: 0 } }
+                ]
+            },
+            {
+                q: "연인과 사소한 의견 차이로 다투게 되었을 때 나의 행동은?",
+                cat: "갈등 해결",
+                a: [
+                    { text: "감정이 상하더라도 왜 그런 일이 생겼는지 논리적으로 시시비비를 가린다.", scores: { T: 2, F: 0 } },
+                    { text: "누가 맞고 틀리고를 떠나 상대방의 상한 마음을 먼저 풀어주고 싶다.", scores: { T: 0, F: 2 } }
+                ]
+            },
+            {
+                q: "연인과 1박 2일 여행을 떠나기로 했다면?",
+                cat: "여행 스타일",
+                a: [
+                    { text: "숙소, 맛집, 동선, 예비 플랜 B까지 완벽하게 계획을 짜둔다.", scores: { J: 2, P: 0 } },
+                    { text: "숙소만 대충 잡고, 그날그날 기분과 날씨에 따라 유동적으로 움직인다.", scores: { J: 0, P: 2 } }
+                ]
+            },
+            {
+                q: "연인의 친구 모임에 함께 가자는 제안을 받았을 때 나는?",
+                cat: "사교성",
+                a: [
+                    { text: "새로운 사람들과 어울려 분위기를 띄우며 금방 친해진다.", scores: { E: 2, I: 0 } },
+                    { text: "어색하고 기 빨릴 것 같아 조금 망설여지지만 연인을 위해 간다.", scores: { E: 0, I: 2 } }
+                ]
+            },
+            {
+                q: "선물을 고를 때 내가 더 중요하게 생각하는 것은?",
+                cat: "선물 가치관",
+                a: [
+                    { text: "상대방에게 지금 당장 꼭 필요한 실용적이고 오래 쓸 수 있는 물건.", scores: { S: 2, N: 0 } },
+                    { text: "둘만의 추억이 담겼거나 감동을 줄 수 있는 특별한 의미의 선물.", scores: { S: 0, N: 2 } }
+                ]
+            },
+            {
+                q: "연락 문제로 서운함이 생겼을 때 나는?",
+                cat: "연락 스타일",
+                a: [
+                    { text: "혼자 삭히기보다는 '이런 부분은 맞춰줬으면 좋겠어'라고 바로 이야기한다.", scores: { E: 1, T: 1 } },
+                    { text: "상대방의 상황이 바쁜가 보다 생각하며 일단 조용히 지켜본다.", scores: { I: 1, F: 1 } }
+                ]
+            },
+            {
+                q: "데이트가 끝나고 집에 돌아가는 길, 나의 생각은?",
+                cat: "에너지 충전",
+                a: [
+                    { text: "'오늘 하루 너무 알찼다!' 집에 가서 혼자 침대에 누워 푹 쉬고 싶다.", scores: { I: 2, E: 0 } },
+                    { text: "'벌써 헤어지다니 너무 아쉽다...' 카톡이나 통화를 계속 이어가고 싶다.", scores: { E: 2, I: 0 } }
+                ]
+            },
+            {
+                q: "연인과 기념일을 보낼 때 내가 더 선호하는 방식은?",
+                cat: "기념일",
+                a: [
+                    { text: "유명한 레스토랑을 미리 예약하고 정해진 코스대로 완벽하게 즐기기.", scores: { J: 2, P: 0 } },
+                    { text: "분위기에 맞춰 즉흥적으로 맛있는 거 먹고 드라이브 떠나기.", scores: { J: 0, P: 2 } }
+                ]
+            },
+            {
+                q: "내가 생각하는 가장 이상적인 연애의 모습은?",
+                cat: "연애관",
+                a: [
+                    { text: "서로에게 든든한 안정감과 신뢰를 주는 든든한 동반자 같은 연애.", scores: { T: 1, J: 1 } },
+                    { text: "서로의 마음에 깊이 공감하고 매일이 설레는 로맨틱한 연애.", scores: { F: 1, P: 1 } }
+                ]
+            }
         ];
 
-        var currentStep = 0;
-        var score = 0;
+        // 8가지 연애 캐릭터 데이터
+        const LOVE_TYPES = [
+            {
+                id: 1,
+                name: "냉철한 현실 분석가",
+                badge: "TYPE 01",
+                emoji: "🎋",
+                tags: ["#논리왕", "#츤데레", "#실질적도움", "#약속칼"],
+                summary: "말뿐인 위로보다 실질적인 행동과 팩트로 상대를 지켜주는 든든한 해결사 타입!",
+                features: [
+                    "감정에 휘둘리지 않고 상황을 객관적으로 분석해 현명한 길을 제시합니다.",
+                    "한번 신뢰를 주면 흔들림 없이 약속을 칼같이 지키는 책임감의 화신입니다.",
+                    "겉은 무뚝뚝해 보여도 뒤에서 상대방의 모든 일정을 챙겨주는 츤데레입니다."
+                ],
+                strength: "높은 신뢰도, 흔들리지 않는 멘탈, 실질적인 문제 해결 능력",
+                weakness: "감정 공감 표현이 서툴러 상대방이 서운해할 수 있음",
+                bestMatch: "낭만적인 사랑꾼",
+                bestDesc: "나의 차가움을 녹여주는 따뜻한 온기",
+                badMatch: "열정적인 직진러",
+                badDesc: "서로 자존심과 고집 충돌 주의"
+            },
+            {
+                id: 2,
+                name: "낭만 가득 사랑꾼",
+                badge: "TYPE 02",
+                emoji: "🌸",
+                tags: ["#감성충만", "#사랑폭발", "#리액션부자", "#올인형"],
+                summary: "좋아하면 온 세상이 그 사람으로 가득 차는 사랑 넘치는 로맨티시스트!",
+                features: [
+                    "사소한 기념일과 취향도 놓치지 않고 감동적인 이벤트를 선물합니다.",
+                    "상대방의 말 한마디에 세상에서 가장 밝은 리액션으로 행복을 줍니다.",
+                    "마음을 숨기지 않고 아낌없이 애정을 표현하는 사랑스러운 연인입니다."
+                ],
+                strength: "풍부한 애정 표현, 섬세한 공감 능력, 연인을 빛나게 하는 힘",
+                weakness: "사소한 상대방의 반응 변화에 혼자 상처받기 쉬움",
+                bestMatch: "냉철한 현실 분석가",
+                bestDesc: "내 넘치는 감정을 든든하게 잡아주는 기둥",
+                badMatch: "쿨한 마이웨이",
+                badDesc: "표현 부족으로 혼자 서운함 폭발"
+            },
+            {
+                id: 3,
+                name: "다정다감 평화주의자",
+                badge: "TYPE 03",
+                emoji: "🌾",
+                tags: ["#배려왕", "#눈치백단", "#따뜻한온기", "#항상내편"],
+                summary: "상대방의 마음을 귀신같이 읽고 항상 편안하게 감싸주는 포용력 100% 힐러!",
+                features: [
+                    "갈등이 생기면 먼저 양보하고 부드럽게 관계의 균형을 맞춥니다.",
+                    "상대방이 힘들 때 묵묵히 옆을 지키며 세상에서 가장 든든한 내 편이 되어줍니다.",
+                    "남들은 모르는 연인의 작은 디테일까지 기억하고 챙겨주는 다정함이 있습니다."
+                ],
+                strength: "뛰어난 배려심, 편안한 안정감, 상대방을 치유하는 온기",
+                weakness: "자기 속마음과 서운함을 꾹 참다가 한 번에 방전될 수 있음",
+                bestMatch: "열정적인 직진러",
+                bestDesc: "우유부단할 때 확실하게 리드해주는 파트너",
+                badMatch: "자유로운 모험가",
+                badDesc: "맞춰주기만 하다가 지칠 위험"
+            },
+            {
+                id: 4,
+                name: "열정 불꽃 직진러",
+                badge: "TYPE 04",
+                emoji: "⚡",
+                tags: ["#카리스마", "#리더십", "#추진력갑", "#심쿵리드"],
+                summary: "좋아하면 앞뒤 안 재고 직진! 데이트도 연애도 확실하게 리드하는 행동파!",
+                features: [
+                    "밀당을 극도로 싫어하며, 호감이 생기면 당당하고 솔직하게 다가갑니다.",
+                    "데이트 코스나 결정을 시원시원하게 이끌어 상대방을 편하게 만듭니다.",
+                    "연인의 성장을 진심으로 응원하며 함께 더 멋진 미래를 만들어갑니다."
+                ],
+                strength: "자신감 넘치는 매력, 확실한 추진력, 든든한 리더십",
+                weakness: "성격이 급해 상대방의 페이스를 놓칠 때가 있음",
+                bestMatch: "다정다감 평화주의자",
+                bestDesc: "내 불꽃 같은 열정을 부드럽게 품어주는 짝꿍",
+                badMatch: "냉철한 현실 분석가",
+                badDesc: "서로 주도권 싸움으로 번질 위험"
+            },
+            {
+                id: 5,
+                name: "쿨한 마이웨이 독립파",
+                badge: "TYPE 05",
+                emoji: "☕",
+                tags: ["#쿨함", "#개인시간존중", "#솔직담백", "#집착금지"],
+                summary: "집착과 구속은 NO! 서로의 영역을 존중하며 담백하게 사랑하는 쿨 연애러!",
+                features: [
+                    "연애를 해도 각자의 취미와 개인 시간을 건강하게 지키는 것을 중시합니다.",
+                    "감정적인 줄다리기 없이 솔직 담백하게 의사소통합니다.",
+                    "함께 맛있는 음식을 먹고 편안하게 드라이브하는 소소한 힐링을 좋아합니다."
+                ],
+                strength: "부담 없는 편안함, 쿨하고 깔끔한 관계, 신뢰 기반 연애",
+                weakness: "연락이나 표현이 적어 상대방이 불안해할 수 있음",
+                bestMatch: "유쾌한 티키타카 메이커",
+                bestDesc: "적당한 거리감과 재미를 함께 유지하는 파트너",
+                badMatch: "낭만 가득 사랑꾼",
+                badDesc: "애정 표현 빈도 차이로 갈등 발생"
+            },
+            {
+                id: 6,
+                name: "유쾌한 티키타카 메이커",
+                badge: "TYPE 06",
+                emoji: "🎭",
+                tags: ["#텐션업", "#지루할틈없음", "#위트", "#데이트장인"],
+                summary: "함께 있으면 하루 종일 웃음이 끊이지 않는 유쾌하고 매력적인 분위기 메이커!",
+                features: [
+                    "재치 있는 대화와 센스 넘치는 유머로 둘만의 시간을 지루할 틈 없이 만듭니다.",
+                    "이색 맛집, 핫플레이스 등 신선하고 재미있는 데이트를 기획하는 달인입니다.",
+                    "연인의 우울한 기분을 단 5분 만에 웃음으로 바꿔주는 비타민입니다."
+                ],
+                strength: "높은 친화력, 넘치는 유머 감각, 항상 즐거운 데이트 분위기",
+                weakness: "진지한 대화가 필요할 때 장난으로 넘기려 할 수 있음",
+                bestMatch: "쿨한 마이웨이 독립파",
+                bestDesc: "서로 부담 없이 유쾌하게 웃을 수 있는 케미",
+                badMatch: "든든한 수호천사",
+                badDesc: "진지함과 가벼움의 템포 차이"
+            },
+            {
+                id: 7,
+                name: "든든한 수호천사",
+                badge: "TYPE 07",
+                emoji: "🛡️",
+                tags: ["#책임감", "#안정감", "#진솔함", "#평생내사람"],
+                summary: "어떤 폭풍우가 와도 흔들리지 않고 내 사람의 울타리가 되어주는 헌신형!",
+                features: [
+                    "말보다는 행동으로 사랑을 증명하며, 연인의 안전과 행복을 최우선으로 여깁니다.",
+                    "미래에 대한 구체적인 계획을 세우고 차근차근 안정적인 관계를 구축합니다.",
+                    "시간이 지날수록 진가가 드러나는 진국 중의 진국 스타일입니다."
+                ],
+                strength: "완벽한 신뢰감, 헌신적인 사랑, 미래 지향적인 안정감",
+                weakness: "변화에 보수적이고 규칙을 지나치게 고수할 때가 있음",
+                bestMatch: "포근한 감성 예술가",
+                bestDesc: "나의 굳건한 울타리 안에서 피어나는 감성 파트너",
+                badMatch: "유쾌한 티키타카 메이커",
+                badDesc: "즉흥적인 태도에 스트레스 받을 수 있음"
+            },
+            {
+                id: 8,
+                name: "포근한 감성 예술가",
+                badge: "TYPE 08",
+                emoji: "🎨",
+                tags: ["#취향존중", "#신비로움", "#깊은교감", "#영혼의단짝"],
+                summary: "눈빛만 봐도 통하는 깊은 영혼의 교감을 추구하는 따뜻하고 섬세한 아티스트!",
+                features: [
+                    "표면적인 조건보다 상대방의 진정한 가치관과 내면의 깊이를 사랑합니다.",
+                    "전시회, 감성 음악, 조용한 공간에서 둘만의 깊은 대화를 나눌 때 행복을 느낍니다.",
+                    "연인의 독특한 개성과 취향을 세상에서 가장 아름답게 바라봐 줍니다."
+                ],
+                strength: "깊은 정신적 교감, 예술적 감수성, 상대방의 자존감을 높여주는 능력",
+                weakness: "현실적인 문제 앞에서 회피하거나 스트레스를 크게 받음",
+                bestMatch: "든든한 수호천사",
+                bestDesc: "나의 감성을 현실에서 든든하게 지켜주는 수호자",
+                badMatch: "다정다감 평화주의자",
+                badDesc: "둘 다 결정을 못 내려 답답해질 수 있음"
+            }
+        ];
 
-        function getEl(id) { return document.getElementById(id); }
-        function checkEnter(e) { if (e.key === "Enter") startTest(); }
+        let currentQuestion = 0;
+        let userScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
 
         function startTest() {
-            var name = getEl("input-name").value.trim();
-            if (!name) { alert("이름 또는 닉네임을 입력해주세요!"); return; }
-            currentStep = 0; score = 0;
-            getEl("screen-start").classList.add("hidden");
-            getEl("progress-container").classList.remove("hidden");
-            getEl("screen-q").classList.remove("hidden");
-            getEl("screen-q").classList.add("flex");
+            document.getElementById('screen-start').classList.add('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('screen-question').classList.remove('hidden');
+            currentQuestion = 0;
+            userScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
             renderQuestion();
         }
 
         function renderQuestion() {
-            var q = questions[currentStep];
-            var progress = ((currentStep + 1) / questions.length) * 100;
-            getEl("progress-bar").style.width = progress + "%";
-            getEl("txt-q-num").innerText = "Q. " + (currentStep + 1) + " / " + questions.length;
-            getEl("txt-q").innerText = q.q;
-            getEl("txt-a").innerText = q.a;
-            getEl("txt-b").innerText = q.b;
+            const q = QUESTIONS[currentQuestion];
+            const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('question-number').textContent = `Q${currentQuestion + 1} / ${QUESTIONS.length}`;
+            document.getElementById('question-category').textContent = q.cat;
+            document.getElementById('question-text').textContent = q.q;
+
+            const answersContainer = document.getElementById('answers-container');
+            answersContainer.innerHTML = '';
+
+            q.a.forEach((ans, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full p-4 text-left text-xs font-semibold text-gray-700 bg-gray-50/80 hover:bg-rose-50/60 hover:text-rose-700 hover:border-rose-300 rounded-2xl border border-gray-200/80 active:scale-[0.99] transition-all flex items-center justify-between group';
+                btn.innerHTML = `
+                    <span class="leading-relaxed break-keep pr-2">${ans.text}</span>
+                    <span class="w-5 h-5 rounded-full border border-gray-300 group-hover:border-rose-500 group-hover:bg-rose-500 flex items-center justify-center text-white text-[10px] flex-none">→</span>
+                `;
+                btn.onclick = () => selectAnswer(ans.scores);
+                answersContainer.appendChild(btn);
+            });
         }
 
-        function next(type) {
-            if (type === 'B') score++;
-            currentStep++;
-            if (currentStep < questions.length) { 
-                setTimeout(renderQuestion, 150); 
-            } else { 
-                finish(); 
+        function selectAnswer(scores) {
+            for (let key in scores) {
+                userScores[key] += scores[key];
+            }
+
+            currentQuestion++;
+            if (currentQuestion < QUESTIONS.length) {
+                renderQuestion();
+            } else {
+                showLoading();
             }
         }
 
-        function finish() {
-            getEl("screen-q").classList.add("hidden");
-            getEl("screen-q").classList.remove("flex");
-            getEl("progress-container").classList.add("hidden");
-            getEl("screen-loading").classList.remove("hidden");
-            getEl("screen-loading").classList.add("flex");
+        function showLoading() {
+            document.getElementById('screen-question').classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            document.getElementById('screen-loading').classList.remove('hidden');
+            document.getElementById('screen-loading').classList.add('flex');
 
-            var typeKey = "Type4";
-            if (score <= 2) typeKey = "Type1";      
-            else if (score <= 5) typeKey = "Type2"; 
-            else if (score <= 8) typeKey = "Type3"; 
-            else if (score <= 10) typeKey = "Type4";
-            else if (score <= 12) typeKey = "Type5";
-            else if (score <= 15) typeKey = "Type6";
-            else if (score <= 18) typeKey = "Type7";
-            else typeKey = "Type8";                  
-
-            setTimeout(function() { 
-                window.location.href = './' + typeKey + '.html'; 
-            }, 1200); 
+            setTimeout(() => {
+                calculateAndShowResult();
+            }, 1200);
         }
+
+        function calculateAndShowResult() {
+            document.getElementById('screen-loading').classList.add('hidden');
+            document.getElementById('screen-loading').classList.remove('flex');
+            document.getElementById('screen-result').classList.remove('hidden');
+
+            const isE = userScores.E >= userScores.I;
+            const isS = userScores.S >= userScores.N;
+            const isT = userScores.T >= userScores.F;
+            const isJ = userScores.J >= userScores.P;
+
+            // MBTI 매핑으로 8가지 연애 캐릭터 매칭
+            let typeIdx = 0;
+            if (isT && isJ) typeIdx = 0; // 냉철한 현실 분석가
+            else if (isF && isP && isE) typeIdx = 1; // 낭만 가득 사랑꾼
+            else if (isF && isJ) typeIdx = 2; // 다정다감 평화주의자
+            else if (isT && isP && isE) typeIdx = 3; // 열정 불꽃 직진러
+            else if (isT && isP && !isE) typeIdx = 4; // 쿨한 마이웨이
+            else if (isE && isP) typeIdx = 5; // 유쾌한 티키타카
+            else if (isS && isJ) typeIdx = 6; // 든든한 수호천사
+            else typeIdx = 7; // 포근한 감성 예술가
+
+            const typeData = LOVE_TYPES[typeIdx];
+
+            document.getElementById('result-type-badge').textContent = typeData.badge;
+            document.getElementById('result-emoji').textContent = typeData.emoji;
+            document.getElementById('result-title').textContent = typeData.name;
+            document.getElementById('result-tags').innerHTML = typeData.tags.map(t => `<span class="bg-rose-50 px-2 py-0.5 rounded-md">${t}</span>`).join('');
+            document.getElementById('result-summary').textContent = typeData.summary;
+
+            const featuresContainer = document.getElementById('result-features');
+            featuresContainer.innerHTML = typeData.features.map(f => `
+                <div class="flex items-start space-x-2">
+                    <span class="text-rose-500 font-bold">•</span>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('result-strength').textContent = typeData.strength;
+            document.getElementById('result-weakness').textContent = typeData.weakness;
+            document.getElementById('result-best-match').textContent = typeData.bestMatch;
+            document.getElementById('result-best-desc').textContent = typeData.bestDesc;
+            document.getElementById('result-bad-match').textContent = typeData.badMatch;
+            document.getElementById('result-bad-desc').textContent = typeData.badDesc;
+
+            renderComments();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function restartTest() {
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById('screen-start').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 커뮤니티 댓글 시스템 (실제 작성 댓글 전용)
+        function getStoredComments(key) {
+            const stored = localStorage.getItem('test_comments_' + key);
+            if (stored) {
+                try { return JSON.parse(stored); } catch(e) {}
+            }
+            return [];
+        }
+
+        function renderComments() {
+            const list = document.getElementById('comment-list');
+            if (!list) return;
+            const comments = getStoredComments('love_type');
+            list.innerHTML = '';
+
+            if (comments.length === 0) {
+                list.innerHTML = '<div class="p-6 text-center text-xs text-gray-400">아직 등록된 후기가 없습니다.<br>첫 번째 솔직한 연애 유형 후기를 남겨보세요!</div>';
+                return;
+            }
+
+            comments.forEach((c, idx) => {
+                const item = document.createElement('div');
+                item.className = 'p-3 bg-gray-50/70 rounded-xl border border-gray-100 space-y-1';
+                item.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-gray-800">${c.nick}</span>
+                        <span class="text-[10px] text-gray-400">${c.time}</span>
+                    </div>
+                    <p class="text-xs text-gray-700 leading-snug break-keep">${c.text}</p>
+                    <div class="flex justify-end pt-0.5">
+                        <button onclick="likeComment('love_type', ${idx})" class="text-[10px] text-gray-400 hover:text-rose-600 flex items-center space-x-1">
+                            <span>공감</span>
+                            <span class="font-bold">${c.likes || 0}</span>
+                        </button>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function submitComment() {
+            const nickEl = document.getElementById('comment-nickname');
+            const textEl = document.getElementById('comment-text');
+
+            const nick = nickEl.value.trim() || '익명';
+            const text = textEl.value.trim();
+
+            if (!text) { alert('후기 내용을 입력해주세요!'); return; }
+
+            const comments = getStoredComments('love_type');
+            comments.unshift({
+                nick: nick,
+                time: '방금 전',
+                text: text,
+                likes: 0
+            });
+
+            localStorage.setItem('test_comments_love_type', JSON.stringify(comments));
+            textEl.value = '';
+            renderComments();
+            alert('소중한 후기가 등록되었습니다!');
+        }
+
+        function likeComment(key, idx) {
+            const comments = getStoredComments(key);
+            if (comments[idx]) {
+                comments[idx].likes = (comments[idx].likes || 0) + 1;
+                localStorage.setItem('test_comments_' + key, JSON.stringify(comments));
+                renderComments();
+            }
+        }
+
+        function shareResult() {
+            const url = window.location.href;
+            const title = '나의 연애 유형 테스트 결과';
+            const text = '내 연애 유형 분석 결과 나왔어! 너의 연애 스타일도 확인해봐!';
+
+            if (navigator.share) {
+                navigator.share({ title: title, text: text, url: url }).catch(() => {});
+            } else {
+                const dummy = document.createElement('textarea');
+                document.body.appendChild(dummy);
+                dummy.value = `${text}\n${url}`;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
+            }
+        }
+
+        // URL 파라미터로 특정 Type 직접 진입 지원 (?type=1)
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const typeParam = parseInt(params.get('type'));
+            if (typeParam >= 1 && typeParam <= 8) {
+                document.getElementById('screen-start').classList.add('hidden');
+                document.getElementById('screen-result').classList.remove('hidden');
+                const typeData = LOVE_TYPES[typeParam - 1];
+                document.getElementById('result-type-badge').textContent = typeData.badge;
+                document.getElementById('result-emoji').textContent = typeData.emoji;
+                document.getElementById('result-title').textContent = typeData.name;
+                document.getElementById('result-tags').innerHTML = typeData.tags.map(t => `<span class="bg-rose-50 px-2 py-0.5 rounded-md">${t}</span>`).join('');
+                document.getElementById('result-summary').textContent = typeData.summary;
+                document.getElementById('result-features').innerHTML = typeData.features.map(f => `
+                    <div class="flex items-start space-x-2">
+                        <span class="text-rose-500 font-bold">•</span>
+                        <span>${f}</span>
+                    </div>
+                `).join('');
+                document.getElementById('result-strength').textContent = typeData.strength;
+                document.getElementById('result-weakness').textContent = typeData.weakness;
+                document.getElementById('result-best-match').textContent = typeData.bestMatch;
+                document.getElementById('result-best-desc').textContent = typeData.bestDesc;
+                document.getElementById('result-bad-match').textContent = typeData.badMatch;
+                document.getElementById('result-bad-desc').textContent = typeData.badDesc;
+                renderComments();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-

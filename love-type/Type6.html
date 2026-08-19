@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
@@ -14,13 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
 
-    <meta name="description" content="낭만적인 사랑꾼 타입의 연애 DNA 결과입니다. 궁합과 갈등 유형을 확인하고 친구에게 공유해보세요.">    
-    <meta name="description" content="나의 연애 DNA는 '낭만적인 사랑꾼'입니다. 당신의 연애 성향을 확인해보세요!">
+    <meta name="description" content="낭만적인 사랑꾼 타입의 연애 유형 결과입니다. 궁합과 갈등 유형을 확인하고 친구에게 공유해보세요.">    
+    <meta name="description" content="나의 연애 유형는 '낭만적인 사랑꾼'입니다. 당신의 연애 성향을 확인해보세요!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testmoeum.vercel.app/love-type/Type6.html">
-    <meta property="og:title" content="[결과] 내 연애 DNA는 '낭만적인 사랑꾼' 🌹">
+    <meta property="og:title" content="[결과] 나의 연애 유형는 '낭만적인 사랑꾼' 🌹">
     <meta property="og:description" content="나랑 환상의 궁합은 '냉철한 분석가'래! 너도 빨리 테스트해봐 👇">
-    <meta property="og:image" content="https://couple-dna.shop/main-thumb.png">
+    <meta property="og:image" content="https://testmoeum.vercel.app/main-thumb.png">
     <title>결과 - 낭만적인 사랑꾼</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,7 +54,7 @@
                 <div class="space-y-2">
                     <span class="inline-block px-3 py-1 bg-rose-100 text-rose-500 text-[10px] font-bold rounded-full tracking-wider">LOVE TYPE TEST</span>
                     <h1 class="text-2xl font-bold text-gray-800 leading-tight">
-                        <span class="text-rose-500">우리 커플</span>의<br>연애 DNA
+                        <span class="text-rose-500">나의</span><br>연애 유형
                     </h1>
                 </div>
         <div class="flex-1 overflow-y-auto hide-scroll p-6 relative flex flex-col items-center">
@@ -141,7 +141,7 @@
                     </p>
                 </div>
                 
-                <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">https://couple-dna.shop/Type6.html</div>
+                <div id="url-watermark" class="hidden text-[10px] text-rose-300 font-medium mt-2">https://testmoeum.vercel.app/Type6.html</div>
             </div>
 
             <div class="w-full space-y-3 mt-4 pb-8">
@@ -173,8 +173,8 @@
         const CURRENT_TYPE = "낭만적인 사랑꾼";
         const GOOD_TYPE = "냉철한 분석가";
         const BAD_TYPE = "현실적인 밸런서";
-        const CURRENT_URL = 'https://couple-dna.shop/Type6.html';
-        const TEST_URL = 'https://couple-dna.shop/index.html';
+        const CURRENT_URL = 'https://testmoeum.vercel.app/Type6.html';
+        const TEST_URL = 'https://testmoeum.vercel.app/index.html';
         
         function showMessage(message, isError = false) {
             const alertElement = document.getElementById('alert-message');
@@ -200,7 +200,7 @@
 
         function copyShareMessage(resultTitle) {
             const message = 
-`👫 내 연애 DNA는 [${resultTitle}]이야!
+`👫 나의 연애 유형는 [${resultTitle}]이야!
 
 우리 커플의 궁합 파트너는 ${GOOD_TYPE}이래!
 갈등 유형은 ${BAD_TYPE}이니까 조심해야겠어. 😅
@@ -248,8 +248,8 @@
                     if (navigator.canShare && navigator.canShare({ files: [file] })) {
                         navigator.share({
                             files: [file],
-                            title: '내 연애 DNA 결과',
-                            text: '우리 커플의 연애 DNA 테스트 결과야! 너도 한번 해봐 👇',
+                            title: '나의 연애 유형 결과',
+                            text: '우리 커플의 연애 유형 테스트 결과야! 너도 한번 해봐 👇',
                         })
                         .then(() => {
                             watermark.classList.add("hidden");

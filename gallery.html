@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>테스트모음 전체 캐릭터 도감 & 쇼케이스</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .tab-btn.active { background-color: #6366f1; color: #ffffff; border-color: #818cf8; }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- 상단 헤더 -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-4 text-center">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="/" class="text-xs font-bold text-slate-400 hover:text-white flex items-center space-x-1">
+                <span>← 홈으로</span>
+            </a>
+            <h1 class="text-base font-black text-white">테스트모음 캐릭터 공식 도감 (총 33종)</h1>
+            <span class="text-xs font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 px-2 py-0.5 rounded-full">v2.0</span>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 pt-6 space-y-6">
+        
+        <!-- 안내 배너 -->
+        <div class="bg-gradient-to-r from-indigo-900/40 via-purple-900/40 to-slate-900 p-5 rounded-2xl border border-indigo-500/30 text-center space-y-2">
+            <span class="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">캐릭터 퀄리티 검토 센터</span>
+            <h2 class="text-xl font-black text-white">플랫폼 전체 캐릭터 33종 쇼케이스</h2>
+            <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">
+                '몽글몽글 유령' 스타일로 정돈된 33종의 캐릭터 카드입니다. 이미지를 클릭하시면 크게 확대하여 세부 디테일을 확인하실 수 있습니다.
+            </p>
+        </div>
+
+        <!-- 카테고리 필터 탭 -->
+        <div class="flex flex-wrap gap-2 justify-center" id="tabs">
+            <button onclick="filterCategory('all')" class="tab-btn active px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                전체 보기 (33종)
+            </button>
+            <button onclick="filterCategory('halloween')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                🎃 할로윈 몬스터 (8종)
+            </button>
+            <button onclick="filterCategory('love')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                💖 연애 동물 (8종)
+            </button>
+            <button onclick="filterCategory('healing')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                🌿 힐링 성격 (4종)
+            </button>
+            <button onclick="filterCategory('dessert')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                🌕 한가위 디저트 (8종)
+            </button>
+            <button onclick="filterCategory('element')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-all">
+                🔮 사주 오행 (5종)
+            </button>
+        </div>
+
+        <!-- 캐릭터 카드 그리드 -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="card-grid">
+            <!-- JS 동적 생성 -->
+        </div>
+
+    </div>
+
+    <!-- 모달 (이미지 확대 뷰) -->
+    <div id="modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeModal()">
+        <div class="max-w-md w-full bg-slate-900 rounded-3xl p-6 border border-slate-700 text-center space-y-4 shadow-2xl" onclick="event.stopPropagation()">
+            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-slate-700 bg-slate-950">
+                <img id="modal-img" src="" alt="캐릭터" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <span id="modal-badge" class="text-[11px] font-bold text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20"></span>
+                <h3 id="modal-title" class="text-xl font-black text-white mt-1.5"></h3>
+                <p id="modal-desc" class="text-xs text-slate-400 mt-1"></p>
+            </div>
+            <button onclick="closeModal()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl border border-slate-600 transition-all">
+                닫기
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const CHARACTERS = [
+            // 1. 할로윈 (8종)
+            { cat: 'halloween', badge: 'HALLOWEEN 01', name: '꼬마 마녀', desc: '호기심 많고 엉뚱발랄한 마법 찹쌀떡', img: './img/monster-witch.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 02', name: '도도한 뱀파이어', desc: '시크한 매력 속 따뜻한 레드 망토', img: './img/monster-vampire.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 03', name: '몽글몽글 유령', desc: '이불 속 평화와 조용한 관찰자 (마스터피스)', img: './img/monster-ghost.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 04', name: '장난꾸러기 호박', desc: '어디서나 분위기를 띄우는 잭오랜턴', img: './img/monster-pumpkin.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 05', name: '츤데레 늑대인간', desc: '무뚝뚝하지만 내 사람만 챙기는 의리파', img: './img/monster-werewolf.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 06', name: '시크한 검은 고양이', desc: '반짝이는 골드 눈망울의 신비주의 냥이', img: './img/monster-cat.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 07', name: '엉뚱한 프랑켄', desc: '우직하고 순수한 민트 찹쌀떡', img: './img/monster-franken.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 08', name: '은둔형 미라', desc: '조용히 나만의 세계를 지키는 힐러', img: './img/monster-mummy.jpg' },
+
+            // 2. 연애 동물 (8종)
+            { cat: 'love', badge: 'LOVE TYPE 01', name: '현실 분석가 냥이', desc: '골드 안경을 쓴 스마트하고 시크한 화이트 냥이', img: './img/love-type1.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 02', name: '낭만 사랑꾼 곰돌이', desc: '핑크빛 미니 하트를 품은 포근한 곰돌이', img: './img/love-type2.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 03', name: '평화주의자 토끼', desc: '네잎클로버를 든 순수 핑크볼 토끼', img: './img/love-type3.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 04', name: '불꽃 직진 댕댕이', desc: '눈썹 점과 불꽃을 품은 솔직담백 시바견', img: './img/love-type4.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 05', name: '쿨 마이웨이 펭귄', desc: '엣지 선글라스를 낀 깔끔담백 펭귄', img: './img/love-type5.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 06', name: '티키타카 햄찌', desc: '파티 고깔모자를 쓴 장난꾸러기 비타민', img: './img/love-type6.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 07', name: '수호천사 사슴', desc: '레드 목도리를 두른 듬직한 신뢰 사슴', img: './img/love-type7.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 08', name: '감성 예술 여우', desc: '황금 별빛을 품은 몽환적인 감성 여우', img: './img/love-type8.jpg' },
+
+            // 3. 힐링 성격 (4종)
+            { cat: 'healing', badge: 'HEALING 01', name: '집콕 테라피 나무늘보', desc: '노란 수면안대와 민트 이불 속 꿀잠 힐러', img: './img/healing-type1.jpg' },
+            { cat: 'healing', badge: 'HEALING 02', name: '감성 찻집 냥이', desc: '따뜻한 모락모락 머그컵을 든 힐링 고양이', img: './img/healing-type2.jpg' },
+            { cat: 'healing', badge: 'HEALING 03', name: '산책 탐험가 댕댕이', desc: '노란 튤립 모자를 쓰고 숲길을 걷는 댕댕이', img: './img/healing-type3.jpg' },
+            { cat: 'healing', badge: 'HEALING 04', name: '도토리 몰입 다람쥐', desc: '소중한 미니 도토리를 꼭 쥐고 있는 다람쥐', img: './img/healing-type4.jpg' },
+
+            // 4. 한가위 디저트 (8종)
+            { cat: 'dessert', badge: 'DESSERT 01', name: '꿀송편', desc: '달콤한 꿀과 솔잎 향을 머금은 핑크 송편', img: './img/dessert-songpyeon.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 02', name: '개성주악', desc: '조청 윤기가 흐르는 쫀득한 개성주악', img: './img/dessert-juak.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 03', name: '알밤 약과', desc: '바삭하고 달콤한 전통 알밤 약과', img: './img/dessert-yakgwa.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 04', name: '살얼음 식혜', desc: '살얼음과 밥알이 동동 뜬 시원한 식혜', img: './img/dessert-sikhye.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 05', name: '오색 모둠전', desc: '노릇노릇 홍고추 고명이 얹어진 모둠전', img: './img/dessert-jeon.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 06', name: '잣설기', desc: '포근하고 뽀얀 백설기 찹쌀떡', img: './img/dessert-baekseolgi.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 07', name: '호두 곶감말이', desc: '달콤한 곶감 속 고소한 호두말이', img: './img/dessert-persimmon.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 08', name: '계피 수정과', desc: '은은한 계피향과 곶감이 띄워진 수정과', img: './img/dessert-sujeonggwa.jpg' },
+
+            // 5. 사주 오행 (5종)
+            { cat: 'element', badge: 'OHAENG 01', name: '목 (나무)', desc: '파릇파릇 새싹을 피워내는 생명의 기운', img: './img/element-wood.jpg' },
+            { cat: 'element', badge: 'OHAENG 02', name: '화 (불)', desc: '뜨겁고 솔직하게 타오르는 열정의 불꽃', img: './img/element-fire.jpg' },
+            { cat: 'element', badge: 'OHAENG 03', name: '토 (흙/대지)', desc: '모든 것을 묵묵히 품어주는 포근한 산', img: './img/element-earth.jpg' },
+            { cat: 'element', badge: 'OHAENG 04', name: '금 (쇠/보석)', desc: '단단하고 세련되게 빛나는 다이아몬드', img: './img/element-metal.jpg' },
+            { cat: 'element', badge: 'OHAENG 05', name: '수 (물)', desc: '맑고 고요하게 흐르는 이슬 물방울', img: './img/element-water.jpg' }
+        ];
+
+        function renderGrid(list) {
+            const grid = document.getElementById('card-grid');
+            grid.innerHTML = '';
+            list.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-800/80 hover:bg-slate-800 p-3 rounded-2xl border border-slate-700 hover:border-indigo-500/50 cursor-pointer transition-all hover:scale-[1.02] flex flex-col space-y-2';
+                card.onclick = () => openModal(c);
+                card.innerHTML = `
+                    <div class="w-full aspect-square rounded-xl overflow-hidden bg-slate-900 border border-slate-700/60">
+                        <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-0.5">
+                        <span class="text-[9px] font-bold text-indigo-400">${c.badge}</span>
+                        <h4 class="text-xs font-bold text-white truncate">${c.name}</h4>
+                        <p class="text-[10px] text-slate-400 line-clamp-1">${c.desc}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat) {
+            // 버튼 액티브 변경
+            const buttons = document.querySelectorAll('#tabs button');
+            buttons.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (cat === 'all') {
+                renderGrid(CHARACTERS);
+            } else {
+                renderGrid(CHARACTERS.filter(c => c.cat === cat));
+            }
+        }
+
+        function openModal(c) {
+            document.getElementById('modal-img').src = c.img;
+            document.getElementById('modal-badge').textContent = c.badge;
+            document.getElementById('modal-title').textContent = c.name;
+            document.getElementById('modal-desc').textContent = c.desc;
+            const modal = document.getElementById('modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // 초기 로드
+        renderGrid(CHARACTERS);
+    </script>
+</body>
+</html>

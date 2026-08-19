@@ -508,7 +508,6 @@
                 id: 6,
                 name: "유쾌한 티키타카 메이커",
                 badge: "TYPE 06",
-                emoji: "🎭",
                 tags: ["#텐션업", "#지루할틈없음", "#위트", "#데이트장인"],
                 summary: "함께 있으면 하루 종일 웃음이 끊이지 않는 유쾌하고 매력적인 분위기 메이커!",
                 features: [
@@ -527,7 +526,6 @@
                 id: 7,
                 name: "든든한 수호천사",
                 badge: "TYPE 07",
-                emoji: "🛡️",
                 tags: ["#책임감", "#안정감", "#진솔함", "#평생내사람"],
                 summary: "어떤 폭풍우가 와도 흔들리지 않고 내 사람의 울타리가 되어주는 헌신형!",
                 features: [
@@ -546,7 +544,6 @@
                 id: 8,
                 name: "포근한 감성 예술가",
                 badge: "TYPE 08",
-                emoji: "🎨",
                 tags: ["#취향존중", "#신비로움", "#깊은교감", "#영혼의단짝"],
                 summary: "눈빛만 봐도 통하는 깊은 영혼의 교감을 추구하는 따뜻하고 섬세한 아티스트!",
                 features: [
@@ -628,9 +625,13 @@
             document.getElementById('screen-result').classList.remove('hidden');
 
             const isE = userScores.E >= userScores.I;
+            const isI = !isE;
             const isS = userScores.S >= userScores.N;
+            const isN = !isS;
             const isT = userScores.T >= userScores.F;
+            const isF = !isT;
             const isJ = userScores.J >= userScores.P;
+            const isP = !isJ;
 
             // MBTI 매핑으로 8가지 연애 캐릭터 매칭
             let typeIdx = 0;
@@ -638,7 +639,7 @@
             else if (isF && isP && isE) typeIdx = 1; // 낭만 가득 사랑꾼
             else if (isF && isJ) typeIdx = 2; // 다정다감 평화주의자
             else if (isT && isP && isE) typeIdx = 3; // 열정 불꽃 직진러
-            else if (isT && isP && !isE) typeIdx = 4; // 쿨한 마이웨이
+            else if (isT && isP && isI) typeIdx = 4; // 쿨한 마이웨이
             else if (isE && isP) typeIdx = 5; // 유쾌한 티키타카
             else if (isS && isJ) typeIdx = 6; // 든든한 수호천사
             else typeIdx = 7; // 포근한 감성 예술가

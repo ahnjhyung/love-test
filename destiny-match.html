@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-WRDDWJ26');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s" />
+    <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
+    
+    <meta name="description" content="두 사람의 생년월일로 확인하는 사주 오행 연애 궁합! 천생연분 지수와 솔직한 케미 분석을 무료로 확인해보세요.">
+    <meta name="keywords" content="사주궁합, 무료궁합, 커플궁합, 연애궁합, 사주테스트, 궁합테스트, 테스트모음">
+    <meta property="og:title" content="운명의 붉은 실 사주 궁합 테스트 | 테스트모음">
+    <meta property="og:description" content="우리 둘은 과연 천생연분일까? 두 사람의 생년월일로 풀어보는 찰떡 사주 궁합!">
+    <meta property="og:image" content="https://testmoeum.vercel.app/img/thumb-destiny.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testmoeum.vercel.app/destiny-match.html">
+    <link rel="canonical" href="https://testmoeum.vercel.app/destiny-match.html">
+    
+    <title>운명의 붉은 실 사주 궁합 테스트 | 테스트모음</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "운명의 붉은 실 사주 궁합 테스트",
+      "description": "두 사람의 생년월일로 분석하는 사주 오행 연애 궁합 테스트",
+      "url": "https://testmoeum.vercel.app/destiny-match.html",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f7f7f9; color: #191f28; margin: 0; padding: 0; }
+        
+        .loader {
+            border: 3px solid #f2f4f6;
+            border-top: 3px solid #9333ea;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .badge-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center">
+
+    <!-- 모바일 컨테이너 (max-w-[480px]) -->
+    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
+        
+        <!-- 상단 헤더 -->
+        <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+            <a href="/" class="text-sm font-semibold text-gray-500 hover:text-gray-900 flex items-center space-x-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span>테스트모음</span>
+            </a>
+            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">연애·궁합</span>
+        </header>
+
+        <main class="flex-1 px-5 py-4">
+            
+            <!-- 1. 시작 화면 -->
+            <section id="start-screen" class="space-y-4 py-1 text-center">
+                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-purple-50 bg-purple-50/30 relative">
+                    <img src="./img/thumb-destiny.jpg" alt="운명의 붉은 실 궁합" class="w-full h-full object-cover">
+                </div>
+
+                <div class="pt-1 space-y-1.5">
+                    <span class="badge-tag bg-purple-50 text-purple-700">사주 오행 케미 분석</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight">
+                        운명의 붉은 실<br>커플 사주 궁합 테스트
+                    </h1>
+                    <p class="text-xs text-gray-500 leading-relaxed pt-0.5">
+                        두 사람의 생년월일로 풀어보는<br>천생연분 지수와 알콩달콩 연애 처방전
+                    </p>
+                </div>
+
+                <div class="pt-3 pb-2 space-y-2.5">
+                    <button onclick="showScreen('input-screen')" class="w-full bg-purple-600 active:scale-[0.98] hover:bg-purple-700 text-white font-bold py-4 rounded-xl text-base shadow-md shadow-purple-200 transition-all">
+                        궁합 확인하러 가기
+                    </button>
+                    <p class="text-[11px] text-gray-400">
+                        🔒 입력하신 정보는 서버에 저장되지 않으며,<br>브라우저에서만 안전하게 계산 후 즉시 파기됩니다.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. 정보 입력 화면 -->
+            <section id="input-screen" class="hidden space-y-5 py-1">
+                <div class="text-left space-y-1">
+                    <h2 class="text-xl font-bold text-gray-900">두 사람의 정보를 알려주세요</h2>
+                    <p class="text-xs text-gray-400">오행 상생상극 분석을 위해 생년월일이 필요해요</p>
+                </div>
+                
+                <!-- 내 정보 -->
+                <div class="p-4 bg-purple-50/40 rounded-2xl border border-purple-100 space-y-3">
+                    <span class="text-xs font-bold text-purple-700 block">첫 번째 사람 (나)</span>
+                    <input type="text" id="p1-name" placeholder="이름 또는 닉네임" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-white focus:outline-none focus:border-purple-500">
+                    <div class="grid grid-cols-3 gap-2">
+                        <select id="p1-year" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                        <select id="p1-month" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                        <select id="p1-day" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                    </div>
+                </div>
+
+                <!-- 상대 정보 -->
+                <div class="p-4 bg-rose-50/40 rounded-2xl border border-rose-100 space-y-3">
+                    <span class="text-xs font-bold text-rose-700 block">두 번째 사람 (상대방)</span>
+                    <input type="text" id="p2-name" placeholder="상대방 이름 또는 닉네임" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-white focus:outline-none focus:border-rose-500">
+                    <div class="grid grid-cols-3 gap-2">
+                        <select id="p2-year" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                        <select id="p2-month" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                        <select id="p2-day" class="w-full border border-gray-200 rounded-xl py-2.5 px-2 text-xs bg-white"></select>
+                    </div>
+                </div>
+                
+                <div class="pt-2">
+                    <button onclick="calculateMatch()" class="w-full bg-purple-600 active:scale-[0.98] hover:bg-purple-700 text-white font-bold py-4 rounded-xl text-base shadow-md shadow-purple-200 transition-all">
+                        궁합 분석 결과 보기
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. 분석 중 로딩 화면 -->
+            <section id="loading-screen" class="hidden flex-col items-center justify-center py-20 text-center space-y-4">
+                <div class="loader"></div>
+                <div class="space-y-1">
+                    <h3 class="font-bold text-gray-800 text-base">두 사람의 인연 분석 중...</h3>
+                    <p class="text-xs text-gray-400">사주 천간합과 오행 상생 기운을 계산하고 있습니다</p>
+                </div>
+            </section>
+
+            <!-- 4. 결과 화면 -->
+            <section id="result-screen" class="hidden space-y-4 text-left">
+                
+                <!-- 점수 & 헤더 카드 -->
+                <div class="bg-gradient-to-br from-purple-50 via-white to-pink-50 p-6 rounded-2xl border border-purple-100 shadow-sm text-center space-y-3">
+                    <div class="text-xs text-purple-600 font-bold">
+                        <span id="res-p1"></span> & <span id="res-p2"></span>님의 궁합
+                    </div>
+                    
+                    <div>
+                        <div class="text-4xl font-black text-purple-600 tracking-tight" id="res-score">88점</div>
+                        <h2 id="res-title" class="text-xl font-bold text-gray-900 pt-1">서로를 채워주는 보석 같은 인연</h2>
+                    </div>
+
+                    <div id="res-tags" class="flex flex-wrap justify-center gap-1.5 text-xs text-gray-500 font-medium"></div>
+
+                    <div class="p-3.5 bg-white rounded-xl border border-purple-100 text-xs text-gray-700 leading-relaxed font-medium mt-2" id="res-summary"></div>
+                </div>
+
+                <!-- 상세 케미 설명 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-2.5 shadow-sm">
+                    <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
+                        <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
+                        <span>두 사람의 사주 오행 케미</span>
+                    </h3>
+                    <p id="res-detail" class="text-xs text-gray-600 leading-relaxed"></p>
+                </div>
+
+                <!-- 꿀팁 & 주의점 -->
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100 space-y-1">
+                        <span class="badge-tag bg-pink-100 text-pink-700">설렘 포인트</span>
+                        <p id="res-point" class="text-xs font-medium text-gray-700 leading-snug"></p>
+                    </div>
+                    <div class="bg-purple-50/60 p-4 rounded-2xl border border-purple-100 space-y-1">
+                        <span class="badge-tag bg-purple-100 text-purple-700">더 돈독해지는 법</span>
+                        <p id="res-advice" class="text-xs font-medium text-gray-700 leading-snug"></p>
+                    </div>
+                </div>
+
+                <!-- 쿠팡 파트너스 추천 아이템 -->
+                <div class="p-4 bg-amber-50/60 rounded-2xl border border-amber-100 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-amber-900">두 사람의 대화를 깊게 만들어줄 아이템</span>
+                        <span class="text-[10px] text-amber-700">추천</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
+                            <span class="block text-xs font-bold text-gray-800">커플 백문백답 📖</span>
+                            <span class="text-[10px] text-gray-500">서로를 100% 이해하는 질문집</span>
+                        </a>
+                        <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
+                            <span class="block text-xs font-bold text-gray-800">커플 대화 카드 🃏</span>
+                            <span class="text-[10px] text-gray-500">진솔한 속마음 토크</span>
+                        </a>
+                    </div>
+                    <p class="text-[9px] text-gray-400 text-center pt-1">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+                </div>
+
+                <!-- 하단 버튼들 -->
+                <div class="space-y-2.5 pt-2">
+                    <button onclick="copyShareLink()" class="w-full bg-purple-600 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all">
+                        결과 링크 복사해서 공유하기
+                    </button>
+                    <button onclick="location.href='./love-type/index.html'" class="w-full bg-rose-50 text-rose-600 font-bold py-3.5 rounded-xl text-sm border border-rose-100 hover:bg-rose-100 transition-all">
+                        개인 연애 유형 테스트도 하러가기 →
+                    </button>
+                    <button onclick="showScreen('start-screen')" class="w-full bg-gray-100 text-gray-600 font-medium py-3 rounded-xl text-xs hover:bg-gray-200 transition-all">
+                        다른 사람과 다시 궁합 보기
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
+            <p>© 2026 테스트모음. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function fillDates(yId, mId, dId, defYear) {
+            const ys = document.getElementById(yId);
+            const ms = document.getElementById(mId);
+            const ds = document.getElementById(dId);
+
+            for (let y = 2012; y >= 1950; y--) {
+                const o = document.createElement('option');
+                o.value = y; o.textContent = y + '년';
+                if (y === defYear) o.selected = true;
+                ys.appendChild(o);
+            }
+            for (let m = 1; m <= 12; m++) {
+                const o = document.createElement('option');
+                o.value = m; o.textContent = m + '월';
+                ms.appendChild(o);
+            }
+            for (let d = 1; d <= 31; d++) {
+                const o = document.createElement('option');
+                o.value = d; o.textContent = d + '일';
+                ds.appendChild(o);
+            }
+        }
+        fillDates('p1-year', 'p1-month', 'p1-day', 1998);
+        fillDates('p2-year', 'p2-month', 'p2-day', 1999);
+
+        function showScreen(id) {
+            ['start-screen', 'input-screen', 'loading-screen', 'result-screen'].forEach(s => {
+                const el = document.getElementById(s);
+                if (el) el.classList.add('hidden');
+            });
+            const t = document.getElementById(id);
+            if (t) {
+                t.classList.remove('hidden');
+                if (id === 'loading-screen') t.classList.add('flex');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function calcJDN(year, month, day) {
+            return Math.floor((1461 * (year + 4800 + Math.floor((month - 14) / 12))) / 4)
+                + Math.floor((367 * (month - 2 - 12 * Math.floor((month - 14) / 12))) / 12)
+                - Math.floor((3 * Math.floor((year + 4900 + Math.floor((month - 14) / 12)) / 100)) / 4)
+                + day - 32075;
+        }
+
+        const CHEONGAN_OHAENG = ['목','목','화','화','토','토','금','금','수','수'];
+        const CHEONGAN_NAME = ['갑목(나무)', '을목(꽃)', '병화(태양)', '정화(촛불)', '무토(산)', '기토(들판)', '경금(바위)', '신금(보석)', '임수(바다)', '계수(샘물)'];
+
+        function calculateMatch() {
+            const p1Name = document.getElementById('p1-name').value.trim() || '나';
+            const p2Name = document.getElementById('p2-name').value.trim() || '너';
+
+            const y1 = parseInt(document.getElementById('p1-year').value);
+            const m1 = parseInt(document.getElementById('p1-month').value);
+            const d1 = parseInt(document.getElementById('p1-day').value);
+
+            const y2 = parseInt(document.getElementById('p2-year').value);
+            const m2 = parseInt(document.getElementById('p2-month').value);
+            const d2 = parseInt(document.getElementById('p2-day').value);
+
+            showScreen('loading-screen');
+
+            setTimeout(() => {
+                const jdn1 = calcJDN(y1, m1, d1);
+                const jdn2 = calcJDN(y2, m2, d2);
+
+                const gan1 = (jdn1 + 9) % 10;
+                const gan2 = (jdn2 + 9) % 10;
+
+                // 천간합 확인 (0-5 갑기합, 1-6 을경합, 2-7 병신합, 3-8 정임합, 4-9 무계합)
+                const isCheonganHab = (Math.abs(gan1 - gan2) === 5);
+                
+                let baseScore = 75;
+                if (isCheonganHab) baseScore = 95;
+                else {
+                    const diff = Math.abs(gan1 - gan2);
+                    baseScore = 70 + ((jdn1 + jdn2) % 25);
+                }
+
+                document.getElementById('res-p1').textContent = p1Name;
+                document.getElementById('res-p2').textContent = p2Name;
+                document.getElementById('res-score').textContent = baseScore + '점';
+
+                let title = '서로에게 힘이 되어주는 든든한 동반자';
+                let tags = ['#상호보완', '#안정적인연애', '#취향존중'];
+                let summary = `${p1Name}님(${CHEONGAN_NAME[gan1]})과 ${p2Name}님(${CHEONGAN_NAME[gan2]})은 서로의 다른 매력에 끌리며 자연스럽게 신뢰를 쌓아가는 좋은 궁합입니다.`;
+                let detail = `두 사람의 기운은 한쪽이 지치거나 고민이 있을 때 다른 쪽이 현실적인 위로와 안정을 주는 상생의 형태입니다. 사소한 가치관 차이도 대화를 통해 쉽게 조율할 수 있습니다.`;
+                let point = '함께 있을 때 편안하고 긴장감이 풀리는 편안함';
+                let advice = '고마운 마음을 마음속으로만 두지 말고 말로 자주 표현하기';
+
+                if (baseScore >= 90) {
+                    title = '우주가 맺어준 천생연분 찰떡궁합!';
+                    tags = ['#운명의짝꿍', '#천생연분', '#눈빛만봐도통함', '#결혼각'];
+                    summary = `사주 천간의 음양 기운이 완벽하게 결합하는 최상급 궁합입니다. 처음 만났을 때부터 낯설지 않은 편안함과 설렘을 동시에 느끼셨을 확률이 높습니다.`;
+                    detail = `서로의 장점은 극대화해주고 단점은 부드럽게 감싸주는 환상의 호흡입니다. 가치관과 연애관이 일치하여 큰 갈등 없이 깊은 사랑을 이어갈 수 있습니다.`;
+                    point = '말하지 않아도 통하는 놀라운 텔레파시';
+                    advice = '너무 편안하다고 해서 기념일이나 예의를 소홀히 하지 않기';
+                } else if (baseScore < 80) {
+                    title = '짜릿한 불꽃과 자극을 주는 열정 궁합';
+                    tags = ['#티키타카', '#개성만점', '#성장형커플'];
+                    summary = `서로 다른 개성과 매력으로 강한 호기심과 설렘을 불러일으키는 궁합입니다. 지루할 틈 없이 항상 역동적인 데이트를 즐깁니다.`;
+                    detail = `생각의 방식이나 표현 스타일이 달라 가끔은 오해가 생길 수 있지만, 이를 대화로 풀어나갈 때마다 관계가 한층 더 깊어지는 성장형 인연입니다.`;
+                    point = '예측 불가능한 설렘과 신선한 자극';
+                    advice = '서운한 점이 생겼을 때 바로 이야기하고 경청해 주기';
+                }
+
+                document.getElementById('res-title').textContent = title;
+                document.getElementById('res-summary').textContent = summary;
+                document.getElementById('res-detail').textContent = detail;
+                document.getElementById('res-point').textContent = point;
+                document.getElementById('res-advice').textContent = advice;
+
+                const tagsEl = document.getElementById('res-tags');
+                tagsEl.innerHTML = '';
+                tags.forEach(t => {
+                    const sp = document.createElement('span');
+                    sp.className = 'bg-white border border-purple-100 px-2 py-0.5 rounded text-[11px] text-purple-700 shadow-2xs';
+                    sp.textContent = t;
+                    tagsEl.appendChild(sp);
+                });
+
+                showScreen('result-screen');
+            }, 1000);
+        }
+
+        function copyShareLink() {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('궁합 테스트 링크가 복사되었습니다! 상대방에게 공유해보세요.');
+        }
+    </script>
+</body>
+</html>

@@ -216,6 +216,59 @@
                     </div>
                 </div>
 
+                <!-- [신규] 내 사주 5대 오행 개수 & 8글자 명식표 카드 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-3.5 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
+                            <span class="w-1.5 h-3.5 bg-indigo-600 rounded-full"></span>
+                            <span>내 사주 속 5대 오행 개수 (8글자 분석)</span>
+                        </h3>
+                        <span class="text-[10px] text-gray-400 font-medium">만세력 기반</span>
+                    </div>
+
+                    <!-- 5색 오행 개수 카운트 그리드 -->
+                    <div class="grid grid-cols-5 gap-1.5 text-center">
+                        <div class="p-2.5 bg-emerald-50/70 border border-emerald-100 rounded-xl space-y-0.5">
+                            <span class="text-[10px] font-bold text-emerald-800 block">목(나무)</span>
+                            <span id="cnt-wood" class="text-base font-black text-emerald-600 block">0개</span>
+                        </div>
+                        <div class="p-2.5 bg-rose-50/70 border border-rose-100 rounded-xl space-y-0.5">
+                            <span class="text-[10px] font-bold text-rose-800 block">화(불)</span>
+                            <span id="cnt-fire" class="text-base font-black text-rose-600 block">0개</span>
+                        </div>
+                        <div class="p-2.5 bg-amber-50/70 border border-amber-100 rounded-xl space-y-0.5">
+                            <span class="text-[10px] font-bold text-amber-800 block">토(흙)</span>
+                            <span id="cnt-earth" class="text-base font-black text-amber-600 block">0개</span>
+                        </div>
+                        <div class="p-2.5 bg-purple-50/70 border border-purple-100 rounded-xl space-y-0.5">
+                            <span class="text-[10px] font-bold text-purple-800 block">금(쇠)</span>
+                            <span id="cnt-metal" class="text-base font-black text-purple-600 block">0개</span>
+                        </div>
+                        <div class="p-2.5 bg-sky-50/70 border border-sky-100 rounded-xl space-y-0.5">
+                            <span class="text-[10px] font-bold text-sky-800 block">수(물)</span>
+                            <span id="cnt-water" class="text-base font-black text-sky-600 block">0개</span>
+                        </div>
+                    </div>
+
+                    <!-- 사주 4주 8글자 미니 명식표 -->
+                    <div class="p-3 bg-gray-50/80 rounded-xl border border-gray-100 space-y-1.5">
+                        <div class="grid grid-cols-4 gap-1 text-center text-[10px] font-bold text-gray-500 pb-1 border-b border-gray-200/60">
+                            <span>시주(時)</span>
+                            <span>일주(日)</span>
+                            <span>월주(月)</span>
+                            <span>년주(年)</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1 text-center text-xs font-black py-0.5" id="table-cheongan"></div>
+                        <div class="grid grid-cols-4 gap-1 text-center text-xs font-black py-0.5" id="table-jiji"></div>
+                    </div>
+
+                    <!-- 오행 밸런스 총평 -->
+                    <div class="p-3.5 bg-indigo-50/50 rounded-xl border border-indigo-100/60 text-xs text-gray-700 leading-relaxed space-y-1">
+                        <div class="font-bold text-indigo-900 text-xs" id="res-balance-title"></div>
+                        <p id="res-balance-desc" class="text-[11px] text-gray-600 leading-relaxed"></p>
+                    </div>
+                </div>
+
                 <!-- 1. 본질적 연애 성향 상세 분석 -->
                 <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-2.5 shadow-sm">
                     <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
@@ -625,6 +678,24 @@
             }
         ];
 
+        const CHEONGAN_HANJA = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+        const JIJI_HANJA = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+        const CHEONGAN_OHAENG = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4]; // 0목 1화 2토 3금 4수
+        const JIJI_OHAENG = [4, 2, 0, 0, 2, 1, 1, 2, 3, 3, 2, 4];
+        const OHAENG_LABELS = ['목(나무)', '화(불)', '토(흙)', '금(쇠)', '수(물)'];
+        const OHAENG_CLASSES = [
+            'text-emerald-700 bg-emerald-50 border-emerald-200',
+            'text-rose-700 bg-rose-50 border-rose-200',
+            'text-amber-700 bg-amber-50 border-amber-200',
+            'text-purple-700 bg-purple-50 border-purple-200',
+            'text-sky-700 bg-sky-50 border-sky-200'
+        ];
+
+        const TIME_JIJI_MAP = {
+            '자시': 0, '축시': 1, '인시': 2, '묘시': 3, '진시': 4, '사시': 5,
+            '오시': 6, '미시': 7, '신시': 8, '유시': 9, '술시': 10, '해시': 11
+        };
+
         let currentResult = null;
 
         function calculateSaju() {
@@ -632,18 +703,129 @@
             const year = parseInt(document.getElementById('birth-year').value);
             const month = parseInt(document.getElementById('birth-month').value);
             const day = parseInt(document.getElementById('birth-day').value);
+            const timeVal = document.getElementById('birth-time').value;
 
             showScreen('loading-screen');
 
             setTimeout(() => {
                 const jdn = calcJDN(year, month, day);
-                const ganIdx = (jdn + 9) % 10;
-                const charData = CHARACTERS[ganIdx];
+                
+                // 1. 일주 계산
+                const dayGan = (jdn + 9) % 10;
+                const dayJi = (jdn + 1) % 12;
+
+                // 2. 년주 계산
+                let yearGan = (year - 4) % 10;
+                if (yearGan < 0) yearGan += 10;
+                let yearJi = (year - 4) % 12;
+                if (yearJi < 0) yearJi += 12;
+
+                // 3. 월주 계산
+                const monthJi = (month + 1) % 12;
+                const monthGan = ((yearGan % 5) * 2 + (month - 1) + 2) % 10;
+
+                // 4. 시주 계산
+                let hourJi = 6; // 기본값 오시
+                let hourGan = ((dayGan % 5) * 2 + hourJi) % 10;
+                let hasTime = (timeVal !== '모름');
+                if (hasTime && TIME_JIJI_MAP[timeVal] !== undefined) {
+                    hourJi = TIME_JIJI_MAP[timeVal];
+                    hourGan = ((dayGan % 5) * 2 + hourJi) % 10;
+                }
+
+                // 8글자 오행 개수 카운트
+                const ohaengCounts = [0, 0, 0, 0, 0]; // 목, 화, 토, 금, 수
+
+                // 년/월/일
+                ohaengCounts[CHEONGAN_OHAENG[yearGan]]++;
+                ohaengCounts[JIJI_OHAENG[yearJi]]++;
+                ohaengCounts[CHEONGAN_OHAENG[monthGan]]++;
+                ohaengCounts[JIJI_OHAENG[monthJi]]++;
+                ohaengCounts[CHEONGAN_OHAENG[dayGan]]++;
+                ohaengCounts[JIJI_OHAENG[dayJi]]++;
+
+                // 시주 (시간 모름일 경우 일간/일지 가중치 반영)
+                if (hasTime) {
+                    ohaengCounts[CHEONGAN_OHAENG[hourGan]]++;
+                    ohaengCounts[JIJI_OHAENG[hourJi]]++;
+                } else {
+                    ohaengCounts[CHEONGAN_OHAENG[dayGan]]++;
+                    ohaengCounts[JIJI_OHAENG[dayJi]]++;
+                }
+
+                // 오행 개수 UI 반영
+                document.getElementById('cnt-wood').textContent = ohaengCounts[0] + '개';
+                document.getElementById('cnt-fire').textContent = ohaengCounts[1] + '개';
+                document.getElementById('cnt-earth').textContent = ohaengCounts[2] + '개';
+                document.getElementById('cnt-metal').textContent = ohaengCounts[3] + '개';
+                document.getElementById('cnt-water').textContent = ohaengCounts[4] + '개';
+
+                // 미니 명식표 렌더링
+                const tCheongan = document.getElementById('table-cheongan');
+                tCheongan.innerHTML = '';
+                const cheonganCols = hasTime ? [hourGan, dayGan, monthGan, yearGan] : [dayGan, dayGan, monthGan, yearGan];
+                cheonganCols.forEach(idx => {
+                    const oh = CHEONGAN_OHAENG[idx];
+                    const div = document.createElement('div');
+                    div.className = `p-2 rounded-lg border text-sm font-black ${OHAENG_CLASSES[oh]}`;
+                    div.textContent = `${CHEONGAN_HANJA[idx]}`;
+                    tCheongan.appendChild(div);
+                });
+
+                const tJiji = document.getElementById('table-jiji');
+                tJiji.innerHTML = '';
+                const jijiCols = hasTime ? [hourJi, dayJi, monthJi, yearJi] : [dayJi, dayJi, monthJi, yearJi];
+                jijiCols.forEach(idx => {
+                    const oh = JIJI_OHAENG[idx];
+                    const div = document.createElement('div');
+                    div.className = `p-2 rounded-lg border text-sm font-black ${OHAENG_CLASSES[oh]}`;
+                    div.textContent = `${JIJI_HANJA[idx]}`;
+                    tJiji.appendChild(div);
+                });
+
+                // 오행 밸런스 총평 계산
+                let maxVal = -1;
+                let maxOh = 0;
+                let minOhList = [];
+
+                for (let i = 0; i < 5; i++) {
+                    if (ohaengCounts[i] > maxVal) {
+                        maxVal = ohaengCounts[i];
+                        maxOh = i;
+                    }
+                    if (ohaengCounts[i] === 0) {
+                        minOhList.push(OHAENG_LABELS[i]);
+                    }
+                }
+
+                const balTitle = document.getElementById('res-balance-title');
+                const balDesc = document.getElementById('res-balance-desc');
+
+                const ohCharacteristics = [
+                    '성장과 진취성(목)이 강해 끊임없이 발전하는 주도적인 연애를 합니다.',
+                    '열정과 표현력(화)이 넘쳐 솔직하고 화끈한 사랑을 지향합니다.',
+                    '포용과 신뢰감(토)이 두터워 연인에게 깊은 정서적 안정을 선물합니다.',
+                    '결단과 명확함(금)이 돋보여 맺고 끊음이 확실하고 의리 있는 연애를 합니다.',
+                    '지혜와 유연함(수)이 풍부해 상대의 마음을 깊게 꿰뚫어 보는 감성 연애를 합니다.'
+                ];
+
+                balTitle.textContent = `${OHAENG_LABELS[maxOh]} 기운이 ${maxVal}개로 가장 왕성한 사주!`;
+                
+                let descText = `내 사주에는 ${ohCharacteristics[maxOh]} `;
+                if (minOhList.length > 0) {
+                    descText += `반면 ${minOhList.join(', ')} 기운이 부족하여, 이 기운을 넉넉히 채워줄 파트너를 만났을 때 삶과 연애의 밸런스가 완벽해집니다.`;
+                } else {
+                    descText += `5대 오행이 골고루 조화를 이루어 감정의 기복 없이 안정적인 연애를 이어갈 수 있습니다.`;
+                }
+                balDesc.textContent = descText;
+
+                // 캐릭터 상세 데이터 매핑
+                const charData = CHARACTERS[dayGan];
                 currentResult = { name, charData };
 
                 document.getElementById('res-user-name').textContent = name;
                 document.getElementById('res-element-img').src = charData.elementImg;
-                document.getElementById('res-ilgan-badge').textContent = CHEONGAN_NAME[ganIdx];
+                document.getElementById('res-ilgan-badge').textContent = CHEONGAN_NAME[dayGan];
                 document.getElementById('res-char-name').textContent = charData.name;
                 document.getElementById('res-element-title').textContent = charData.elementTitle;
                 document.getElementById('res-element-rate').textContent = charData.elementRate;

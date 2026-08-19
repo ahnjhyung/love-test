@@ -19,8 +19,8 @@
     <meta name="description" content="나의 연애 유형는 '꿈꾸는 예술가'입니다. 당신의 연애 성향을 확인해보세요!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testmoeum.vercel.app/love-type/Type8.html">
-    <meta property="og:title" content="[결과] 나의 연애 유형는 '꿈꾸는 예술가' 🎨">
-    <meta property="og:description" content="나랑 환상의 궁합은 '현실적인 밸런서'래! 너도 빨리 테스트해봐 👇">
+    <meta property="og:title" content="[결과] 나의 연애 유형는 '꿈꾸는 예술가' ">
+    <meta property="og:description" content="나랑 환상의 궁합은 '현실적인 밸런서'래! 너도 빨리 테스트해봐 ">
     <meta property="og:image" content="https://testmoeum.vercel.app/main-thumb.png">
     <title>결과 - 꿈꾸는 예술가</title>
     
@@ -129,12 +129,12 @@
 
                 <div class="space-y-2 pt-2 no-capture">
                     <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="block w-full py-3 bg-yellow-400 text-yellow-900 rounded-xl font-bold shadow-sm hover:bg-yellow-500 transition-colors flex items-center justify-center space-x-2">
-                        <span>🎁</span>
+                        <span></span>
                         <span>커플 백문백답 보러가기</span>
                     </a>
                     
                     <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="block w-full py-3 bg-rose-100 text-rose-600 rounded-xl font-bold shadow-sm hover:bg-rose-200 transition-colors flex items-center justify-center space-x-2">
-                        <span>🃏</span>
+                        <span></span>
                         <span>커플 대화 카드 보러가기</span>
                     </a>
                     <p class="text-[10px] text-gray-400 mt-1 text-center">
@@ -159,7 +159,7 @@
                 </button>
 
                 <button onclick="saveResultImage()" class="w-full py-3 bg-white border border-gray-200 text-gray-600 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-colors flex items-center justify-center space-x-2">
-                    <span>📸</span>
+                    <span></span>
                     <span>결과 이미지 공유 / 저장하기</span> 
                 </button>
 
@@ -201,12 +201,12 @@
 
         function copyShareMessage(resultTitle) {
             const message = 
-`👫 나의 연애 유형는 [${resultTitle}]이야!
+` 나의 연애 유형는 [${resultTitle}]이야!
 
 우리 커플의 궁합 파트너는 ${GOOD_TYPE}이래!
-갈등 유형은 ${BAD_TYPE}이니까 조심해야겠어. 😅
+갈등 유형은 ${BAD_TYPE}이니까 조심해야겠어. 
 
-➡️ 테스트 결과 보러가기: ${CURRENT_URL}`;
+ 테스트 결과 보러가기: ${CURRENT_URL}`;
 
             var t = document.createElement("textarea");
             document.body.appendChild(t);
@@ -215,7 +215,7 @@
             document.execCommand("copy");
             document.body.removeChild(t);
             
-            showMessage("✅ 결과 링크와 공유 메시지가 복사되었습니다!");
+            showMessage(" 결과 링크와 공유 메시지가 복사되었습니다!");
         }
 
         function copyTestLink() {
@@ -226,7 +226,7 @@
             document.execCommand("copy");
             document.body.removeChild(t);
             
-            showMessage("✅ 테스트 시작 링크가 복사되었습니다!");
+            showMessage(" 테스트 시작 링크가 복사되었습니다!");
         }
 
         function saveResultImage() {
@@ -250,7 +250,7 @@
                         navigator.share({
                             files: [file],
                             title: '나의 연애 유형 결과',
-                            text: '우리 커플의 연애 유형 테스트 결과야! 너도 한번 해봐 👇',
+                            text: '우리 커플의 연애 유형 테스트 결과야! 너도 한번 해봐 ',
                         })
                         .then(() => {
                             watermark.classList.add("hidden");
@@ -269,7 +269,7 @@
                         link.click();
                         document.body.removeChild(link);
 
-                        showMessage("📸 이미지가 저장되었습니다!");
+                        showMessage(" 이미지가 저장되었습니다!");
                         
                         watermark.classList.add("hidden");
                         noCaptureElements.forEach(el => el.classList.remove('hidden'));
@@ -277,13 +277,14 @@
                 });
             }).catch(err => {
                 console.error("캡처 에러:", err);
-                showMessage("❌ 이미지 저장 중 오류가 발생했습니다.", true);
+                showMessage(" 이미지 저장 중 오류가 발생했습니다.", true);
                 watermark.classList.add("hidden");
                 noCaptureElements.forEach(el => el.classList.remove('hidden'));            });
         }
     </script>
 </body>
 </html>
+
 
 
 

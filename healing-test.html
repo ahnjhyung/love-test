@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-WRDDWJ26');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s" />
+    <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
+    
+    <title>나의 힐링 성격 유형 테스트 | 성격 심리테스트 - 테스트모음</title>
+    <meta name="description" content="12문항으로 알아보는 나의 스트레스 해소법과 진짜 성격 유형! 지친 일상 속 나에게 꼭 맞는 힐링 처방전을 무료로 확인해보세요.">
+    <meta name="keywords" content="성격테스트, 심리테스트, 힐링테스트, MBTI성격, 스트레스테스트, 힐링유형, 테스트모음">
+    <link rel="canonical" href="https://testmoeum.vercel.app/healing-test.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testmoeum.vercel.app/healing-test.html">
+    <meta property="og:title" content="나의 힐링 성격 유형 테스트 | 테스트모음">
+    <meta property="og:description" content="지친 나를 위한 12가지 질문! 내 영혼에 꼭 맞는 힐링 처방전은?">
+    <meta property="og:image" content="https://testmoeum.vercel.app/img/thumb-psychology.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "나의 힐링 성격 유형 테스트",
+      "description": "12문항으로 알아보는 나의 성격 유형과 맞춤 힐링 처방전",
+      "url": "https://testmoeum.vercel.app/healing-test.html",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f7f7f9; color: #191f28; margin: 0; padding: 0; }
+        
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .badge-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+        .loader {
+            border: 3px solid #f2f4f6;
+            border-top: 3px solid #0d9488;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center">
+
+    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
+        
+        <!-- 헤더 -->
+        <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+            <a href="/" class="text-sm font-semibold text-gray-500 hover:text-gray-900 flex items-center space-x-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span>테스트모음</span>
+            </a>
+            <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">성격·심리</span>
+        </header>
+
+        <!-- 프로그레스 바 -->
+        <div id="progress-container" class="hidden w-full h-1.5 bg-gray-100 flex-none">
+            <div id="progress-bar" class="h-full bg-teal-600 transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+
+        <main class="flex-1 px-5 py-4">
+            
+            <!-- 1. 시작 화면 -->
+            <div id="screen-start" class="space-y-4 text-center fade-in">
+                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-teal-50 bg-teal-50/30 relative">
+                    <img src="./img/thumb-psychology.jpg" alt="힐링 성격 유형 테스트" class="w-full h-full object-cover">
+                </div>
+
+                <div class="pt-1 space-y-1.5">
+                    <span class="badge-tag bg-teal-50 text-teal-700">마음 방전 진단 & 힐링 처방</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight">
+                        나의 힐링 성격 유형<br>마음 충전 심리테스트
+                    </h1>
+                    <p class="text-xs text-gray-500 leading-relaxed pt-0.5">
+                        지친 일상 속 나에게 진짜 필요한 휴식은 무엇일까?<br>12문항으로 알아보는 내 성격 맞춤 힐링법
+                    </p>
+                </div>
+
+                <div class="pt-2 space-y-2.5">
+                    <input type="text" id="input-name" placeholder="이름 또는 닉네임을 입력하세요" 
+                        onkeydown="checkEnter(event)"
+                        class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 text-center text-sm bg-white transition-colors shadow-2xs">
+                    
+                    <button onclick="startTest()" class="w-full py-4 bg-teal-600 active:scale-[0.98] text-white rounded-xl font-bold text-base shadow-md shadow-teal-200 hover:bg-teal-700 transition-all cursor-pointer">
+                        힐링 테스트 시작하기
+                    </button>
+                    
+                    <p class="text-[11px] text-gray-400 text-center pt-0.5">
+                        총 12문항 · 소요 시간 약 1분 · 100% 무료
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. 질문 화면 -->
+            <div id="screen-q" class="hidden flex-col justify-between py-2 fade-in">
+                <div class="space-y-6 pt-2">
+                    <div class="space-y-2 text-center">
+                        <span id="txt-q-num" class="badge-tag bg-teal-50 text-teal-700">Q. 01 / 12</span>
+                        <h2 id="txt-q" class="text-lg font-bold text-gray-900 leading-snug break-keep pt-2">질문 내용</h2>
+                    </div>
+                    
+                    <div class="space-y-3 w-full pt-2">
+                        <button onclick="next('A')" class="w-full p-4 text-left bg-white border border-gray-200 rounded-2xl active:scale-[0.98] hover:border-teal-400 hover:bg-teal-50/40 transition-all shadow-xs group">
+                            <span class="block text-[11px] text-teal-600 font-bold mb-1">A</span>
+                            <span id="txt-a" class="text-sm font-medium text-gray-800 block leading-relaxed break-keep">답변 A</span>
+                        </button>
+                        <button onclick="next('B')" class="w-full p-4 text-left bg-white border border-gray-200 rounded-2xl active:scale-[0.98] hover:border-teal-400 hover:bg-teal-50/40 transition-all shadow-xs group">
+                            <span class="block text-[11px] text-teal-600 font-bold mb-1">B</span>
+                            <span id="txt-b" class="text-sm font-medium text-gray-800 block leading-relaxed break-keep">답변 B</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 로딩 화면 -->
+            <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center">
+                <div class="loader"></div>
+                <div class="space-y-1">
+                    <h3 class="font-bold text-gray-800 text-base">마음 처방전 조제 중...</h3>
+                    <p class="text-xs text-gray-400">당신에게 가장 필요한 힐링 에너지를 분석하고 있습니다</p>
+                </div>
+            </div>
+
+            <!-- 4. 결과 화면 -->
+            <div id="screen-result" class="hidden space-y-4 text-left fade-in">
+                
+                <div class="bg-gradient-to-br from-teal-50 via-white to-emerald-50 p-6 rounded-2xl border border-teal-100 shadow-sm text-center space-y-3">
+                    <span class="badge-tag bg-white border border-teal-200 text-teal-700 shadow-2xs">
+                        <span id="res-user"></span>님의 힐링 성격 유형
+                    </span>
+                    
+                    <div>
+                        <div class="text-3xl font-black text-teal-800 tracking-tight" id="res-name">포근한 집콕 테라피형</div>
+                        <p class="text-xs text-teal-600 font-bold pt-1" id="res-subtitle">"나만의 동굴에서 조용히 에너지를 채우는 힐러"</p>
+                    </div>
+
+                    <div id="res-tags" class="flex flex-wrap justify-center gap-1.5 text-xs text-gray-500 font-medium"></div>
+
+                    <div class="p-3.5 bg-white rounded-xl border border-teal-100 text-xs text-gray-700 leading-relaxed font-medium mt-2 shadow-2xs" id="res-summary"></div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-2.5 shadow-sm">
+                    <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
+                        <span class="w-1.5 h-3.5 bg-teal-600 rounded-full"></span>
+                        <span>나의 에너지 방전 신호 & 원인</span>
+                    </h3>
+                    <p id="res-burnout" class="text-xs text-gray-600 leading-relaxed"></p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="bg-teal-50/60 p-4 rounded-2xl border border-teal-100 space-y-1">
+                        <span class="badge-tag bg-teal-100 text-teal-800">최고의 힐링법</span>
+                        <p id="res-solution" class="text-xs font-medium text-gray-700 leading-snug"></p>
+                    </div>
+                    <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-100 space-y-1">
+                        <span class="badge-tag bg-amber-100 text-amber-800">찰떡 힐링 메이트</span>
+                        <p id="res-mate" class="text-xs font-medium text-gray-700 leading-snug"></p>
+                    </div>
+                </div>
+
+                <!-- 쿠팡 파트너스 추천 힐링템 -->
+                <div class="p-4 bg-amber-50/60 rounded-2xl border border-amber-100 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-amber-900">오늘 나를 위한 소소한 힐링 선물</span>
+                        <span class="text-[10px] text-amber-700">추천</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <a href="https://link.coupang.com/a/ddJLjO" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
+                            <span class="block text-xs font-bold text-gray-800">마음 정리 백문백답 📖</span>
+                            <span class="text-[10px] text-gray-500">나를 돌아보는 온전한 시간</span>
+                        </a>
+                        <a href="https://link.coupang.com/a/ddJLnf" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
+                            <span class="block text-xs font-bold text-gray-800">감성 대화 카드 🃏</span>
+                            <span class="text-[10px] text-gray-500">소중한 사람과의 따뜻한 교감</span>
+                        </a>
+                    </div>
+                    <p class="text-[9px] text-gray-400 text-center pt-1">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+                </div>
+
+                <!-- 하단 버튼들 -->
+                <div class="space-y-2.5 pt-2">
+                    <button onclick="copyShareLink()" class="w-full bg-teal-600 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all">
+                        내 힐링 결과 공유하기
+                    </button>
+                    <button onclick="location.href='./love-type/index.html'" class="w-full bg-rose-50 text-rose-600 font-bold py-3.5 rounded-xl text-sm border border-rose-100 hover:bg-rose-100 transition-all">
+                        나의 연애 유형 테스트도 하러가기 →
+                    </button>
+                    <button onclick="location.href='./destiny-match.html'" class="w-full bg-purple-50 text-purple-600 font-bold py-3.5 rounded-xl text-sm border border-purple-100 hover:bg-purple-100 transition-all">
+                        운명의 붉은 실 사주 궁합 테스트 →
+                    </button>
+                    <button onclick="showScreen('screen-start')" class="w-full bg-gray-100 text-gray-600 font-medium py-3 rounded-xl text-xs hover:bg-gray-200 transition-all">
+                        다시 테스트하기
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
+            <p>© 2026 테스트모음. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        var questions = [
+            { q: "일주일간의 힘든 일과가 끝난 금요일 밤, 나의 선택은?", a: "침대 속에서 넷플릭스 보며 혼자만의 온전한 휴식", b: "친구들과 맛있는 걸 먹으며 수다로 스트레스 날리기" },
+            { q: "카페에 갔을 때 내가 가장 좋아하는 자리는?", a: "창가나 구석의 아늑하고 조용한 자리", b: "탁 트이고 분위기가 활기찬 자리" },
+            { q: "마음이 복잡하고 답답할 때 나는?", a: "일기장에 속마음을 적거나 조용히 생각을 정리한다", b: "밖으로 나가 정처 없이 걷거나 쇼핑, 드라이브를 한다" },
+            { q: "휴일에 갑자기 약속이 취소되었을 때?", a: "\"오히려 좋아!\" 신나게 집에서 뒹굴거린다", b: "\"아 아쉽다...\" 다른 친구에게 연락해본다" },
+            { q: "새로운 취미를 시작한다면?", a: "홈베이킹, 식물 키우기, 독서 등 정적인 취미", b: "원데이 클래스, 운동, 러닝 등 활동적인 취미" },
+            { q: "스트레스를 받을 때 몸에 나타나는 반응은?", a: "모든 사람과의 연락을 끊고 잠수를 타고 싶다", b: "누군가에게 하소연하거나 맛있는 걸 폭식하고 싶다" },
+            { q: "내가 가장 편안함을 느끼는 공간의 온도는?", a: "은은한 조명과 향초가 켜진 아늑한 내 방", b: "자연의 풀내음과 바람이 느껴지는 야외 숲길" },
+            { q: "친구가 힘든 고민을 털어놓을 때 나는?", a: "조용히 곁을 지키며 진심으로 공감해 준다", b: "맛있는 걸 사주며 기분 전환을 시켜준다" },
+            { q: "여행을 떠난다면 어떤 스타일?", a: "조용한 휴양지 감성 숙소에서 힐링 호캉스", b: "핫플과 맛집을 도장 깨기 하는 알찬 일정" },
+            { q: "나를 가장 지치게 만드는 상황은?", a: "원치 않는 사람들과의 억지스러운 인간관계", b: "아무것도 하지 않고 무기력하게 갇혀있는 시간" },
+            { q: "휴식 후 '완전히 충전됐다'고 느끼는 순간은?", a: "혼자만의 시간을 충분히 갖고 내면이 평온해졌을 때", b: "즐거운 경험을 하고 긍정적인 에너지를 듬뿍 받았을 때" },
+            { q: "지금 나에게 가장 필요한 선물은?", a: "폭신한 이불과 아무 방해도 없는 24시간의 자유", b: "마음이 통하는 사람과 떠나는 낭만적인 당일치기 여행" }
+        ];
+
+        var curStep = 0;
+        var scoreA = 0; // 내향/정적 힐링
+        var scoreB = 0; // 외향/동적 힐링
+
+        function getEl(id) { return document.getElementById(id); }
+        function checkEnter(e) { if (e.key === "Enter") startTest(); }
+
+        function showScreen(id) {
+            ['screen-start', 'screen-q', 'screen-loading', 'screen-result'].forEach(s => {
+                const el = getEl(s);
+                if (el) el.classList.add('hidden');
+            });
+            const t = getEl(id);
+            if (t) {
+                t.classList.remove('hidden');
+                if (id === 'screen-loading' || id === 'screen-q') t.classList.add('flex');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function startTest() {
+            var name = getEl("input-name").value.trim();
+            if (!name) { alert("이름 또는 닉네임을 입력해주세요!"); return; }
+            curStep = 0; scoreA = 0; scoreB = 0;
+            getEl("progress-container").classList.remove("hidden");
+            showScreen('screen-q');
+            renderQ();
+        }
+
+        function renderQ() {
+            var q = questions[curStep];
+            var prog = ((curStep + 1) / questions.length) * 100;
+            getEl("progress-bar").style.width = prog + "%";
+            getEl("txt-q-num").innerText = "Q. " + (curStep + 1 < 10 ? '0' : '') + (curStep + 1) + " / " + questions.length;
+            getEl("txt-q").innerText = q.q;
+            getEl("txt-a").innerText = q.a;
+            getEl("txt-b").innerText = q.b;
+        }
+
+        function next(ans) {
+            if (ans === 'A') scoreA++;
+            else scoreB++;
+            curStep++;
+            if (curStep < questions.length) {
+                setTimeout(renderQ, 150);
+            } else {
+                finish();
+            }
+        }
+
+        const RESULTS = [
+            { // 극내향
+                name: '포근한 집콕 테라피형',
+                subtitle: '"나만의 아늑한 동굴에서 조용히 에너지를 채우는 힐러"',
+                tags: ['#방해금지', '#이불속힐링', '#혼자만의시간', '#내면충전'],
+                summary: '당신은 외부 자극에 섬세하고 민감한 편으로, 사람들과 오래 있으면 에너지가 급격히 방전됩니다. 아무에게도 방해받지 않는 공간에서 혼자 뒹굴거리며 시간을 보낼 때 가장 완벽하게 치유됩니다.',
+                burnout: '사람이 많은 장소에 오래 있거나 억지 미소를 지어야 할 때 기가 빨립니다.',
+                solution: '스마트폰 비행기 모드 + 따뜻한 차 한 잔 + 폭신한 이불 속 영화 보기',
+                mate: '내 묵묵한 침묵을 어색해하지 않고 지켜주는 편안한 친구'
+            },
+            { // 중도 내향
+                name: '따뜻한 감성 찻집형',
+                subtitle: '"조용한 공간과 소소한 대화에서 위로를 얻는 낭만파"',
+                tags: ['#감성충전', '#조용한카페', '#소소한행복', '#일기쓰기'],
+                summary: '시끄러운 모임보다는 마음에 맞는 1~2명의 소중한 사람과 깊은 대화를 나누거나, 감성적인 공간에서 책을 읽을 때 마음이 편안해집니다. 사소한 아름다움에서 감동을 잘 느낍니다.',
+                burnout: '의미 없는 잡담이나 피상적인 인간관계가 반복될 때 마음이 공허해집니다.',
+                solution: '햇살 잘 드는 조용한 카페에서 좋아하는 음악 들으며 일기 쓰기',
+                mate: '내 감정을 진심으로 경청하고 따뜻하게 공감해 주는 다정한 사람'
+            },
+            { // 중도 외향
+                name: '햇살 산책 탐험가형',
+                subtitle: '"새로운 풍경과 산뜻한 공기로 환기하는 자유로운 영혼"',
+                tags: ['#기분전환', '#자연힐링', '#소소한여행', '#걷기명상'],
+                summary: '한 공간에 오래 갇혀 있으면 답답함을 느낍니다. 밖으로 나가 자연의 바람을 쐬거나 낯선 동네의 골목길을 산책하며 새로운 자극을 받을 때 머릿속의 복잡한 고민이 씻겨 내려갑니다.',
+                burnout: '매일 똑같이 반복되는 무료한 일상과 답답한 실내 공간에 갇혔을 때',
+                solution: '편한 운동화 신고 피톤치드 가득한 숲길 걷기 또는 당일치기 소도시 여행',
+                mate: '부담 없이 "산책 갈래?" 했을 때 흔쾌히 따라나서 주는 유쾌한 친구'
+            },
+            { // 극외향
+                name: '열정 몰입 에너지파',
+                subtitle: '"좋아하는 것에 흠뻑 빠져 웃고 떠들며 스트레스를 날리는 행동파"',
+                tags: ['#스트레스타파', '#활력충전', '#취미몰입', '#도파민부스터'],
+                summary: '가만히 누워있으면 오히려 잡생각이 많아집니다. 좋아하는 사람들과 신나게 수다를 떨거나, 땀 흘리는 운동, 취미 생활에 몰입하며 도파민을 채울 때 진정한 힐링을 경험합니다.',
+                burnout: '혼자 고립되어 아무것도 생산적인 일을 하지 못하고 정체된 느낌이 들 때',
+                solution: '신나는 음악 들으며 땀 흘리는 운동 또는 절친들과의 밤샘 수다 파티',
+                mate: '함께 웃고 떠들며 긍정적인 에너지를 200% 증폭시켜 주는 에너자이저'
+            }
+        ];
+
+        function finish() {
+            getEl("progress-container").classList.add("hidden");
+            showScreen('screen-loading');
+
+            var resIdx = 0;
+            if (scoreA >= 10) resIdx = 0;
+            else if (scoreA >= 7) resIdx = 1;
+            else if (scoreA >= 4) resIdx = 2;
+            else resIdx = 3;
+
+            var r = RESULTS[resIdx];
+            var uname = getEl("input-name").value.trim() || '익명';
+
+            setTimeout(function() {
+                getEl("res-user").innerText = uname;
+                getEl("res-name").innerText = r.name;
+                getEl("res-subtitle").innerText = r.subtitle;
+                getEl("res-summary").innerText = r.summary;
+                getEl("res-burnout").innerText = r.burnout;
+                getEl("res-solution").innerText = r.solution;
+                getEl("res-mate").innerText = r.mate;
+
+                var tagsEl = getEl("res-tags");
+                tagsEl.innerHTML = '';
+                r.tags.forEach(t => {
+                    var sp = document.createElement('span');
+                    sp.className = 'bg-white border border-teal-100 px-2 py-0.5 rounded text-[11px] text-teal-700 shadow-2xs';
+                    sp.innerText = t;
+                    tagsEl.appendChild(sp);
+                });
+
+                showScreen('screen-result');
+            }, 1000);
+        }
+
+        function copyShareLink() {
+            var dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('힐링 테스트 링크가 복사되었습니다! 친구들에게 공유해보세요.');
+        }
+    </script>
+</body>
+</html>

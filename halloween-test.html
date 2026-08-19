@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-WRDDWJ26');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>할로윈 캐릭터 성격 테스트 | 내 안의 숨겨진 밤의 영혼 - 테스트모음</title>
+    <meta name="description" content="달콤한 마녀부터 시크한 뱀파이어, 몽글몽글 유령까지! 12문항으로 알아보는 나의 할로윈 몬스터 캐릭터와 숨겨진 성격 무료 테스트.">
+    <meta name="keywords" content="할로윈테스트, 할로윈 캐릭터 성격, MBTI 할로윈, 심리테스트, 무료 성격테스트, 푸망, 테스트모음">
+    <link rel="canonical" href="https://testmoeum.vercel.app/halloween-test.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testmoeum.vercel.app/halloween-test.html">
+    <meta property="og:title" content="할로윈 캐릭터 성격 테스트 | 테스트모음">
+    <meta property="og:description" content="내 안의 숨겨진 할로윈 몬스터는 누구? 8가지 마법 캐릭터 무료 분석!">
+    <meta property="og:image" content="https://testmoeum.vercel.app/img/thumb-halloween.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "할로윈 캐릭터 성격 테스트",
+      "description": "12문항으로 알아보는 나의 할로윈 몬스터 캐릭터와 성격 분석",
+      "url": "https://testmoeum.vercel.app/halloween-test.html",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f7f7f9; color: #191f28; margin: 0; padding: 0; }
+        
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .badge-tag { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+        .result-card { background: #ffffff; border: 1px solid #f3f4f6; border-radius: 16px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+        .callout-box { border-left: 4px solid #8b5cf6; background: #f5f3ff; padding: 14px 16px; border-radius: 0 12px 12px 0; }
+        
+        .loader {
+            border: 3px solid #f2f4f6;
+            border-top: 3px solid #8b5cf6;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center">
+
+    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
+        
+        <!-- 상단 헤더 -->
+        <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+            <a href="/" class="text-sm font-semibold text-gray-500 hover:text-gray-900 flex items-center space-x-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span>테스트모음 홈</span>
+            </a>
+            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">시즌 스페셜</span>
+        </header>
+
+        <!-- 프로그레스 바 -->
+        <div id="progress-container" class="hidden w-full h-1.5 bg-gray-100 flex-none">
+            <div id="progress-bar" class="h-full bg-purple-600 transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+
+        <main class="flex-1 px-5 py-4">
+            
+            <!-- 1. 시작 화면 -->
+            <div id="screen-start" class="space-y-4 text-center fade-in pt-2">
+                <div class="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xs border border-purple-100 mb-2">
+                    <img src="./img/thumb-halloween.jpg" alt="할로윈 캐릭터 성격 테스트" class="w-full h-full object-cover">
+                </div>
+
+                <div class="space-y-1">
+                    <span class="badge-tag bg-purple-50 text-purple-700">시즌 한정 심리분석</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight pt-1">
+                        나의 할로윈 캐릭터는?
+                    </h1>
+                    <p class="text-xs text-gray-500 pt-1">
+                        12가지 질문으로 알아보는 내 안의 숨겨진 밤의 영혼과 매력
+                    </p>
+                </div>
+
+                <!-- 시작 버튼 -->
+                <div class="pt-4">
+                    <button onclick="startTest()" class="w-full bg-purple-600 hover:bg-purple-700 active:scale-[0.98] text-white font-bold py-4 rounded-2xl text-base shadow-md shadow-purple-100 transition-all">
+                        테스트 시작하기 (12문항)
+                    </button>
+                </div>
+
+                <!-- 안내 박스 -->
+                <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-100 text-left space-y-1.5 mt-4">
+                    <div class="flex items-center space-x-1.5 text-xs font-bold text-gray-700">
+                        <span class="w-1.5 h-3 bg-purple-600 rounded-full"></span>
+                        <span>안내 사항</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 leading-relaxed">
+                        신비로운 할로윈 파티에 초대받은 상상을 하며, 마음에 끌리는 선택지를 편안하게 골라주세요!
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. 질문 화면 -->
+            <div id="screen-question" class="hidden space-y-5 fade-in py-2">
+                <div class="flex justify-between items-center text-xs font-bold text-gray-400">
+                    <span id="question-category" class="text-purple-600">할로윈의 밤</span>
+                    <span id="question-number">Q1 / 12</span>
+                </div>
+
+                <h2 id="question-text" class="text-lg font-black text-gray-900 leading-snug min-h-[3.5rem] flex items-center">
+                    질문 내용이 여기에 표시됩니다.
+                </h2>
+
+                <div class="space-y-3 pt-2" id="answers-container">
+                    <!-- 버튼 동적 생성 -->
+                </div>
+            </div>
+
+            <!-- 3. 로딩 화면 -->
+            <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center fade-in">
+                <div class="loader"></div>
+                <div class="space-y-1">
+                    <h3 class="text-base font-bold text-gray-800">마법의 수정구슬로 성향을 분석하고 있어요</h3>
+                    <p class="text-xs text-gray-400">나와 가장 닮은 할로윈 영혼을 찾는 중...</p>
+                </div>
+            </div>
+
+            <!-- 4. 결과 화면 -->
+            <div id="screen-result" class="hidden space-y-6 fade-in pb-6">
+                
+                <!-- 상단 결과 헤더 -->
+                <div class="text-center space-y-2 pt-2">
+                    <span id="result-type-badge" class="badge-tag bg-purple-50 text-purple-700">TYPE 01</span>
+                    <div id="result-icon-box" class="w-16 h-16 mx-auto rounded-3xl bg-purple-50 border border-purple-100 flex items-center justify-center font-black text-xl text-purple-600 shadow-2xs">01</div>
+                    <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
+                        달콤한 꼬마 마녀
+                    </h2>
+                    <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-purple-600">
+                        #감성물약제조 #무한공감러 #따스한온기
+                    </div>
+                </div>
+
+                <!-- 한줄 요약 -->
+                <div class="callout-box">
+                    <p id="result-summary" class="text-xs font-bold text-purple-950 leading-relaxed !mb-0">
+                        한줄 요약이 여기에 표시됩니다.
+                    </p>
+                </div>
+
+                <!-- 3대 핵심 성격 특징 -->
+                <div class="result-card space-y-2.5">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
+                        <span>나의 할로윈 캐릭터 특징</span>
+                    </h3>
+                    <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
+                        <!-- 동적 삽입 -->
+                    </div>
+                </div>
+
+                <!-- 강점 vs 주의점 (2열) -->
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="p-3.5 bg-purple-50/80 rounded-xl border border-purple-100 space-y-1">
+                        <span class="text-[11px] font-bold text-purple-800 flex items-center space-x-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600 inline-block mr-0.5"></span>
+                            <span>숨겨진 마법 매력</span>
+                        </span>
+                        <p id="result-strength" class="text-xs text-purple-950 leading-relaxed">
+                            -
+                        </p>
+                    </div>
+                    <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
+                        <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
+                            <span>주의할 약점</span>
+                        </span>
+                        <p id="result-weakness" class="text-xs text-rose-950 leading-relaxed">
+                            -
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 찰떡궁합 vs 파국궁합 -->
+                <div class="result-card space-y-2.5">
+                    <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
+                        <span class="w-1.5 h-3.5 bg-indigo-600 rounded-full"></span>
+                        <span>영혼의 케미스트리</span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100 text-center">
+                            <span class="text-[10px] font-bold text-indigo-700 block">환상의 짝꿍</span>
+                            <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">시크한 뱀파이어</span>
+                            <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">서로의 빈틈을 완벽히 보완</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                            <span class="text-[10px] font-bold text-gray-500 block">주의할 짝꿍</span>
+                            <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">유쾌한 잭오랜턴</span>
+                            <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">텐션 차이로 기 빨릴 수 있음</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 쿠팡 파트너스 아이템 -->
+                <div class="p-4 bg-amber-50/60 rounded-2xl border border-amber-100 space-y-2">
+                    <span class="text-xs font-bold text-amber-900">가을 힐링을 위한 추천 아이템</span>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <a href="https://link.coupang.com/a/glrwBnn2eO" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block">
+                            <span class="block text-xs font-bold text-gray-800">아로마 에센셜 오일</span>
+                            <span class="text-[10px] text-gray-500">포근한 밤의 휴식</span>
+                        </a>
+                        <a href="https://link.coupang.com/a/glrxqmEFRk" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block">
+                            <span class="block text-xs font-bold text-gray-800">실내 디퓨저</span>
+                            <span class="text-[10px] text-gray-500">감성 공간 테라피</span>
+                        </a>
+                    </div>
+                    <p class="text-[9px] text-gray-400 text-center pt-0.5">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+                </div>
+
+                <!-- [커뮤니티] 실시간 참여자 후기 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-3.5 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                        <div class="space-y-0.5">
+                            <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
+                                <span class="w-1.5 h-3.5 bg-purple-600 rounded-full"></span>
+                                <span>참여자 실시간 톡 & 후기</span>
+                            </h3>
+                            <p class="text-[11px] text-gray-400">내 할로윈 캐릭터와 소감을 자유롭게 나눠보세요</p>
+                        </div>
+                    </div>
+
+                    <!-- 댓글 입력창 -->
+                    <div class="space-y-2 bg-gray-50/80 p-3 rounded-xl border border-gray-100">
+                        <div class="flex space-x-2">
+                            <input type="text" id="comment-nickname" placeholder="닉네임" class="w-1/3 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-purple-500">
+                            <input type="text" id="comment-text" placeholder="한줄 후기를 남겨보세요!" class="flex-1 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-purple-500" onkeydown="if(event.key==='Enter') submitComment()">
+                            <button onclick="submitComment()" class="px-4 py-2.5 bg-purple-600 active:scale-95 text-white font-bold text-xs rounded-lg hover:bg-purple-700 transition-all">등록</button>
+                        </div>
+                    </div>
+
+                    <!-- 실시간 댓글 목록 -->
+                    <div id="comment-list" class="space-y-2 pt-1"></div>
+                </div>
+
+                <!-- 공유 & 다른 테스트 버튼 -->
+                <div class="space-y-2.5 pt-2">
+                    <button onclick="shareResult()" class="w-full bg-purple-600 hover:bg-purple-700 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                        <span>카톡 / 인스타로 내 결과 공유하기</span>
+                    </button>
+                    
+                    <button onclick="location.href='/healing-test.html'" class="w-full bg-teal-50 text-teal-700 font-bold py-3.5 rounded-xl text-sm border border-teal-100 hover:bg-teal-100 transition-all">
+                        나의 힐링 성격 유형 테스트 보러가기 →
+                    </button>
+                    
+                    <button onclick="restartTest()" class="w-full bg-gray-50 text-gray-500 font-bold py-3.5 rounded-xl text-sm border border-gray-200/80 hover:bg-gray-100 transition-all">
+                        테스트 다시하기 ↺
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
+            <p>© 2026 테스트모음. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // 12문항 할로윈 상황별 질문
+        const QUESTIONS = [
+            {
+                q: "어두운 밤, 신비로운 숲속 성에서 열리는 할로윈 파티 초대장을 받았다면?",
+                cat: "초대장",
+                a: [
+                    { text: "재미있겠다! 어떤 사람들이 오는지 궁금해서 당장 가방을 싼다.", scores: { E: 2, I: 0 } },
+                    { text: "누가 오는지, 언제 끝나는지 세부 일정을 먼저 알아본다.", scores: { E: 0, I: 2 } }
+                ]
+            },
+            {
+                q: "성으로 향하는 갈림길, 안개가 자욱한 길과 등불이 켜진 길 중 어디로 갈까?",
+                cat: "선택",
+                a: [
+                    { text: "왠지 흥미진진한 모험이 기다릴 것 같은 안갯속 지름길로 간다.", scores: { J: 0, P: 2 } },
+                    { text: "안전하고 환하게 밝혀진 등불 길을 따라 계획대로 걸어간다.", scores: { J: 2, P: 0 } }
+                ]
+            },
+            {
+                q: "마녀의 디저트 숍에서 가장 눈길을 사로잡는 마법 사탕은?",
+                cat: "취향",
+                a: [
+                    { text: "반짝이는 은하수가 담겨 영감을 불어넣어 주는 달콤한 사탕.", scores: { S: 0, N: 2 } },
+                    { text: "지친 체력을 200% 즉시 회복시켜 주는 실용적인 비타민 사탕.", scores: { S: 2, N: 0 } }
+                ]
+            },
+            {
+                q: "파티장에 들어섰을 때 낯선 몬스터들이 나를 반갑게 맞이한다면?",
+                cat: "사교성",
+                a: [
+                    { text: "신나게 인사하며 금세 중앙 테이블로 가서 어울린다.", scores: { E: 2, I: 0 } },
+                    { text: "가볍게 눈인사만 하고 조용한 구석 자리를 먼저 확보한다.", scores: { E: 0, I: 2 } }
+                ]
+            },
+            {
+                q: "친구가 '오늘 마법 빗자루 시험에서 떨어졌어...'라며 우울해할 때 나의 반응은?",
+                cat: "위로",
+                a: [
+                    { text: "'너무 속상했겠다... 오늘 파티에서 맛있는 거 먹고 다 잊자!' 따뜻하게 안아준다.", scores: { T: 0, F: 2 } },
+                    { text: "'어떤 기술에서 감점됐어? 다음엔 코너링 연습을 더 해보자.' 원인을 분석해 준다.", scores: { T: 2, F: 0 } }
+                ]
+            },
+            {
+                q: "파티 중 가면을 쓰고 역할을 고른다면?",
+                cat: "분장",
+                a: [
+                    { text: "모두의 시선을 한 몸에 받는 화려하고 카리스마 넘치는 지배자 분장.", scores: { E: 1, T: 1 } },
+                    { text: "나를 완벽히 숨겨주는 포근하고 신비로운 로브나 유령 망토.", scores: { I: 1, F: 1 } }
+                ]
+            },
+            {
+                q: "벽 뒤에 숨겨진 비밀 계단을 발견했을 때 나의 행동은?",
+                cat: "호기심",
+                a: [
+                    { text: "망설이지 않고 친구 손을 잡고 '대박! 우리 저기 탐험해보자!' 한다.", scores: { J: 0, P: 2 } },
+                    { text: "관계자 외 출입금지인지 확인하고 위험하지 않은지 먼저 살핀다.", scores: { J: 2, P: 0 } }
+                ]
+            },
+            {
+                q: "두 몬스터 사이에 사소한 시비로 다툼이 일어났다면?",
+                cat: "갈등",
+                a: [
+                    { text: "상황을 객관적으로 듣고 규칙과 기준에 따라 공정하게 시시비비를 가린다.", scores: { T: 2, F: 0 } },
+                    { text: "서로 감정이 더 상하지 않도록 분위기를 부드럽게 풀고 중재한다.", scores: { T: 0, F: 2 } }
+                ]
+            },
+            {
+                q: "테이블에 놓인 수상한 마법 물약, 어떤 효능을 기대할까?",
+                cat: "상상",
+                a: [
+                    { text: "미래의 운명을 엿보거나 다른 차원을 여행하는 신비로운 능력.", scores: { S: 0, N: 2 } },
+                    { text: "두뇌가 맑아지고 일처리가 10배 빨라지는 현실적인 능력.", scores: { S: 2, N: 0 } }
+                ]
+            },
+            {
+                q: "파티가 한창 무르익은 밤 11시, 나의 충전 상태는?",
+                cat: "에너지",
+                a: [
+                    { text: "새벽까지 밤새워 춤추고 이야기할 에너지가 여전히 넘친다.", scores: { E: 2, I: 0 } },
+                    { text: "재미있었지만 슬슬 집 침대가 그리워지며 탈출 타이밍을 잰다.", scores: { E: 0, I: 2 } }
+                ]
+            },
+            {
+                q: "할로윈 기념 사진을 찍을 때 나의 스타일은?",
+                cat: "기념",
+                a: [
+                    { text: "자연스럽고 즉흥적인 순간들을 재미있게 많이 남긴다.", scores: { J: 0, P: 2 } },
+                    { text: "구도와 조명을 완벽하게 맞춰서 베스트 컷 하나를 제대로 남긴다.", scores: { J: 2, P: 0 } }
+                ]
+            },
+            {
+                q: "파티가 끝나고 나에게 가장 큰 만족감을 주는 것은?",
+                cat: "가치관",
+                a: [
+                    { text: "마음이 통하는 좋은 영혼들과 깊은 대화를 나누고 위로받은 기분.", scores: { F: 2, T: 0 } },
+                    { text: "새로운 지식이나 영감을 얻고 알찬 시간을 보냈다는 성취감.", scores: { F: 0, T: 2 } }
+                ]
+            }
+        ];
+
+        // 8가지 할로윈 몬스터 캐릭터 데이터
+        const HALLOWEEN_TYPES = [
+            {
+                id: 1,
+                name: "달콤한 꼬마 마녀",
+                badge: "TYPE 01",
+                tags: ["#감성물약제조", "#무한공감러", "#따스한온기", "#동화감성"],
+                summary: "별빛과 따스한 감성을 모아 주변 사람들에게 위로를 전하는 힐링 마법사!",
+                features: [
+                    "상대방의 작은 감정 변화도 귀신같이 알아채고 포근한 마법 물약처럼 위로해 줍니다.",
+                    "남들이 보지 못하는 일상의 작고 반짝이는 순간에 큰 감동을 느낍니다.",
+                    "마음이 여리고 다정하여 누구에게나 상냥하지만, 혼자만의 힐링 시간이 꼭 필요합니다."
+                ],
+                strength: "풍부한 감수성, 상대의 마음을 녹이는 공감력, 섬세한 예술적 영감",
+                weakness: "거절을 잘 못하고 사소한 비판에도 마음에 상처를 오래 담아둠",
+                bestMatch: "시크한 뱀파이어 귀족",
+                bestDesc: "나의 여린 감성을 현실에서 든든하게 지켜주는 수호자",
+                badMatch: "유쾌한 잭오랜턴",
+                badDesc: "과한 에너지와 장난에 기가 빨릴 수 있음"
+            },
+            {
+                id: 2,
+                name: "시크한 뱀파이어 귀족",
+                badge: "TYPE 02",
+                tags: ["#완벽주의", "#취향미식가", "#츤데레챙김", "#철저한자기관리"],
+                summary: "겉은 차갑고 냉철하지만 내 사람에게는 모든 것을 내어주는 고혹적인 완벽주의자!",
+                features: [
+                    "자신만의 확고한 기준과 세련된 취향을 가지고 있으며, 타협하지 않는 품격이 있습니다.",
+                    "감정에 휘둘리지 않고 상황을 냉정하게 분석하여 가장 정확한 해결책을 찾아냅니다.",
+                    "말은 툭툭 던져도 뒤에서 묵묵히 챙겨주는 깊은 순정과 책임감을 지녔습니다."
+                ],
+                strength: "흔들리지 않는 멘탈, 날카로운 통찰력, 완벽한 신뢰와 의리",
+                weakness: "타인에게 곁을 내주기까지 시간이 오래 걸리고 지나치게 엄격함",
+                bestMatch: "달콤한 꼬마 마녀",
+                bestDesc: "차가운 성을 따스하게 채워주는 감성 파트너",
+                badMatch: "솔직 순수 프랑켄슈타인",
+                badDesc: "디테일과 방식의 차이로 답답함을 느낄 수 있음"
+            },
+            {
+                id: 3,
+                name: "몽글몽글 유령 친구",
+                badge: "TYPE 03",
+                tags: ["#이불속평화", "#조용한관찰자", "#무해한매력", "#집콕마스터"],
+                summary: "다툼 없는 평화로운 공간에서 조용히 소소한 행복을 즐기는 순수 100% 영혼!",
+                features: [
+                    "갈등과 싸움을 극도로 피하며, 모두가 편안한 분위기 속에서 조용히 미소 짓습니다.",
+                    "집에서 포근한 이불을 덮고 좋아하는 영화나 음악을 감상할 때 가장 큰 에너지를 얻습니다.",
+                    "강요하지 않고 상대방의 속도에 맞춰주는 세상에서 가장 편안한 친구입니다."
+                ],
+                strength: "상대방을 편안하게 해주는 무해함, 높은 배려심, 유연한 적응력",
+                weakness: "결정을 내리기 힘들어하고 회피하려는 성향이 있음",
+                bestMatch: "든든한 늑대인간 수호자",
+                bestDesc: "방향을 명확히 이끌어주고 든든한 울타리가 되어줌",
+                badMatch: "도도한 검은 고양이",
+                badDesc: "밀당에 휘둘려 지칠 수 있음"
+            },
+            {
+                id: 4,
+                name: "유쾌한 잭오랜턴",
+                badge: "TYPE 04",
+                tags: ["#축제의주인공", "#불꽃텐션", "#에너자이저", "#분위기메이커"],
+                summary: "어둠 속에서도 환한 웃음으로 주변을 밝히는 파티의 영원한 불꽃 에너자이저!",
+                features: [
+                    "새로운 사람들과 금방 친해지며, 특유의 유머와 재치로 어디서나 분위기를 주도합니다.",
+                    "답답하고 우울한 기분을 단번에 날려버리는 긍정적인 비타민 같은 존재입니다.",
+                    "즉흥적인 재미와 이벤트를 기획하여 주변 사람들에게 잊지 못할 추억을 선사합니다."
+                ],
+                strength: "뛰어난 사교성, 넘치는 긍정 에너지, 지루할 틈 없는 유쾌함",
+                weakness: "진지한 분위기를 어색해하거나 충동적인 결정을 내릴 때가 있음",
+                bestMatch: "도도한 검은 고양이",
+                bestDesc: "서로 티키타카가 폭발하는 최고의 놀이 메이트",
+                badMatch: "붕대 감은 집콕 미라",
+                badDesc: "생활 템포와 텐션의 극명한 차이"
+            },
+            {
+                id: 5,
+                name: "든든한 늑대인간 수호자",
+                badge: "TYPE 05",
+                tags: ["#의리의화신", "#내사람지킴이", "#행동파리더", "#약속은칼"],
+                summary: "한번 맺은 인연은 끝까지 책임지는 듬직함과 불의를 참지 않는 카리스마 리더!",
+                features: [
+                    "내 사람이라고 생각되면 어떤 위험에서도 앞장서서 지켜내는 든든한 보디가드입니다.",
+                    "말보다 행동으로 신뢰를 증명하며, 한번 한 약속은 반드시 지킵니다.",
+                    "결단력이 뛰어나고 위기 상황에서 침착하게 무리를 이끄는 리더십이 있습니다."
+                ],
+                strength: "완벽한 신뢰감, 강력한 책임감과 결단력, 솔직 담백한 태도",
+                weakness: "자신의 원칙을 지나치게 고수해 융통성이 부족하게 보일 수 있음",
+                bestMatch: "몽글몽글 유령 친구",
+                bestDesc: "나의 굳건한 보호 아래 편안함을 느끼는 찰떡궁합",
+                badMatch: "시크한 뱀파이어 귀족",
+                badDesc: "서로 주도권을 잡으려다 자존심 대결"
+            },
+            {
+                id: 6,
+                name: "도도한 검은 고양이",
+                badge: "TYPE 06",
+                tags: ["#밀당의천재", "#마이웨이", "#알고보면애교", "#치명적매력"],
+                summary: "구속받기 싫어하지만 관심은 받고 싶은, 알면 알수록 빠져드는 치명적 매력꾼!",
+                features: [
+                    "남의 시선에 얽매이지 않고 자신이 좋아하는 것에만 몰입하는 쿨한 매력이 있습니다.",
+                    "평소엔 도도하고 독립적이지만, 마음을 연 상대에게는 은근슬쩍 애교를 부립니다.",
+                    "위트 있는 대화와 센스 있는 감각으로 사람들의 호기심을 끊임없이 자극합니다."
+                ],
+                strength: "독보적인 매력, 빠른 눈치와 센스, 매력적인 독립심",
+                weakness: "변덕이 심하고 구속받으면 도망치려는 성향",
+                bestMatch: "유쾌한 잭오랜턴",
+                bestDesc: "나의 마이웨이를 유쾌하게 받아쳐주는 파트너",
+                badMatch: "든든한 늑대인간 수호자",
+                badDesc: "규칙과 통제를 요구할 때 강하게 반발"
+            },
+            {
+                id: 7,
+                name: "솔직 순수 프랑켄슈타인",
+                badge: "TYPE 07",
+                tags: ["#우직한진심", "#순정파", "#꾸밈없는태도", "#행동파"],
+                summary: "화려한 겉치레 대신 우직하고 순수한 진심 하나로 감동을 주는 순정파 친구!",
+                features: [
+                    "잔머리를 굴리지 않고 있는 그대로의 진실된 마음으로 사람을 대합니다.",
+                    "손재주가 좋거나 실질적인 도움을 묵묵히 건네며 주변을 편안하게 만듭니다.",
+                    "겉모습은 단단해 보이지만 내면은 누구보다 따뜻하고 순수한 영혼의 소유자입니다."
+                ],
+                strength: "정직함, 묵묵한 성실함, 꾸밈없는 진정성",
+                weakness: "돌려 말하는 눈치를 채기 어렵고 감정 표현이 투박할 때가 있음",
+                bestMatch: "붕대 감은 집콕 미라",
+                bestDesc: "서로의 진심을 조용히 이해해 주는 따뜻한 케미",
+                badMatch: "시크한 뱀파이어 귀족",
+                badDesc: "까다로운 기준에 상처받을 수 있음"
+            },
+            {
+                id: 8,
+                name: "붕대 감은 집콕 미라",
+                badge: "TYPE 08",
+                tags: ["#신비로운치유", "#깊은생각", "#철저한방어", "#진정한속마음"],
+                summary: "상처받기 싫어 꽁꽁 싸매고 있지만, 알면 알수록 깊은 지혜와 따뜻함을 품은 힐러!",
+                features: [
+                    "인간관계에서 신중하고 조심스러우며, 진정한 영혼의 교류를 소중히 여깁니다.",
+                    "혼자 사색하고 일기를 쓰며 생각을 정리하는 깊이 있는 통찰력을 지녔습니다.",
+                    "마음의 문을 연 사람에게는 세상에서 가장 따스한 지혜와 위로를 건넵니다."
+                ],
+                strength: "깊은 통찰력, 비밀을 절대 누설하지 않는 신뢰감, 깊이 있는 공감",
+                weakness: "방어 기제가 강해 마음의 문을 열기까지 오랜 시간이 걸림",
+                bestMatch: "솔직 순수 프랑켄슈타인",
+                bestDesc: "꾸밈없는 순수함으로 나의 경계심을 무장해제시켜 줌",
+                badMatch: "유쾌한 잭오랜턴",
+                badDesc: "지나치게 시끄럽고 직진하는 태도에 방어벽 작동"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+        function startTest() {
+            document.getElementById('screen-start').classList.add('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('screen-question').classList.remove('hidden');
+            currentQuestion = 0;
+            userScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = QUESTIONS[currentQuestion];
+            const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('question-number').textContent = `Q${currentQuestion + 1} / ${QUESTIONS.length}`;
+            document.getElementById('question-category').textContent = q.cat;
+            document.getElementById('question-text').textContent = q.q;
+
+            const answersContainer = document.getElementById('answers-container');
+            answersContainer.innerHTML = '';
+
+            q.a.forEach((ans, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full p-4 text-left text-xs font-semibold text-gray-700 bg-gray-50/80 hover:bg-purple-50/60 hover:text-purple-700 hover:border-purple-300 rounded-2xl border border-gray-200/80 active:scale-[0.99] transition-all flex items-center justify-between group';
+                btn.innerHTML = `
+                    <span class="leading-relaxed break-keep pr-2">${ans.text}</span>
+                    <span class="w-5 h-5 rounded-full border border-gray-300 group-hover:border-purple-600 group-hover:bg-purple-600 flex items-center justify-center text-white text-[10px] flex-none">→</span>
+                `;
+                btn.onclick = () => selectAnswer(ans.scores);
+                answersContainer.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(scores) {
+            for (let key in scores) {
+                userScores[key] += scores[key];
+            }
+
+            currentQuestion++;
+            if (currentQuestion < QUESTIONS.length) {
+                renderQuestion();
+            } else {
+                showLoading();
+            }
+        }
+
+        function showLoading() {
+            document.getElementById('screen-question').classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            document.getElementById('screen-loading').classList.remove('hidden');
+            document.getElementById('screen-loading').classList.add('flex');
+
+            setTimeout(() => {
+                calculateAndShowResult();
+            }, 1200);
+        }
+
+        function calculateAndShowResult() {
+            document.getElementById('screen-loading').classList.add('hidden');
+            document.getElementById('screen-loading').classList.remove('flex');
+            document.getElementById('screen-result').classList.remove('hidden');
+
+            const isE = userScores.E >= userScores.I;
+            const isS = userScores.S >= userScores.N;
+            const isT = userScores.T >= userScores.F;
+            const isJ = userScores.J >= userScores.P;
+
+            // 8가지 캐릭터 매칭 로직
+            let typeIdx = 0;
+            if (isF && isN && !isE) typeIdx = 0; // 달콤한 꼬마 마녀 (INFP/INFJ)
+            else if (isT && isN) typeIdx = 1; // 시크한 뱀파이어 귀족 (INTJ/INTP)
+            else if (isI && isS && isP) typeIdx = 2; // 몽글몽글 유령 친구 (ISFP/ISTP)
+            else if (isE && isP && isF) typeIdx = 3; // 유쾌한 잭오랜턴 (ESFP/ENFP)
+            else if (isJ && isT) typeIdx = 4; // 든든한 늑대인간 수호자 (ESTJ/ISTJ)
+            else if (isE && isT && isP) typeIdx = 5; // 도도한 검은 고양이 (ENTP/ESTP)
+            else if (isS && isF) typeIdx = 6; // 솔직 순수 프랑켄슈타인 (ISFJ/ESFJ)
+            else typeIdx = 7; // 붕대 감은 집콕 미라 (기타 힐러형)
+
+            const typeData = HALLOWEEN_TYPES[typeIdx];
+
+            document.getElementById('result-type-badge').textContent = typeData.badge;
+            document.getElementById('result-icon-box').textContent = typeData.id < 10 ? `0${typeData.id}` : typeData.id;
+            document.getElementById('result-title').textContent = typeData.name;
+            document.getElementById('result-tags').innerHTML = typeData.tags.map(t => `<span class="bg-purple-50 px-2 py-0.5 rounded-md">${t}</span>`).join('');
+            document.getElementById('result-summary').textContent = typeData.summary;
+
+            const featuresContainer = document.getElementById('result-features');
+            featuresContainer.innerHTML = typeData.features.map(f => `
+                <div class="flex items-start space-x-2">
+                    <span class="text-purple-600 font-bold">•</span>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('result-strength').textContent = typeData.strength;
+            document.getElementById('result-weakness').textContent = typeData.weakness;
+            document.getElementById('result-best-match').textContent = typeData.bestMatch;
+            document.getElementById('result-best-desc').textContent = typeData.bestDesc;
+            document.getElementById('result-bad-match').textContent = typeData.badMatch;
+            document.getElementById('result-bad-desc').textContent = typeData.badDesc;
+
+            renderComments();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function restartTest() {
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById('screen-start').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 커뮤니티 댓글 시스템 (실제 작성 댓글 전용)
+        function getStoredComments(key) {
+            const stored = localStorage.getItem('test_comments_' + key);
+            if (stored) {
+                try { return JSON.parse(stored); } catch(e) {}
+            }
+            return [];
+        }
+
+        function renderComments() {
+            const list = document.getElementById('comment-list');
+            if (!list) return;
+            const comments = getStoredComments('halloween_test');
+            list.innerHTML = '';
+
+            if (comments.length === 0) {
+                list.innerHTML = '<div class="p-6 text-center text-xs text-gray-400">아직 등록된 후기가 없습니다.<br>첫 번째 할로윈 캐릭터 후기를 남겨보세요!</div>';
+                return;
+            }
+
+            comments.forEach((c, idx) => {
+                const item = document.createElement('div');
+                item.className = 'p-3 bg-gray-50/70 rounded-xl border border-gray-100 space-y-1';
+                item.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-gray-800">${c.nick}</span>
+                        <span class="text-[10px] text-gray-400">${c.time}</span>
+                    </div>
+                    <p class="text-xs text-gray-700 leading-snug break-keep">${c.text}</p>
+                    <div class="flex justify-end pt-0.5">
+                        <button onclick="likeComment('halloween_test', ${idx})" class="text-[10px] text-gray-400 hover:text-purple-600 flex items-center space-x-1">
+                            <span>공감</span>
+                            <span class="font-bold">${c.likes || 0}</span>
+                        </button>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function submitComment() {
+            const nickEl = document.getElementById('comment-nickname');
+            const textEl = document.getElementById('comment-text');
+
+            const nick = nickEl.value.trim() || '익명';
+            const text = textEl.value.trim();
+
+            if (!text) { alert('후기 내용을 입력해주세요!'); return; }
+
+            const comments = getStoredComments('halloween_test');
+            comments.unshift({
+                nick: nick,
+                time: '방금 전',
+                text: text,
+                likes: 0
+            });
+
+            localStorage.setItem('test_comments_halloween_test', JSON.stringify(comments));
+            textEl.value = '';
+            renderComments();
+            alert('소중한 후기가 등록되었습니다!');
+        }
+
+        function likeComment(key, idx) {
+            const comments = getStoredComments(key);
+            if (comments[idx]) {
+                comments[idx].likes = (comments[idx].likes || 0) + 1;
+                localStorage.setItem('test_comments_' + key, JSON.stringify(comments));
+                renderComments();
+            }
+        }
+
+        function shareResult() {
+            const url = window.location.href;
+            const title = '할로윈 캐릭터 성격 테스트 결과';
+            const text = '내 안의 할로윈 몬스터 캐릭터 분석 결과가 나왔어! 너의 캐릭터도 확인해봐!';
+
+            if (navigator.share) {
+                navigator.share({ title: title, text: text, url: url }).catch(() => {});
+            } else {
+                const dummy = document.createElement('textarea');
+                document.body.appendChild(dummy);
+                dummy.value = `${text}\n${url}`;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -62,35 +62,32 @@
             <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">사주·운세</span>
         </header>
 
-        <main class="flex-1 p-5 flex flex-col">
+        <main class="flex-1 px-5 py-4">
             
             <!-- 1. 시작 화면 -->
-            <section id="start-screen" class="flex-1 flex flex-col justify-between py-2 text-center">
-                <div class="space-y-4">
-                    <!-- 썸네일 일러스트 -->
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-indigo-50 bg-indigo-50/30 relative">
-                        <img src="./img/thumb-saju.jpg" alt="사주 연애운" class="w-full h-full object-cover">
-                    </div>
-
-                    <div class="pt-2 space-y-1.5">
-                        <span class="badge-tag bg-indigo-50 text-indigo-700">10가지 일간 캐릭터</span>
-                        <h1 class="text-2xl font-black text-gray-900 leading-tight">
-                            사주로 보는<br>나의 타고난 연애운
-                        </h1>
-                        <p class="text-xs text-gray-500 leading-relaxed pt-1">
-                            생년월일로 알아보는 나의 본질적인 매력과<br>운명의 궁합 파트너를 확인해보세요
-                        </p>
-                    </div>
+            <section id="start-screen" class="space-y-4 py-1 text-center">
+                <!-- 썸네일 일러스트 -->
+                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-indigo-50 bg-indigo-50/30 relative">
+                    <img src="./img/thumb-saju.jpg" alt="사주 연애운" class="w-full h-full object-cover">
                 </div>
 
-                <div class="pt-8 pb-4 space-y-3">
-                    <button onclick="showScreen('input-screen')" class="w-full bg-indigo-600 active:scale-[0.98] hover:bg-indigo-700 text-white font-bold py-4 rounded-xl text-base shadow-lg shadow-indigo-200 transition-all">
+                <div class="pt-1 space-y-1.5">
+                    <span class="badge-tag bg-indigo-50 text-indigo-700">10가지 일간 캐릭터</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight">
+                        사주로 보는<br>나의 타고난 연애운
+                    </h1>
+                    <p class="text-xs text-gray-500 leading-relaxed pt-0.5">
+                        생년월일로 알아보는 나의 본질적인 매력과<br>운명의 궁합 파트너를 확인해보세요
+                    </p>
+                </div>
+
+                <div class="pt-3 pb-2 space-y-2.5">
+                    <button onclick="showScreen('input-screen')" class="w-full bg-indigo-600 active:scale-[0.98] hover:bg-indigo-700 text-white font-bold py-4 rounded-xl text-base shadow-md shadow-indigo-200 transition-all">
                         내 연애운 확인하기
                     </button>
                     <p class="text-[11px] text-gray-400">
                         🔒 입력하신 생년월일은 서버에 저장되지 않으며,<br>브라우저에서만 안전하게 계산 후 즉시 파기됩니다.
                     </p>
-                </div>
             </section>
 
             <!-- 2. 정보 입력 화면 -->

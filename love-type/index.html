@@ -15,7 +15,7 @@
     <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
     
     <meta name="description" content="20문항으로 알아보는 나의 연애 스타일! 냉철한 분석가부터 낭만적인 사랑꾼까지 8가지 유형 중 나는 어떤 타입?">
-    <meta name="keywords" content="연애심리테스트, 연애성향, MBTI, 연애궁합, 심리분석, 테스트모음, 푸망">
+    <meta name="keywords" content="연애유형테스트, 연애심리테스트, 연애성향, MBTI, 연애궁합, 심리분석, 테스트모음, 푸망">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testmoeum.vercel.app/love-type/">
@@ -61,7 +61,7 @@
 <body class="min-h-screen flex justify-center">
 
     <!-- 모바일 컨테이너 (max-w-[480px]) -->
-    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative">
+    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
         
         <!-- 상단 헤더 -->
         <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
@@ -75,55 +75,53 @@
         </header>
 
         <!-- 프로그레스 바 -->
-        <div id="progress-container" class="hidden w-full h-1 bg-gray-100 flex-none">
+        <div id="progress-container" class="hidden w-full h-1.5 bg-gray-100 flex-none">
             <div id="progress-bar" class="h-full bg-rose-500 transition-all duration-300 ease-out" style="width: 0%"></div>
         </div>
 
-        <main class="flex-1 p-5 flex flex-col justify-between">
+        <main class="flex-1 px-5 py-4">
             
-            <!-- 1. 시작 화면 -->
-            <div id="screen-start" class="flex-1 flex flex-col justify-between py-2 text-center fade-in">
-                <div class="space-y-4">
-                    <!-- 썸네일 일러스트 -->
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-rose-50 bg-rose-50/30 relative">
-                        <img src="../img/thumb-love.jpg" alt="연애 유형 테스트" class="w-full h-full object-cover">
-                    </div>
-
-                    <div class="pt-2 space-y-1.5">
-                        <span class="badge-tag bg-rose-50 text-rose-600">8가지 연애 DNA 분석</span>
-                        <h1 class="text-2xl font-black text-gray-900 leading-tight">
-                            나의 연애 유형은?<br>연애 성향 심리테스트
-                        </h1>
-                        <p class="text-xs text-gray-500 leading-relaxed pt-1">
-                            MBTI와 애착 유형 이론 기반 20문항으로 알아보는<br>내 무의식 속 연애 스타일과 환상의 짝꿍
-                        </p>
-                    </div>
+            <!-- 1. 시작 화면 (자연스럽게 모인 컴팩트 레이아웃) -->
+            <div id="screen-start" class="space-y-4 text-center fade-in">
+                <!-- 썸네일 일러스트 -->
+                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-rose-50 bg-rose-50/30 relative">
+                    <img src="../img/thumb-love.jpg" alt="연애 유형 테스트" class="w-full h-full object-cover">
                 </div>
 
-                <div class="pt-6 pb-2 space-y-3">
+                <div class="pt-1 space-y-1.5">
+                    <span class="badge-tag bg-rose-50 text-rose-600">8가지 연애 유형 분석</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight">
+                        나의 연애 유형은?<br>연애 성향 심리테스트
+                    </h1>
+                    <p class="text-xs text-gray-500 leading-relaxed pt-0.5">
+                        MBTI와 애착 유형 이론 기반 20문항으로 알아보는<br>내 무의식 속 연애 스타일과 환상의 짝꿍
+                    </p>
+                </div>
+
+                <div class="pt-2 space-y-2.5">
                     <input type="text" id="input-name" placeholder="이름 또는 닉네임을 입력하세요" 
                         onkeydown="checkEnter(event)"
-                        class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 text-center text-sm bg-white transition-colors">
+                        class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 text-center text-sm bg-white transition-colors shadow-2xs">
                     
-                    <button onclick="startTest()" class="w-full py-4 bg-rose-500 active:scale-[0.98] text-white rounded-xl font-bold text-base shadow-lg shadow-rose-200 hover:bg-rose-600 transition-all cursor-pointer">
+                    <button onclick="startTest()" class="w-full py-4 bg-rose-500 active:scale-[0.98] text-white rounded-xl font-bold text-base shadow-md shadow-rose-200 hover:bg-rose-600 transition-all cursor-pointer">
                         테스트 시작하기
                     </button>
                     
-                    <p class="text-[11px] text-gray-400 text-center">
+                    <p class="text-[11px] text-gray-400 text-center pt-0.5">
                         총 20문항 · 소요 시간 약 2분 · 100% 무료
                     </p>
                 </div>
             </div>
 
             <!-- 2. 질문 화면 -->
-            <div id="screen-q" class="hidden flex-1 flex-col justify-between py-2 fade-in">
-                <div class="space-y-6 pt-4">
+            <div id="screen-q" class="hidden flex-col justify-between py-2 fade-in">
+                <div class="space-y-6 pt-2">
                     <div class="space-y-2 text-center">
                         <span id="txt-q-num" class="badge-tag bg-rose-50 text-rose-600">Q. 01 / 20</span>
                         <h2 id="txt-q" class="text-lg font-bold text-gray-900 leading-snug break-keep pt-2">질문 내용</h2>
                     </div>
                     
-                    <div class="space-y-3 w-full pt-4">
+                    <div class="space-y-3 w-full pt-2">
                         <button onclick="next('A')" class="w-full p-4 text-left bg-white border border-gray-200 rounded-2xl active:scale-[0.98] hover:border-rose-400 hover:bg-rose-50/40 transition-all shadow-xs group">
                             <span class="block text-[11px] text-rose-500 font-bold mb-1">A</span>
                             <span id="txt-a" class="text-sm font-medium text-gray-800 block leading-relaxed break-keep">답변 A</span>
@@ -134,32 +132,20 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- 애드센스 인피드 광고 -->
-                <div class="rounded-xl overflow-hidden bg-gray-50 border border-gray-100 text-center my-4">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8530559977181821"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
             </div>
 
             <!-- 3. 로딩 화면 -->
-            <div id="screen-loading" class="hidden flex-1 flex-col items-center justify-center py-20 space-y-4 text-center">
+            <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center">
                 <div class="loader"></div>
                 <div class="space-y-1">
                     <h3 class="font-bold text-gray-800 text-base">연애 성향 분석 중...</h3>
-                    <p class="text-xs text-gray-400">당신의 연애 DNA 유형을 계산하고 있습니다</p>
+                    <p class="text-xs text-gray-400">당신의 연애 성향 유형을 계산하고 있습니다</p>
                 </div>
             </div>
 
         </main>
 
-        <footer class="border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
+        <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
             <p>© 2026 테스트모음. All rights reserved.</p>
         </footer>
 

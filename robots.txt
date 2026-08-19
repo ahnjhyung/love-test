@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://testmoeum.vercel.app/sitemap.xml

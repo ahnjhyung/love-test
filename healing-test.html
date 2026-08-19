@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <!-- Google Analytics -->
@@ -375,13 +375,25 @@
         }
 
         function copyShareLink() {
-            var dummy = document.createElement('textarea');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('힐링 테스트 링크가 복사되었습니다! 친구들에게 공유해보세요.');
+            var url = window.location.href;
+            var title = '나의 힐링 성격 유형 테스트';
+            var text = '지친 나를 위한 맞춤 힐링 처방전! 너의 힐링 성격 유형도 확인해봐!';
+
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: text,
+                    url: url
+                }).catch(function() {});
+            } else {
+                var dummy = document.createElement('textarea');
+                document.body.appendChild(dummy);
+                dummy.value = text + '\n' + url;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert('힐링 테스트 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 공유해보세요.');
+            }
         }
     </script>
 </body>

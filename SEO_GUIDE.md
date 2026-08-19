@@ -13,6 +13,7 @@
 |---|---|
 | 도메인(canonical) | `https://testmoeum.vercel.app` |
 | Google Analytics | `GT-WRDDWJ26` |
+| Google Search Console 인증 | `3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s` |
 | AdSense pub-id | `ca-pub-8530559977181821` |
 | Naver 인증 | `7c96ba844f1bbf704872b0cfc75bf067a5f454c9` |
 | Pretendard 폰트 | CDN `@import url(...)` |

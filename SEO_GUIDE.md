@@ -1,4 +1,4 @@
-# 테스트모음 SEO & 콘텐츠 운영 지침서
+﻿# 테스트모음 SEO & 콘텐츠 운영 지침서
 
 > **대상**: 테스트모음(testmoeum.vercel.app) 플랫폼에 새 테스트·칼럼을 추가하는 모든 에이전트  
 > **타깃**: 여성 10대~30대 / 모바일 퍼스트  
@@ -15,7 +15,7 @@
 | Google Analytics | `GT-WRDDWJ26` |
 | Google Search Console 인증 | `3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s` |
 | AdSense pub-id | `ca-pub-8530559977181821` |
-| Naver 인증 | `7c96ba844f1bbf704872b0cfc75bf067a5f454c9` |
+| Naver 인증 | `e4c8ca2bdf1a0623e4b7e2d826a4f25f9fcbf228` |
 | Pretendard 폰트 | CDN `@import url(...)` |
 | Tailwind | `https://cdn.tailwindcss.com` |
 | 모바일 컨테이너 | `max-w-[480px]` 중앙 정렬 |
@@ -39,7 +39,7 @@
 <!-- 2. 기본 메타 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
+<meta name="naver-site-verification" content="e4c8ca2bdf1a0623e4b7e2d826a4f25f9fcbf228" />
 
 <!-- 3. SEO 메타 (★ 페이지마다 고유하게 작성) -->
 <title>{페이지 고유 타이틀} | 테스트모음</title>

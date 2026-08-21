@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
     <script>
@@ -10,26 +11,43 @@
       gtag('config', 'GT-WRDDWJ26');
     </script>
 
-    <meta charset="UTF-8">
+    <title> |     </title>
+
+    <!--     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="naver-site-verification" content="7c96ba844f1bbf704872b0cfc75bf067a5f454c9" />
-    <meta name="description" content="나를 발견하는 즐거움, 테스트모음! 2030을 위한 연애 유형 테스트, 사주 연애운, MBTI 성격 테스트 등 다양한 심리테스트를 무료로 즐겨보세요.">
-    <meta name="keywords" content="연애유형테스트, 심리테스트, 사주테스트, MBTI테스트, 심리테스트모음, 푸망, 테스트잇">
-    <meta property="og:title" content="테스트모음 - 나를 찾는 즐거운 심리테스트">
-    <meta property="og:description" content="연애 유형부터 사주 연애운까지! 2030을 위한 트렌디한 심리테스트 모음">
+
+    <!--   ( 80  ) -->
+    <meta name="description" content=" ,  , MBTI  ,       .">
+    <meta name="keywords" content=", , , MBTI, , , ">
+
+    <!-- Open Graph (, ,  ) -->
+    <meta property="og:title" content=" -    ">
+    <meta property="og:description" content="   , 2030    ">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testmoeum.vercel.app">
     <meta property="og:image" content="https://testmoeum.vercel.app/img/thumb-love.jpg">
+    <meta property="og:site_name" content="">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content=" -    ">
+    <meta name="twitter:description" content="   , 2030    ">
+    <meta name="twitter:image" content="https://testmoeum.vercel.app/img/thumb-love.jpg">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://testmoeum.vercel.app">
 
+    <!--   (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "테스트모음",
+      "name": "",
       "url": "https://testmoeum.vercel.app",
-      "description": "연애 유형, 사주 연애운, MBTI 등 다양한 심리테스트를 무료로 제공하는 테스트 플랫폼",
+      "description": " ,  , MBTI       ",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://testmoeum.vercel.app/?q={search_term_string}",
@@ -38,74 +56,64 @@
     }
     </script>
 
-    <title>테스트모음 | 트렌디한 심리테스트 & 사주 운세</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
-        
         * {
             -webkit-tap-highlight-color: transparent;
             box-sizing: border-box;
         }
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background-color: #f7f7f9;
-            color: #191f28;
-            margin: 0;
-            padding: 0;
+            background-color: #f8fafc;
+            color: #1e293b;
         }
-
-        /* 푸망 스타일 카테고리 칩 */
         .chip-scroll::-webkit-scrollbar { display: none; }
         .chip-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-        
+
         .cat-chip {
-            padding: 7px 15px;
+            white-space: nowrap;
+            padding: 7px 14px;
             border-radius: 9999px;
             font-size: 13px;
             font-weight: 600;
-            white-space: nowrap;
+            background-color: #f1f5f9;
+            color: #64748b;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: #ffffff;
-            color: #4e5968;
-            border: 1px solid #e5e8eb;
+            border: 1px solid transparent;
         }
         .cat-chip.active {
-            background-color: #191f28;
+            background-color: #1e293b;
             color: #ffffff;
-            border-color: #191f28;
+            border-color: #1e293b;
+            box-shadow: 0 2px 8px rgba(30, 41, 59, 0.15);
         }
-        .cat-chip:active {
-            transform: scale(0.96);
+        .cat-chip:hover:not(.active) {
+            background-color: #e2e8f0;
+            color: #334155;
         }
 
-        /* 카드 인터랙션 */
         .poomang-card {
+            border-radius: 16px;
             background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .poomang-card:active {
-            transform: scale(0.98);
-        }
-        @media (hover: hover) {
-            .poomang-card:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-            }
+        .poomang-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+            border-color: #e2e8f0;
         }
 
-        /* 썸네일 이미지 비율 */
         .thumb-wrap {
             position: relative;
             width: 100%;
-            padding-top: 68%;
+            padding-top: 56.25%;
             overflow: hidden;
-            background-color: #f2f4f6;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background-color: #f1f5f9;
         }
         .thumb-wrap img {
             position: absolute;
@@ -120,7 +128,6 @@
             transform: scale(1.04);
         }
 
-        /* 태그 */
         .badge-tag {
             font-size: 11px;
             font-weight: 700;
@@ -130,20 +137,20 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
-
+</head>
 <body class="min-h-screen flex justify-center">
 
-    <!-- 모바일 프레임 컨테이너 (max-w-[480px]) -->
+    <!--    -->
     <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-16">
         
-        <!-- 상단 네비게이션 헤더 -->
+        <!--    -->
         <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-5 py-3.5 flex items-center justify-between">
             <a href="/" class="flex items-center space-x-1.5">
-                <span class="text-xl font-black tracking-tight text-gray-900">테스트모음</span>
+                <h1 class="text-xl font-black tracking-tight text-gray-900 m-0"></h1>
                 <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mb-2"></span>
             </a>
             <div class="flex items-center space-x-3 text-gray-500">
-                <a href="#test-grid" class="p-1 hover:text-gray-900 transition-colors">
+                <a href="#test-grid" class="p-1 hover:text-gray-900 transition-colors" aria-label="  ">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -151,267 +158,261 @@
             </div>
         </header>
 
-        <!-- 카테고리 탭 (가로 스크롤) -->
+        <!--   -->
         <nav class="bg-white px-4 py-2.5 border-b border-gray-100/80 sticky top-[53px] z-40">
             <div class="flex space-x-2 overflow-x-auto chip-scroll py-0.5">
-                <button class="cat-chip active" onclick="filterCategory('all', this)">전체</button>
-                <button class="cat-chip" onclick="filterCategory('fashion', this)">패션·스타일</button>
-                <button class="cat-chip" onclick="filterCategory('love', this)">연애·궁합</button>
-                <button class="cat-chip" onclick="filterCategory('saju', this)">사주·운세</button>
-                <button class="cat-chip" onclick="filterCategory('mbti', this)">성격·심리</button>
-                <button class="cat-chip" onclick="filterCategory('article', this)">칼럼</button>
+                <button class="cat-chip active" onclick="filterCategory('all', this)"></button>
+                <button class="cat-chip" onclick="filterCategory('fashion', this)">·</button>
+                <button class="cat-chip" onclick="filterCategory('love', this)">·</button>
+                <button class="cat-chip" onclick="filterCategory('saju', this)">·</button>
+                <button class="cat-chip" onclick="filterCategory('mbti', this)">·</button>
+                <button class="cat-chip" onclick="filterCategory('article', this)"></button>
             </div>
         </nav>
 
         <main class="flex-1 px-4 py-4 space-y-5">
 
-            <!-- 1. Featured 메인 배너 카드 (푸망 스타일) -->
-            <section class="poomang-card cursor-pointer overflow-hidden group" onclick="location.href='./love-type/index.html'">
+            <!--    -->
+            <a href="/love-type" class="poomang-card block overflow-hidden group">
                 <div class="thumb-wrap">
-                    <img src="./img/thumb-love.jpg" alt="연애 유형 테스트" loading="eager">
+                    <img src="./img/thumb-love.jpg" alt="   " loading="eager">
                     <div class="absolute top-3 left-3">
-                        <span class="badge-tag bg-rose-500 text-white shadow-sm">HOT 인기</span>
+                        <span class="badge-tag bg-rose-500 text-white shadow-sm"> </span>
                     </div>
                 </div>
                 <div class="p-4 space-y-1.5">
                     <div class="flex items-center space-x-2">
-                        <span class="badge-tag bg-rose-50 text-rose-600">연애 성향</span>
-                        <span class="text-xs text-gray-400 font-medium">20문항 분석</span>
+                        <span class="badge-tag bg-rose-50 text-rose-600"> </span>
+                        <span class="text-xs text-gray-400 font-medium">20 </span>
                     </div>
                     <h2 class="text-lg font-bold text-gray-900 group-hover:text-rose-500 transition-colors leading-snug">
-                        나의 연애 유형 테스트
+                           
                     </h2>
                     <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">
-                        냉철한 분석가부터 낭만적인 사랑꾼까지! 20가지 상황으로 알아보는 나의 연애 스타일과 찰떡 궁합
+                           ! 20       
                     </p>
                 </div>
-            </section>
+            </a>
 
-            <!-- 2. 테스트 카드 리스트 (2열 그리드) -->
+            <!--    (2 ) -->
             <section>
                 <div class="flex items-center justify-between mb-3 px-1">
-                    <h3 class="text-sm font-bold text-gray-900 tracking-tight">트렌딩 테스트</h3>
-                    <span class="text-xs text-gray-400">인기 추천</span>
+                    <h3 class="text-sm font-bold text-gray-900 tracking-tight"> </h3>
+                    <span class="text-xs text-gray-400"></span>
                 </div>
 
                 <div id="test-grid" class="grid grid-cols-2 gap-3">
 
-                    <!-- 카드 1: 달콤 쫀득 한가위 디저트 테스트 (추석 스페셜) -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="mbti" onclick="location.href='./chuseok-test.html'">
+                    <!--  1:    -->
+                    <a href="/chuseok-test" class="poomang-card test-item flex flex-col justify-between" data-category="mbti">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-chuseok.jpg" alt="달콤 쫀득 한가위 테스트">
+                                <img src="./img/thumb-chuseok.jpg" alt="    ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-amber-500 text-white text-[10px]">추석한정</span>
+                                    <span class="badge-tag bg-amber-500 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-amber-50 text-amber-700 text-[10px]">추석·디저트</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">한가위 디저트 테스트</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">꿀송편부터 약과까지 내 안의 전통 디저트</p>
+                                <span class="badge-tag bg-amber-50 text-amber-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">  </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">     </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 2: 퍼스널 패션 & 헤어스타일 추천 (신규 쇼핑/스타일) -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="fashion" onclick="location.href='./fashion-style.html'">
+                    <!--  2:   &  -->
+                    <a href="/fashion-style" class="poomang-card test-item flex flex-col justify-between" data-category="fashion">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-fashion.jpg" alt="퍼스널 패션 헤어스타일 추천">
+                                <img src="./img/thumb-fashion.jpg" alt="   ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-pink-600 text-white text-[10px]">인기쇼핑</span>
+                                    <span class="badge-tag bg-pink-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-pink-50 text-pink-700 text-[10px]">패션·스타일</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">퍼스널 스타일 & 헤어</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">나에게 착붙인 인생 코디룩과 헤어스타일 추천</p>
+                                <span class="badge-tag bg-pink-50 text-pink-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">  & </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">     </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 2: 할로윈 캐릭터 성격 테스트 (시즌 스페셜) -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="mbti" onclick="location.href='./halloween-test.html'">
+                    <!--  3:     -->
+                    <a href="/halloween-test" class="poomang-card test-item flex flex-col justify-between" data-category="mbti">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-halloween.jpg" alt="할로윈 캐릭터 성격 테스트">
+                                <img src="./img/thumb-halloween.jpg" alt="   ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-purple-600 text-white text-[10px]">시즌한정</span>
+                                    <span class="badge-tag bg-purple-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-purple-50 text-purple-700 text-[10px]">시즌·심리</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">할로윈 캐릭터 테스트</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">마녀부터 뱀파이어까지 내 안의 밤의 영혼</p>
+                                <span class="badge-tag bg-purple-50 text-purple-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">  </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">     </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 2: 종합 사주팔자 운세 -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="saju" onclick="location.href='./saju-life.html'">
+                    <!--  4:    -->
+                    <a href="/saju-life" class="poomang-card test-item flex flex-col justify-between" data-category="saju">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-saju-life.jpg" alt="종합 사주팔자 운세">
+                                <img src="./img/thumb-saju-life.jpg" alt="   ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-indigo-600 text-white text-[10px]">인생총운</span>
+                                    <span class="badge-tag bg-indigo-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-indigo-50 text-indigo-700 text-[10px]">사주·운세</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">종합 사주팔자 운세</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">재물운, 직업운, 인복운, 오행 개수 정밀 분석</p>
+                                <span class="badge-tag bg-indigo-50 text-indigo-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">  </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">, , ,    </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 2: 사주 연애운 -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="saju" onclick="location.href='./saju-love.html'">
+                    <!--  5:   -->
+                    <a href="/saju-love" class="poomang-card test-item flex flex-col justify-between" data-category="saju">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-saju.jpg" alt="사주로 보는 나의 연애운">
+                                <img src="./img/thumb-saju.jpg" alt="   ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-pink-600 text-white text-[10px]">연애운</span>
+                                    <span class="badge-tag bg-pink-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-pink-50 text-pink-700 text-[10px]">사주·운세</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">사주 연애운 테스트</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">생년월일 일간 캐릭터로 보는 연애운과 궁합</p>
+                                <span class="badge-tag bg-pink-50 text-pink-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">  </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">     </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 3: 운명의 붉은 실 궁합 -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="love" onclick="location.href='./destiny-match.html'">
+                    <!--  6:     -->
+                    <a href="/destiny-match" class="poomang-card test-item flex flex-col justify-between" data-category="love">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-destiny.jpg" alt="운명의 붉은 실 궁합">
+                                <img src="./img/thumb-destiny.jpg" alt="    ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-purple-600 text-white text-[10px]">궁합</span>
+                                    <span class="badge-tag bg-purple-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-purple-50 text-purple-600 text-[10px]">연애·궁합</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">운명의 붉은 실 궁합</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">우리 둘은 천생연분일까? 사주 오행 찰떡 케미</p>
+                                <span class="badge-tag bg-purple-50 text-purple-600 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">   </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">  ?    </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 4: 힐링 성격 유형 -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="mbti" onclick="location.href='./healing-test.html'">
+                    <!--  7:    -->
+                    <a href="/healing-test" class="poomang-card test-item flex flex-col justify-between" data-category="mbti">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-psychology.jpg" alt="나의 힐링 성격 유형">
+                                <img src="./img/thumb-psychology.jpg" alt="    ">
                                 <div class="absolute top-2 left-2">
-                                    <span class="badge-tag bg-teal-600 text-white text-[10px]">힐링</span>
+                                    <span class="badge-tag bg-teal-600 text-white text-[10px]"></span>
                                 </div>
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-teal-50 text-teal-700 text-[10px]">성격·심리</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">나의 힐링 성격 유형</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">지친 일상 속 나에게 꼭 맞는 휴식과 마음 분석</p>
+                                <span class="badge-tag bg-teal-50 text-teal-700 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">   </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">        </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- 카드 5: 연애 유형 테스트 -->
-                    <div class="poomang-card test-item cursor-pointer flex flex-col justify-between" data-category="love" onclick="location.href='./love-type/index.html'">
+                    <!--  8:     -->
+                    <a href="/love-type" class="poomang-card test-item flex flex-col justify-between" data-category="love">
                         <div>
                             <div class="thumb-wrap" style="padding-top: 75%;">
-                                <img src="./img/thumb-love.jpg" alt="연애 유형 테스트">
+                                <img src="./img/thumb-love.jpg" alt="   ">
                             </div>
                             <div class="p-3 space-y-1">
-                                <span class="badge-tag bg-rose-50 text-rose-600 text-[10px]">연애·심리</span>
-                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">연애 유형 테스트</h4>
-                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">내 무의식 속 연애 스타일과 환상의 파트너</p>
+                                <span class="badge-tag bg-rose-50 text-rose-600 text-[10px]">·</span>
+                                <h4 class="font-bold text-sm text-gray-900 leading-snug line-clamp-1">   </h4>
+                                <p class="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">     </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                 </div>
             </section>
 
-            <!-- 3. 심리 & 사주 칼럼 섹션 (SEO & 애드센스 텍스트) -->
+            <!--   -->
             <section class="test-item pt-2" data-category="article">
                 <div class="flex items-center justify-between mb-3 px-1">
-                    <h3 class="text-sm font-bold text-gray-900 tracking-tight">연애 & 심리 칼럼</h3>
-                    <span class="text-xs text-gray-400">Insight</span>
+                    <h3 class="text-sm font-bold text-gray-900 tracking-tight">   </h3>
+                    <a href="/blog" class="text-xs text-rose-500 font-semibold hover:underline"></a>
                 </div>
 
                 <div class="space-y-2.5">
-                    <a href="./articles/mbti별-남자-꼬시는법-연애공략.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block">실전 연애</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">MBTI 16가지 유형별 남자 꼬시는 법 & 공략 가이드</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">그 사람의 마음을 여는 심쿵 포인트와 절대 금기 행동 총정리</p>
+                    <a href="/articles/mbti---" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">MBTI 16   </h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">      </p>
                     </a>
 
-                    <a href="./articles/mbti별-플러팅-신호-총정리.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block">연애 심리</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">MBTI 16가지 유형별 플러팅 신호와 짝사랑 행동</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">그 사람의 은밀한 호감 시그널과 카톡 답장 패턴 완벽 분석</p>
+                    <a href="/articles/mbti---" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">MBTI 16    </h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">       </p>
                     </a>
 
-                    <a href="./articles/대운-바뀌기전-징조-5가지.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-indigo-100 text-indigo-700 text-[10px] mb-1 inline-block">운세 통찰</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">인생의 대운(大運)이 바뀌기 전 나타나는 징조 5가지</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">인간관계 물갈이부터 환경 변화까지 교운기 증상과 개운법</p>
+                    <a href="/articles/---5" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-indigo-100 text-indigo-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">      5</h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">     </p>
                     </a>
 
-                    <a href="./articles/도화살-홍염살-화개살-특징.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-pink-100 text-pink-700 text-[10px] mb-1 inline-block">인기 칼럼</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">도화살·홍염살·화개살 차이 총정리: 나에게 숨겨진 이성 유혹 살</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">사람을 홀리는 사주 속 3대 매력 살의 결정적 특징과 보는 법</p>
+                    <a href="/articles/---" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-pink-100 text-pink-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">    </h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">  3   </p>
                     </a>
 
-                    <a href="./articles/궁합-잘맞는-사주-특징.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-purple-100 text-purple-700 text-[10px] mb-1 inline-block">사주 궁합</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">궁합 잘 맞는 사주 특징 총정리: 천생연분 오행과 천간합</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">서로를 채워주는 사주 오행의 조화와 천간합 궁합 비밀</p>
+                    <a href="/articles/---" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-purple-100 text-purple-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">    </h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">    </p>
                     </a>
 
-                    <a href="./articles/연애-오래가는-커플-특징.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block">연애 심리</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">연애 오래가는 커플들의 4가지 공통 특징</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">심리학 연구가 증명한 건강한 대화법과 애착 유형 상호작용</p>
-                    </a>
-
-                    <a href="./articles/사주-연애운-무료.html" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
-                        <span class="badge-tag bg-indigo-100 text-indigo-700 text-[10px] mb-1 inline-block">운세 가이드</span>
-                        <h4 class="text-sm font-bold text-gray-800 leading-snug">만세력으로 내 사주 연애운 직접 확인하는 가이드</h4>
-                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">일간과 십신으로 풀어보는 내 진짜 인연과 개운법</p>
+                    <a href="/articles/---" class="block p-3.5 bg-gray-50/70 hover:bg-gray-50 rounded-xl border border-gray-100 transition-colors">
+                        <span class="badge-tag bg-rose-100 text-rose-700 text-[10px] mb-1 inline-block"> </span>
+                        <h4 class="text-sm font-bold text-gray-800 leading-snug">   4 </h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">      </p>
                     </a>
                 </div>
             </section>
 
-            <!-- 4. 정보성 SEO 텍스트 아티클 -->
+            <!-- SEO   -->
             <section class="bg-gray-50/80 rounded-2xl p-4 text-xs text-gray-500 leading-relaxed space-y-2 border border-gray-100/80 mt-6">
-                <h4 class="font-bold text-gray-700 text-xs">테스트모음 서비스 안내</h4>
+                <h4 class="font-bold text-gray-700 text-xs">  </h4>
                 <p>
-                    '테스트모음'은 현대 심리학의 성격 이론(MBTI, 애착 이론)과 전통 명리학의 지혜를 결합하여, 나 자신과 인간관계를 더 깊이 이해할 수 있도록 돕는 무료 테스트 플랫폼입니다.
+                        (MBTI,  )    ,            .
                 </p>
                 <p>
-                    모든 테스트 결과는 재미와 자기 탐색을 위한 참고용이며, 입력하신 개인 정보(생년월일 등)는 서버에 저장되지 않고 브라우저에서 안전하게 즉시 계산됩니다.
+                           ,   ( )       .
                 </p>
             </section>
 
         </main>
 
-        <!-- 푸터 네비게이션 -->
+        <!--   -->
         <footer class="mt-auto border-t border-gray-100 bg-white px-5 py-6 text-center text-xs text-gray-400 space-y-2">
             <div class="flex justify-center space-x-4 text-gray-500 font-medium">
-                <a href="/terms.html" class="hover:text-gray-800">이용약관</a>
+                <a href="/terms" class="hover:text-gray-800"></a>
                 <span>·</span>
-                <a href="/privacy.html" class="hover:text-gray-800 font-semibold text-gray-700">개인정보처리방침</a>
+                <a href="/privacy" class="hover:text-gray-800 font-semibold text-gray-700"></a>
                 <span>·</span>
-                <a href="mailto:help@testmoeum.vercel.app" class="hover:text-gray-800">제휴/문의</a>
+                <a href="mailto:help@testmoeum.vercel.app" class="hover:text-gray-800"></a>
             </div>
-            <p class="text-[11px] text-gray-400">© 2026 테스트모음. All rights reserved.</p>
+            <p class="text-[11px] text-gray-400">&copy; 2026 . All rights reserved.</p>
         </footer>
 
     </div>
 
-    <!-- 카테고리 필터링 JS -->
+    <!--   JS -->
     <script>
         function filterCategory(cat, btn) {
             document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
@@ -430,7 +431,3 @@
     </script>
 </body>
 </html>
-
-
-
-

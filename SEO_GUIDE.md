@@ -1,6 +1,6 @@
 ﻿# 테스트모음 SEO & 콘텐츠 운영 지침서
 
-> **대상**: 테스트모음(testmoeum.vercel.app) 플랫폼에 새 테스트·칼럼을 추가하는 모든 에이전트  
+> **대상**: 테스트모음(www.testmoeum.com) 플랫폼에 새 테스트·칼럼을 추가하는 모든 에이전트  
 > **타깃**: 여성 10대~30대 / 모바일 퍼스트  
 > **기술 스택**: 정적 HTML + Tailwind CDN + Vercel  
 > **최종 수정**: 2026-08-19
@@ -11,7 +11,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 도메인(canonical) | `https://testmoeum.vercel.app` |
+| 도메인(canonical) | `https://www.testmoeum.com` |
 | Google Analytics | `GT-WRDDWJ26` |
 | Google Search Console 인증 | `3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s` |
 | AdSense pub-id | `ca-pub-8530559977181821` |
@@ -45,14 +45,14 @@
 <title>{페이지 고유 타이틀} | 테스트모음</title>
 <meta name="description" content="{150자 이내 고유 설명}">
 <meta name="keywords" content="{쉼표로 구분된 핵심 키워드 5~8개}">
-<link rel="canonical" href="https://testmoeum.vercel.app/{경로}">
+<link rel="canonical" href="https://www.testmoeum.com/{경로}">
 
 <!-- 4. Open Graph (SNS 공유용) -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://testmoeum.vercel.app/{경로}">
+<meta property="og:url" content="https://www.testmoeum.com/{경로}">
 <meta property="og:title" content="{공유 시 노출될 제목 — 30자 이내}">
 <meta property="og:description" content="{공유 시 노출될 설명 — 80자 이내}">
-<meta property="og:image" content="https://testmoeum.vercel.app/img/{썸네일 파일명}">
+<meta property="og:image" content="https://www.testmoeum.com/img/{썸네일 파일명}">
 
 <!-- 5. 구조화 데이터 (JSON-LD, 테스트 페이지용) -->
 <script type="application/ld+json">
@@ -61,7 +61,7 @@
   "@type": "WebApplication",
   "name": "{테스트 이름}",
   "description": "{테스트 설명}",
-  "url": "https://testmoeum.vercel.app/{경로}",
+  "url": "https://www.testmoeum.com/{경로}",
   "applicationCategory": "EntertainmentApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
@@ -78,7 +78,7 @@
   "author": { "@type": "Organization", "name": "테스트모음" },
   "publisher": { "@type": "Organization", "name": "테스트모음" },
   "datePublished": "{YYYY-MM-DD}",
-  "url": "https://testmoeum.vercel.app/articles/{파일명}"
+  "url": "https://www.testmoeum.com/articles/{파일명}"
 }
 </script>
 ```
@@ -261,7 +261,7 @@ $dest.Dispose()
 ### 새 URL 추가 형식
 ```xml
 <url>
-  <loc>https://testmoeum.vercel.app/{정확한 경로}</loc>
+  <loc>https://www.testmoeum.com/{정확한 경로}</loc>
   <lastmod>{YYYY-MM-DD}</lastmod>
   <priority>{0.3~1.0}</priority>
 </url>
@@ -354,8 +354,8 @@ content: {칼럼명} SEO 칼럼 추가
 ## 13. Google Search Console 활용법
 
 ### 등록 직후 할 일
-1. 속성 추가: `https://testmoeum.vercel.app`
-2. sitemap 제출: `https://testmoeum.vercel.app/sitemap.xml`
+1. 속성 추가: `https://www.testmoeum.com`
+2. sitemap 제출: `https://www.testmoeum.com/sitemap.xml`
 3. 주요 페이지 URL 검사 → "색인 생성 요청" 클릭
 
 ### 새 페이지 추가할 때마다

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /love-type/Type
 Disallow: /gallery
-Sitemap: https://testmoeum.vercel.app/sitemap.xml
+Sitemap: https://www.testmoeum.com/sitemap.xml

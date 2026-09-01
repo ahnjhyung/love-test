@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-WRDDWJ26');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>크리스마스 롤링페이퍼 트리 | 테스트모음</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&family=Gowun+Dodum&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
+        
+        .ornament {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .ornament:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 10;
+        }
+
+        /* 트리 배경 및 나무 스타일 */
+        .bg-night { background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%); }
+        .bg-warm { background: linear-gradient(180deg, #450a0a 0%, #78350f 100%); }
+
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+        .tree-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body id="body-bg" class="min-h-screen flex justify-center bg-night">
+    
+    <div class="w-full max-w-[480px] min-h-screen flex flex-col relative pb-20 pt-6 px-4">
+        
+        <!-- 헤더 -->
+        <div class="text-center z-10 relative">
+            <h1 class="text-2xl font-black text-white mb-1 shadow-black drop-shadow-md">
+                <span id="display-owner" class="text-emerald-400">---</span>님의 크리스마스 트리
+            </h1>
+            <p class="text-xs text-white/80 font-['Gowun_Dodum'] drop-shadow-md">
+                달려있는 장식을 눌러보세요! (<span id="msg-count">0</span>개의 편지)
+            </p>
+        </div>
+
+        <!-- 트리 렌더링 영역 -->
+        <div class="tree-container mt-6" id="tree-area">
+            <!-- 트리 SVG (JS로 주입) -->
+            <div id="tree-svg-container" class="absolute bottom-0 w-[80%] h-[90%]"></div>
+            <!-- 오너먼트 컨테이너 -->
+            <div id="ornament-container" class="absolute bottom-0 w-[80%] h-[90%] z-10"></div>
+        </div>
+
+        <!-- 하단 버튼 영역 -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 flex justify-center z-20">
+            <div class="w-full max-w-[480px] flex space-x-2">
+                <button id="btn-share" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors text-sm">
+                    🔗 링크 공유하기
+                </button>
+                <button id="btn-write" class="flex-1 bg-red-600 hover:bg-red-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors text-sm">
+                    ✏️ 편지 쓰기
+                </button>
+            </div>
+        </div>
+        <div class="fixed top-4 right-4 z-20">
+            <a href="/xmas-create.html" id="btn-create" class="hidden bg-white/20 hover:bg-white/30 backdrop-blur text-white text-xs font-bold py-2 px-3 rounded-lg shadow transition-colors">
+                내 트리 만들기
+            </a>
+        </div>
+
+    </div>
+
+    <!-- 모달 -->
+    <div id="modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <!-- 잠금 화면 (크리스마스 이전) -->
+            <div id="modal-locked" class="p-8 text-center hidden">
+                <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">아직 열어볼 수 없어요!</h3>
+                <p class="text-sm text-slate-500 font-['Gowun_Dodum'] leading-relaxed">이 편지는 크리스마스 당일<br>(12월 25일)에 공개됩니다.<br>조금만 더 기다려주세요!</p>
+                <button onclick="closeModal()" class="mt-6 w-full bg-slate-800 text-white font-bold py-3 rounded-xl">닫기</button>
+            </div>
+
+            <!-- 오픈 화면 (크리스마스 이후) -->
+            <div id="modal-open" class="p-6 hidden">
+                <div class="text-xs font-bold text-red-500 mb-4 tracking-wider uppercase">Christmas Message</div>
+                <div class="bg-amber-50 p-5 rounded-xl mb-4 border border-amber-100">
+                    <p id="modal-text" class="text-slate-700 font-['Gowun_Dodum'] text-[15px] leading-loose break-words whitespace-pre-wrap"></p>
+                </div>
+                <div class="text-right text-sm font-bold text-slate-800 mb-6">
+                    From. <span id="modal-author"></span>
+                </div>
+                <button onclick="closeModal()" class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl">닫기</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 오너먼트 SVG 사전 정의 (Hidden) -->
+    <svg style="display: none;">
+        <defs>
+            <g id="icon-star"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#fbbf24"/></g>
+            <g id="icon-bauble"><circle cx="12" cy="13" r="8" fill="#ef4444"/><rect x="10" y="3" width="4" height="3" fill="#cbd5e1"/></g>
+            <g id="icon-candy"><path d="M16 10V18 M16 10C16 6 10 6 10 10V20" stroke="#f87171" stroke-width="4" stroke-linecap="round" fill="none"/></g>
+            <g id="icon-gift"><rect x="4" y="9" width="16" height="12" rx="1" fill="#60a5fa"/><rect x="3" y="6" width="18" height="3" rx="0.5" fill="#60a5fa"/><path d="M12 6V21" stroke="#3b82f6" stroke-width="2"/><path d="M12 6H9C7 6 7 3 9 3C11 3 12 6 12 6Z" fill="#3b82f6"/><path d="M12 6H15C17 6 17 3 15 3C13 3 12 6 12 6Z" fill="#3b82f6"/></g>
+        </defs>
+    </svg>
+
+    <script>
+        const SUPABASE_URL = 'https://fcuenflxkkpyplehsizg.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjdWVuZmx4a2tweXBsZWhzaXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTU5NjgsImV4cCI6MjA4NTA5MTk2OH0.xfAV9dpBkhh-5FgV0uwCw8DO3EGqFNeoQrENldaqa8c';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const treeId = urlParams.get('id');
+
+        if (!treeId) {
+            window.location.href = '/xmas-create.html';
+        }
+
+        // 크리스마스 날짜 기준 체크 (2026-12-25 00:00:00 KST)
+        // Date.parse('2026-12-24T15:00:00Z') === UTC 기준 24일 15시 = KST 25일 00시
+        const CHRISTMAS_TIME = Date.parse('2026-12-24T15:00:00Z');
+
+        // 내 트리인지 확인
+        const myTreeId = localStorage.getItem('my_xmas_tree_id');
+        if (myTreeId !== treeId) {
+            document.getElementById('btn-create').classList.remove('hidden');
+        }
+
+        // 공유 버튼
+        document.getElementById('btn-share').addEventListener('click', async () => {
+            const url = window.location.href;
+            try {
+                await navigator.clipboard.writeText(url);
+                alert('링크가 복사되었습니다! 친구들에게 공유해보세요.');
+            } catch (e) {
+                alert('복사 실패. 주소창의 링크를 수동으로 복사해주세요.');
+            }
+        });
+
+        // 편지 쓰기 버튼
+        document.getElementById('btn-write').addEventListener('click', () => {
+            window.location.href = `/xmas-write.html?id=${treeId}`;
+        });
+
+        async function init() {
+            // 1. 트리 정보 가져오기
+            const { data: treeData, error: treeErr } = await supabase.from('xmas_trees').select('*').eq('id', treeId).single();
+            if (treeErr || !treeData) {
+                alert('존재하지 않는 트리입니다.');
+                window.location.href = '/xmas-create.html';
+                return;
+            }
+
+            document.getElementById('display-owner').textContent = treeData.owner_name;
+            document.title = `${treeData.owner_name}님의 크리스마스 트리 | 테스트모음`;
+
+            // 배경 세팅
+            document.getElementById('body-bg').className = `min-h-screen flex justify-center bg-${treeData.bg_style}`;
+
+            // 트리 SVG 그리기
+            const treeContainer = document.getElementById('tree-svg-container');
+            if (treeData.tree_style === 'snowy') {
+                treeContainer.innerHTML = `
+                    <svg width="100%" height="100%" viewBox="0 0 100 120" preserveAspectRatio="none">
+                        <path d="M50 10 L85 50 L70 50 L95 90 L5 90 L30 50 L15 50 Z" fill="#34d399"/>
+                        <path d="M50 10 L60 25 L40 25 Z M70 50 L80 65 L50 65 Z M30 50 L20 65 L50 65 Z M50 25 L65 45 L35 45 Z" fill="#ffffff" opacity="0.8"/>
+                        <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
+                    </svg>`;
+            } else { // classic
+                treeContainer.innerHTML = `
+                    <svg width="100%" height="100%" viewBox="0 0 100 120" preserveAspectRatio="none">
+                        <path d="M50 10 L85 50 L70 50 L95 90 L5 90 L30 50 L15 50 Z" fill="#059669"/>
+                        <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
+                    </svg>`;
+            }
+
+            // 2. 메시지 가져오기
+            const { data: msgs, error: msgErr } = await supabase.from('xmas_messages').select('*').eq('tree_id', treeId);
+            if (!msgErr && msgs) {
+                document.getElementById('msg-count').textContent = msgs.length;
+                renderOrnaments(msgs);
+            }
+        }
+
+        function renderOrnaments(msgs) {
+            const container = document.getElementById('ornament-container');
+            msgs.forEach(msg => {
+                const el = document.createElement('div');
+                el.className = 'ornament w-8 h-8 md:w-10 md:h-10';
+                
+                // 위치 지정 (약간의 오프셋 조정)
+                el.style.left = `${msg.position_x}%`;
+                el.style.top = `${msg.position_y}%`;
+                
+                el.innerHTML = `<svg viewBox="0 0 24 24" class="w-full h-full"><use href="#icon-${msg.ornament_type}"></use></svg>`;
+                
+                el.addEventListener('click', () => openModal(msg));
+                container.appendChild(el);
+            });
+        }
+
+        // 모달 제어
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modal-content');
+        const lockedView = document.getElementById('modal-locked');
+        const openView = document.getElementById('modal-open');
+
+        function openModal(msg) {
+            const now = Date.now();
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            
+            if (now < CHRISTMAS_TIME) {
+                // 오픈 전
+                lockedView.classList.remove('hidden');
+                openView.classList.add('hidden');
+            } else {
+                // 오픈 후
+                lockedView.classList.add('hidden');
+                openView.classList.remove('hidden');
+                document.getElementById('modal-text').textContent = msg.content;
+                document.getElementById('modal-author').textContent = msg.author_name;
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                lockedView.classList.add('hidden');
+                openView.classList.add('hidden');
+            }, 300);
+        }
+
+        init();
+    </script>
+</body>
+</html>

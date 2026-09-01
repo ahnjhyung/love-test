@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-WRDDWJ26');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>크리스마스 롤링페이퍼 만들기 | 테스트모음</title>
+    
+    <!-- Tailwind & Supabase -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&family=Gowun+Dodum&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        
+        .radio-card:checked + div {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center bg-slate-900">
+    <div class="w-full max-w-[480px] bg-slate-800 min-h-screen flex flex-col shadow-xl relative pb-16 px-5 pt-8">
+        
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-black text-emerald-400 mb-2">나만의 크리스마스 트리 만들기</h1>
+            <p class="text-sm text-slate-400 font-['Gowun_Dodum']">친구들에게 공유하고 크리스마스 당일에 편지를 받아보세요!</p>
+        </div>
+
+        <form id="create-form" class="space-y-6 flex-1">
+            <!-- 1. 닉네임 입력 -->
+            <div class="space-y-2">
+                <label for="ownerName" class="block text-sm font-bold text-slate-300">트리 주인 이름 (닉네임)</label>
+                <input type="text" id="ownerName" required maxlength="10" placeholder="예: 루돌프" 
+                    class="w-full bg-slate-700 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors">
+            </div>
+
+            <!-- 2. 트리 종류 선택 -->
+            <div class="space-y-3">
+                <label class="block text-sm font-bold text-slate-300">트리 디자인 선택</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="treeStyle" value="classic" class="peer sr-only radio-card" checked>
+                        <div class="border-2 border-slate-600 bg-slate-700 rounded-xl p-3 text-center transition-all peer-checked:border-emerald-500 peer-checked:bg-emerald-900/30">
+                            <div class="h-20 flex items-center justify-center mb-2">
+                                <svg width="60" height="80" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 10 L80 50 L65 50 L90 90 L10 90 L35 50 L20 50 Z" fill="#059669"/>
+                                    <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-slate-300 peer-checked:text-emerald-400">클래식 그린</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="treeStyle" value="snowy" class="peer sr-only radio-card">
+                        <div class="border-2 border-slate-600 bg-slate-700 rounded-xl p-3 text-center transition-all peer-checked:border-emerald-500 peer-checked:bg-emerald-900/30">
+                            <div class="h-20 flex items-center justify-center mb-2">
+                                <svg width="60" height="80" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 10 L80 50 L65 50 L90 90 L10 90 L35 50 L20 50 Z" fill="#34d399"/>
+                                    <path d="M50 10 L60 25 L40 25 Z M65 50 L75 65 L45 65 Z" fill="#ffffff" opacity="0.8"/>
+                                    <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-slate-300 peer-checked:text-emerald-400">스노위 민트</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3. 배경 테마 선택 -->
+            <div class="space-y-3">
+                <label class="block text-sm font-bold text-slate-300">배경 테마 선택</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="bgStyle" value="night" class="peer sr-only radio-card" checked>
+                        <div class="border-2 border-slate-600 bg-slate-700 rounded-xl p-3 text-center transition-all peer-checked:border-emerald-500 peer-checked:bg-emerald-900/30">
+                            <div class="h-16 w-full rounded-lg bg-gradient-to-b from-slate-900 to-indigo-950 mb-2 border border-slate-600"></div>
+                            <span class="text-xs font-bold text-slate-300 peer-checked:text-emerald-400">고요한 밤</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="bgStyle" value="warm" class="peer sr-only radio-card">
+                        <div class="border-2 border-slate-600 bg-slate-700 rounded-xl p-3 text-center transition-all peer-checked:border-emerald-500 peer-checked:bg-emerald-900/30">
+                            <div class="h-16 w-full rounded-lg bg-gradient-to-b from-red-950 to-orange-950 mb-2 border border-slate-600"></div>
+                            <span class="text-xs font-bold text-slate-300 peer-checked:text-emerald-400">따뜻한 벽난로</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl mt-6 transition-colors shadow-[0_4px_14px_0_rgba(16,185,129,0.39)]">
+                트리 생성하기
+            </button>
+        </form>
+
+    </div>
+
+    <script>
+        // Supabase 설정
+        const SUPABASE_URL = 'https://fcuenflxkkpyplehsizg.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjdWVuZmx4a2tweXBsZWhzaXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTU5NjgsImV4cCI6MjA4NTA5MTk2OH0.xfAV9dpBkhh-5FgV0uwCw8DO3EGqFNeoQrENldaqa8c';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const form = document.getElementById('create-form');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const ownerName = document.getElementById('ownerName').value.trim();
+            const treeStyle = document.querySelector('input[name="treeStyle"]:checked').value;
+            const bgStyle = document.querySelector('input[name="bgStyle"]:checked').value;
+
+            if (!ownerName) return alert('이름을 입력해주세요!');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '생성 중...';
+
+            try {
+                const { data, error } = await supabase
+                    .from('xmas_trees')
+                    .insert([{ owner_name: ownerName, tree_style: treeStyle, bg_style: bgStyle }])
+                    .select('id')
+                    .single();
+
+                if (error) throw error;
+
+                // 내 트리 아이디 로컬스토리지에 저장 (본인 확인용)
+                localStorage.setItem('my_xmas_tree_id', data.id);
+                
+                // 생성된 트리 보기 페이지로 이동
+                window.location.href = `/xmas-view.html?id=${data.id}`;
+                
+            } catch (err) {
+                console.error(err);
+                alert('트리 생성에 실패했습니다. 다시 시도해주세요.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '트리 생성하기';
+            }
+        });
+    </script>
+</body>
+</html>

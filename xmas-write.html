@@ -102,16 +102,18 @@
             });
         });
 
-        // 트리 주인 닉네임 로드
+        // 트리 주인 정보 및 배경 테마 로드
+        var treeBgStyle = 'snowy';
         async function loadTreeInfo() {
             try {
-                var result = await sb.from('xmas_trees').select('owner_name').eq('id', treeId).single();
+                var result = await sb.from('xmas_trees').select('owner_name, bg_style').eq('id', treeId).single();
                 if (result.error || !result.data) {
                     alert('존재하지 않는 트리입니다.');
                     window.location.href = '/';
                     return;
                 }
                 document.getElementById('display-owner').textContent = result.data.owner_name;
+                treeBgStyle = result.data.bg_style || 'snowy';
             } catch (err) {
                 console.error('loadTreeInfo error:', err);
             }
@@ -136,30 +138,42 @@
                 var existResult = await sb.from('xmas_messages').select('position_x, position_y').eq('tree_id', treeId);
                 var usedPositions = (existResult.data || []);
 
-                // 트리 삼각형 영역 슬롯 생성
-                // AI 이미지 기준: 트리는 x:18%~82%, y:8%~88% 삼각형
-                // 레이어별 (위→아래) x 범위를 선형 보간으로 계산
-                var slots = [];
-                var layers = [
-                    { y: 14, xMin: 44, xMax: 56, count: 2 },
-                    { y: 24, xMin: 37, xMax: 63, count: 4 },
-                    { y: 35, xMin: 30, xMax: 70, count: 5 },
-                    { y: 46, xMin: 24, xMax: 76, count: 7 },
-                    { y: 58, xMin: 20, xMax: 80, count: 8 },
-                    { y: 70, xMin: 18, xMax: 82, count: 8 }
-                ];
+                // 테마별 실제 트리 나뭇가지 영역 좌표 (정밀 매핑)
+                var layers;
+                if (treeBgStyle === 'warm') {
+                    // 따뜻한 벽난로 테마: 트리가 좌측(x: 5% ~ 50%, y: 24% ~ 70%)에 위치 (우측 벽난로/소파 침범 방지)
+                    layers = [
+                        { y: 25, xMin: 22, xMax: 30, count: 2 },
+                        { y: 34, xMin: 17, xMax: 35, count: 3 },
+                        { y: 43, xMin: 13, xMax: 41, count: 4 },
+                        { y: 53, xMin: 9,  xMax: 45, count: 5 },
+                        { y: 62, xMin: 6,  xMax: 48, count: 6 },
+                        { y: 70, xMin: 5,  xMax: 50, count: 6 }
+                    ];
+                } else {
+                    // 눈 내리는 밤 테마: 트리가 좌측(x: 12% ~ 56%, y: 30% ~ 76%)에 위치 (우측 눈사람/루돌프 침범 방지)
+                    layers = [
+                        { y: 30, xMin: 33, xMax: 42, count: 2 },
+                        { y: 39, xMin: 28, xMax: 46, count: 3 },
+                        { y: 48, xMin: 23, xMax: 49, count: 4 },
+                        { y: 58, xMin: 18, xMax: 53, count: 5 },
+                        { y: 67, xMin: 14, xMax: 55, count: 6 },
+                        { y: 75, xMin: 12, xMax: 56, count: 6 }
+                    ];
+                }
 
+                var slots = [];
                 layers.forEach(function(layer) {
                     for (var i = 0; i < layer.count; i++) {
                         var step = (layer.xMax - layer.xMin) / (layer.count + 1);
-                        var x = layer.xMin + step * (i + 1) + (Math.random() * 4 - 2);
-                        var y = layer.y + (Math.random() * 4 - 2);
+                        var x = layer.xMin + step * (i + 1) + (Math.random() * 3 - 1.5);
+                        var y = layer.y + (Math.random() * 3 - 1.5);
                         slots.push({ x: Math.max(layer.xMin, Math.min(layer.xMax, x)), y: y });
                     }
                 });
 
-                // 사용된 위치와 멀리 있는 슬롯 선택 (최소 거리 5% 이상)
-                var MIN_DIST = 5;
+                // 이미 사용된 위치와 최소 거리(4%) 이상 떨어진 슬롯 필터링
+                var MIN_DIST = 4;
                 var available = slots.filter(function(slot) {
                     return usedPositions.every(function(u) {
                         var dx = u.position_x - slot.x;
@@ -170,15 +184,14 @@
 
                 var posX, posY;
                 if (available.length > 0) {
-                    // 빈 슬롯 있으면 랜덤 선택
                     var chosen = available[Math.floor(Math.random() * available.length)];
                     posX = chosen.x;
                     posY = chosen.y;
                 } else {
-                    // 꽉 찼으면: 트리 내부에서 완전 랜덤 (살짝 겹침 허용)
+                    // 슬롯이 꽉 찼을 때: 트리 나뭇가지 영역 내에서만 안전하게 겹치도록 폴백
                     var fallbackLayer = layers[Math.floor(Math.random() * layers.length)];
                     posX = fallbackLayer.xMin + Math.random() * (fallbackLayer.xMax - fallbackLayer.xMin);
-                    posY = fallbackLayer.y + (Math.random() * 6 - 3);
+                    posY = fallbackLayer.y + (Math.random() * 4 - 2);
                 }
 
                 var insertResult = await sb.from('xmas_messages').insert({

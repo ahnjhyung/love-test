@@ -84,13 +84,19 @@
         <div class="bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
 
             <!-- 잠금 화면 (크리스마스 이전) -->
-            <div id="modal-locked" class="p-8 text-center hidden">
-                <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div id="modal-locked" class="p-6 text-center hidden">
+                <div class="w-14 h-14 mx-auto bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-3">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">아직 열어볼 수 없어요!</h3>
-                <p class="text-sm text-slate-500 font-['Gowun_Dodum'] leading-relaxed">이 편지는 크리스마스 당일<br>(12월 25일)에 공개됩니다.<br>조금만 더 기다려주세요!</p>
-                <button onclick="closeModal()" class="mt-6 w-full bg-slate-800 text-white font-bold py-3 rounded-xl">닫기</button>
+                <div class="inline-block bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full mb-3 border border-slate-200">
+                    From. <span id="locked-author" class="text-red-500 font-black"></span>
+                </div>
+                <h3 class="text-base font-bold text-slate-800 mb-1">아직 열어볼 수 없어요!</h3>
+                <p class="text-xs text-slate-500 font-['Gowun_Dodum'] leading-relaxed">
+                    <span id="locked-author-name" class="font-bold text-slate-700"></span>님이 트리에 달아주신 편지는<br>
+                    <strong class="text-red-500">12월 25일 크리스마스 당일</strong>에 공개됩니다.
+                </p>
+                <button onclick="closeModal()" class="mt-5 w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-sm transition-colors shadow-md">닫기</button>
             </div>
 
             <!-- 오픈 화면 (크리스마스 이후) -->
@@ -191,10 +197,10 @@
             var container = document.getElementById('ornament-container');
             msgs.forEach(function(msg) {
                 var el = document.createElement('div');
-                el.className = 'ornament w-10 h-10 md:w-12 md:h-12';
+                el.className = 'ornament w-8 h-8 md:w-10 md:h-10 cursor-pointer';
                 el.style.left = msg.position_x + '%';
                 el.style.top = msg.position_y + '%';
-                el.innerHTML = '<img src="./img/ornament_' + msg.ornament_type + '.jpg" class="w-full h-full rounded-full object-cover shadow-lg" alt="ornament">';
+                el.innerHTML = '<img src="./img/ornament_' + msg.ornament_type + '.jpg" class="w-full h-full rounded-full object-cover border-2 border-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.35)] transition-transform hover:scale-125" alt="ornament">';
                 el.addEventListener('click', function() { openModal(msg); });
                 container.appendChild(el);
             });
@@ -212,6 +218,8 @@
             if (Date.now() < CHRISTMAS_TIME) {
                 lockedView.classList.remove('hidden');
                 openView.classList.add('hidden');
+                document.getElementById('locked-author').textContent = msg.author_name;
+                document.getElementById('locked-author-name').textContent = msg.author_name;
             } else {
                 lockedView.classList.add('hidden');
                 openView.classList.remove('hidden');

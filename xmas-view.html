@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,13 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>크리스마스 롤링페이퍼 트리 | 테스트모음</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&family=Gowun+Dodum&display=swap');
         body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
-        
         .ornament {
             position: absolute;
             transform: translate(-50%, -50%);
@@ -30,11 +29,6 @@
             transform: translate(-50%, -50%) scale(1.2);
             z-index: 10;
         }
-
-        /* 트리 배경 및 나무 스타일 */
-        .bg-night { background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%); }
-        .bg-warm { background: linear-gradient(180deg, #450a0a 0%, #78350f 100%); }
-
         .modal-overlay {
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(4px);
@@ -43,20 +37,17 @@
             position: relative;
             width: 100%;
             aspect-ratio: 3/4;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
             margin-bottom: 2rem;
         }
     </style>
 </head>
-<body id="body-bg" class="min-h-screen flex justify-center bg-night">
-    
+<body class="min-h-screen flex justify-center" style="background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);">
+
     <div class="w-full max-w-[480px] min-h-screen flex flex-col relative pb-20 pt-6 px-4">
-        
+
         <!-- 헤더 -->
         <div class="text-center z-10 relative">
-            <h1 class="text-2xl font-black text-white mb-1 shadow-black drop-shadow-md">
+            <h1 class="text-2xl font-black text-white mb-1 drop-shadow-md">
                 <span id="display-owner" class="text-emerald-400">---</span>님의 크리스마스 트리
             </h1>
             <p class="text-xs text-white/80 font-['Gowun_Dodum'] drop-shadow-md">
@@ -66,7 +57,6 @@
 
         <!-- 트리 렌더링 영역 (AI 이미지 배경) -->
         <div class="tree-container mt-4 rounded-2xl bg-cover bg-center shadow-2xl border-4 border-slate-700/50 overflow-hidden" id="tree-area">
-            <!-- 오너먼트 컨테이너 -->
             <div id="ornament-container" class="relative w-full h-full z-10"></div>
         </div>
 
@@ -92,7 +82,7 @@
     <!-- 모달 -->
     <div id="modal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
-            
+
             <!-- 잠금 화면 (크리스마스 이전) -->
             <div id="modal-locked" class="p-8 text-center hidden">
                 <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4">
@@ -118,7 +108,7 @@
         </div>
     </div>
 
-    <!-- 오너먼트 SVG 사전 정의 (Hidden) -->
+    <!-- 오너먼트 SVG 사전 정의 -->
     <svg style="display: none;">
         <defs>
             <g id="icon-star"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#fbbf24"/></g>
@@ -129,106 +119,100 @@
     </svg>
 
     <script>
-        const SUPABASE_URL = 'https://fcuenflxkkpyplehsizg.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjdWVuZmx4a2tweXBsZWhzaXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTU5NjgsImV4cCI6MjA4NTA5MTk2OH0.xfAV9dpBkhh-5FgV0uwCw8DO3EGqFNeoQrENldaqa8c';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        var sb = window.supabase.createClient(
+            'https://fcuenflxkkpyplehsizg.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjdWVuZmx4a2tweXBsZWhzaXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTU5NjgsImV4cCI6MjA4NTA5MTk2OH0.xfAV9dpBkhh-5FgV0uwCw8DO3EGqFNeoQrENldaqa8c'
+        );
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const treeId = urlParams.get('id');
+        var urlParams = new URLSearchParams(window.location.search);
+        var treeId = urlParams.get('id');
 
         if (!treeId) {
             window.location.href = '/xmas-create.html';
         }
 
-        // 크리스마스 날짜 기준 체크 (2026-12-25 00:00:00 KST)
-        // Date.parse('2026-12-24T15:00:00Z') === UTC 기준 24일 15시 = KST 25일 00시
-        const CHRISTMAS_TIME = Date.parse('2026-12-24T15:00:00Z');
+        // 크리스마스 오픈: 한국시간 2026-12-25 00:00:00 (= UTC 2026-12-24 15:00:00)
+        var CHRISTMAS_TIME = Date.parse('2026-12-24T15:00:00Z');
 
-        // 내 트리인지 확인
-        const myTreeId = localStorage.getItem('my_xmas_tree_id');
+        // 내 트리가 아니면 "내 트리 만들기" 버튼 표시
+        var myTreeId = localStorage.getItem('my_xmas_tree_id');
         if (myTreeId !== treeId) {
             document.getElementById('btn-create').classList.remove('hidden');
         }
 
         // 공유 버튼
-        document.getElementById('btn-share').addEventListener('click', async () => {
-            const url = window.location.href;
+        document.getElementById('btn-share').addEventListener('click', async function() {
             try {
-                await navigator.clipboard.writeText(url);
+                await navigator.clipboard.writeText(window.location.href);
                 alert('링크가 복사되었습니다! 친구들에게 공유해보세요.');
             } catch (e) {
-                alert('복사 실패. 주소창의 링크를 수동으로 복사해주세요.');
+                prompt('아래 링크를 복사해주세요:', window.location.href);
             }
         });
 
         // 편지 쓰기 버튼
-        document.getElementById('btn-write').addEventListener('click', () => {
-            window.location.href = `/xmas-write.html?id=${treeId}`;
+        document.getElementById('btn-write').addEventListener('click', function() {
+            window.location.href = '/xmas-write.html?id=' + treeId;
         });
 
         async function init() {
-            // 1. 트리 정보 가져오기
-            const { data: treeData, error: treeErr } = await supabase.from('xmas_trees').select('*').eq('id', treeId).single();
-            if (treeErr || !treeData) {
-                alert('존재하지 않는 트리입니다.');
-                window.location.href = '/xmas-create.html';
-                return;
-            }
+            try {
+                var result = await sb.from('xmas_trees').select('*').eq('id', treeId).single();
+                if (result.error || !result.data) {
+                    alert('존재하지 않는 트리입니다.');
+                    window.location.href = '/xmas-create.html';
+                    return;
+                }
 
-            document.getElementById('display-owner').textContent = treeData.owner_name;
-            document.title = `${treeData.owner_name}님의 크리스마스 트리 | 테스트모음`;
+                var treeData = result.data;
+                document.getElementById('display-owner').textContent = treeData.owner_name;
+                document.title = treeData.owner_name + '님의 크리스마스 트리 | 테스트모음';
 
-            // 배경 세팅 (AI 이미지)
-            const treeArea = document.getElementById('tree-area');
-            if (treeData.bg_style === 'snowy') {
-                treeArea.style.backgroundImage = "url('./img/xmas_bg_snowy.jpg')";
-            } else {
-                treeArea.style.backgroundImage = "url('./img/xmas_bg_warm.jpg')";
-            }
-            treeArea.className = "tree-container mt-4 rounded-2xl bg-cover bg-center shadow-2xl border-4 border-slate-700/50 overflow-hidden";
+                // 배경 이미지 세팅
+                var treeArea = document.getElementById('tree-area');
+                if (treeData.bg_style === 'warm') {
+                    treeArea.style.backgroundImage = "url('./img/xmas_bg_warm.jpg')";
+                } else {
+                    treeArea.style.backgroundImage = "url('./img/xmas_bg_snowy.jpg')";
+                }
 
-            // 2. 메시지 가져오기
-            const { data: msgs, error: msgErr } = await supabase.from('xmas_messages').select('*').eq('tree_id', treeId);
-            if (!msgErr && msgs) {
-                document.getElementById('msg-count').textContent = msgs.length;
-                renderOrnaments(msgs);
+                // 메시지(오너먼트) 가져오기
+                var msgResult = await sb.from('xmas_messages').select('*').eq('tree_id', treeId);
+                if (!msgResult.error && msgResult.data) {
+                    document.getElementById('msg-count').textContent = msgResult.data.length;
+                    renderOrnaments(msgResult.data);
+                }
+            } catch (err) {
+                console.error('init error:', err);
             }
         }
 
         function renderOrnaments(msgs) {
-            const container = document.getElementById('ornament-container');
-            msgs.forEach(msg => {
-                const el = document.createElement('div');
+            var container = document.getElementById('ornament-container');
+            msgs.forEach(function(msg) {
+                var el = document.createElement('div');
                 el.className = 'ornament w-8 h-8 md:w-10 md:h-10';
-                
-                // 위치 지정 (약간의 오프셋 조정)
-                el.style.left = `${msg.position_x}%`;
-                el.style.top = `${msg.position_y}%`;
-                
-                el.innerHTML = `<svg viewBox="0 0 24 24" class="w-full h-full"><use href="#icon-${msg.ornament_type}"></use></svg>`;
-                
-                el.addEventListener('click', () => openModal(msg));
+                el.style.left = msg.position_x + '%';
+                el.style.top = msg.position_y + '%';
+                el.innerHTML = '<svg viewBox="0 0 24 24" class="w-full h-full"><use href="#icon-' + msg.ornament_type + '"></use></svg>';
+                el.addEventListener('click', function() { openModal(msg); });
                 container.appendChild(el);
             });
         }
 
         // 모달 제어
-        const modal = document.getElementById('modal');
-        const modalContent = document.getElementById('modal-content');
-        const lockedView = document.getElementById('modal-locked');
-        const openView = document.getElementById('modal-open');
+        var modal = document.getElementById('modal');
+        var modalContent = document.getElementById('modal-content');
+        var lockedView = document.getElementById('modal-locked');
+        var openView = document.getElementById('modal-open');
 
         function openModal(msg) {
-            const now = Date.now();
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modalContent.classList.remove('scale-95');
-            
-            if (now < CHRISTMAS_TIME) {
-                // 오픈 전
+            if (Date.now() < CHRISTMAS_TIME) {
                 lockedView.classList.remove('hidden');
                 openView.classList.add('hidden');
             } else {
-                // 오픈 후
                 lockedView.classList.add('hidden');
                 openView.classList.remove('hidden');
                 document.getElementById('modal-text').textContent = msg.content;
@@ -239,7 +223,7 @@
         function closeModal() {
             modal.classList.add('opacity-0', 'pointer-events-none');
             modalContent.classList.add('scale-95');
-            setTimeout(() => {
+            setTimeout(function() {
                 lockedView.classList.add('hidden');
                 openView.classList.add('hidden');
             }, 300);

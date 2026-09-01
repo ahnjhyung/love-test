@@ -64,12 +64,10 @@
             </p>
         </div>
 
-        <!-- 트리 렌더링 영역 -->
-        <div class="tree-container mt-6" id="tree-area">
-            <!-- 트리 SVG (JS로 주입) -->
-            <div id="tree-svg-container" class="absolute bottom-0 w-[80%] h-[90%]"></div>
+        <!-- 트리 렌더링 영역 (AI 이미지 배경) -->
+        <div class="tree-container mt-4 rounded-2xl bg-cover bg-center shadow-2xl border-4 border-slate-700/50 overflow-hidden" id="tree-area">
             <!-- 오너먼트 컨테이너 -->
-            <div id="ornament-container" class="absolute bottom-0 w-[80%] h-[90%] z-10"></div>
+            <div id="ornament-container" class="relative w-full h-full z-10"></div>
         </div>
 
         <!-- 하단 버튼 영역 -->
@@ -180,25 +178,14 @@
             document.getElementById('display-owner').textContent = treeData.owner_name;
             document.title = `${treeData.owner_name}님의 크리스마스 트리 | 테스트모음`;
 
-            // 배경 세팅
-            document.getElementById('body-bg').className = `min-h-screen flex justify-center bg-${treeData.bg_style}`;
-
-            // 트리 SVG 그리기
-            const treeContainer = document.getElementById('tree-svg-container');
-            if (treeData.tree_style === 'snowy') {
-                treeContainer.innerHTML = `
-                    <svg width="100%" height="100%" viewBox="0 0 100 120" preserveAspectRatio="none">
-                        <path d="M50 10 L85 50 L70 50 L95 90 L5 90 L30 50 L15 50 Z" fill="#34d399"/>
-                        <path d="M50 10 L60 25 L40 25 Z M70 50 L80 65 L50 65 Z M30 50 L20 65 L50 65 Z M50 25 L65 45 L35 45 Z" fill="#ffffff" opacity="0.8"/>
-                        <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
-                    </svg>`;
-            } else { // classic
-                treeContainer.innerHTML = `
-                    <svg width="100%" height="100%" viewBox="0 0 100 120" preserveAspectRatio="none">
-                        <path d="M50 10 L85 50 L70 50 L95 90 L5 90 L30 50 L15 50 Z" fill="#059669"/>
-                        <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
-                    </svg>`;
+            // 배경 세팅 (AI 이미지)
+            const treeArea = document.getElementById('tree-area');
+            if (treeData.bg_style === 'snowy') {
+                treeArea.style.backgroundImage = "url('./img/xmas_bg_snowy.jpg')";
+            } else {
+                treeArea.style.backgroundImage = "url('./img/xmas_bg_warm.jpg')";
             }
+            treeArea.className = "tree-container mt-4 rounded-2xl bg-cover bg-center shadow-2xl border-4 border-slate-700/50 overflow-hidden";
 
             // 2. 메시지 가져오기
             const { data: msgs, error: msgErr } = await supabase.from('xmas_messages').select('*').eq('tree_id', treeId);

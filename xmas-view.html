@@ -74,10 +74,10 @@
         <div class="fixed bottom-0 left-0 right-0 p-4 flex justify-center z-20">
             <div class="w-full max-w-[480px] flex space-x-2">
                 <button id="btn-share" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors text-sm">
-                    🔗 링크 공유하기
+                    링크 공유하기
                 </button>
                 <button id="btn-write" class="flex-1 bg-red-600 hover:bg-red-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors text-sm">
-                    ✏️ 편지 쓰기
+                    편지 쓰기
                 </button>
             </div>
         </div>
@@ -163,7 +163,7 @@
 
         // 편지 쓰기 버튼
         document.getElementById('btn-write').addEventListener('click', () => {
-            window.location.href = `/xmas-write.html?id=${treeId}`;
+            window.location.href = `/xmas-write?id=${treeId}`;
         });
 
         async function init() {
@@ -171,7 +171,7 @@
             const { data: treeData, error: treeErr } = await supabase.from('xmas_trees').select('*').eq('id', treeId).single();
             if (treeErr || !treeData) {
                 alert('존재하지 않는 트리입니다.');
-                window.location.href = '/xmas-create.html';
+                window.location.href = '/xmas-create';
                 return;
             }
 

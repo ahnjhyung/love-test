@@ -128,15 +128,60 @@
 
             if (!author || !text) { alert('모두 입력해주세요.'); return; }
 
-            // 트리 위에 랜덤 위치 (x: 15~85%, y: 15~80%)
-            var posX = 15 + Math.random() * 70;
-            var posY = 15 + Math.random() * 65;
-
             submitBtn.disabled = true;
             submitBtn.textContent = '장식 다는 중...';
 
             try {
-                var result = await sb.from('xmas_messages').insert({
+                // 기존 오너먼트 위치 조회
+                var existResult = await sb.from('xmas_messages').select('position_x, position_y').eq('tree_id', treeId);
+                var usedPositions = (existResult.data || []);
+
+                // 트리 삼각형 영역 슬롯 생성
+                // AI 이미지 기준: 트리는 x:18%~82%, y:8%~88% 삼각형
+                // 레이어별 (위→아래) x 범위를 선형 보간으로 계산
+                var slots = [];
+                var layers = [
+                    { y: 14, xMin: 44, xMax: 56, count: 2 },
+                    { y: 24, xMin: 37, xMax: 63, count: 4 },
+                    { y: 35, xMin: 30, xMax: 70, count: 5 },
+                    { y: 46, xMin: 24, xMax: 76, count: 7 },
+                    { y: 58, xMin: 20, xMax: 80, count: 8 },
+                    { y: 70, xMin: 18, xMax: 82, count: 8 }
+                ];
+
+                layers.forEach(function(layer) {
+                    for (var i = 0; i < layer.count; i++) {
+                        var step = (layer.xMax - layer.xMin) / (layer.count + 1);
+                        var x = layer.xMin + step * (i + 1) + (Math.random() * 4 - 2);
+                        var y = layer.y + (Math.random() * 4 - 2);
+                        slots.push({ x: Math.max(layer.xMin, Math.min(layer.xMax, x)), y: y });
+                    }
+                });
+
+                // 사용된 위치와 멀리 있는 슬롯 선택 (최소 거리 5% 이상)
+                var MIN_DIST = 5;
+                var available = slots.filter(function(slot) {
+                    return usedPositions.every(function(u) {
+                        var dx = u.position_x - slot.x;
+                        var dy = u.position_y - slot.y;
+                        return Math.sqrt(dx * dx + dy * dy) >= MIN_DIST;
+                    });
+                });
+
+                var posX, posY;
+                if (available.length > 0) {
+                    // 빈 슬롯 있으면 랜덤 선택
+                    var chosen = available[Math.floor(Math.random() * available.length)];
+                    posX = chosen.x;
+                    posY = chosen.y;
+                } else {
+                    // 꽉 찼으면: 트리 내부에서 완전 랜덤 (살짝 겹침 허용)
+                    var fallbackLayer = layers[Math.floor(Math.random() * layers.length)];
+                    posX = fallbackLayer.xMin + Math.random() * (fallbackLayer.xMax - fallbackLayer.xMin);
+                    posY = fallbackLayer.y + (Math.random() * 6 - 3);
+                }
+
+                var insertResult = await sb.from('xmas_messages').insert({
                     tree_id: treeId,
                     author_name: author,
                     content: text,
@@ -146,7 +191,7 @@
                     position_y: posY
                 });
 
-                if (result.error) throw new Error(result.error.message);
+                if (insertResult.error) throw new Error(insertResult.error.message);
 
                 alert('트리에 장식이 예쁘게 달렸습니다!');
                 window.location.href = '/xmas-view.html?id=' + treeId;

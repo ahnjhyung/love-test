@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>테스트모음 - 나를 찾는 즐거운 심리테스트</title>
+    <link>https://www.testmoeum.com</link>
+    <description>연애 유형부터 사주 연애운, 크리스마스 롤링페이퍼까지 2030을 위한 무료 심리테스트 플랫폼</description>
+    <language>ko-KR</language>
+    <lastBuildDate>Tue, 01 Sep 2026 16:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.testmoeum.com/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>크리스마스 소셜 롤링페이퍼 (트리 꾸미기)</title>
+      <link>https://www.testmoeum.com/xmas-create</link>
+      <description>나만의 크리스마스 트리를 만들고 친구들의 편지를 받아보세요. 12월 25일 크리스마스 당일에 오픈되는 소셜 롤링페이퍼 이벤트.</description>
+      <pubDate>Tue, 01 Sep 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/xmas-create</guid>
+    </item>
+
+    <item>
+      <title>나의 힐링 성향 테스트 | 피로 회복 맞춤 분석</title>
+      <link>https://www.testmoeum.com/healing-test</link>
+      <description>12가지 질문으로 알아보는 나만의 힐링 스타일과 번아웃 극복 심리테스트.</description>
+      <pubDate>Tue, 01 Sep 2026 10:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/healing-test</guid>
+    </item>
+
+    <item>
+      <title>사주로 보는 나의 연애운 | 생년월일 일간 캐릭터 분석</title>
+      <link>https://www.testmoeum.com/saju-love</link>
+      <description>생년월일로 알아보는 사주 10개 일간 캐릭터와 나의 숨겨진 연애 성향 무료 분석.</description>
+      <pubDate>Tue, 01 Sep 2026 09:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/saju-love</guid>
+    </item>
+
+    <item>
+      <title>연애유형 테스트 8가지 성향 분석</title>
+      <link>https://www.testmoeum.com/love-type/</link>
+      <description>MBTI와 애착이론 기반 20문항으로 알아보는 나의 연애 스타일과 환상의 짝꿍.</description>
+      <pubDate>Tue, 01 Sep 2026 08:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/love-type/</guid>
+    </item>
+
+    <item>
+      <title>대운 바뀌기 전 나타나는 전조 증상 5가지</title>
+      <link>https://www.testmoeum.com/articles/%EB%8C%80%EC%9A%B4-%EB%B0%94%EB%80%8C%EA%B8%B0%EC%A0%84-%EC%A7%95%EC%A1%B0-5%EA%B0%80%EC%A7%80</link>
+      <description>인생의 큰 흐름이 바뀌는 10년 대운의 변화 시기에 공통적으로 겪게 되는 대표적인 신호 분석.</description>
+      <pubDate>Mon, 31 Aug 2026 14:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/articles/%EB%8C%80%EC%9A%B4-%EB%B0%94%EB%80%8C%EA%B8%B0%EC%A0%84-%EC%A7%95%EC%A1%B0-5%EA%B0%80%EC%A7%80</guid>
+    </item>
+
+    <item>
+      <title>도화살, 홍염살, 화개살의 차이점과 특징 총정리</title>
+      <link>https://www.testmoeum.com/articles/%EB%8F%84%ED%99%94%EC%82%B4-%ED%99%8D%EC%97%BC%EC%82%B4-%ED%99%84%EA%B0%9C%EC%82%B4-%ED%8A%B9%EC%A7%95</link>
+      <description>매력과 관련된 사주 3대 신살의 실제 작용과 현대적 해석 가이드.</description>
+      <pubDate>Mon, 31 Aug 2026 12:00:00 +0900</pubDate>
+      <guid>https://www.testmoeum.com/articles/%EB%8F%84%ED%99%94%EC%82%B4-%ED%99%8D%EC%97%BC%EC%82%B4-%ED%99%84%EA%B0%9C%EC%82%B4-%ED%8A%B9%EC%A7%95</guid>
+    </item>
+  </channel>
+</rss>

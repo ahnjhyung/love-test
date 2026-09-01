@@ -202,7 +202,7 @@
                 </div>
 
                 <!-- [NEW] 크리스마스 롤링페이퍼 스페셜 카드 -->
-                <a href="/xmas-create.html" class="poomang-card block overflow-hidden group mb-3 border-emerald-100 bg-emerald-50/30">
+                <a href="javascript:openXmasModal()" class="poomang-card block overflow-hidden group mb-3 border-emerald-100 bg-emerald-50/30">
                     <div class="p-4 flex items-center space-x-4">
                         <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center shrink-0">
                             <svg width="32" height="40" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
@@ -211,9 +211,9 @@
                             </svg>
                         </div>
                         <div class="space-y-1">
-                            <span class="badge-tag bg-emerald-500 text-white shadow-sm inline-block mb-1">D-100 스페셜</span>
+                            <span class="badge-tag bg-emerald-500 text-white shadow-sm inline-block mb-1">시즌 한정 이벤트</span>
                             <h4 class="text-base font-bold text-gray-900 group-hover:text-emerald-600 transition-colors leading-snug">
-                                크리스마스 소셜 롤링페이퍼
+                                크리스마스 트리 꾸미기
                             </h4>
                             <p class="text-xs text-gray-500 leading-relaxed line-clamp-1">
                                 나만의 트리를 만들고 친구들의 편지를 받아보세요!
@@ -435,8 +435,52 @@
 
     </div>
 
+    <!-- 크리스마스 롤링페이퍼 설명 모달 -->
+    <div id="xmasModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" style="background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px);">
+        <div id="xmasModalContent" class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeXmasModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="bg-emerald-50 p-6 text-center border-b border-emerald-100">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-3">
+                    <svg width="32" height="40" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L85 50 L70 50 L95 90 L5 90 L30 50 L15 50 Z" fill="#059669"/>
+                        <rect x="42" y="90" width="16" height="20" fill="#78350f"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-black text-gray-900 mb-1">크리스마스 트리 꾸미기</h3>
+                <p class="text-emerald-600 text-sm font-bold">소셜 롤링페이퍼 이벤트</p>
+            </div>
+            <div class="p-6 space-y-4 text-sm text-gray-600 leading-relaxed font-['Gowun_Dodum']">
+                <p>나만의 크리스마스 트리를 만들고 링크를 카카오톡이나 인스타그램에 공유해보세요.</p>
+                <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                    <p class="font-bold text-gray-800 mb-1">🔒 타임락 시스템</p>
+                    <p class="text-xs text-gray-500">친구들이 써준 편지 내용은 <strong class="text-red-500">크리스마스 당일(12월 25일)</strong>에만 열어볼 수 있습니다.</p>
+                </div>
+                <p>올해는 따뜻한 속마음을 트리 장식과 함께 전달해볼까요?</p>
+                <a href="/xmas-create.html" class="block w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl mt-4 shadow-lg transition-colors">
+                    내 트리 만들러 가기
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- 카테고리 필터링 JS -->
     <script>
+        // 크리스마스 모달 제어
+        function openXmasModal() {
+            const modal = document.getElementById('xmasModal');
+            const content = document.getElementById('xmasModalContent');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-95');
+        }
+        function closeXmasModal() {
+            const modal = document.getElementById('xmasModal');
+            const content = document.getElementById('xmasModalContent');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.add('scale-95');
+        }
+
         function filterCategory(cat, btn) {
             document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
             btn.classList.add('active');

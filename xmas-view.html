@@ -177,9 +177,9 @@
                 // 배경 이미지 세팅
                 var treeArea = document.getElementById('tree-area');
                 if (treeData.bg_style === 'warm') {
-                    treeArea.style.backgroundImage = "url('./img/xmas_bg_warm.jpg')";
+                    treeArea.style.backgroundImage = "url('./img/xmas_bg_warm.webp')";
                 } else {
-                    treeArea.style.backgroundImage = "url('./img/xmas_bg_snowy.jpg')";
+                    treeArea.style.backgroundImage = "url('./img/xmas_bg_snowy.webp')";
                 }
 
                 // 메시지(오너먼트) 가져오기
@@ -200,7 +200,7 @@
                 el.className = 'ornament w-8 h-8 md:w-10 md:h-10 cursor-pointer';
                 el.style.left = msg.position_x + '%';
                 el.style.top = msg.position_y + '%';
-                el.innerHTML = '<img src="./img/ornament_' + msg.ornament_type + '.jpg" class="w-full h-full rounded-full object-cover border-2 border-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.35)] transition-transform hover:scale-125" alt="ornament">';
+                el.innerHTML = '<img src="./img/ornament_' + msg.ornament_type + '.webp" class="w-full h-full rounded-full object-cover border-2 border-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.35)] transition-transform hover:scale-125" alt="ornament">';
                 el.addEventListener('click', function() { openModal(msg); });
                 container.appendChild(el);
             });

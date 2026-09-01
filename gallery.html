@@ -84,47 +84,47 @@
     <script>
         const CHARACTERS = [
             // 1.  (8)
-            { cat: 'halloween', badge: 'HALLOWEEN 01', name: ' ', desc: '    ', img: './img/monster-witch.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 02', name: ' ', desc: '     ', img: './img/monster-vampire.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 03', name: ' ', desc: '     ()', img: './img/monster-ghost.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 04', name: ' ', desc: '   ', img: './img/monster-pumpkin.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 05', name: ' ', desc: '    ', img: './img/monster-werewolf.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 06', name: '  ', desc: '    ', img: './img/monster-cat.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 07', name: ' ', desc: '   ', img: './img/monster-franken.jpg' },
-            { cat: 'halloween', badge: 'HALLOWEEN 08', name: ' ', desc: '    ', img: './img/monster-mummy.jpg' },
+            { cat: 'halloween', badge: 'HALLOWEEN 01', name: ' ', desc: '    ', img: './img/monster-witch.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 02', name: ' ', desc: '     ', img: './img/monster-vampire.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 03', name: ' ', desc: '     ()', img: './img/monster-ghost.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 04', name: ' ', desc: '   ', img: './img/monster-pumpkin.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 05', name: ' ', desc: '    ', img: './img/monster-werewolf.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 06', name: '  ', desc: '    ', img: './img/monster-cat.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 07', name: ' ', desc: '   ', img: './img/monster-franken.webp' },
+            { cat: 'halloween', badge: 'HALLOWEEN 08', name: ' ', desc: '    ', img: './img/monster-mummy.webp' },
 
             // 2.   (8)
-            { cat: 'love', badge: 'LOVE TYPE 01', name: '  ', desc: '      ', img: './img/love-type1.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 02', name: '  ', desc: '     ', img: './img/love-type2.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 03', name: ' ', desc: '    ', img: './img/love-type3.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 04', name: '  ', desc: '     ', img: './img/love-type4.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 05', name: '  ', desc: '    ', img: './img/love-type5.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 06', name: ' ', desc: '    ', img: './img/love-type6.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 07', name: ' ', desc: '     ', img: './img/love-type7.jpg' },
-            { cat: 'love', badge: 'LOVE TYPE 08', name: '  ', desc: '     ', img: './img/love-type8.jpg' },
+            { cat: 'love', badge: 'LOVE TYPE 01', name: '  ', desc: '      ', img: './img/love-type1.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 02', name: '  ', desc: '     ', img: './img/love-type2.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 03', name: ' ', desc: '    ', img: './img/love-type3.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 04', name: '  ', desc: '     ', img: './img/love-type4.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 05', name: '  ', desc: '    ', img: './img/love-type5.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 06', name: ' ', desc: '    ', img: './img/love-type6.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 07', name: ' ', desc: '     ', img: './img/love-type7.webp' },
+            { cat: 'love', badge: 'LOVE TYPE 08', name: '  ', desc: '     ', img: './img/love-type8.webp' },
 
             // 3.   (4)
-            { cat: 'healing', badge: 'HEALING 01', name: '  ', desc: '      ', img: './img/healing-type1.jpg' },
-            { cat: 'healing', badge: 'HEALING 02', name: '  ', desc: '     ', img: './img/healing-type2.jpg' },
-            { cat: 'healing', badge: 'HEALING 03', name: '  ', desc: '      ', img: './img/healing-type3.jpg' },
-            { cat: 'healing', badge: 'HEALING 04', name: '  ', desc: '      ', img: './img/healing-type4.jpg' },
+            { cat: 'healing', badge: 'HEALING 01', name: '  ', desc: '      ', img: './img/healing-type1.webp' },
+            { cat: 'healing', badge: 'HEALING 02', name: '  ', desc: '     ', img: './img/healing-type2.webp' },
+            { cat: 'healing', badge: 'HEALING 03', name: '  ', desc: '      ', img: './img/healing-type3.webp' },
+            { cat: 'healing', badge: 'HEALING 04', name: '  ', desc: '      ', img: './img/healing-type4.webp' },
 
             // 4.   (8)
-            { cat: 'dessert', badge: 'DESSERT 01', name: '', desc: '      ', img: './img/dessert-songpyeon.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 02', name: '', desc: '    ', img: './img/dessert-juak.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 03', name: ' ', desc: '    ', img: './img/dessert-yakgwa.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 04', name: ' ', desc: '     ', img: './img/dessert-sikhye.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 05', name: ' ', desc: '    ', img: './img/dessert-jeon.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 06', name: '', desc: '   ', img: './img/dessert-baekseolgi.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 07', name: ' ', desc: '    ', img: './img/dessert-persimmon.jpg' },
-            { cat: 'dessert', badge: 'DESSERT 08', name: ' ', desc: '    ', img: './img/dessert-sujeonggwa.jpg' },
+            { cat: 'dessert', badge: 'DESSERT 01', name: '', desc: '      ', img: './img/dessert-songpyeon.webp' },
+            { cat: 'dessert', badge: 'DESSERT 02', name: '', desc: '    ', img: './img/dessert-juak.webp' },
+            { cat: 'dessert', badge: 'DESSERT 03', name: ' ', desc: '    ', img: './img/dessert-yakgwa.webp' },
+            { cat: 'dessert', badge: 'DESSERT 04', name: ' ', desc: '     ', img: './img/dessert-sikhye.webp' },
+            { cat: 'dessert', badge: 'DESSERT 05', name: ' ', desc: '    ', img: './img/dessert-jeon.webp' },
+            { cat: 'dessert', badge: 'DESSERT 06', name: '', desc: '   ', img: './img/dessert-baekseolgi.webp' },
+            { cat: 'dessert', badge: 'DESSERT 07', name: ' ', desc: '    ', img: './img/dessert-persimmon.webp' },
+            { cat: 'dessert', badge: 'DESSERT 08', name: ' ', desc: '    ', img: './img/dessert-sujeonggwa.webp' },
 
             // 5.   (5)
-            { cat: 'element', badge: 'OHAENG 01', name: ' ()', desc: '    ', img: './img/element-wood.jpg' },
-            { cat: 'element', badge: 'OHAENG 02', name: ' ()', desc: '    ', img: './img/element-fire.jpg' },
-            { cat: 'element', badge: 'OHAENG 03', name: ' (/)', desc: '     ', img: './img/element-earth.jpg' },
-            { cat: 'element', badge: 'OHAENG 04', name: ' (/)', desc: '   ', img: './img/element-metal.jpg' },
-            { cat: 'element', badge: 'OHAENG 05', name: ' ()', desc: '    ', img: './img/element-water.jpg' }
+            { cat: 'element', badge: 'OHAENG 01', name: ' ()', desc: '    ', img: './img/element-wood.webp' },
+            { cat: 'element', badge: 'OHAENG 02', name: ' ()', desc: '    ', img: './img/element-fire.webp' },
+            { cat: 'element', badge: 'OHAENG 03', name: ' (/)', desc: '     ', img: './img/element-earth.webp' },
+            { cat: 'element', badge: 'OHAENG 04', name: ' (/)', desc: '   ', img: './img/element-metal.webp' },
+            { cat: 'element', badge: 'OHAENG 05', name: ' ()', desc: '    ', img: './img/element-water.webp' }
         ];
 
         function renderGrid(list) {

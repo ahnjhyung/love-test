@@ -69,6 +69,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body class="min-h-screen flex justify-center">
 
@@ -91,7 +92,7 @@
             <!-- 1. 시작 화면 -->
             <section id="start-screen" class="space-y-4 py-1 text-center fade-in">
                 <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-indigo-50 bg-indigo-50/30 relative">
-                    <img src="./img/thumb-saju.jpg" alt="사주 연애운" class="w-full h-full object-cover">
+                    <img src="./img/thumb-saju.webp" alt="사주 연애운" class="w-full h-full object-cover">
                 </div>
 
                 <div class="pt-1 space-y-1.5">
@@ -184,7 +185,7 @@
             <section id="result-screen" class="hidden space-y-4 text-left fade-in">
                 
                 <!-- 상단 결과 카드: 오행 심볼 일러스트 + 캐릭터명 -->
-                <div class="bg-gradient-to-br from-indigo-50/80 via-white to-purple-50/50 p-6 rounded-2xl border border-indigo-100 shadow-sm text-center space-y-4">
+                <div id="capture-area" class="bg-gradient-to-br from-indigo-50/80 via-white to-purple-50/50 p-6 rounded-2xl border border-indigo-100 shadow-sm text-center space-y-4">
                     
                     <span class="badge-tag bg-white border border-indigo-200 text-indigo-700 shadow-2xs">
                         <span id="res-user-name"></span>님의 사주 명식 분석
@@ -192,7 +193,7 @@
 
                     <!-- 오행 일러스트 심볼 카드 -->
                     <div class="w-28 h-28 mx-auto rounded-2xl overflow-hidden shadow-xs border border-white bg-white">
-                        <img id="res-element-img" src="./img/element-wood.jpg" alt="오행 캐릭터" class="w-full h-full object-cover">
+                        <img id="res-element-img" src="./img/element-wood.webp" alt="오행 캐릭터" class="w-full h-full object-cover">
                     </div>
                     
                     <div>
@@ -371,6 +372,11 @@
 
                 <!-- 하단 액션 버튼 그룹 (카톡/인스타 공유 + 다른 테스트) -->
                 <div class="space-y-2.5 pt-2">
+                    
+                    <button onclick="downloadResultImage()" class="w-full bg-pink-500 hover:bg-pink-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        <span>결과 이미지 저장하기</span>
+                    </button>
                     <button onclick="shareResult()" class="w-full bg-indigo-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
@@ -463,7 +469,7 @@
         const CHARACTERS = [
             { // 0: 甲木
                 name: '대나무 지킴이',
-                elementImg: './img/element-wood.jpg',
+                elementImg: './img/element-wood.webp',
                 elementTitle: '목(木)의 기운 - 곧게 뻗어나가는 거목',
                 elementRate: '성장 & 절개 에너지 95%',
                 elementDesc: '봄의 시작을 알리는 큰 나무처럼, 흔들리지 않는 곧은 신념과 강한 추진력을 타고났습니다.',
@@ -487,7 +493,7 @@
             },
             { // 1: 乙木
                 name: '꽃비 요정',
-                elementImg: './img/element-wood.jpg',
+                elementImg: './img/element-wood.webp',
                 elementTitle: '목(木)의 기운 - 부드럽게 피어나는 꽃과 덩굴',
                 elementRate: '공감 & 친화력 에너지 92%',
                 elementDesc: '바람에 부드럽게 흔들리면서도 꺾이지 않는 들꽃처럼 유연함과 강한 생명력을 품고 있습니다.',
@@ -511,7 +517,7 @@
             },
             { // 2: 丙火
                 name: '태양 에너자이저',
-                elementImg: './img/element-fire.jpg',
+                elementImg: './img/element-fire.webp',
                 elementTitle: '화(火)의 기운 - 세상을 환하게 비추는 태양',
                 elementRate: '열정 & 긍정 에너지 98%',
                 elementDesc: '한 점의 어둠도 남기지 않는 찬란한 태양처럼, 밝고 뜨거운 생명력을 주변에 전파합니다.',
@@ -535,7 +541,7 @@
             },
             { // 3: 丁火
                 name: '촛불 감성러',
-                elementImg: './img/element-fire.jpg',
+                elementImg: './img/element-fire.webp',
                 elementTitle: '화(火)의 기운 - 어둠을 따스하게 밝히는 은은한 등불',
                 elementRate: '치유 & 섬세 감성 94%',
                 elementDesc: '화려하게 번쩍이지 않지만, 어두운 방을 끝까지 따스하게 채우는 깊은 온기를 지녔습니다.',
@@ -559,7 +565,7 @@
             },
             { // 4: 戊土
                 name: '든든한 산지킴이',
-                elementImg: './img/element-earth.jpg',
+                elementImg: './img/element-earth.webp',
                 elementTitle: '토(土)의 기운 - 흔들림 없는 웅장한 대지',
                 elementRate: '안정 & 신뢰 에너지 96%',
                 elementDesc: '모든 생명을 묵묵히 품어주는 큰 산처럼, 어떠한 비바람에도 흔들리지 않는 묵직함을 타고났습니다.',
@@ -583,7 +589,7 @@
             },
             { // 5: 己土
                 name: '포근한 들판',
-                elementImg: './img/element-earth.jpg',
+                elementImg: './img/element-earth.webp',
                 elementTitle: '토(土)의 기운 - 곡식을 길러내는 비옥한 평야',
                 elementRate: '배려 & 모성애 에너지 93%',
                 elementDesc: '세상 모든 씨앗을 품어 싹을 틔우는 부드러운 들판처럼, 따스한 자상함과 포용력을 지녔습니다.',
@@ -607,7 +613,7 @@
             },
             { // 6: 庚金
                 name: '날카로운 결단파',
-                elementImg: './img/element-metal.jpg',
+                elementImg: './img/element-metal.webp',
                 elementTitle: '금(金)의 기운 - 단단하고 강인한 강철과 바위',
                 elementRate: '카리스마 & 결단력 97%',
                 elementDesc: '불순물을 단칼에 잘라내는 명검처럼, 명확하고 단단한 신념과 의리를 지니고 있습니다.',
@@ -631,7 +637,7 @@
             },
             { // 7: 辛金
                 name: '세련된 보석',
-                elementImg: './img/element-metal.jpg',
+                elementImg: './img/element-metal.webp',
                 elementTitle: '금(金)의 기운 - 정교하게 세공된 다이아몬드',
                 elementRate: '심미안 & 완벽주의 95%',
                 elementDesc: '영롱하게 빛나는 보석처럼, 독보적인 매력과 섬세한 아름다움을 품고 있습니다.',
@@ -655,7 +661,7 @@
             },
             { // 8: 壬水
                 name: '거침없는 파도',
-                elementImg: './img/element-water.jpg',
+                elementImg: './img/element-water.webp',
                 elementTitle: '수(水)의 기운 - 거침없이 흐르는 거대한 바다',
                 elementRate: '자유 & 통찰력 에너지 96%',
                 elementDesc: '세상 모든 강물을 품어 안는 넓은 바다처럼, 유연한 지혜와 무한한 자유로움을 지녔습니다.',
@@ -679,7 +685,7 @@
             },
             { // 9: 癸水
                 name: '고요한 샘물',
-                elementImg: './img/element-water.jpg',
+                elementImg: './img/element-water.webp',
                 elementTitle: '수(水)의 기운 - 조용히 대지를 적시는 맑은 이슬과 옹달샘',
                 elementRate: '직관 & 감수성 에너지 94%',
                 elementDesc: '가장 낮은 곳으로 흘러 만물을 적시는 이슬비처럼, 맑고 순수한 직관과 깊은 감성을 품고 있습니다.',
@@ -970,6 +976,27 @@
         }
 
         // 인스타 DM / 카톡 / 스마트폰 네이티브 공유하기
+        
+        function downloadResultImage() {
+            const captureEl = document.getElementById('capture-area');
+            if (!captureEl) return;
+
+            alert('결과 카드 이미지를 저장합니다. 잠시만 기다려주세요!');
+
+            html2canvas(captureEl, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '사주_결과.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                alert('이미지 저장 중 오류가 발생했습니다. 화면을 캡처해서 사용해주세요!');
+            });
+        }
+        
         function shareResult() {
             const url = window.location.href;
             const title = currentResult ? `${currentResult.name}님의 사주 연애운 분석 결과` : '사주로 보는 나의 연애운 테스트';

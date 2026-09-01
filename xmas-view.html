@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -163,7 +163,7 @@
 
         // 편지 쓰기 버튼
         document.getElementById('btn-write').addEventListener('click', () => {
-            window.location.href = `/xmas-write?id=${treeId}`;
+            window.location.href = `/xmas-write.html?id=${treeId}`;
         });
 
         async function init() {
@@ -171,7 +171,7 @@
             const { data: treeData, error: treeErr } = await supabase.from('xmas_trees').select('*').eq('id', treeId).single();
             if (treeErr || !treeData) {
                 alert('존재하지 않는 트리입니다.');
-                window.location.href = '/xmas-create';
+                window.location.href = '/xmas-create.html';
                 return;
             }
 

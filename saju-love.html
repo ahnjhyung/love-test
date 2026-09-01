@@ -375,7 +375,7 @@
                     
                     <button onclick="downloadResultImage()" class="w-full bg-pink-500 hover:bg-pink-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        <span>결과 이미지 저장하기</span>
+                        <span>인스타 스토리 이미지 저장</span>
                     </button>
                     <button onclick="shareResult()" class="w-full bg-indigo-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -981,7 +981,7 @@
             const captureEl = document.getElementById('capture-area');
             if (!captureEl) return;
 
-            alert('결과 카드 이미지를 저장합니다. 잠시만 기다려주세요!');
+            alert('이미지를 저장합니다. 잠시만 기다려주세요!');
 
             html2canvas(captureEl, {
                 scale: 2,
@@ -992,6 +992,7 @@
                 link.download = '사주_결과.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
+                setTimeout(() => alert('이미지가 스마트폰에 저장되었습니다! 인스타그램 스토리에 올려서 친구들에게 자랑해보세요.'), 500);
             }).catch(err => {
                 alert('이미지 저장 중 오류가 발생했습니다. 화면을 캡처해서 사용해주세요!');
             });

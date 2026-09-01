@@ -191,10 +191,10 @@
             var container = document.getElementById('ornament-container');
             msgs.forEach(function(msg) {
                 var el = document.createElement('div');
-                el.className = 'ornament w-8 h-8 md:w-10 md:h-10';
+                el.className = 'ornament w-10 h-10 md:w-12 md:h-12';
                 el.style.left = msg.position_x + '%';
                 el.style.top = msg.position_y + '%';
-                el.innerHTML = '<svg viewBox="0 0 24 24" class="w-full h-full"><use href="#icon-' + msg.ornament_type + '"></use></svg>';
+                el.innerHTML = '<img src="./img/ornament_' + msg.ornament_type + '.jpg" class="w-full h-full rounded-full object-cover shadow-lg" alt="ornament">';
                 el.addEventListener('click', function() { openModal(msg); });
                 container.appendChild(el);
             });

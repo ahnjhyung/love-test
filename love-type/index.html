@@ -12,23 +12,23 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>    | 8     - </title>
-    <meta name="description" content="20      !       8     .">
-    <meta name="keywords" content=", , MBTI, , , , ">
+    <title>나의 연애 유형 테스트 | 8가지 연애 성향 무료 분석 - 테스트모음</title>
+    <meta name="description" content="20문항으로 알아보는 나의 숨겨진 연애 스타일과 찰떡궁합! 냉철한 분석가 냥이부터 낭만 사랑꾼 곰돌이까지 8가지 귀염뽀짝 동물 캐릭터 무료 분석.">
+    <meta name="keywords" content="연애유형테스트, 연애성향테스트, MBTI연애, 연애테스트, 심리테스트, 무료테스트, 테스트모음">
     <link rel="canonical" href="https://www.testmoeum.com/love-type/">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.testmoeum.com/love-type/">
-    <meta property="og:title" content="    | ">
-    <meta property="og:description" content="       ? 8    !">
+    <meta property="og:title" content="나의 연애 유형 테스트 | 테스트모음">
+    <meta property="og:description" content="내 무의식 속 연애 스타일과 환상의 짝꿍은 누구? 8가지 동물 캐릭터 무료 분석!">
     <meta property="og:image" content="https://www.testmoeum.com/img/love-type2.jpg">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "  ",
-      "description": "20     8  ",
+      "name": "연애 유형 테스트",
+      "description": "20문항으로 알아보는 나의 연애 스타일과 8가지 캐릭터 분석",
       "url": "https://www.testmoeum.com/love-type/",
       "applicationCategory": "EntertainmentApplication",
       "operatingSystem": "Web",
@@ -37,7 +37,7 @@
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <!--  /  -->
+    <!-- 이미지 캡처/저장용 라이브러리 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530559977181821" crossorigin="anonymous"></script>
 
@@ -70,130 +70,130 @@
 
     <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm relative pb-8">
         
-        <!--   -->
+        <!-- 상단 헤더 -->
         <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
             <a href="/" class="text-sm font-semibold text-gray-500 hover:text-gray-900 flex items-center space-x-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
-                <span> </span>
+                <span>테스트모음 홈</span>
             </a>
-            <span class="text-xs font-bold text-rose-500 bg-rose-50 px-2.5 py-1 rounded-full"> </span>
+            <span class="text-xs font-bold text-rose-500 bg-rose-50 px-2.5 py-1 rounded-full">연애 심리</span>
         </header>
 
-        <!--   -->
+        <!-- 프로그레스 바 -->
         <div id="progress-container" class="hidden w-full h-1.5 bg-gray-100 flex-none">
             <div id="progress-bar" class="h-full bg-rose-500 transition-all duration-300 ease-out" style="width: 0%"></div>
         </div>
 
         <main class="flex-1 px-5 py-4">
             
-            <!-- 1.   -->
+            <!-- 1. 시작 화면 -->
             <div id="screen-start" class="space-y-4 text-center fade-in pt-2">
                 <div class="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xs border border-rose-100 mb-2">
-                    <img src="../img/love-type2.jpg" alt="  " class="w-full h-full object-cover">
+                    <img src="../img/love-type2.jpg" alt="연애 유형 테스트" class="w-full h-full object-cover">
                 </div>
 
                 <div class="space-y-1">
-                    <span class="badge-tag bg-rose-50 text-rose-600">  12 </span>
+                    <span class="badge-tag bg-rose-50 text-rose-600">누적 참여자 12만 돌파</span>
                     <h1 class="text-2xl font-black text-gray-900 leading-tight pt-1">
-                          ?
+                        나의 연애 캐릭터는?
                     </h1>
                     <p class="text-xs text-gray-500 pt-1">
-                        20       
+                        20문항으로 알아보는 무의식 속 연애 성향과 환상의 짝꿍
                     </p>
                 </div>
 
-                <!--   -->
+                <!-- 시작 버튼 -->
                 <div class="pt-4">
                     <button onclick="startTest()" class="w-full bg-rose-500 hover:bg-rose-600 active:scale-[0.98] text-white font-bold py-4 rounded-2xl text-base shadow-md shadow-rose-100 transition-all">
-                          (20)
+                        테스트 시작하기 (20문항)
                     </button>
                 </div>
 
-                <!--   -->
+                <!-- 안내 박스 -->
                 <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-100 text-left space-y-1.5 mt-4">
                     <div class="flex items-center space-x-1.5 text-xs font-bold text-gray-700">
                         <span class="w-1.5 h-3 bg-rose-500 rounded-full"></span>
-                        <span> </span>
+                        <span>테스트 안내</span>
                     </div>
                     <p class="text-[11px] text-gray-500 leading-relaxed">
-                         .          !
+                        정답은 없습니다. 연인과의 실제 상황에서 내가 더 자연스럽게 느끼는 행동을 솔직하게 골라주세요!
                     </p>
                 </div>
             </div>
 
-            <!-- 2.   -->
+            <!-- 2. 질문 화면 -->
             <div id="screen-question" class="hidden space-y-5 fade-in py-2">
                 <div class="flex justify-between items-center text-xs font-bold text-gray-400">
-                    <span id="question-category" class="text-rose-500"> </span>
+                    <span id="question-category" class="text-rose-500">데이트 상황</span>
                     <span id="question-number">Q1 / 20</span>
                 </div>
 
                 <h2 id="question-text" class="text-lg font-black text-gray-900 leading-snug min-h-[3.5rem] flex items-center">
-                       .
+                    질문 내용이 여기에 표시됩니다.
                 </h2>
 
                 <div class="space-y-3 pt-2" id="answers-container">
-                    <!--    -->
+                    <!-- 버튼 동적 생성 -->
                 </div>
             </div>
 
-            <!-- 3.   -->
+            <!-- 3. 로딩 화면 -->
             <div id="screen-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center fade-in">
                 <div class="loader"></div>
                 <div class="space-y-1">
-                    <h3 class="text-base font-bold text-gray-800">    ...</h3>
-                    <p class="text-xs text-gray-400">        </p>
+                    <h3 class="text-base font-bold text-gray-800">나의 연애 본능을 분석하고 있어요...</h3>
+                    <p class="text-xs text-gray-400">내 무의식 속 연애 캐릭터와 심층 케미를 계산 중입니다</p>
                 </div>
             </div>
 
-            <!-- 4.   -->
+            <!-- 4. 결과 화면 -->
             <div id="screen-result" class="hidden space-y-5 fade-in pb-6">
                 
-                <!--    ( ) -->
+                <!-- 캡처 대상 영역 (이미지 저장용) -->
                 <div id="capture-area" class="bg-white p-3 rounded-2xl space-y-5">
                     
-                    <!--    -->
+                    <!-- 상단 결과 헤더 -->
                     <div class="text-center space-y-2 pt-2">
                         <span id="result-type-badge" class="badge-tag bg-rose-50 text-rose-600">TYPE 01</span>
                         <h2 id="result-title" class="text-2xl font-black text-gray-900 leading-tight">
-                               
+                            냉철한 현실 분석가 냥이
                         </h2>
                         <div id="result-tags" class="flex flex-wrap justify-center gap-1 text-[11px] font-bold text-rose-500">
-                            # # # #
+                            #논리왕 #츤데레 #실질적도움 #똑부러짐
                         </div>
 
-                        <!--    -->
+                        <!-- 캐릭터 전용 일러스트 -->
                         <div class="w-full max-w-[240px] aspect-square mx-auto rounded-2xl overflow-hidden border border-rose-100 shadow-xs mt-3 bg-rose-50/30">
-                            <img id="result-love-img" src="../img/love-type1.jpg" alt=" " class="w-full h-full object-cover">
+                            <img id="result-love-img" src="../img/love-type1.jpg" alt="연애 캐릭터" class="w-full h-full object-cover">
                         </div>
                     </div>
 
-                    <!--   -->
+                    <!-- 한줄 요약 -->
                     <div class="callout-box">
                         <p id="result-summary" class="text-xs font-bold text-rose-950 leading-relaxed !mb-0">
-                               .
+                            한줄 요약이 여기에 표시됩니다.
                         </p>
                     </div>
 
-                    <!--      -->
+                    <!-- 상세 종합 연애 심층 분석 -->
                     <div class="result-card space-y-2">
                         <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                             <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
-                            <span>    </span>
+                            <span>나의 연애 본질 심층 분석</span>
                         </h3>
                         <p id="result-detail" class="text-xs text-gray-700 leading-relaxed !mb-0 font-medium">
-                                .
+                            상세 분석 내용이 여기에 표시됩니다.
                         </p>
                     </div>
 
-                    <!-- 1. [ ]     vs  -->
+                    <!-- 1. [바넘 효과] 연애할 때 내 겉모습 vs 속마음 -->
                     <div class="grid grid-cols-2 gap-2.5">
                         <div class="p-3.5 bg-gray-50/90 rounded-2xl border border-gray-100 space-y-1">
                             <span class="text-[11px] font-bold text-gray-700 flex items-center space-x-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-gray-500 inline-block mr-0.5"></span>
-                                <span>   </span>
+                                <span>연인 앞 내 겉모습</span>
                             </span>
                             <p id="result-outer" class="text-xs text-gray-800 leading-relaxed font-medium">
                                 -
@@ -202,7 +202,7 @@
                         <div class="p-3.5 bg-rose-50/80 rounded-2xl border border-rose-100 space-y-1">
                             <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
-                                <span>  </span>
+                                <span>진짜 내 속마음</span>
                             </span>
                             <p id="result-inner" class="text-xs text-rose-950 leading-relaxed font-medium">
                                 -
@@ -210,16 +210,16 @@
                         </div>
                     </div>
 
-                    <!-- 2.  4    -->
+                    <!-- 2. 연애 4대 능력치 스탯 바 -->
                     <div class="result-card space-y-3">
                         <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                             <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
-                            <span>   </span>
+                            <span>나의 연애 능력치 스탯</span>
                         </h3>
                         <div class="space-y-2 text-xs">
                             <div>
                                 <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
-                                    <span>  & </span>
+                                    <span>애정 표현 & 직진력</span>
                                     <span id="stat-express-val" class="text-rose-500 font-bold">40%</span>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2">
@@ -228,7 +228,7 @@
                             </div>
                             <div>
                                 <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
-                                    <span>  &  </span>
+                                    <span>연락 빈도 & 칼답 지수</span>
                                     <span id="stat-contact-val" class="text-indigo-600 font-bold">85%</span>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2">
@@ -237,7 +237,7 @@
                             </div>
                             <div>
                                 <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
-                                    <span>  </span>
+                                    <span>서운함 회복 속도</span>
                                     <span id="stat-heal-val" class="text-emerald-600 font-bold">50%</span>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2">
@@ -246,7 +246,7 @@
                             </div>
                             <div>
                                 <div class="flex justify-between text-[11px] font-semibold text-gray-600 mb-1">
-                                    <span> &  </span>
+                                    <span>질투 & 소유욕 지수</span>
                                     <span id="stat-jealous-val" class="text-amber-500 font-bold">75%</span>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2">
@@ -256,23 +256,23 @@
                         </div>
                     </div>
 
-                    <!-- 3.       4 -->
+                    <!-- 3. 소름 돋게 정확한 내 연애 특징 4선 -->
                     <div class="result-card space-y-2.5">
                         <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                             <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
-                            <span>      4</span>
+                            <span>소름 돋게 정확한 내 연애 특징 4선</span>
                         </h3>
                         <div id="result-features" class="space-y-1.5 text-xs text-gray-600 leading-relaxed">
-                            <!--   -->
+                            <!-- 동적 삽입 -->
                         </div>
                     </div>
 
-                    <!-- 4.   &      -->
+                    <!-- 4. 연애 스타일 & 나를 대할 때 취급 설명서 -->
                     <div class="space-y-2.5">
                         <div class="p-4 bg-pink-50/70 rounded-2xl border border-pink-100 space-y-1.5">
                             <span class="text-xs font-bold text-pink-900 flex items-center space-x-1">
                                 <span class="w-1.5 h-3 bg-pink-600 rounded-full"></span>
-                                <span>   </span>
+                                <span>연애할 때 나의 스타일</span>
                             </span>
                             <p id="result-love" class="text-xs text-gray-700 leading-relaxed font-medium !mb-0"></p>
                         </div>
@@ -280,18 +280,18 @@
                         <div class="p-4 bg-rose-50/70 rounded-2xl border border-rose-100 space-y-1.5">
                             <span class="text-xs font-bold text-rose-900 flex items-center space-x-1">
                                 <span class="w-1.5 h-3 bg-rose-600 rounded-full"></span>
-                                <span>    </span>
+                                <span>연인을 위한 내 취급 설명서</span>
                             </span>
                             <p id="result-manual" class="text-xs text-gray-700 leading-relaxed font-medium !mb-0"></p>
                         </div>
                     </div>
 
-                    <!-- 5.   vs    -->
+                    <!-- 5. 분노 버튼 vs 서운함 풀리는 힐링법 -->
                     <div class="grid grid-cols-2 gap-2.5">
                         <div class="p-3.5 bg-rose-50/80 rounded-xl border border-rose-100 space-y-1">
                             <span class="text-[11px] font-bold text-rose-800 flex items-center space-x-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-0.5"></span>
-                                <span>  </span>
+                                <span>연애 분노 버튼</span>
                             </span>
                             <p id="result-trigger" class="text-xs text-rose-950 leading-relaxed font-medium">
                                 -
@@ -300,7 +300,7 @@
                         <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100 space-y-1">
                             <span class="text-[11px] font-bold text-emerald-800 flex items-center space-x-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-0.5"></span>
-                                <span>  </span>
+                                <span>서운함 풀리는 법</span>
                             </span>
                             <p id="result-recharge" class="text-xs text-emerald-950 leading-relaxed font-medium">
                                 -
@@ -308,98 +308,98 @@
                         </div>
                     </div>
 
-                    <!-- 6.   vs   -->
+                    <!-- 6. 환상의 짝꿍 vs 파국 궁합 -->
                     <div class="result-card space-y-2.5">
                         <h3 class="text-xs font-bold text-gray-800 flex items-center space-x-1.5 border-b border-gray-100 pb-2">
                             <span class="w-1.5 h-3.5 bg-rose-500 rounded-full"></span>
-                            <span>  </span>
+                            <span>영혼의 연애 케미스트리</span>
                         </h3>
                         <div class="grid grid-cols-2 gap-2 pt-1">
                             <div class="p-3 bg-pink-50/60 rounded-xl border border-pink-100 text-center">
-                                <span class="text-[10px] font-bold text-pink-700 block">  </span>
-                                <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">   </span>
-                                <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">   </span>
+                                <span class="text-[10px] font-bold text-pink-700 block">환상의 찰떡 짝꿍</span>
+                                <span id="result-best-match" class="text-xs font-black text-gray-800 block mt-0.5">낭만 가득 사랑꾼 곰돌이</span>
+                                <span id="result-best-desc" class="text-[10px] text-gray-500 block mt-1">내 차가움을 녹여주는 온기</span>
                             </div>
                             <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
-                                <span class="text-[10px] font-bold text-gray-500 block">  </span>
-                                <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">   </span>
-                                <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">  </span>
+                                <span class="text-[10px] font-bold text-gray-500 block">만나면 파국인 짝꿍</span>
+                                <span id="result-bad-match" class="text-xs font-black text-gray-800 block mt-0.5">열정 불꽃 직진 댕댕이</span>
+                                <span id="result-bad-desc" class="text-[10px] text-gray-500 block mt-1">서로 고집부리다 충돌</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- [ ]    -->
+                <!-- [신규 기능] 이미지 저장 버튼 -->
                 <div class="pt-1">
                     <button onclick="downloadResultImage()" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        <span>    (/)</span>
+                        <span>결과 카드 이미지로 저장하기 (인스타/카톡용)</span>
                     </button>
                 </div>
 
-                <!--    -->
+                <!-- 쿠팡 파트너스 아이템 -->
                 <div class="p-4 bg-amber-50/60 rounded-2xl border border-amber-100 space-y-2">
-                    <span class="text-xs font-bold text-amber-900">    </span>
+                    <span class="text-xs font-bold text-amber-900">연인과 더 깊어지는 추천 아이템</span>
                     <div class="grid grid-cols-2 gap-2 pt-1">
                         <a href="https://link.coupang.com/a/glroDWTH3Y" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
-                            <span class="block text-xs font-bold text-gray-800"> </span>
-                            <span class="text-[10px] text-gray-500">  100</span>
+                            <span class="block text-xs font-bold text-gray-800">커플 백문백답</span>
+                            <span class="text-[10px] text-gray-500">서로를 알아가는 100문항</span>
                         </a>
                         <a href="https://link.coupang.com/a/glroDWTH3Y" target="_blank" class="p-3 bg-white rounded-xl border border-amber-200/60 text-center block active:scale-95 transition-transform">
-                            <span class="block text-xs font-bold text-gray-800"> </span>
-                            <span class="text-[10px] text-gray-500">  </span>
+                            <span class="block text-xs font-bold text-gray-800">커플 대화카드</span>
+                            <span class="text-[10px] text-gray-500">속마음 나누기 질문카드</span>
                         </a>
                     </div>
-                    <p class="text-[9px] text-gray-400 text-center pt-0.5">     ,     .</p>
+                    <p class="text-[9px] text-gray-400 text-center pt-0.5">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
                 </div>
 
-                <!-- []    -->
+                <!-- [커뮤니티] 실시간 참여자 후기 -->
                 <div class="bg-white p-5 rounded-2xl border border-gray-100 space-y-3.5 shadow-sm">
                     <div class="flex items-center justify-between border-b border-gray-100 pb-3">
                         <div class="space-y-0.5">
                             <h3 class="text-sm font-bold text-gray-900 flex items-center space-x-1.5">
                                 <span class="w-1.5 h-3.5 bg-rose-600 rounded-full"></span>
-                                <span>   & </span>
+                                <span>참여자 실시간 톡 & 후기</span>
                             </h3>
-                            <p class="text-[11px] text-gray-400">      </p>
+                            <p class="text-[11px] text-gray-400">내 연애 유형과 솔직한 소감을 자유롭게 나눠보세요</p>
                         </div>
                     </div>
 
-                    <!--   -->
+                    <!-- 댓글 입력창 -->
                     <div class="space-y-2 bg-gray-50/80 p-3 rounded-xl border border-gray-100">
                         <div class="flex space-x-2">
-                            <input type="text" id="comment-nickname" placeholder="" class="w-1/3 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500">
-                            <input type="text" id="comment-text" placeholder="   !" class="flex-1 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500" onkeydown="if(event.key==='Enter') submitComment()">
-                            <button onclick="submitComment()" class="px-4 py-2.5 bg-rose-600 active:scale-95 text-white font-bold text-xs rounded-lg hover:bg-rose-700 transition-all"></button>
+                            <input type="text" id="comment-nickname" placeholder="닉네임" class="w-1/3 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500">
+                            <input type="text" id="comment-text" placeholder="솔직한 연애 후기를 남겨보세요!" class="flex-1 text-xs p-2.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-rose-500" onkeydown="if(event.key==='Enter') submitComment()">
+                            <button onclick="submitComment()" class="px-4 py-2.5 bg-rose-600 active:scale-95 text-white font-bold text-xs rounded-lg hover:bg-rose-700 transition-all">등록</button>
                         </div>
                     </div>
 
-                    <!--    -->
+                    <!-- 실시간 댓글 목록 -->
                     <div id="comment-list" class="space-y-2 pt-1"></div>
                 </div>
 
-                <!--  &    -->
+                <!-- 공유 & 다른 테스트 버튼 -->
                 <div class="space-y-2.5 pt-2">
                     <button onclick="shareResult()" class="w-full bg-rose-500 hover:bg-rose-600 active:scale-[0.98] text-white font-bold py-4 rounded-xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                         </svg>
-                        <span> /    </span>
+                        <span>카톡 / 인스타로 내 결과 공유하기</span>
                     </button>
                     
                     <button onclick="location.href='/chuseok-test.html'" class="w-full bg-amber-50 text-amber-800 font-bold py-3.5 rounded-xl text-sm border border-amber-200/80 hover:bg-amber-100 transition-all">
-                              →
+                        달콤 쫀득 한가위 디저트 테스트 보러가기 →
                     </button>
 
                     <button onclick="location.href='/halloween-test.html'" class="w-full bg-purple-50 text-purple-700 font-bold py-3.5 rounded-xl text-sm border border-purple-100 hover:bg-purple-100 transition-all">
-                             →
+                        할로윈 캐릭터 성격 테스트 보러가기 →
                     </button>
                     
                     <button onclick="restartTest()" class="w-full bg-gray-50 text-gray-500 font-bold py-3.5 rounded-xl text-sm border border-gray-200/80 hover:bg-gray-100 transition-all">
-                          ↺
+                        테스트 다시하기 ↺
                     </button>
                 </div>
 
@@ -408,385 +408,385 @@
         </main>
 
         <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400">
-            <p>© 2026 . All rights reserved.</p>
+            <p>© 2026 테스트모음. All rights reserved.</p>
         </footer>
 
     </div>
 
     <script>
-        // 20   
+        // 20문항 연애 상황별 질문
         const QUESTIONS = [
             {
-                q: "   ,    ?",
-                cat: " ",
+                q: "주말 데이트가 없는 날, 연인에게 연락이 오지 않는다면?",
+                cat: "연락 습관",
                 a: [
-                    { text: "'  ?'     .", scores: { E: 2, I: 0 } },
-                    { text: "'   '      .", scores: { E: 0, I: 2 } }
+                    { text: "'무슨 일 있나?' 궁금해서 내가 먼저 자연스럽게 연락한다.", scores: { E: 2, I: 0 } },
+                    { text: "'각자 쉴 시간도 필요하지' 하며 내 개인 시간을 여유롭게 즐긴다.", scores: { E: 0, I: 2 } }
                 ]
             },
             {
-                q: "        ?",
-                cat: " ",
+                q: "연인과 새로운 핫플 맛집을 찾으러 갈 때 나의 스타일은?",
+                cat: "데이트 계획",
                 a: [
-                    { text: " , ,  ,     .", scores: { J: 2, P: 0 } },
-                    { text: "       .", scores: { J: 0, P: 2 } }
+                    { text: "웨이팅 시간, 주차, 대표 메뉴, 리뷰까지 미리 철저히 검색해 둔다.", scores: { J: 2, P: 0 } },
+                    { text: "골목길 걷다가 분위기 좋아 보이는 곳에 즉흥적으로 들어간다.", scores: { J: 0, P: 2 } }
                 ]
             },
             {
-                q: " ' /    '  ?",
-                cat: " ",
+                q: "연인이 '오늘 회사/학교에서 너무 힘든 일이 있었어'라며 하소연할 때?",
+                cat: "위로의 방식",
                 a: [
-                    { text: "'   ?'    .", scores: { F: 2, T: 0 } },
-                    { text: "        .", scores: { F: 0, T: 2 } }
+                    { text: "'진짜 속상했겠다ㅠㅠ 누가 그랬어?' 폭풍 공감하며 편을 들어준다.", scores: { F: 2, T: 0 } },
+                    { text: "상황을 차분히 듣고 무엇이 원인인지 실질적인 해결책을 고민해 준다.", scores: { F: 0, T: 2 } }
                 ]
             },
             {
-                q: "        ?",
-                cat: " ",
+                q: "연인과 사소한 의견 차이로 다투게 되었을 때 나의 대처는?",
+                cat: "갈등 해결",
                 a: [
-                    { text: "         .", scores: { E: 2, I: 0 } },
-                    { text: "        .", scores: { E: 0, I: 2 } }
+                    { text: "감정이 상하더라도 그 자리에서 대화로 명확하게 풀고 끝내야 직성이 풀린다.", scores: { E: 2, I: 0 } },
+                    { text: "일단 혼자만의 시간을 가지며 감정을 가라앉힌 뒤 차분해지면 이야기한다.", scores: { E: 0, I: 2 } }
                 ]
             },
             {
-                q: "  100/1    ?",
-                cat: " ",
+                q: "연인에게 줄 100일/1주년 기념일 선물을 고를 때?",
+                cat: "선물 선택",
                 a: [
-                    { text: "       .", scores: { S: 2, N: 0 } },
-                    { text: "     ,  .", scores: { S: 0, N: 2 } }
+                    { text: "연인이 평소에 갖고 싶다고 말했던 실용적이고 필요한 물건.", scores: { S: 2, N: 0 } },
+                    { text: "둘만의 추억이 담긴 포토북이나 정성스러운 손편지, 감성 선물.", scores: { S: 0, N: 2 } }
                 ]
             },
             {
-                q: "     ?",
-                cat: " ",
+                q: "친구들과의 술자리에 연인이 동석하게 되었을 때?",
+                cat: "사교 모임",
                 a: [
-                    { text: "       .", scores: { E: 2, I: 0 } },
-                    { text: "       .", scores: { E: 0, I: 2 } }
+                    { text: "친구들에게 연인을 적극적으로 소개하고 대화 분위기를 화기애애하게 이끈다.", scores: { E: 2, I: 0 } },
+                    { text: "연인이 어색해하거나 소외되지 않도록 옆에서 조용히 살뜰히 챙긴다.", scores: { E: 0, I: 2 } }
                 ]
             },
             {
-                q: "   30    ?",
-                cat: " ",
+                q: "연인이 약속 시간에 30분 늦었는데 이유가 타당할 때?",
+                cat: "약속 지각",
                 a: [
-                    { text: "        .", scores: { T: 2, F: 0 } },
-                    { text: "      .", scores: { T: 0, F: 2 } }
+                    { text: "이유는 이해하지만 다음부터는 미리 연락해 줬으면 좋겠다고 명확히 짚는다.", scores: { T: 2, F: 0 } },
+                    { text: "오느라 고생했다고 따뜻하게 맞이해주며 시원한 음료를 건넨다.", scores: { T: 0, F: 2 } }
                 ]
             },
             {
-                q: " (, ,  )    ?",
-                cat: " ",
+                q: "연인과 미래(동거, 결혼, 장기 계획)에 대한 이야기를 나눌 때?",
+                cat: "미래 지향",
                 a: [
-                    { text: " ,  ,    .", scores: { S: 2, N: 0 } },
-                    { text: "        .", scores: { S: 0, N: 2 } }
+                    { text: "자금 계획, 주거 환경, 현실적인 라이프스타일부터 구체적으로 따져본다.", scores: { S: 2, N: 0 } },
+                    { text: "둘이 함께 만들어갈 따뜻한 일상과 행복한 이상향을 상상하며 설렌다.", scores: { S: 0, N: 2 } }
                 ]
             },
             {
-                q: "        ?",
-                cat: "",
+                q: "길을 걷다 우연히 연인의 이상형에 가까운 사람을 보았을 때?",
+                cat: "질투심",
                 a: [
-                    { text: "         .", scores: { I: 2, E: 0 } },
-                    { text: "'   ?'     .", scores: { I: 0, E: 2 } }
+                    { text: "속으로 살짝 의식되지만 겉으로는 전혀 티 내지 않고 쿨하게 넘긴다.", scores: { I: 2, E: 0 } },
+                    { text: "'저 사람 네 스타일이지?' 장난스럽게 놀리며 연인의 반응을 살핀다.", scores: { I: 0, E: 2 } }
                 ]
             },
             {
-                q: "     ?",
-                cat: " ",
+                q: "데이트 코스를 짤 때 선호하는 방식은?",
+                cat: "데이트 스타일",
                 a: [
-                    { text: "        .", scores: { J: 2, P: 0 } },
-                    { text: "          .", scores: { J: 0, P: 2 } }
+                    { text: "시간대별 동선과 식당 예약까지 꼼꼼히 정리된 알찬 풀코스 데이트.", scores: { J: 2, P: 0 } },
+                    { text: "그날의 기분과 날씨에 따라 자유롭게 발길 닿는 대로 즐기는 힐링 데이트.", scores: { J: 0, P: 2 } }
                 ]
             },
             {
-                q: "  '     ?'  ?",
-                cat: " ",
+                q: "연인이 나에게 '나 요즘 살찐 것 같지 않아?'라고 물어볼 때?",
+                cat: "대화 센스",
                 a: [
-                    { text: "'  !    ?'   .", scores: { F: 2, T: 0 } },
-                    { text: "'      ?'   .", scores: { F: 0, T: 2 } }
+                    { text: "'전혀 안 쪘어! 지금이 딱 예쁘고 귀여운데?' 즉각 칭찬으로 안심시킨다.", scores: { F: 2, T: 0 } },
+                    { text: "'조금 찐 것 같긴 한데 같이 운동할까?' 솔직하게 의견을 말한다.", scores: { F: 0, T: 2 } }
                 ]
             },
             {
-                q: "        ?",
-                cat: " ",
+                q: "연인과 여행을 갔는데 갑자기 폭우가 쏟아져 야외 일정이 취소된다면?",
+                cat: "돌발 상황",
                 a: [
-                    { text: "  ,     B    .", scores: { J: 2, P: 0 } },
-                    { text: "' !'        .", scores: { J: 0, P: 2 } }
+                    { text: "곧바로 실내 미술관, 감성 카페 등 플랜 B 일정을 빠르게 검색해 대체한다.", scores: { J: 2, P: 0 } },
+                    { text: "'오히려 좋아!' 숙소에서 빗소리 들으며 맛있는 배달 음식 시켜 먹는다.", scores: { J: 0, P: 2 } }
                 ]
             },
             {
-                q: "      ?",
-                cat: " ",
+                q: "연인에게 서운한 감정이 생겼을 때 나의 행동은?",
+                cat: "감정 표현",
                 a: [
-                    { text: "        .", scores: { T: 2, F: 0 } },
-                    { text: "       .", scores: { T: 0, F: 2 } }
+                    { text: "쌓아두지 않고 차분하게 내 서운한 이유와 감정을 솔직히 털어놓는다.", scores: { T: 2, F: 0 } },
+                    { text: "말하기 전까지 말투나 행동에서 은근히 삐진 티가 묻어난다.", scores: { T: 0, F: 2 } }
                 ]
             },
             {
-                q: "       ?",
-                cat: " ",
+                q: "연인과 함께 있을 때 가장 행복을 느끼는 순간은?",
+                cat: "애정 확인",
                 a: [
-                    { text: "         .", scores: { N: 2, S: 0 } },
-                    { text: "         .", scores: { N: 0, S: 2 } }
+                    { text: "둘만의 조용한 공간에서 눈을 맞추며 깊은 속마음과 가치관을 나눌 때.", scores: { N: 2, S: 0 } },
+                    { text: "맛있는 음식을 함께 먹고 손잡고 산책하며 소소한 일상을 공유할 때.", scores: { N: 0, S: 2 } }
                 ]
             },
             {
-                q: "      ?",
-                cat: " ",
+                q: "연인이 바빠서 며칠 동안 카톡 답장이 늦어진다면?",
+                cat: "연락 텀",
                 a: [
-                    { text: "       .", scores: { T: 2, F: 0 } },
-                    { text: "       .", scores: { T: 0, F: 2 } }
+                    { text: "바쁜 사정을 이해하며 내 할 일에 집중하고 기다린다.", scores: { T: 2, F: 0 } },
+                    { text: "마음이 식은 건 아닌지 불안해하며 스마트폰을 자주 들여다본다.", scores: { T: 0, F: 2 } }
                 ]
             },
             {
-                q: "       ?",
-                cat: " ",
+                q: "내가 좋아하는 이성에게 호감을 표현할 때 나의 스타일은?",
+                cat: "고백 스타일",
                 a: [
-                    { text: "         .", scores: { E: 2, I: 0 } },
-                    { text: "        .", scores: { E: 0, I: 2 } }
+                    { text: "눈치 보지 않고 솔직하게 호감을 드러내며 먼저 다가가 대화를 건다.", scores: { E: 2, I: 0 } },
+                    { text: "상대방 주위를 맴돌며 조용히 챙겨주고 상대가 먼저 다가오길 기다린다.", scores: { E: 0, I: 2 } }
                 ]
             },
             {
-                q: "      ?",
-                cat: " ",
+                q: "연인과 함께 사진을 찍을 때 나의 스타일은?",
+                cat: "사진 촬영",
                 a: [
-                    { text: " ,       .", scores: { S: 2, N: 0 } },
-                    { text: "         .", scores: { S: 0, N: 2 } }
+                    { text: "구도와 조명, 인생샷 명소를 미리 알아보고 예쁜 커플샷을 남긴다.", scores: { S: 2, N: 0 } },
+                    { text: "엽기 표정이나 자연스러운 순간 포착 등 장난기 넘치는 사진을 좋아한다.", scores: { S: 0, N: 2 } }
                 ]
             },
             {
-                q: "     ?",
-                cat: " ",
+                q: "연인과의 기념일에 가고 싶은 데이트 장소는?",
+                cat: "기념일 장소",
                 a: [
-                    { text: "       .", scores: { J: 2, P: 0 } },
-                    { text: "       .", scores: { J: 0, P: 2 } }
+                    { text: "고급 레스토랑이나 야경이 한눈에 보이는 로맨틱한 호텔 다이닝.", scores: { J: 2, P: 0 } },
+                    { text: "둘만의 비밀 아지트 같은 감성 와인바나 조용한 글램핑장.", scores: { J: 0, P: 2 } }
                 ]
             },
             {
-                q: "     ?",
-                cat: " ",
+                q: "연인과 대화할 때 더 선호하는 주제는?",
+                cat: "대화 주제",
                 a: [
-                    { text: "   , ,      .", scores: { S: 2, N: 0 } },
-                    { text: " , ,  ,    .", scores: { S: 0, N: 2 } }
+                    { text: "오늘 하루 있었던 일, 맛집, 일상 속 재미있는 썰과 현실적인 이야기.", scores: { S: 2, N: 0 } },
+                    { text: "영화 해석, 우주, 인생의 의미, 미래에 해보고 싶은 버킷리스트.", scores: { S: 0, N: 2 } }
                 ]
             },
             {
-                q: "     ?",
-                cat: "",
+                q: "연애를 하면서 가장 중요하게 생각하는 가치는?",
+                cat: "연애관",
                 a: [
-                    { text: "       .", scores: { J: 2, P: 0 } },
-                    { text: "        .", scores: { J: 0, P: 2 } }
+                    { text: "상호 간의 깊은 신뢰와 흔들리지 않는 한결같은 안정감.", scores: { J: 2, P: 0 } },
+                    { text: "함께 있을 때의 설렘과 지루할 틈 없는 유쾌한 티키타카.", scores: { J: 0, P: 2 } }
                 ]
             }
         ];
 
-        // 8     (  200% &  7 )
+        // 8가지 연애 동물 캐릭터 데이터 (바넘 효과 200% & 풍성한 7단계 풀이)
         const LOVE_TYPES = [
             {
                 id: 1,
-                name: "   ",
+                name: "냉철한 현실 분석가 냥이",
                 badge: "TYPE 01",
                 img: "../img/love-type1.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "   ,         !",
-                detail: "       .     ,      .         .",
-                outer: "         ",
-                inner: "         ",
+                tags: ["#논리왕냥이", "#츤데레순정", "#실질적도움", "#똑부러짐"],
+                summary: "겉은 시크한 고양이처럼 차갑지만, 속은 오직 내 사람만을 위한 따스한 온기를 품은 현실주의자!",
+                detail: "감정에 휘둘리기보다 상황을 이성적이고 객관적으로 바라보는 스마트한 연인입니다. 밀당이나 애매모호한 신호를 극도로 싫어하며, 솔직하고 명확한 신뢰를 바탕으로 관계를 쌓아갑니다. 달콤한 립서비스보다는 연인의 고민을 실질적으로 해결해 주는 든든한 조력자입니다.",
+                outer: "감정 기복 없이 늘 차분하고 똑 부러지는 쿨한 어른 연인",
+                inner: "연인의 칭찬 한마디나 다정한 포옹에 속으로 광대 승천하며 밤새 행복해함",
                 stats: { express: 40, contact: 85, heal: 50, jealous: 70 },
                 features: [
-                    "        .",
-                    "          .",
-                    "       .",
-                    "          ."
+                    "연인이 힘들어할 때 빈말 위로보다는 실질적인 해결책을 먼저 찾아줍니다.",
+                    "약속 시간이나 지키지 못할 빈말에 대해 매우 엄격한 잣대를 가지고 있습니다.",
+                    "좋아하는 사람의 사소한 취향과 습관을 머릿속에 데이터베이스처럼 저장합니다.",
+                    "표현은 무뚝뚝하지만 연인이 아프면 죽과 약을 문 앞에 조용히 두고 갑니다."
                 ],
-                love: "     .        .",
-                manual: "      .       .",
-                trigger: "    ,   ,   ",
-                recharge: "         ",
-                bestMatch: "   ",
-                bestDesc: "        ",
-                badMatch: "   ",
-                badDesc: "      "
+                love: "말보다 행동으로 보여주는 츤데레 순정 스타일. 내 울타리 안에 들어온 사람은 세상 끝까지 지켜냅니다.",
+                manual: "감정적으로 몰아세우지 말고 차분하게 논리적으로 대화해 주세요. 혼자 생각할 시간을 주면 금방 다정하게 돌아옵니다.",
+                trigger: "약속을 밥 먹듯 어기는 무책임함, 앞뒤가 다른 거짓말, 억지 감정 강요",
+                recharge: "연인과 조용한 서점이나 감성 카페에서 각자 책 읽으며 편안하게 쉬기",
+                bestMatch: "낭만 가득 사랑꾼 곰돌이",
+                bestDesc: "나의 차가운 이성을 따스한 사랑으로 녹여주는 최고의 온기 파트너",
+                badMatch: "열정 불꽃 직진 댕댕이",
+                badDesc: "너무 급하고 감정적인 텐션에 기가 완전히 방전됨"
             },
             {
                 id: 2,
-                name: "   ",
+                name: "낭만 가득 사랑꾼 곰돌이",
                 badge: "TYPE 02",
                 img: "../img/love-type2.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "     !         !",
-                detail: "         .       ,          .",
-                outer: "       100 ",
-                inner: "          ",
+                tags: ["#하트뿅뿅곰", "#올인직진러", "#로맨티스트", "#다정보스"],
+                summary: "연인을 위해 모든 것을 쏟아붓는 순정파! 사랑을 표현할 때 가장 큰 행복을 느끼는 다정 곰돌이!",
+                detail: "좋아하는 사람이 생기면 숨기지 못하고 눈빛과 온몸으로 사랑을 발산하는 사랑둥이입니다. 연인의 아주 작은 기분 변화도 귀신같이 알아채며, 기념일과 이벤트를 챙기며 둘만의 로맨틱한 추억을 만드는 것을 진심으로 즐깁니다.",
+                outer: "세상에서 가장 다정하고 연인밖에 모르는 바보 같은 100점 연인",
+                inner: "내가 준 만큼 상대방이 표현해 주지 않으면 혼자 속으로 엄청 서운해함",
                 stats: { express: 95, contact: 95, heal: 60, jealous: 85 },
                 features: [
-                    "   ,       .",
-                    "       .",
-                    " ,          .",
-                    "         ."
+                    "연인의 카톡 한 줄, 표정 하나에도 온종일 기분이 천국과 지옥을 오갑니다.",
+                    "깜짝 선물이나 정성스러운 손편지로 연인을 감동시키는 것을 좋아합니다.",
+                    "사랑한다는 말, 보고 싶다는 애정 표현을 하루에도 수십 번씩 듣고 싶어 합니다.",
+                    "연인이 힘들어할 때 세상 누구보다 따뜻하게 안아주는 힐링 포옹 장인입니다."
                 ],
-                love: "        .",
-                manual: "      . ', '      .",
-                trigger: "   ,     , ",
-                recharge: "        ",
-                bestMatch: "   ",
-                bestDesc: "       ",
-                badMatch: "  ",
-                badDesc: "        "
+                love: "세상의 중심이 온통 연인에게 맞춰지는 올인형 낭만 로맨티스트 스타일.",
+                manual: "애정 표현을 아끼지 말고 듬뿍 표현해 주세요. '고마워, 사랑해' 한마디면 모든 서운함이 눈 녹듯 사라집니다.",
+                trigger: "영혼 없는 건성 대답, 내 정성을 가볍게 여기는 태도, 무관심",
+                recharge: "연인의 품에 쏙 안겨서 달콤한 디저트 먹으며 영화 보기",
+                bestMatch: "냉철한 현실 분석가 냥이",
+                bestDesc: "흔들리는 내 마음에 든든한 안정감을 선물하는 찰떡 단짝",
+                badMatch: "쿨한 마이웨이 펭귄",
+                badDesc: "너무 쿨하고 표현 없는 태도에 매일 밤 눈물 흘림"
             },
             {
                 id: 3,
-                name: "  ",
+                name: "다정다감 평화주의 토끼",
                 badge: "TYPE 03",
                 img: "../img/love-type3.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "      !     .",
-                detail: "   ,       .    ,            .",
-                outer: "        ",
-                inner: "         ",
+                tags: ["#순둥이토끼", "#배려끝판왕", "#갈등제로", "#천사연인"],
+                summary: "상대방의 입장에서 먼저 생각하고 양보하는 천사표 연인! 갈등 없는 평화로운 연애를 추구합니다.",
+                detail: "싸우는 것을 극도로 싫어하며, 연인의 마음을 편안하게 해주는 부드러운 배려의 달인입니다. 상대방의 단점도 따뜻하게 감싸주며, 함께 있을 때 마치 포근한 구름 위에 있는 것 같은 안정감을 선사합니다.",
+                outer: "늘 웃는 얼굴로 맞춰주고 배려해 주는 착하고 순한 연인",
+                inner: "거절을 잘 못해서 속으로 참다가 한 번 상처받으면 오래 아파함",
                 stats: { express: 60, contact: 70, heal: 40, jealous: 55 },
                 features: [
-                    "      '   '  .",
-                    "           .",
-                    "       .",
-                    "     100%    ."
+                    "식당 메뉴나 데이트 코스를 고를 때 '네가 좋아하는 거 먹자'가 입에 붙었습니다.",
+                    "연인이 화를 내면 맞서 싸우기보다 눈물이 먼저 핑 도는 여린 감성의 소유자입니다.",
+                    "사소한 선물이나 배려에도 크게 감동하며 고마움을 오래 간직합니다.",
+                    "상대방이 기분 상할까 봐 속마음을 100% 털어놓지 못하고 속앓이를 합니다."
                 ],
-                love: "        .",
-                manual: "       .  ' ?'     .",
-                trigger: "  ,  ,    ",
-                recharge: "        ",
-                bestMatch: "  ",
-                bestDesc: "       ",
-                badMatch: "   ",
-                badDesc: "       "
+                love: "은은하고 따스한 봄바람처럼 연인의 곁을 지켜주는 힐링 배려 스타일.",
+                manual: "다그치거나 큰 소리 내지 마시고 조용히 손을 잡아주세요. 먼저 '너는 어때?' 하고 의견을 물어봐 주면 고마워합니다.",
+                trigger: "소리 지르며 화내기, 무시하는 말투, 선 넘는 무례한 농담",
+                recharge: "향기로운 차 한잔 마시며 조용한 공원이나 숲길 손잡고 산책하기",
+                bestMatch: "든든한 수호천사 사슴",
+                bestDesc: "내 여린 마음을 든든한 울타리로 감싸주는 완벽한 수호자",
+                badMatch: "포근한 감성 예술 여우",
+                badDesc: "둘 다 결정을 미루고 속앓이만 하다가 답답함 폭발"
             },
             {
                 id: 4,
-                name: "   ",
+                name: "열정 불꽃 직진 댕댕이",
                 badge: "TYPE 04",
                 img: "../img/love-type4.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "    !        !",
-                detail: "         .     ,        .",
-                outer: "      ",
-                inner: "         ",
+                tags: ["#불꽃댕댕이", "#밀당제로", "#화끈한직진", "#솔직담백"],
+                summary: "좋으면 좋다고 당당하게 외치는 직진파! 밀당 없이 솔직하고 화끈한 에너지를 뿜어내는 사랑의 에너자이저!",
+                detail: "연애에 있어서 계산하거나 망설이지 않고 마음이 가는 대로 돌진하는 타입입니다. 뒤끝이 전혀 없고 솔직 담백하며, 함께 있으면 언제나 에너지가 넘치고 흥미진진한 데이트를 만들어냅니다.",
+                outer: "자신감 넘치고 당당하게 사랑을 이끄는 카리스마 리더",
+                inner: "연인이 나를 칭찬해 주고 예뻐해 줄 때 꼬리 흔들며 무장해제됨",
                 stats: { express: 99, contact: 90, heal: 85, jealous: 80 },
                 features: [
-                    "  1  ,     .",
-                    " 5      .",
-                    "         .",
-                    "           ."
+                    "답답한 밀당을 1초도 못 견디며, 좋아하는 감정을 절대 숨기지 못합니다.",
+                    "싸우더라도 5분 안에 솔직하게 털고 바로 장난치며 화해합니다.",
+                    "연인에게 서프라이즈를 해주거나 맛있는 것을 사줄 때 돈이 아깝지 않습니다.",
+                    "남들 눈치 보지 않고 연인의 손을 덥석 잡거나 당당하게 애정 표현을 합니다."
                 ],
-                love: "       .",
-                manual: "       .      200%  .",
-                trigger: "  ,   ,   ",
-                recharge: "       ",
-                bestMatch: "  ",
-                bestDesc: "      ",
-                badMatch: "   ",
-                badDesc: "    "
+                love: "감정 숨김없이 온몸으로 직진하는 화끈하고 솔직한 불꽃 스타일.",
+                manual: "마음을 빙빙 돌려 말하지 말고 직설적으로 말해 주세요. 솔직한 리액션과 폭풍 칭찬을 해주면 200% 더 잘합니다.",
+                trigger: "떠보는 식의 간보기, 답답한 회피형 태도, 줏대 없는 행동",
+                recharge: "신나는 테마파크나 드라이브 데이트 가서 맛있는 야식 먹기",
+                bestMatch: "유쾌한 티키타카 햄찌",
+                bestDesc: "매일매일 축제처럼 유쾌하게 웃음이 터지는 환상의 케미",
+                badMatch: "냉철한 현실 분석가 냥이",
+                badDesc: "차가운 이성적 브레이크에 열정이 상처받음"
             },
             {
                 id: 5,
-                name: "  ",
+                name: "쿨한 마이웨이 펭귄",
                 badge: "TYPE 05",
                 img: "../img/love-type5.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "     !      .",
-                detail: "          .    ,      .",
-                outer: "       ",
-                inner: "           ",
+                tags: ["#선글라스펭귄", "#개인주의연애", "#쿨워터향", "#담백한사랑"],
+                summary: "서로의 사생활과 취향을 존중하는 쿨한 독립파! 구속 없는 담백하고 깔끔한 연애를 선호합니다.",
+                detail: "연애를 하더라도 각자의 꿈과 개인 시간이 보장되어야 행복을 느끼는 스마트한 현대인입니다. 집착이나 감정적인 소모를 피하고, 서로를 성장시키는 건강하고 성숙한 파트너십을 지향합니다.",
+                outer: "질투나 집착 하나 없이 쿨하고 세련된 마이웨이 연인",
+                inner: "표현을 잘 안 할 뿐이지 내 사람에게는 은근히 깊은 신뢰를 보내고 있음",
                 stats: { express: 30, contact: 45, heal: 90, jealous: 25 },
                 features: [
-                    "          .",
-                    "       .",
-                    "     100%   .",
-                    "         ."
+                    "하루 종일 연락이 안 되어도 각자 일에 집중하고 있으면 불안해하지 않습니다.",
+                    "감정적인 떼쓰기나 억지 투정을 받아주는 것을 매우 힘들어합니다.",
+                    "서로의 취미 생활과 친구 관계를 100% 쿨하게 인정하고 존중합니다.",
+                    "한번 신뢰가 깨지거나 선을 넘으면 미련 없이 깔끔하게 관계를 정리합니다."
                 ],
-                love: "         .",
-                manual: "  24   .        .",
-                trigger: " ,   ,   ",
-                recharge: "       ",
-                bestMatch: "  ",
-                bestDesc: "         ",
-                badMatch: "   ",
-                badDesc: "       "
+                love: "적당한 거리감과 상호 존중을 바탕으로 한 깔끔하고 담백한 연애 스타일.",
+                manual: "사생활을 캐묻거나 24시간 연락을 강요하지 마세요. 각자의 시간을 존중해 주면 더 깊은 신뢰로 보답합니다.",
+                trigger: "휴대폰 검사, 과도한 집착과 통제, 감정적인 억지 부리기",
+                recharge: "혼자만의 방에서 좋아하는 게임이나 영화 보며 자유 만끽하기",
+                bestMatch: "유쾌한 티키타카 햄찌",
+                bestDesc: "부담 없는 거리감 속에서 쉴 새 없이 재미를 주는 파트너",
+                badMatch: "낭만 가득 사랑꾼 곰돌이",
+                badDesc: "애정 표현과 연락 빈도 차이로 매일 갈등 폭발"
             },
             {
                 id: 6,
-                name: "  ",
+                name: "유쾌한 티키타카 햄찌",
                 badge: "TYPE 06",
                 img: "../img/love-type6.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "         !   !",
-                detail: "         5    .    ,       .",
-                outer: "       ",
-                inner: "        ",
+                tags: ["#장난꾸러기햄찌", "#웃음비타민", "#센스만점", "#데이트장인"],
+                summary: "함께 있으면 하루 종일 웃음이 끊이지 않는 유쾌한 분위기 메이커! 매일매일이 신나는 축제!",
+                detail: "재치 있는 유머와 센스 넘치는 입담으로 연인의 우울함을 단 5초 만에 날려버리는 인간 비타민입니다. 뻔하고 지루한 데이트는 거부하며, 항상 새롭고 재미있는 추억을 기획하는 연애계의 엔터테이너입니다.",
+                outer: "늘 에너지 넘치고 장난기 가득한 유쾌 발랄 비타민",
+                inner: "진지한 감정 표현이 쑥스러워서 장난으로 넘기다 오해받을 때 속상함",
                 stats: { express: 85, contact: 80, heal: 75, jealous: 60 },
                 features: [
-                    "        .",
-                    " , ,      .",
-                    "           .",
-                    "        ."
+                    "어색한 침묵을 견디지 못해 항상 재미있는 대화 주제를 던집니다.",
+                    "이색 핫플, 방탈출, 보드게임 등 활동적이고 다채로운 데이트를 선호합니다.",
+                    "연인이 내 개그에 빵 터져서 웃을 때 세상에서 가장 큰 성취감을 느낍니다.",
+                    "겉으로는 유쾌하지만 속으로는 상대방의 반응과 눈치를 은근히 많이 살핍니다."
                 ],
-                love: "         .",
-                manual: "      .         .",
-                trigger: "   ,    ,  ",
-                recharge: "        ",
-                bestMatch: "   ",
-                bestDesc: "        ",
-                badMatch: "  ",
-                badDesc: "     "
+                love: "친구처럼 편안하면서도 매일 웃음이 터지는 유쾌 통통 튀는 연애 스타일.",
+                manual: "내 유머에 크게 웃어주고 리액션을 잘해 주세요. 진지한 대화가 필요할 땐 부드럽게 분위기를 잡아주면 잘 따릅니다.",
+                trigger: "내 농담에 싸늘한 무반응, 따분하고 꽉 막힌 잔소리, 무거운 분위기",
+                recharge: "연인과 맛있는 야식 먹으며 배꼽 빠지는 코미디 영상 보기",
+                bestMatch: "열정 불꽃 직진 댕댕이",
+                bestDesc: "서로 텐션이 찰떡같이 맞아 매일 웃음꽃이 피는 최고의 콤비",
+                badMatch: "든든한 수호천사 사슴",
+                badDesc: "진지함과 가벼움의 템포 차이로 답답함을 느낌"
             },
             {
                 id: 7,
-                name: "  ",
+                name: "든든한 수호천사 사슴",
                 badge: "TYPE 07",
                 img: "../img/love-type7.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "           !",
-                detail: "       .      ,           .",
-                outer: "         ",
-                inner: "           ",
+                tags: ["#듬직한사슴", "#평생내사람", "#책임감갑", "#안정감만렙"],
+                summary: "어떤 폭풍우가 몰아쳐도 흔들리지 않고 연인의 든든한 방패가 되어주는 진국 중의 진국!",
+                detail: "화려한 말솜씨보다는 묵묵한 행동과 책임감으로 사랑을 증명하는 사람입니다. 연인의 안전과 미래를 진심으로 걱정하고 챙기며, 시간이 흐를수록 그 깊은 진가와 신뢰감이 빛을 발하는 최고의 결혼 상대입니다.",
+                outer: "어른스럽고 듬직하며 언제나 기댈 수 있는 큰 나무 같은 연인",
+                inner: "혼자 모든 짐과 책임을 짊어지려다 지칠 때 연인의 따뜻한 위로를 간절히 원함",
                 stats: { express: 50, contact: 80, heal: 60, jealous: 65 },
                 features: [
-                    "         .",
-                    "       .",
-                    "        .",
-                    "        ."
+                    "데이트할 때 항상 연인을 차도 안쪽으로 걷게 하고 안전을 챙깁니다.",
+                    "연인과의 미래를 위해 성실하게 저축하고 구체적인 계획을 세웁니다.",
+                    "한번 시작한 관계는 쉽게 포기하지 않고 끝까지 책임지려 노력합니다.",
+                    "연인이 힘들어할 때 조용히 곁을 지키며 실질적인 울타리가 되어줍니다."
                 ],
-                love: "         .",
-                manual: "    '  '  .       .",
-                trigger: "   ,   , ",
-                recharge: "        ",
-                bestMatch: "   ",
-                bestDesc: "        ",
-                badMatch: "  ",
-                badDesc: "     "
+                love: "흔들리지 않는 뿌리 깊은 나무처럼 평생을 약속하는 신뢰 헌신 스타일.",
+                manual: "나의 묵묵한 노력을 알아주고 '너 덕분에 안심돼'라는 말을 건네주세요. 가끔은 나도 기댈 수 있게 안아주면 감동합니다.",
+                trigger: "가벼운 태도로 관계를 대하기, 신뢰를 저버리는 거짓말, 무책임함",
+                recharge: "연인과 조용한 근교로 힐링 드라이브 떠나서 여유로운 시간 보내기",
+                bestMatch: "포근한 감성 예술 여우",
+                bestDesc: "나의 굳건한 울타리 안에서 예쁜 감성을 꽃피우는 영혼의 단짝",
+                badMatch: "유쾌한 티키타카 햄찌",
+                badDesc: "너무 즉흥적이고 가벼운 태도에 불안감을 느낌"
             },
             {
                 id: 8,
-                name: "   ",
+                name: "포근한 감성 예술 여우",
                 badge: "TYPE 08",
                 img: "../img/love-type8.jpg",
-                tags: ["#", "#", "#", "#"],
-                summary: "        !",
-                detail: "        .     ,         ,      .",
-                outer: "      ",
-                inner: "        ",
+                tags: ["#감성예술여우", "#영혼의단짝", "#신비로운매력", "#깊은교감"],
+                summary: "눈빛만 봐도 통하는 깊은 정신적 교감을 나누는 섬세한 아티스트!",
+                detail: "표면적인 조건이나 외모보다 상대방의 진정한 내면과 가치관을 깊게 사랑합니다. 둘만의 감성적인 아지트에서 음악과 예술, 삶에 대한 깊은 대화를 나눌 때 진정한 행복을 느끼며, 연인을 세상에서 가장 특별한 존재로 만들어줍니다.",
+                outer: "독보적인 분위기와 신비로운 감성을 지닌 매력적인 연인",
+                inner: "작은 말 한마디에도 깊게 생각하고 상처받는 여린 유리 멘탈",
                 stats: { express: 70, contact: 65, heal: 35, jealous: 75 },
                 features: [
-                    "       .",
-                    "   , LP,    .",
-                    "         .",
-                    "        ."
+                    "연인에게 어울리는 음악 플레이리스트나 예쁜 시 구절을 선물합니다.",
+                    "시끄러운 번화가보다 조용한 전시회, LP바, 감성 골목길 데이트를 선호합니다.",
+                    "연인의 독특한 개성과 엉뚱한 생각도 세상에서 가장 아름답게 바라봐 줍니다.",
+                    "직관력이 뛰어나 연인이 거짓말을 하거나 속마음을 숨기면 바로 알아챕니다."
                 ],
-                love: "         .",
-                manual: "     .           .",
-                trigger: "  ,    ,   ",
-                recharge: "        ",
-                bestMatch: "  ",
-                bestDesc: "       ",
-                badMatch: "  ",
-                badDesc: "       "
+                love: "영혼과 영혼이 맞닿는 깊은 정신적 교감을 추구하는 낭만 감성 스타일.",
+                manual: "내 감수성과 취향을 진심으로 존중해 주세요. 마음이 복잡할 때 재촉하지 않고 조용히 귀 기울여주면 마음을 활짝 엽니다.",
+                trigger: "내 취향 무시하기, 영혼 없는 계산적인 태도, 감정 없는 차가움",
+                recharge: "나만의 감성 공간에서 캔들 켜고 좋아하는 인디 음악 감상하기",
+                bestMatch: "든든한 수호천사 사슴",
+                bestDesc: "나의 섬세한 감성을 현실 세계에서 든든하게 지켜주는 울타리",
+                badMatch: "다정다감 평화주의 토끼",
+                badDesc: "둘 다 결정을 못 내리고 속앓이만 하다가 지침"
             }
         ];
 
@@ -863,16 +863,16 @@
             const isJ = userScores.J >= userScores.P;
             const isP = !isJ;
 
-            // MBTI  8   
+            // MBTI 매핑으로 8가지 연애 캐릭터 매칭
             let typeIdx = 0;
-            if (isT && isJ) typeIdx = 0; //    
-            else if (isF && isP && isE) typeIdx = 1; //    
-            else if (isF && isJ) typeIdx = 2; //   
-            else if (isT && isP && isE) typeIdx = 3; //    
-            else if (isT && isP && isI) typeIdx = 4; //   
-            else if (isE && isP) typeIdx = 5; //   
-            else if (isS && isJ) typeIdx = 6; //   
-            else typeIdx = 7; //    
+            if (isT && isJ) typeIdx = 0; // 냉철한 현실 분석가 냥이
+            else if (isF && isP && isE) typeIdx = 1; // 낭만 가득 사랑꾼 곰돌이
+            else if (isF && isJ) typeIdx = 2; // 다정다감 평화주의 토끼
+            else if (isT && isP && isE) typeIdx = 3; // 열정 불꽃 직진 댕댕이
+            else if (isT && isP && isI) typeIdx = 4; // 쿨한 마이웨이 펭귄
+            else if (isE && isP) typeIdx = 5; // 유쾌한 티키타카 햄찌
+            else if (isS && isJ) typeIdx = 6; // 든든한 수호천사 사슴
+            else typeIdx = 7; // 포근한 감성 예술 여우
 
             const typeData = LOVE_TYPES[typeIdx];
 
@@ -887,7 +887,7 @@
             document.getElementById('result-outer').textContent = typeData.outer;
             document.getElementById('result-inner').textContent = typeData.inner;
 
-            //   
+            // 스탯 바 렌더링
             if (typeData.stats) {
                 document.getElementById('stat-express-val').textContent = typeData.stats.express + '%';
                 document.getElementById('stat-express-bar').style.width = typeData.stats.express + '%';
@@ -922,12 +922,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        //  /  (html2canvas)
+        // 이미지 저장/다운로드 기능 (html2canvas)
         function downloadResultImage() {
             const captureEl = document.getElementById('capture-area');
             if (!captureEl) return;
 
-            alert('    .  !');
+            alert('결과 카드 이미지를 생성하고 있습니다. 잠시만 기다려주세요!');
 
             html2canvas(captureEl, {
                 scale: 2,
@@ -935,11 +935,11 @@
                 backgroundColor: '#ffffff'
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = '___.png';
+                link.download = '연애_캐릭터_유형테스트_결과.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
-                alert('    .   !');
+                alert('이미지 저장 중 문제가 발생했습니다. 화면을 캡처해서 사용해주세요!');
             });
         }
 
@@ -949,7 +949,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        //    (   )
+        // 커뮤니티 댓글 시스템 (실제 작성 댓글 전용)
         function getStoredComments(key) {
             const stored = localStorage.getItem('test_comments_' + key);
             if (stored) {
@@ -965,7 +965,7 @@
             list.innerHTML = '';
 
             if (comments.length === 0) {
-                list.innerHTML = '<div class="p-6 text-center text-xs text-gray-400">   .<br>      !</div>';
+                list.innerHTML = '<div class="p-6 text-center text-xs text-gray-400">아직 등록된 후기가 없습니다.<br>첫 번째 솔직한 연애 유형 후기를 남겨보세요!</div>';
                 return;
             }
 
@@ -980,7 +980,7 @@
                     <p class="text-xs text-gray-700 leading-snug break-keep">${c.text}</p>
                     <div class="flex justify-end pt-0.5">
                         <button onclick="likeComment('love_type', ${idx})" class="text-[10px] text-gray-400 hover:text-rose-600 flex items-center space-x-1">
-                            <span></span>
+                            <span>공감</span>
                             <span class="font-bold">${c.likes || 0}</span>
                         </button>
                     </div>
@@ -993,15 +993,15 @@
             const nickEl = document.getElementById('comment-nickname');
             const textEl = document.getElementById('comment-text');
 
-            const nick = nickEl.value.trim() || '';
+            const nick = nickEl.value.trim() || '익명';
             const text = textEl.value.trim();
 
-            if (!text) { alert('  !'); return; }
+            if (!text) { alert('후기 내용을 입력해주세요!'); return; }
 
             const comments = getStoredComments('love_type');
             comments.unshift({
                 nick: nick,
-                time: ' ',
+                time: '방금 전',
                 text: text,
                 likes: 0
             });
@@ -1009,7 +1009,7 @@
             localStorage.setItem('test_comments_love_type', JSON.stringify(comments));
             textEl.value = '';
             renderComments();
-            alert('  !');
+            alert('소중한 후기가 등록되었습니다!');
         }
 
         function likeComment(key, idx) {
@@ -1023,8 +1023,8 @@
 
         function shareResult() {
             const url = window.location.href;
-            const title = '    ';
-            const text = '     !    !';
+            const title = '나의 연애 유형 테스트 결과';
+            const text = '내 연애 캐릭터 분석 결과가 나왔어! 너의 연애 캐릭터도 확인해봐!';
 
             if (navigator.share) {
                 navigator.share({ title: title, text: text, url: url }).catch(() => {});
@@ -1035,11 +1035,11 @@
                 dummy.select();
                 document.execCommand('copy');
                 document.body.removeChild(dummy);
-                alert('  !   DM  .');
+                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
             }
         }
 
-        // URL   Type    (?type=1)
+        // URL 파라미터로 특정 Type 직접 진입 지원 (?type=1)
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const typeParam = parseInt(params.get('type'));

@@ -317,7 +317,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        <span>인스타 스토리용 이미지 저장</span>
+                        <span>결과 이미지 저장하기</span>
                     </button>
                 </div>
 
@@ -820,22 +820,40 @@
         function downloadResultImage() {
             const captureEl = document.getElementById('capture-area');
             if (!captureEl) return;
-
-            alert('결과 카드 이미지를 생성하고 있습니다. 잠시만 기다려주세요!');
-
-            html2canvas(captureEl, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff'
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = '한가위_디저트_성격테스트_결과.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-                setTimeout(() => alert('이미지가 스마트폰에 저장되었습니다! 인스타그램 스토리에 올려서 친구들에게 자랑해보세요.'), 500);
-            }).catch(err => {
-                alert('이미지 저장 중 문제가 발생했습니다. 화면을 캡처해서 사용해주세요!');
-            });
+            
+            const originalMinHeight = captureEl.style.minHeight;
+            const originalDisplay = captureEl.style.display;
+            const originalFlexDir = captureEl.style.flexDirection;
+            const originalJustify = captureEl.style.justifyContent;
+            
+            const targetHeight = captureEl.offsetWidth * (16 / 9);
+            captureEl.style.minHeight = targetHeight + 'px';
+            captureEl.style.display = 'flex';
+            captureEl.style.flexDirection = 'column';
+            captureEl.style.justifyContent = 'center';
+            
+            setTimeout(() => {
+                html2canvas(captureEl, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: window.getComputedStyle(captureEl).backgroundColor || '#ffffff'
+                }).then(canvas => {
+                    captureEl.style.minHeight = originalMinHeight;
+                    captureEl.style.display = originalDisplay;
+                    captureEl.style.flexDirection = originalFlexDir;
+                    captureEl.style.justifyContent = originalJustify;
+                    
+                    const link = document.createElement('a');
+                    link.download = '결과_이미지.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).catch(err => {
+                    captureEl.style.minHeight = originalMinHeight;
+                    captureEl.style.display = originalDisplay;
+                    captureEl.style.flexDirection = originalFlexDir;
+                    captureEl.style.justifyContent = originalJustify;
+                });
+            }, 50);
         }
 
         function restartTest() {

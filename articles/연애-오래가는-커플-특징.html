@@ -1,6 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script>
+      if (location.hostname === 'testmoeum.vercel.app') {
+        location.replace('https://www.testmoeum.com' + location.pathname + location.search + location.hash);
+      }
+    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
     <script>

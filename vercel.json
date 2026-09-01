@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "testmoeum.vercel.app"
+        }
+      ],
+      "destination": "https://www.testmoeum.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/Type:num(\\d+)",
       "destination": "/love-type/Type:num",
       "permanent": true

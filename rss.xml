@@ -1,59 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>테스트모음 - 나를 찾는 즐거운 심리테스트</title>
-    <link>https://www.testmoeum.com</link>
-    <description>연애 유형부터 사주 연애운, 크리스마스 롤링페이퍼까지 2030을 위한 무료 심리테스트 플랫폼</description>
-    <language>ko-KR</language>
-    <lastBuildDate>Tue, 01 Sep 2026 16:00:00 +0900</lastBuildDate>
+    <title>테스트모음 심리 &amp; 사주 전문 칼럼</title>
+    <link>https://www.testmoeum.com/blog.html</link>
+    <description>성격 심리학(MBTI·애착이론·빅5), 관계 갈등 해결, 전통 명리학을 기반으로 자아 발견과 건강한 사랑을 돕는 전문 연구 칼럼</description>
+    <language>ko</language>
+    <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    <lastBuildDate>Fri, 02 Oct 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.testmoeum.com/rss.xml" rel="self" type="application/rss+xml"/>
-
     <item>
-      <title>크리스마스 소셜 롤링페이퍼 (트리 꾸미기)</title>
-      <link>https://www.testmoeum.com/xmas-create.html</link>
-      <description>나만의 크리스마스 트리를 만들고 친구들의 편지를 받아보세요. 12월 25일 크리스마스 당일에 오픈되는 소셜 롤링페이퍼 이벤트.</description>
-      <pubDate>Tue, 01 Sep 2026 15:00:00 +0900</pubDate>
-      <guid>https://www.testmoeum.com/xmas-create.html</guid>
+      <title><![CDATA[MBTI 16가지 성격 유형별 연애 궁합표: 인지기능 기반 환상의 케미와 갈등 관리 가이드]]></title>
+      <link>https://www.testmoeum.com/articles/MBTI-%EC%97%B0%EC%95%A0-%EA%B6%81%ED%95%A9%ED%91%9C-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</link>
+      <guid>https://www.testmoeum.com/articles/MBTI-%EC%97%B0%EC%95%A0-%EA%B6%81%ED%95%A9%ED%91%9C-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</guid>
+      <description><![CDATA[MBTI 16가지 성격 유형 간의 연애 궁합표와 심리학적 상호작용 분석. 주기능과 열등기능의 보완 관계, 갈등을 줄이는 구체적 소통법을 완벽 정리했습니다.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
-
     <item>
-      <title>나의 힐링 성향 테스트 | 피로 회복 맞춤 분석</title>
-      <link>https://www.testmoeum.com/healing-test.html</link>
-      <description>12가지 질문으로 알아보는 나만의 힐링 스타일과 번아웃 극복 심리테스트.</description>
-      <pubDate>Tue, 01 Sep 2026 10:00:00 +0900</pubDate>
-      <guid>https://www.testmoeum.com/healing-test.html</guid>
+      <title><![CDATA[MBTI 16가지 유형별 남자 연애 공략법: 심리적 방어기제 해제와 호감 유도 전략]]></title>
+      <link>https://www.testmoeum.com/articles/mbti%EB%B3%84-%EB%82%A8%EC%9E%90-%EA%BC%AC%EC%8B%9C%EB%8A%94%EB%B2%95-%EC%97%B0%EC%95%A0%EA%B3%B5%EB%9E%B5.html</link>
+      <guid>https://www.testmoeum.com/articles/mbti%EB%B3%84-%EB%82%A8%EC%9E%90-%EA%BC%AC%EC%8B%9C%EB%8A%94%EB%B2%95-%EC%97%B0%EC%95%A0%EA%B3%B5%EB%9E%B5.html</guid>
+      <description><![CDATA[남성의 성격 유형별 무의식적 가치관과 방어기제를 분석하여, 가식적인 밀당 없이 상대방이 자연스럽게 당신에게 정서적으로 의지하고 반하게 만드는 실전 연애 심리학 가이드.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
-
     <item>
-      <title>사주로 보는 나의 연애운 | 생년월일 일간 캐릭터 분석</title>
-      <link>https://www.testmoeum.com/saju-love.html</link>
-      <description>생년월일로 알아보는 사주 10개 일간 캐릭터와 나의 숨겨진 연애 성향 무료 분석.</description>
-      <pubDate>Tue, 01 Sep 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.testmoeum.com/saju-love.html</guid>
+      <title><![CDATA[MBTI 16가지 유형별 플러팅 호감 신호 총정리: 짝사랑과 관심의 무의식적 시그널]]></title>
+      <link>https://www.testmoeum.com/articles/mbti%EB%B3%84-%ED%94%8C%EB%9F%AC%ED%8C%85-%EC%8B%A0%ED%98%B8-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</link>
+      <guid>https://www.testmoeum.com/articles/mbti%EB%B3%84-%ED%94%8C%EB%9F%AC%ED%8C%85-%EC%8B%A0%ED%98%B8-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</guid>
+      <description><![CDATA[친절함과 진짜 호감을 구별하는 기준. 16가지 성격 유형이 좋아하는 사람 앞에서 무의식적으로 드러내는 카톡 말투와 행동 시그널 분석.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
-
     <item>
-      <title>연애유형 테스트 8가지 성향 분석</title>
-      <link><link>https://www.testmoeum.com/love-type/</link></link>
-      <description>MBTI와 애착이론 기반 20문항으로 알아보는 나의 연애 스타일과 환상의 짝꿍.</description>
-      <pubDate>Tue, 01 Sep 2026 08:00:00 +0900</pubDate>
-      <guid><guid>https://www.testmoeum.com/love-type/</guid></guid>
+      <title><![CDATA[궁합 잘 맞는 사주 특징 총정리: 천생연분 오행 상생과 천간합 지지합의 명리학적 비밀]]></title>
+      <link>https://www.testmoeum.com/articles/%EA%B6%81%ED%95%A9-%EC%9E%98%EB%A7%9E%EB%8A%94-%EC%82%AC%EC%A3%BC-%ED%8A%B9%EC%A7%95.html</link>
+      <guid>https://www.testmoeum.com/articles/%EA%B6%81%ED%95%A9-%EC%9E%98%EB%A7%9E%EB%8A%94-%EC%82%AC%EC%A3%BC-%ED%8A%B9%EC%A7%95.html</guid>
+      <description><![CDATA[사주명리학에서 말하는 최고의 연애 궁합 원리. 천간 5합의 정신적 유대감, 지지 삼합·육합, 결핍된 오행의 상생 조화를 학술적으로 분석합니다.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
-
     <item>
-      <title>대운 바뀌기 전 나타나는 전조 증상 5가지</title>
+      <title><![CDATA[인생 대운 바뀌기 전 나타나는 징조 5가지: 교운기(交運期)의 심리적·환경적 변화 신호]]></title>
       <link>https://www.testmoeum.com/articles/%EB%8C%80%EC%9A%B4-%EB%B0%94%EB%80%8C%EA%B8%B0%EC%A0%84-%EC%A7%95%EC%A1%B0-5%EA%B0%80%EC%A7%80.html</link>
-      <description>인생의 큰 흐름이 바뀌는 10년 대운의 변화 시기에 공통적으로 겪게 되는 대표적인 신호 분석.</description>
-      <pubDate>Mon, 31 Aug 2026 14:00:00 +0900</pubDate>
       <guid>https://www.testmoeum.com/articles/%EB%8C%80%EC%9A%B4-%EB%B0%94%EB%80%8C%EA%B8%B0%EC%A0%84-%EC%A7%95%EC%A1%B0-5%EA%B0%80%EC%A7%80.html</guid>
+      <description><![CDATA[10년 주기 대운(大運)이 바뀌는 교운기에 나타나는 5가지 결정적 징후. 인간관계 정리, 수면과 체질 변화, 가치관의 대전환 및 처세술.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
-
     <item>
-      <title>도화살, 홍염살, 화개살의 차이점과 특징 총정리</title>
+      <title><![CDATA[도화살·홍염살·화개살 3대 매력살 특징과 차이점 완벽 분석: 현대적 이성 매력과 성공 전략]]></title>
       <link>https://www.testmoeum.com/articles/%EB%8F%84%ED%99%94%EC%82%B4-%ED%99%8D%EC%97%BC%EC%82%B4-%ED%99%84%EA%B0%9C%EC%82%B4-%ED%8A%B9%EC%A7%95.html</link>
-      <description>매력과 관련된 사주 3대 신살의 실제 작용과 현대적 해석 가이드.</description>
-      <pubDate>Mon, 31 Aug 2026 12:00:00 +0900</pubDate>
       <guid>https://www.testmoeum.com/articles/%EB%8F%84%ED%99%94%EC%82%B4-%ED%99%8D%EC%97%BC%EC%82%B4-%ED%99%84%EA%B0%9C%EC%82%B4-%ED%8A%B9%EC%A7%95.html</guid>
+      <description><![CDATA[도화살, 홍염살, 화개살의 발생 원리와 치명적 매력 포인트. 과거의 부정적 흉살에서 현대의 스타성과 예술적 성공 요인으로 재해석한 명리학 리포트.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[사주 연애운 보는 법 총정리: 십신(十神)과 일지 배우자궁으로 읽는 나의 연애 패턴]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%82%AC%EC%A3%BC-%EC%97%B0%EC%95%A0%EC%9A%B4-%EB%AC%B4%EB%A3%8C.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%82%AC%EC%A3%BC-%EC%97%B0%EC%95%A0%EC%9A%B4-%EB%AC%B4%EB%A3%8C.html</guid>
+      <description><![CDATA[사주팔자로 자신의 연애운과 배우자 복을 정밀하게 분석하는 방법. 십신(정관·편관·정재·편재·식상)의 의미, 일지 배우자궁 해석 및 연애운 개운법.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[사주 10가지 일간(日干)별 성격과 연애 궁합 총정리: 갑목부터 계수까지 타고난 본질]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%82%AC%EC%A3%BC-%EC%9D%BC%EA%B0%84%EB%B3%84-%EC%84%B1%EA%B2%A9-%ED%8A%B9%EC%A7%95-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%82%AC%EC%A3%BC-%EC%9D%BC%EA%B0%84%EB%B3%84-%EC%84%B1%EA%B2%A9-%ED%8A%B9%EC%A7%95-%EC%B4%9D%EC%A0%95%EB%A6%AC.html</guid>
+      <description><![CDATA[사주명리학의 핵심인 10천간(갑·을·병·정·무·기·경·신·임·계) 일간별 성격, 직업 적성, 연애 스타일과 찰떡 궁합 조합 총정리.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[심리테스트 결과 정확도 높이는 방법과 바넘 효과 극복하기: 객관적 자기인식 가이드]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B2%B0%EA%B3%BC-%EC%A0%95%ED%99%95%EB%8F%84-%EB%86%92%EC%9D%B4%EB%8A%94%EB%B2%95.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B2%B0%EA%B3%BC-%EC%A0%95%ED%99%95%EB%8F%84-%EB%86%92%EC%9D%B4%EB%8A%94%EB%B2%95.html</guid>
+      <description><![CDATA[심리테스트의 정확도와 신뢰도를 극대화하는 4가지 과학적 답변 원칙. 바넘 효과(Forer Effect)의 메커니즘을 이해하고 자기보고식 검사의 편향을 극복하는 법.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[심리테스트 종류 완벽 총정리: 성격·연애·투사검사부터 임상 척도까지 목적별 추천 가이드]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A2%85%EB%A5%98-%EB%AA%A8%EC%9D%8C.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A2%85%EB%A5%98-%EB%AA%A8%EC%9D%8C.html</guid>
+      <description><![CDATA[MBTI, 에니어그램, 빅파이브(Big 5), 애착유형 검사 등 현대 심리학의 다양한 검사 종류와 특징. 자아 탐색과 관계 개선을 위한 목적별 최적의 테스트.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[연애 오래가는 커플들의 4가지 심리학적 특징: 가트맨 박사의 관계 연구와 파경 예방 비결]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%97%B0%EC%95%A0-%EC%98%A4%EB%9E%98%EA%B0%80%EB%8A%94-%EC%BB%A4%ED%94%8C-%ED%8A%B9%EC%A7%95.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%97%B0%EC%95%A0-%EC%98%A4%EB%9E%98%EA%B0%80%EB%8A%94-%EC%BB%A4%ED%94%8C-%ED%8A%B9%EC%A7%95.html</guid>
+      <description><![CDATA[세계적 관계 심리학자 존 가트맨 박사의 40년 임상 연구 기반. 이혼을 부르는 4대 독소와 오래 사랑받는 커플들의 정서적 통장 관리법.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[성인 애착유형 4가지와 연애 패턴 총정리: 불안과 회피의 사슬을 끊고 안정형 사랑으로]]></title>
+      <link>https://www.testmoeum.com/articles/%EC%97%B0%EC%95%A0%EC%9C%A0%ED%98%95-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A2%85%EB%A5%98.html</link>
+      <guid>https://www.testmoeum.com/articles/%EC%97%B0%EC%95%A0%EC%9C%A0%ED%98%95-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A2%85%EB%A5%98.html</guid>
+      <description><![CDATA[존 볼비의 애착 이론 기반 성인 연애 유형 완벽 분석. 불안형과 회피형의 악순환 고리를 끊고 안정형 연애로 나아가는 심리학적 치유 로드맵.]]></description>
+      <pubDate>Fri, 02 Oct 2026 15:00:00 +0900</pubDate>
     </item>
   </channel>
 </rss>

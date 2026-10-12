@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.testmoeum.com/</loc>
@@ -54,25 +54,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- ?щ━?ㅻ쭏???뚯뀥 濡ㅻ쭅?섏씠??-->
   <url>
     <loc>https://www.testmoeum.com/xmas-create</loc>
     <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.testmoeum.com/xmas-view</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.testmoeum.com/xmas-write</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.7</priority>
   </url>
 
   <url>

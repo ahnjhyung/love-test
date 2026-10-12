@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script>
+      if (location.hostname === 'testmoeum.vercel.app') {
+        location.replace('https://www.testmoeum.com' + location.pathname + location.search + location.hash);
+      }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT0F640BDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NT0F640BDP');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="x5Re-7axTxycbSXG2VTpDQnystwno5tiP9LT3eCPLm8" />
+    <meta name="naver-site-verification" content="0023618a24cf37f8b6721ce04113a539f5496457" />
+
+    <title>친구가 나를 얼마나 알까? 우정 퀴즈 만들기 | 테스트모음</title>
+    <meta name="description" content="나에 대한 10문제를 만들고 친구들에게 보내 보세요. 누가 나를 가장 잘 아는지 점수와 순위표로 확인하는 무료 친구 퀴즈입니다.">
+    <meta name="keywords" content="친구 퀴즈, 우정 테스트, 나를 얼마나 알까, 친구 테스트, 우정 퀴즈 만들기, 테스트모음">
+    <link rel="canonical" href="https://www.testmoeum.com/friend-quiz">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="테스트모음">
+    <meta property="og:url" content="https://www.testmoeum.com/friend-quiz">
+    <meta property="og:title" content="나에 대해 얼마나 알고 있어? 10문제 풀어 봐!">
+    <meta property="og:description" content="친구가 만든 우정 퀴즈 · 점수와 순위표가 바로 나와요">
+    <meta property="og:image" content="https://www.testmoeum.com/img/thumb-friendquiz.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "친구가 나를 얼마나 알까? 우정 퀴즈",
+      "description": "나에 대한 퀴즈를 만들어 친구에게 보내고 점수와 순위를 확인하는 무료 우정 퀴즈",
+      "url": "https://www.testmoeum.com/friend-quiz",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f7f7f9; color: #191f28; margin: 0; }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center">
+    <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col shadow-sm">
+
+        <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+            <a href="/" class="text-sm font-semibold text-gray-500 hover:text-gray-900 flex items-center space-x-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span>테스트모음 홈</span>
+            </a>
+            <span class="text-xs font-bold text-violet-600 bg-violet-50 px-2.5 py-1 rounded-full">친구 퀴즈</span>
+        </header>
+
+        <main class="flex-1 px-5 py-4">
+
+            <!-- 1. 시작 화면 (퀴즈 만들기 소개) -->
+            <section id="s-start" class="space-y-4 text-center pt-2">
+                <div class="w-full aspect-[1200/630] rounded-2xl overflow-hidden border border-violet-100 bg-violet-50">
+                    <img src="/img/thumb-friendquiz.webp" alt="친구가 나를 얼마나 알까 우정 퀴즈" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1">
+                    <span class="inline-block text-[11px] font-bold px-2 py-0.5 rounded-md bg-violet-50 text-violet-600">10문제 · 만드는 데 2분</span>
+                    <h1 class="text-2xl font-black text-gray-900 leading-tight pt-1">친구가 나를 얼마나 알까?</h1>
+                    <p class="text-xs text-gray-500 pt-1">나에 대한 퀴즈를 만들어 보내면, 누가 나를 제일 잘 아는지 순위가 나와요</p>
+                </div>
+                <div class="pt-3 space-y-2">
+                    <button type="button" id="btn-create-start" class="w-full bg-violet-600 hover:bg-violet-700 active:scale-[0.98] text-white font-bold py-4 rounded-2xl text-base shadow-md transition-all">내 퀴즈 만들기</button>
+                    <button type="button" id="btn-my-board" class="hidden w-full bg-violet-50 text-violet-700 font-bold py-3.5 rounded-2xl text-sm border border-violet-100">내가 만든 퀴즈 결과판 보기</button>
+                </div>
+
+                <!-- 해설 -->
+                <section class="text-left mt-8 pt-6 border-t border-gray-100 space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-base font-black text-gray-900">어떻게 하는 건가요?</h2>
+                        <ol class="space-y-1.5 text-[13px] text-gray-600 leading-relaxed list-decimal pl-4">
+                            <li>닉네임을 정하고, 나에 대한 질문 10개에 내 진짜 답을 고릅니다. 마음에 안 드는 질문은 다른 질문으로 바꿀 수 있어요.</li>
+                            <li>완성된 퀴즈 링크를 카카오톡, 인스타그램 DM, 단체방에 보냅니다.</li>
+                            <li>친구들이 링크로 들어와 나에 대한 문제를 풀면, 점수와 함께 순위표에 이름이 올라갑니다.</li>
+                            <li>이 페이지의 "내가 만든 퀴즈 결과판 보기"에서 누가 나를 가장 잘 아는지 언제든 확인할 수 있어요.</li>
+                        </ol>
+                    </div>
+                    <div class="space-y-2">
+                        <h2 class="text-base font-black text-gray-900">점수는 이렇게 봐요</h2>
+                        <ul class="space-y-1.5 text-[13px] text-gray-600 leading-relaxed list-disc pl-4">
+                            <li><strong class="text-gray-800">10점:</strong> 나보다 나를 더 잘 아는 소울메이트</li>
+                            <li><strong class="text-gray-800">8~9점:</strong> 취향까지 꿰고 있는 찐친</li>
+                            <li><strong class="text-gray-800">5~7점:</strong> 꽤 가까운 사이, 조금만 더 알아가면 완벽</li>
+                            <li><strong class="text-gray-800">2~4점:</strong> 아직 서로 알아가는 중</li>
+                            <li><strong class="text-gray-800">0~1점:</strong> 혹시 우리 오늘 처음 만났나요?</li>
+                        </ul>
+                        <p class="text-[13px] text-gray-600 leading-relaxed">점수는 친한 정도를 재는 시험이 아니라 서로의 취향을 알아 가는 놀이예요. 틀린 문제는 결과 화면에서 정답을 보여주니, "나 원래 이거 좋아했어?" 하고 이야기를 나눠 보세요.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <h2 class="text-base font-black text-gray-900">어떤 정보가 저장되나요?</h2>
+                        <p class="text-[13px] text-gray-600 leading-relaxed">친구들이 같은 문제를 풀 수 있도록 퀴즈를 만든 사람의 닉네임과 고른 답, 그리고 퀴즈를 푼 사람의 닉네임과 점수만 저장됩니다. 실명이나 연락처는 받지 않으니, 닉네임에도 개인정보는 넣지 말아 주세요. 자세한 내용은 <a href="/privacy" class="text-violet-600 underline">개인정보처리방침</a>을 확인해 주세요.</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 2. 퀴즈 만들기: 닉네임 -->
+            <section id="s-create-name" class="hidden space-y-5 py-2">
+                <div class="space-y-1">
+                    <h2 class="text-xl font-bold text-gray-900">친구들에게 보일 닉네임을 정해 주세요</h2>
+                    <p class="text-xs text-gray-400">실명 대신 친구들이 알아볼 수 있는 별명이면 충분해요</p>
+                </div>
+                <input id="in-owner" type="text" maxlength="12" placeholder="예: 재환, 짱구" class="w-full border border-gray-200 rounded-xl py-3.5 px-4 text-base bg-white focus:outline-none focus:border-violet-500">
+                <button type="button" id="btn-owner-next" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl text-base shadow-md">질문에 답하러 가기</button>
+            </section>
+
+            <!-- 3. 질문 화면 (만들기/풀기 공용) -->
+            <section id="s-question" class="hidden space-y-5 py-2">
+                <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden"><div id="q-bar" class="h-full bg-violet-500 transition-all duration-300" style="width:0%"></div></div>
+                <div class="flex justify-between items-center text-xs font-bold text-gray-400">
+                    <span id="q-mode" class="text-violet-500"></span><span id="q-num"></span>
+                </div>
+                <h2 id="q-text" class="text-lg font-black text-gray-900 leading-snug min-h-[3.5rem] flex items-center"></h2>
+                <div id="q-options" class="grid grid-cols-1 gap-2.5"></div>
+                <button type="button" id="btn-swap" class="hidden w-full text-xs font-bold text-gray-500 py-2.5 rounded-xl border border-dashed border-gray-300 hover:bg-gray-50">이 질문 말고 다른 질문으로 바꾸기</button>
+            </section>
+
+            <!-- 4. 저장/불러오기 중 -->
+            <section id="s-loading" class="hidden flex-col items-center justify-center py-20 space-y-4 text-center">
+                <div class="w-9 h-9 rounded-full border-[3px] border-gray-100 border-t-violet-500 animate-spin"></div>
+                <p id="loading-text" class="text-sm font-bold text-gray-700">잠시만 기다려 주세요...</p>
+            </section>
+
+            <!-- 5. 퀴즈 완성 + 결과판 (만든 사람용) -->
+            <section id="s-board" class="hidden space-y-4 py-2">
+                <div class="bg-gradient-to-br from-violet-50 via-white to-violet-50/40 p-5 rounded-2xl border border-violet-100 text-center space-y-2">
+                    <p class="text-[11px] font-bold text-violet-600" id="board-badge">퀴즈 완성!</p>
+                    <h2 class="text-xl font-black text-gray-900"><span id="board-owner"></span>님의 우정 퀴즈</h2>
+                    <p class="text-xs text-gray-500">링크를 보내면 친구들의 점수가 아래 순위표에 쌓여요</p>
+                    <div class="flex items-center gap-2 pt-2">
+                        <input id="board-link" readonly class="flex-1 min-w-0 text-xs bg-white border border-gray-200 rounded-lg py-2.5 px-3 text-gray-600">
+                        <button type="button" id="btn-copy" class="shrink-0 px-3.5 py-2.5 bg-gray-900 text-white text-xs font-bold rounded-lg">복사</button>
+                    </div>
+                    <button type="button" id="btn-share-owner" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3.5 rounded-xl text-sm shadow-md">친구들에게 퀴즈 보내기</button>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-gray-900">나를 가장 잘 아는 친구 순위</h3>
+                        <button type="button" id="btn-refresh" class="text-[11px] font-bold text-violet-600">새로고침</button>
+                    </div>
+                    <ol id="board-list" class="space-y-1.5"></ol>
+                </div>
+            </section>
+
+            <!-- 6. 친구가 퀴즈 풀기 시작 -->
+            <section id="s-play-intro" class="hidden space-y-5 py-2 text-center">
+                <div class="bg-gradient-to-br from-violet-50 via-white to-violet-50/40 p-6 rounded-2xl border border-violet-100 space-y-2">
+                    <p class="text-[11px] font-bold text-violet-600">친구가 보낸 우정 퀴즈</p>
+                    <h2 class="text-2xl font-black text-gray-900 leading-tight"><span class="play-owner"></span>님에 대해<br>얼마나 알고 있나요?</h2>
+                    <p class="text-xs text-gray-500">10문제를 풀면 점수와 순위가 바로 나와요</p>
+                </div>
+                <input id="in-player" type="text" maxlength="12" placeholder="내 닉네임 (순위표에 표시돼요)" class="w-full border border-gray-200 rounded-xl py-3.5 px-4 text-base bg-white focus:outline-none focus:border-violet-500">
+                <button type="button" id="btn-play-start" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl text-base shadow-md">퀴즈 풀기 시작</button>
+                <a href="/friend-quiz" class="block text-xs font-bold text-gray-400 underline">나도 내 퀴즈 만들기</a>
+            </section>
+
+            <!-- 7. 친구 결과 -->
+            <section id="s-play-result" class="hidden space-y-4 py-2">
+                <div class="bg-gradient-to-br from-violet-50 via-white to-violet-50/40 p-6 rounded-2xl border border-violet-100 text-center space-y-2">
+                    <p class="text-[11px] font-bold text-violet-600"><span class="play-owner"></span>님 퀴즈 결과</p>
+                    <p class="text-5xl font-black text-violet-600"><span id="res-score">0</span><span class="text-xl text-gray-400"> / 10</span></p>
+                    <h2 id="res-title" class="text-xl font-black text-gray-900"></h2>
+                    <p id="res-desc" class="text-xs text-gray-500"></p>
+                </div>
+
+                <!-- 다음 행동: 내 퀴즈 만들기가 가장 위 -->
+                <button type="button" id="btn-make-mine" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl text-base shadow-md">나도 내 퀴즈 만들어서 보내기</button>
+                <button type="button" id="btn-share-player" class="w-full bg-violet-50 text-violet-700 font-bold py-3.5 rounded-xl text-sm border border-violet-100">다른 친구에게도 이 퀴즈 보내기</button>
+
+                <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <h3 class="text-sm font-bold text-gray-900"><span class="play-owner"></span>님을 가장 잘 아는 친구 순위</h3>
+                    <ol id="play-board-list" class="space-y-1.5"></ol>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2">
+                    <h3 class="text-sm font-bold text-gray-900">정답 확인</h3>
+                    <ol id="res-answers" class="space-y-2 text-[13px]"></ol>
+                </div>
+            </section>
+
+            <!-- 오류 -->
+            <section id="s-error" class="hidden py-16 text-center space-y-4">
+                <p id="error-text" class="text-sm text-gray-600 leading-relaxed"></p>
+                <a href="/friend-quiz" class="inline-block px-5 py-3 bg-violet-600 text-white font-bold rounded-xl text-sm">내 퀴즈 만들기</a>
+            </section>
+        </main>
+
+        <footer class="mt-auto border-t border-gray-100 bg-white px-4 py-4 text-center text-xs text-gray-400 space-y-1">
+            <p><a href="/about" class="hover:text-gray-700">사이트 소개</a> · <a href="/privacy" class="hover:text-gray-700">개인정보처리방침</a></p>
+            <p>&copy; 2026 테스트모음. All rights reserved.</p>
+        </footer>
+    </div>
+
+<script>
+(function () {
+    var SITE = 'https://www.testmoeum.com';
+
+    // 질문 은행: 저장된 퀴즈가 번호로 참조하므로 순서를 바꾸거나 지우지 말고 뒤에만 추가할 것
+    // {n} = 내가 / ○○님이,  {o} = 나의 / ○○님의
+    var BANK = [
+        ['{n} 가장 좋아하는 계절은?', ['봄', '여름', '가을', '겨울']],
+        ['{n} 더 좋아하는 음식은?', ['한식', '중식', '일식', '양식']],
+        ['주말에 {n} 가장 하고 싶은 것은?', ['집에서 푹 쉬기', '친구 만나기', '여행이나 나들이', '취미나 운동']],
+        ['{n} 더 가고 싶은 여행지는?', ['바다', '산', '도시', '해외 휴양지']],
+        ['{n} 아침형일까 저녁형일까?', ['완전 아침형', '조금 아침형', '조금 저녁형', '완전 올빼미']],
+        ['카페에서 {n} 주로 고르는 음료는?', ['아메리카노', '라떼나 달달한 커피', '차 종류', '주스나 에이드']],
+        ['스트레스 받을 때 {n} 주로 하는 일은?', ['맛있는 거 먹기', '잠자기', '수다 떨기', '운동이나 산책']],
+        ['{n} 더 좋아하는 동물은?', ['강아지', '고양이', '둘 다 좋아', '둘 다 별로']],
+        ['{o} 연락 스타일은?', ['칼답', '몰아서 답장', '전화가 편함', '연락 잘 안 함']],
+        ['{o} 영화 취향은?', ['로맨스', '액션', '공포·스릴러', '코미디']],
+        ['{n} 가장 무서워하는 것은?', ['벌레', '높은 곳', '귀신', '사람 많은 곳']],
+        ['치킨을 시킬 때 {n} 고르는 메뉴는?', ['후라이드', '양념', '간장', '반반']],
+        ['민트초코에 대한 {o} 생각은?', ['완전 좋아함', '나쁘지 않음', '별로', '절대 안 먹음']],
+        ['{o} 쇼핑 스타일은?', ['일단 지르고 봄', '비교하고 또 비교', '필요한 것만 삼', '쇼핑 자체를 잘 안 함']],
+        ['{n} 갖고 싶은 초능력은?', ['순간이동', '투명인간', '마음 읽기', '시간 멈추기']],
+        ['노래방에서 {n} 고르는 노래는?', ['발라드', '댄스', '힙합', '노래방은 안 감']],
+        ['화가 났을 때 {o} 반응은?', ['바로 말함', '조용해짐', '혼자 삭힘', '금방 잊어버림']],
+        ['{n} 좋아하는 약속 장소는?', ['카페', '맛집', '누군가의 집', '야외']],
+        ['{n} 더 좋아하는 날씨는?', ['맑은 날', '비 오는 날', '눈 오는 날', '흐린 날']],
+        ['라면에 {n} 꼭 넣는 것은?', ['계란', '파', '치즈', '아무것도 안 넣음']],
+        ['휴대폰에서 {n} 가장 오래 쓰는 앱은?', ['유튜브', '인스타그램', '카카오톡', '게임']],
+        ['탕수육을 먹을 때 {n} 고르는 쪽은?', ['부먹', '찍먹', '상관없음', '탕수육 안 먹음']],
+        ['갑자기 돈이 생기면 {n} 가장 먼저 할 일은?', ['저축', '맛있는 거 먹기', '쇼핑', '여행']],
+        ['잠들기 전 {o} 습관은?', ['눕자마자 잠듦', '폰 보다가 잠듦', '한참 뒤척임', '음악이나 영상 틀어 둠']],
+        ['단체 사진 찍을 때 {o} 자리는?', ['가운데', '구석', '찍어 주는 사람', '사진 잘 안 찍음']],
+        ['비 소식이 있을 때 {n} 하는 행동은?', ['항상 우산 챙김', '예보 보고 챙김', '그냥 맞고 다님', '누군가에게 빌림']],
+        ['{n} 더 좋아하는 디저트는?', ['케이크', '아이스크림', '빵', '떡']],
+        ['{n} 가장 자신 있는 것은?', ['요리', '운동', '노래', '공부나 일']],
+        ['친구들 사이에서 {o} 역할은?', ['분위기 메이커', '리액션 담당', '계획 담당', '조용한 관찰자']],
+        ['{n} 더 좋아하는 여행 스타일은?', ['계획 꼼꼼히', '대충 정하고 즉흥', '맛집 위주', '숙소에서 쉬기']]
+    ];
+    var COUNT = 10;
+    var OWNED_KEY = 'tm_friend_quiz_owned';
+    var PLAYED_KEY = 'tm_friend_quiz_played';
+
+    var sb = null;
+    try {
+        sb = window.supabase.createClient(
+            'https://fcuenflxkkpyplehsizg.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjdWVuZmx4a2tweXBsZWhzaXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTU5NjgsImV4cCI6MjA4NTA5MTk2OH0.xfAV9dpBkhh-5FgV0uwCw8DO3EGqFNeoQrENldaqa8c'
+        );
+    } catch (e) {}
+
+    function $(id) { return document.getElementById(id); }
+    function track(name, params) { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} }
+    function store(key, val) {
+        try {
+            if (val === undefined) return JSON.parse(localStorage.getItem(key) || '{}');
+            localStorage.setItem(key, JSON.stringify(val));
+        } catch (e) { return {}; }
+    }
+
+    var SCREENS = ['s-start', 's-create-name', 's-question', 's-loading', 's-board', 's-play-intro', 's-play-result', 's-error'];
+    function show(id) {
+        SCREENS.forEach(function (s) { $(s).classList.add('hidden'); $(s).classList.remove('flex'); });
+        $(id).classList.remove('hidden');
+        if (id === 's-loading') $(id).classList.add('flex');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function loading(text) { $('loading-text').textContent = text; show('s-loading'); }
+    function fail(text) { $('error-text').textContent = text; show('s-error'); }
+
+    function qText(i, ownerName) {
+        var n = ownerName ? ownerName + '님이' : '내가';
+        var o = ownerName ? ownerName + '님의' : '나의';
+        return BANK[i][0].replace('{n}', n).replace('{o}', o);
+    }
+
+    function newId() {
+        var chars = 'abcdefghijkmnopqrstuvwxyz23456789', out = '';
+        var buf = new Uint8Array(8);
+        crypto.getRandomValues(buf);
+        for (var i = 0; i < 8; i++) out += chars[buf[i] % chars.length];
+        return out;
+    }
+
+    function quizUrl(id) { return SITE + '/friend-quiz?id=' + id; }
+
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        return Promise.resolve();
+    }
+
+    function share(text, url, method) {
+        if (navigator.share) {
+            navigator.share({ title: '우정 퀴즈', text: text, url: url })
+                .then(function () { track('share', { method: 'web_share', content_type: 'friend-quiz', item_id: method }); })
+                .catch(function () {});
+        } else {
+            copyText(text + '\n' + url).then(function () {
+                track('share', { method: 'copy_link', content_type: 'friend-quiz', item_id: method });
+                alert('퀴즈 링크가 복사되었어요!\n카카오톡 단체방이나 인스타그램 DM에 붙여넣어 보내 보세요.');
+            });
+        }
+    }
+
+    // ---------- 질문 화면 (만들기/풀기 공용) ----------
+    var flow = null; // { mode: 'create'|'play', qids, answers, step, owner }
+
+    function renderQuestion() {
+        var qi = flow.qids[flow.step];
+        $('q-bar').style.width = ((flow.step + 1) / COUNT * 100) + '%';
+        $('q-num').textContent = 'Q' + (flow.step + 1) + ' / ' + COUNT;
+        $('q-mode').textContent = flow.mode === 'create' ? '나에 대한 진짜 답 고르기' : flow.owner + '님은 뭘 골랐을까?';
+        $('q-text').textContent = qText(qi, flow.mode === 'play' ? flow.owner : null);
+        $('btn-swap').classList.toggle('hidden', flow.mode !== 'create');
+        var box = $('q-options');
+        box.innerHTML = '';
+        BANK[qi][1].forEach(function (label, i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'w-full text-left p-4 rounded-2xl border border-gray-200 bg-white hover:border-violet-400 hover:bg-violet-50/50 active:scale-[0.99] text-sm font-medium text-gray-800 transition-all';
+            b.textContent = label;
+            b.addEventListener('click', function () { pick(i); });
+            box.appendChild(b);
+        });
+    }
+
+    var busy = false;
+    function pick(i) {
+        if (busy) return;
+        busy = true;
+        flow.answers.push(i);
+        flow.step++;
+        setTimeout(function () {
+            busy = false;
+            if (flow.step < COUNT) renderQuestion();
+            else if (flow.mode === 'create') saveQuiz();
+            else submitPlay();
+        }, 120);
+    }
+
+    $('btn-swap').addEventListener('click', function () {
+        var unused = [];
+        for (var i = 0; i < BANK.length; i++) if (flow.qids.indexOf(i) < 0) unused.push(i);
+        if (!unused.length) return;
+        flow.qids[flow.step] = unused[Math.floor(Math.random() * unused.length)];
+        renderQuestion();
+    });
+
+    // ---------- 만들기 ----------
+    $('btn-create-start').addEventListener('click', function () {
+        show('s-create-name');
+        $('in-owner').focus();
+        track('test_start', { test_name: 'friend-quiz-create' });
+    });
+
+    $('btn-owner-next').addEventListener('click', function () {
+        var name = $('in-owner').value.trim();
+        if (!name) { alert('닉네임을 입력해 주세요!'); return; }
+        var pool = BANK.map(function (_, i) { return i; });
+        for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
+        flow = { mode: 'create', qids: pool.slice(0, COUNT), answers: [], step: 0, owner: name };
+        show('s-question');
+        renderQuestion();
+    });
+
+    async function saveQuiz() {
+        if (!sb) { fail('지금은 퀴즈를 저장할 수 없어요. 잠시 후 다시 시도해 주세요.'); return; }
+        loading('퀴즈를 저장하고 있어요...');
+        var id = newId();
+        var res = await sb.from('friend_quizzes').insert({ id: id, owner_name: flow.owner, question_ids: flow.qids, answers: flow.answers });
+        if (res.error) { fail('퀴즈를 저장하지 못했어요. 잠시 후 다시 시도해 주세요.'); return; }
+        var owned = store(OWNED_KEY);
+        owned[id] = { owner: flow.owner, at: Date.now() };
+        store(OWNED_KEY, owned);
+        track('quiz_create', { test_name: 'friend-quiz' });
+        history.replaceState(null, '', '/friend-quiz?id=' + id);
+        openBoard(id, flow.owner, true);
+    }
+
+    // ---------- 결과판 ----------
+    var boardQuiz = null;
+    function renderBoard(listEl, rows, highlightName) {
+        listEl.innerHTML = '';
+        if (!rows.length) {
+            var li = document.createElement('li');
+            li.className = 'text-center text-xs text-gray-400 py-6';
+            li.textContent = '아직 푼 친구가 없어요. 퀴즈 링크를 보내 보세요!';
+            listEl.appendChild(li);
+            return;
+        }
+        rows.forEach(function (r, i) {
+            var li = document.createElement('li');
+            var me = highlightName && r.player_name === highlightName;
+            li.className = 'flex items-center justify-between px-3 py-2.5 rounded-xl ' + (me ? 'bg-violet-50 border border-violet-200' : 'bg-gray-50');
+            var left = document.createElement('span');
+            left.className = 'flex items-center gap-2 text-sm text-gray-800 min-w-0';
+            var rank = document.createElement('span');
+            rank.className = 'w-6 text-center text-xs font-black ' + (i < 3 ? 'text-violet-600' : 'text-gray-400');
+            rank.textContent = i + 1;
+            var name = document.createElement('span');
+            name.className = 'truncate font-semibold';
+            name.textContent = r.player_name;
+            left.appendChild(rank); left.appendChild(name);
+            var score = document.createElement('span');
+            score.className = 'text-sm font-black text-gray-900 shrink-0';
+            score.textContent = r.score + '점';
+            li.appendChild(left); li.appendChild(score);
+            listEl.appendChild(li);
+        });
+    }
+
+    async function fetchBoard(id) {
+        var res = await sb.from('friend_quiz_results').select('player_name, score, created_at')
+            .eq('quiz_id', id).order('score', { ascending: false }).order('created_at', { ascending: true }).limit(30);
+        return res.error ? [] : res.data;
+    }
+
+    async function openBoard(id, owner, justCreated) {
+        boardQuiz = { id: id, owner: owner };
+        $('board-owner').textContent = owner;
+        $('board-badge').textContent = justCreated ? '퀴즈 완성! 이제 친구들에게 보내 보세요' : '내가 만든 퀴즈';
+        $('board-link').value = quizUrl(id);
+        show('s-board');
+        renderBoard($('board-list'), await fetchBoard(id));
+    }
+
+    $('btn-copy').addEventListener('click', function () {
+        copyText(quizUrl(boardQuiz.id)).then(function () { $('btn-copy').textContent = '복사됨'; setTimeout(function () { $('btn-copy').textContent = '복사'; }, 1500); });
+    });
+    $('btn-share-owner').addEventListener('click', function () {
+        share('나에 대해 얼마나 알고 있어? 10문제 풀고 순위 확인해 봐!', quizUrl(boardQuiz.id), 'owner');
+    });
+    $('btn-refresh').addEventListener('click', async function () { renderBoard($('board-list'), await fetchBoard(boardQuiz.id)); });
+    $('btn-my-board').addEventListener('click', function () {
+        var owned = store(OWNED_KEY);
+        var ids = Object.keys(owned).sort(function (a, b) { return owned[b].at - owned[a].at; });
+        if (ids.length) {
+            history.replaceState(null, '', '/friend-quiz?id=' + ids[0]);
+            openBoard(ids[0], owned[ids[0]].owner, false);
+        }
+    });
+
+    // ---------- 풀기 ----------
+    var playQuiz = null;
+
+    async function openQuiz(id) {
+        if (!sb) { fail('지금은 퀴즈를 불러올 수 없어요. 잠시 후 다시 시도해 주세요.'); return; }
+        loading('퀴즈를 불러오고 있어요...');
+        var res = await sb.from('friend_quizzes').select('id, owner_name, question_ids, answers').eq('id', id).maybeSingle();
+        if (res.error || !res.data) { fail('퀴즈를 찾을 수 없어요. 링크가 정확한지 확인하거나, 내 퀴즈를 새로 만들어 보세요.'); return; }
+        playQuiz = res.data;
+        var owned = store(OWNED_KEY);
+        if (owned[id]) { openBoard(id, playQuiz.owner_name, false); return; }
+        document.querySelectorAll('.play-owner').forEach(function (el) { el.textContent = playQuiz.owner_name; });
+        var played = store(PLAYED_KEY)[id];
+        if (played) { showPlayResult(played.name, played.score, played.answers); return; }
+        show('s-play-intro');
+        track('friend_landing', { test_name: 'friend-quiz' });
+    }
+
+    $('btn-play-start').addEventListener('click', function () {
+        var name = $('in-player').value.trim();
+        if (!name) { alert('순위표에 표시될 닉네임을 입력해 주세요!'); return; }
+        flow = { mode: 'play', qids: playQuiz.question_ids, answers: [], step: 0, owner: playQuiz.owner_name, player: name };
+        track('test_start', { test_name: 'friend-quiz-play' });
+        show('s-question');
+        renderQuestion();
+    });
+
+    async function submitPlay() {
+        loading('채점하고 있어요...');
+        var score = 0;
+        for (var i = 0; i < COUNT; i++) if (flow.answers[i] === playQuiz.answers[i]) score++;
+        await sb.from('friend_quiz_results').insert({ quiz_id: playQuiz.id, player_name: flow.player, score: score });
+        var played = store(PLAYED_KEY);
+        played[playQuiz.id] = { name: flow.player, score: score, answers: flow.answers };
+        store(PLAYED_KEY, played);
+        track('test_complete', { test_name: 'friend-quiz', result_index: score });
+        showPlayResult(flow.player, score, flow.answers);
+    }
+
+    var TIERS = [
+        [10, '나보다 나를 더 잘 아는 소울메이트', '이 정도면 텔레파시 수준이에요!'],
+        [8, '취향까지 꿰고 있는 찐친', '역시 오래 본 사이는 다르네요.'],
+        [5, '꽤 가까운 사이', '조금만 더 알아가면 만점도 금방이에요.'],
+        [2, '아직 서로 알아가는 중', '틀린 문제로 이야기 나눠 보면 더 가까워질 거예요.'],
+        [0, '혹시 우리 오늘 처음 만났나요?', '아래 정답을 보고 다시 친해져 봐요!']
+    ];
+
+    async function showPlayResult(name, score, answers) {
+        var tier = TIERS.filter(function (t) { return score >= t[0]; })[0];
+        $('res-score').textContent = score;
+        $('res-title').textContent = tier[1];
+        $('res-desc').textContent = tier[2];
+        var list = $('res-answers');
+        list.innerHTML = '';
+        playQuiz.question_ids.forEach(function (qi, i) {
+            var correct = answers[i] === playQuiz.answers[i];
+            var li = document.createElement('li');
+            li.className = 'p-3 rounded-xl ' + (correct ? 'bg-emerald-50' : 'bg-rose-50');
+            var q = document.createElement('p');
+            q.className = 'font-bold text-gray-800';
+            q.textContent = (i + 1) + '. ' + qText(qi, playQuiz.owner_name);
+            var a = document.createElement('p');
+            a.className = 'text-xs mt-1 ' + (correct ? 'text-emerald-700' : 'text-rose-700');
+            a.textContent = correct
+                ? '정답: ' + BANK[qi][1][playQuiz.answers[i]]
+                : '정답: ' + BANK[qi][1][playQuiz.answers[i]] + ' · 내 답: ' + BANK[qi][1][answers[i]];
+            li.appendChild(q); li.appendChild(a);
+            list.appendChild(li);
+        });
+        show('s-play-result');
+        renderBoard($('play-board-list'), await fetchBoard(playQuiz.id), name);
+        $('btn-share-player').onclick = function () {
+            share('나는 ' + playQuiz.owner_name + ' 퀴즈 ' + score + '점! 너는 몇 점 나올지 풀어 봐', quizUrl(playQuiz.id), 'player');
+        };
+    }
+
+    $('btn-make-mine').addEventListener('click', function () {
+        track('friend_quiz_make_mine', {});
+        history.replaceState(null, '', '/friend-quiz');
+        show('s-create-name');
+        $('in-owner').focus();
+    });
+
+    // ---------- 시작 ----------
+    var params = new URLSearchParams(location.search);
+    var qid = params.get('id');
+    if (Object.keys(store(OWNED_KEY)).length) $('btn-my-board').classList.remove('hidden');
+    if (qid && /^[a-z0-9]{8}$/.test(qid)) openQuiz(qid);
+    else if (qid) fail('퀴즈를 찾을 수 없어요. 링크가 정확한지 확인해 주세요.');
+
+    // 로컬 검증용 진입점 (DB 클라이언트 교체, 퀴즈 열기)
+    window.__friendQuiz = { setClient: function (c) { sb = c; }, openQuiz: openQuiz };
+})();
+</script>
+</body>
+</html>

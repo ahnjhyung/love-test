@@ -55,6 +55,13 @@
             imgs: ['element-wood', 'element-wood', 'element-fire', 'element-fire', 'element-earth',
                    'element-earth', 'element-metal', 'element-metal', 'element-water', 'element-water']
         },
+        'newyear': {
+            path: '/newyear-2027', title: '2027 정미년 신년운세', noun: '2027년 운세',
+            names: ['재능을 꽃피우는 갑목', '즐거움이 열매 맺는 을목', '라이벌과 함께 크는 병화', '내 편이 늘어나는 정화', '배움이 쌓이는 무토',
+                    '영감이 깨어나는 기토', '인정받고 자리 잡는 경금', '압박을 넘어 단단해지는 신금', '성실함이 재물이 되는 임수', '기회를 낚아채는 계수'],
+            imgs: ['element-wood', 'element-wood', 'element-fire', 'element-fire', 'element-earth',
+                   'element-earth', 'element-metal', 'element-metal', 'element-water', 'element-water']
+        },
         'destiny': {
             path: '/destiny-match', title: '운명의 붉은 실 궁합 테스트', noun: '궁합',
             names: ['우주가 맺어준 천생연분 찰떡궁합', '서로에게 힘이 되어주는 든든한 동반자', '짜릿한 불꽃과 자극을 주는 열정 궁합'],
@@ -110,8 +117,15 @@
         },
         share: function (fallbackTest) {
             var test = current ? current.test : fallbackTest;
-            if (!test || !TESTS[test]) return;
             var url, text;
+            if (!test || !TESTS[test]) {
+                // viral.js에 등록되지 않은 테스트: 현재 페이지 주소를 그대로 공유
+                url = location.origin + location.pathname;
+                text = document.title + ' 해 봐!';
+                if (navigator.share) navigator.share({ title: document.title, text: text, url: url }).catch(function () {});
+                else copyText(text + '\n' + url).then(function () { alert('링크가 복사되었어요! 친구에게 붙여넣어 보내보세요.'); });
+                return;
+            }
             if (current) {
                 url = shareUrl(current.test, current.idx);
                 text = shareText(current.test, current.idx);

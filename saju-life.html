@@ -441,9 +441,9 @@
         }
 
         function calcJDN(year, month, day) {
-            return Math.floor((1461 * (year + 4800 + Math.floor((month - 14) / 12))) / 4)
-                + Math.floor((367 * (month - 2 - 12 * Math.floor((month - 14) / 12))) / 12)
-                - Math.floor((3 * Math.floor((year + 4900 + Math.floor((month - 14) / 12)) / 100)) / 4)
+            return Math.floor((1461 * (year + 4800 + Math.trunc((month - 14) / 12))) / 4)
+                + Math.floor((367 * (month - 2 - 12 * Math.trunc((month - 14) / 12))) / 12)
+                - Math.floor((3 * Math.floor((year + 4900 + Math.trunc((month - 14) / 12)) / 100)) / 4)
                 + day - 32075;
         }
 

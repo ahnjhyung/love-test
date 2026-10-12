@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /love-type/Type
 Disallow: /gallery
+Disallow: /_templates
 
 User-agent: Mediapartners-Google
 Allow: /
@@ -13,5 +14,6 @@ User-agent: Yeti
 Allow: /
 Disallow: /love-type/Type
 Disallow: /gallery
+Disallow: /_templates
 
 Sitemap: https://www.testmoeum.com/sitemap.xml

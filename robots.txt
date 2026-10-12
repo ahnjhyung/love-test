@@ -3,6 +3,12 @@ Allow: /
 Disallow: /love-type/Type
 Disallow: /gallery
 
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 User-agent: Yeti
 Allow: /
 Disallow: /love-type/Type

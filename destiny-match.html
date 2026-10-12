@@ -14,6 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-NT0F640BDP');
     </script>
+    <script src="/js/viral.js" defer></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -323,6 +324,7 @@
         const CHEONGAN_NAME = ['갑목(나무)', '을목(꽃)', '병화(태양)', '정화(촛불)', '무토(산)', '기토(들판)', '경금(바위)', '신금(보석)', '임수(바다)', '계수(샘물)'];
 
         function calculateMatch() {
+            if (window.TM) TM.start('destiny');
             const p1Name = document.getElementById('p1-name').value.trim() || '나';
             const p2Name = document.getElementById('p2-name').value.trim() || '너';
 
@@ -380,6 +382,7 @@
                     advice = '서운한 점이 생겼을 때 바로 이야기하고 경청해 주기';
                 }
 
+                if (window.TM) TM.result('destiny', baseScore >= 90 ? 0 : (baseScore < 80 ? 2 : 1));
                 document.getElementById('res-title').textContent = title;
                 document.getElementById('res-summary').textContent = summary;
                 document.getElementById('res-detail').textContent = detail;
@@ -512,25 +515,7 @@
         }
 
         function copyShareLink() {
-            const url = window.location.href;
-            const title = '운명의 붉은 실 사주 궁합 테스트';
-            const text = '우리 둘의 사주 궁합은 과연 몇 점일까? 지금 바로 확인해봐!';
-
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: text,
-                    url: url
-                }).catch(() => {});
-            } else {
-                const dummy = document.createElement('textarea');
-                document.body.appendChild(dummy);
-                dummy.value = `${text}\n${url}`;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-                alert('궁합 테스트 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 공유해보세요.');
-            }
+            TM.share('destiny');
         }
     </script>
 </body>

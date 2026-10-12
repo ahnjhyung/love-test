@@ -14,6 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-NT0F640BDP');
     </script>
+    <script src="/js/viral.js" defer></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -601,6 +602,7 @@
         let currentResult = null;
 
         function calculateSajuLife() {
+            if (window.TM) TM.start('saju-life');
             const name = document.getElementById('user-name').value.trim() || '익명';
             const year = parseInt(document.getElementById('birth-year').value);
             const month = parseInt(document.getElementById('birth-month').value);
@@ -706,6 +708,7 @@
 
                 // 캐릭터 상세 매핑
                 const charData = CHARACTERS_LIFE[dayGan];
+                if (window.TM) TM.result('saju-life', dayGan);
                 currentResult = { name, charData };
 
                 document.getElementById('res-user-name').textContent = name;
@@ -849,21 +852,7 @@
         }
 
         function shareResult() {
-            const url = window.location.href;
-            const title = currentResult ? `${currentResult.name}님의 사주팔자 운세 분석 결과` : '종합 사주팔자 무료 운세 테스트';
-            const text = currentResult ? `내 사주 캐릭터는 [${currentResult.charData.name}]! 너의 인생 사주팔자도 확인해봐!` : '생년월일로 풀어보는 종합 사주팔자 무료 분석!';
-
-            if (navigator.share) {
-                navigator.share({ title: title, text: text, url: url }).catch(() => {});
-            } else {
-                const dummy = document.createElement('textarea');
-                document.body.appendChild(dummy);
-                dummy.value = `${text}\n${url}`;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
-            }
+            TM.share('saju-life');
         }
     </script>
 </body>

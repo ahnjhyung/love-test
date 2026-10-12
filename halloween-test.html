@@ -15,6 +15,7 @@
       gtag('js', new Date());
       gtag('config', 'G-NT0F640BDP');
     </script>
+    <script src="/js/viral.js" defer></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -738,6 +739,7 @@
         let userScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
 
         function startTest() {
+            if (window.TM) TM.start('halloween');
             document.getElementById('screen-start').classList.add('hidden');
             document.getElementById('progress-container').classList.remove('hidden');
             document.getElementById('screen-question').classList.remove('hidden');
@@ -819,6 +821,7 @@
             else typeIdx = 7; // 붕대 감은 집콕 미라 (기타 힐러형)
 
             const typeData = HALLOWEEN_TYPES[typeIdx];
+            if (window.TM) TM.result('halloween', typeIdx);
 
             document.getElementById('result-type-badge').textContent = typeData.badge;
             document.getElementById('result-title').textContent = typeData.name;
@@ -985,21 +988,7 @@
         }
 
         function shareResult() {
-            const url = window.location.href;
-            const title = '할로윈 캐릭터 성격 테스트 결과';
-            const text = '내 안의 할로윈 몬스터 캐릭터 분석 결과가 나왔어! 너의 캐릭터도 확인해봐!';
-
-            if (navigator.share) {
-                navigator.share({ title: title, text: text, url: url }).catch(() => {});
-            } else {
-                const dummy = document.createElement('textarea');
-                document.body.appendChild(dummy);
-                dummy.value = `${text}\n${url}`;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
-            }
+            TM.share('halloween');
         }
     </script>
 </body>

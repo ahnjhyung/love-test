@@ -14,6 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-NT0F640BDP');
     </script>
+    <script src="/js/viral.js" defer></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -406,6 +407,7 @@
         function startTest() {
             var name = getEl("input-name").value.trim();
             if (!name) { alert("이름 또는 닉네임을 입력해주세요!"); return; }
+            if (window.TM) TM.start('healing');
             curStep = 0; scoreA = 0; scoreB = 0;
             getEl("progress-container").classList.remove("hidden");
             getEl("screen-start").classList.add("hidden");
@@ -415,6 +417,7 @@
 
         function renderQ() {
             var q = questions[curStep];
+            if (!q) return;
             var prog = ((curStep + 1) / questions.length) * 100;
             getEl("progress-bar").style.width = prog + "%";
             getEl("txt-q-num").innerText = "Q. " + (curStep + 1 < 10 ? '0' : '') + (curStep + 1) + " / " + questions.length;
@@ -502,6 +505,7 @@
             else resIdx = 3;
 
             var r = RESULTS[resIdx];
+            if (window.TM) TM.result('healing', resIdx);
 
             setTimeout(function() {
                 getEl("screen-loading").classList.add("hidden");
@@ -663,21 +667,7 @@
         }
 
         function shareResult() {
-            const url = window.location.href;
-            const title = '나의 힐링 성격 유형 테스트 결과';
-            const text = '내 힐링 캐릭터 분석 결과가 나왔어! 너의 힐링 스타일도 확인해봐!';
-
-            if (navigator.share) {
-                navigator.share({ title: title, text: text, url: url }).catch(() => {});
-            } else {
-                const dummy = document.createElement('textarea');
-                document.body.appendChild(dummy);
-                dummy.value = `${text}\n${url}`;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-                alert('결과 링크가 복사되었습니다! 카카오톡이나 인스타그램 DM에 붙여넣어 공유해보세요.');
-            }
+            TM.share('healing');
         }
     </script>
 </body>

@@ -1,4 +1,4 @@
-﻿# 테스트모음 SEO & 콘텐츠 운영 지침서
+# 테스트모음 SEO & 콘텐츠 운영 지침서
 
 > **대상**: 테스트모음(www.testmoeum.com) 플랫폼에 새 테스트·칼럼을 추가하는 모든 에이전트  
 > **타깃**: 여성 10대~30대 / 모바일 퍼스트  
@@ -12,7 +12,7 @@
 | 항목 | 값 |
 |---|---|
 | 도메인(canonical) | `https://www.testmoeum.com` |
-| Google Analytics | `GT-WRDDWJ26` |
+| Google Analytics | `G-NT0F640BDP` |
 | Google Search Console 인증 | `3gWhqMnwPMO7KWGkTfqSDmvHsJCh0WnIbY0qDAkGM9s` |
 | AdSense pub-id | `ca-pub-8530559977181821` |
 | Naver 인증 | `e4c8ca2bdf1a0623e4b7e2d826a4f25f9fcbf228` |
@@ -28,12 +28,12 @@
 
 ```html
 <!-- 1. Google Analytics (항상 <head> 최상단) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GT-WRDDWJ26"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NT0F640BDP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'GT-WRDDWJ26');
+  gtag('config', 'G-NT0F640BDP');
 </script>
 
 <!-- 2. 기본 메타 -->

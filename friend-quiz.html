@@ -291,7 +291,10 @@
         return out;
     }
 
-    function quizUrl(id) { return SITE + '/friend-quiz?id=' + id; }
+    // who: 'owner'(만든 사람이 공유) | 'player'(푼 친구가 공유) → GA4에서 공유 유입으로 구분
+    function quizUrl(id, who) {
+        return SITE + '/friend-quiz?id=' + id + '&utm_source=share&utm_medium=social&utm_campaign=friend-quiz&utm_content=' + who;
+    }
 
     function copyText(text) {
         if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
@@ -431,16 +434,16 @@
         boardQuiz = { id: id, owner: owner };
         $('board-owner').textContent = owner;
         $('board-badge').textContent = justCreated ? '퀴즈 완성! 이제 친구들에게 보내 보세요' : '내가 만든 퀴즈';
-        $('board-link').value = quizUrl(id);
+        $('board-link').value = quizUrl(id, 'owner');
         show('s-board');
         renderBoard($('board-list'), await fetchBoard(id));
     }
 
     $('btn-copy').addEventListener('click', function () {
-        copyText(quizUrl(boardQuiz.id)).then(function () { $('btn-copy').textContent = '복사됨'; setTimeout(function () { $('btn-copy').textContent = '복사'; }, 1500); });
+        copyText(quizUrl(boardQuiz.id, 'owner')).then(function () { $('btn-copy').textContent = '복사됨'; setTimeout(function () { $('btn-copy').textContent = '복사'; }, 1500); });
     });
     $('btn-share-owner').addEventListener('click', function () {
-        share('나에 대해 얼마나 알고 있어? 10문제 풀고 순위 확인해 봐!', quizUrl(boardQuiz.id), 'owner');
+        share('나에 대해 얼마나 알고 있어? 10문제 풀고 순위 확인해 봐!', quizUrl(boardQuiz.id, 'owner'), 'owner');
     });
     $('btn-refresh').addEventListener('click', async function () { renderBoard($('board-list'), await fetchBoard(boardQuiz.id)); });
     $('btn-my-board').addEventListener('click', function () {
@@ -524,7 +527,7 @@
         show('s-play-result');
         renderBoard($('play-board-list'), await fetchBoard(playQuiz.id), name);
         $('btn-share-player').onclick = function () {
-            share('나는 ' + playQuiz.owner_name + ' 퀴즈 ' + score + '점! 너는 몇 점 나올지 풀어 봐', quizUrl(playQuiz.id), 'player');
+            share('나는 ' + playQuiz.owner_name + ' 퀴즈 ' + score + '점! 너는 몇 점 나올지 풀어 봐', quizUrl(playQuiz.id, 'player'), 'player');
         };
     }
 
